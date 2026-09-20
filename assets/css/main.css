@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --page-gutter: 1.25rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ivory text-charcoal font-sans antialiased;
+    font-size: 1rem;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* No colour here on purpose — headings inherit, so the same components read
+     correctly over ivory and over a dark image. */
+  h1, h2, h3, h4 {
+    @apply font-display font-normal;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-clay-soft text-charcoal;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-forest ring-offset-2 ring-offset-ivory rounded-sm;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
+
+@layer components {
+  .container-prabha {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply text-eyebrow font-sans font-medium uppercase tracking-[0.18em] text-charcoal-muted;
+  }
+
+  .btn {
+    @apply inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-pill px-6 py-3
+           text-sm font-medium transition-all duration-300 ease-editorial focus-visible:outline-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-forest text-ivory hover:bg-forest-deep hover:-translate-y-[1px] active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply btn border border-charcoal/20 bg-transparent text-charcoal hover:border-charcoal/60 hover:bg-charcoal/[0.03];
+  }
+
+  .btn-light {
+    @apply btn bg-ivory text-charcoal hover:bg-white;
+  }
+
+  .btn-ghost {
+    @apply btn px-0 py-1 text-charcoal underline-offset-4 hover:text-clay;
+  }
+
+  .link-underline {
+    @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0
+           after:bg-current after:transition-[width] after:duration-300 after:ease-editorial hover:after:w-full;
+  }
+
+  .surface-card {
+    @apply rounded-card border border-line bg-white/60 transition-shadow duration-300 ease-editorial;
+  }
+
+  .media {
+    @apply relative overflow-hidden bg-ivory-warm;
+  }
+
+  .media img {
+    @apply h-full w-full object-cover transition-transform duration-700 ease-editorial;
+  }
+
+  .media-zoom:hover img {
+    @apply scale-[1.04];
+  }
+
+  .prose-prabha {
+    @apply max-w-prose text-[1.0625rem] leading-[1.8] text-charcoal-soft;
+  }
+
+  .prose-prabha h2 {
+    @apply mt-12 mb-4 text-display-sm;
+  }
+
+  .prose-prabha h3 {
+    @apply mt-9 mb-3 text-xl font-display;
+  }
+
+  .prose-prabha p {
+    @apply mb-5;
+  }
+
+  .prose-prabha ul {
+    @apply mb-6 space-y-2 pl-5;
+  }
+
+  .prose-prabha li {
+    @apply list-disc marker:text-clay;
+  }
+
+  .prose-prabha a {
+    @apply text-forest underline underline-offset-4 hover:text-clay;
+  }
+
+  .prose-prabha blockquote {
+    @apply my-8 border-l-2 border-clay pl-6 font-display text-xl italic text-charcoal;
+  }
+}
+
+@layer utilities {
+  .text-shadow-hero {
+    text-shadow: 0 1px 24px rgba(20, 18, 16, 0.35);
+  }
+
+  .grain {
+    background-image: radial-gradient(rgba(31, 29, 26, 0.045) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+}
+
+/* --- Scroll reveal (CSS-only, no animation library) ---
+   Hiding is scoped to `html.js`, which an inline head script sets before first
+   paint. If scripting is unavailable or fails, nothing is ever hidden. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Route transition --- */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
