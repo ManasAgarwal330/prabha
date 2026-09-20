@@ -42,6 +42,13 @@ Node 20.19 or newer is recommended (one transitive dependency asks for it).
    ```
 2. In Netlify: **Add new site → Import an existing project → GitHub**, pick the repo.
 3. Netlify reads `netlify.toml` — build command `npm run generate`, publish directory `.output/public`. Deploy.
+
+   > `netlify.toml` pins `NITRO_PRESET = "static"`. Netlify detects Nuxt and otherwise injects
+   > `NITRO_PRESET=netlify`, which switches Nitro to the `netlify-static` preset, writes the site to
+   > `dist/` instead of `.output/public`, and can add a server function. Pinning the preset keeps the
+   > build fully static and the output where `publish` expects it. Do not remove it — the deploy fails
+   > with *"Deploy directory '.output/public' does not exist"*.
+
 4. **Set the real site URL.** Site configuration → Environment variables:
 
    ```

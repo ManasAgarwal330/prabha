@@ -6,6 +6,10 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # Netlify detects Nuxt and injects NITRO_PRESET=netlify, which redirects the
+  # static output to dist/ and adds a server function. Pinning the preset keeps
+  # the build fully static and the output exactly where `publish` points.
+  NITRO_PRESET = "static"
 
 # Hashed build assets never change — cache them hard.
 [[headers]]
