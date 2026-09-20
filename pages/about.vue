@@ -57,7 +57,7 @@ useJsonLd(
     </section>
 
     <section class="container-prabha">
-      <div class="reveal overflow-hidden rounded-card">
+      <div class="reveal-media overflow-hidden rounded-card">
         <AppImage
           :src="HERO_IMAGE"
           alt="A misty valley at first light in the Indian hills"

@@ -37,6 +37,8 @@ export default <Partial<Config>>{
         },
         hairline: 'rgb(var(--c-hairline) / <alpha-value>)',
         accent: 'rgb(var(--c-accent) / <alpha-value>)',
+        /** Saffron. Eyebrows, numerals, rules — the "prabha" (light) in the brand. */
+        highlight: 'rgb(var(--c-highlight) / <alpha-value>)',
         link: 'rgb(var(--c-link) / <alpha-value>)',
 
         ivory: {
@@ -66,6 +68,17 @@ export default <Partial<Config>>{
           DEFAULT: '#B08B4F',
           soft: '#E2D3B6'
         },
+        /** Dark bands are deep pine rather than neutral grey — colour, not absence of it. */
+        pine: {
+          DEFAULT: '#14211B',
+          deep: '#0E1813',
+          raised: '#1C2C25'
+        },
+        saffron: {
+          DEFAULT: '#B8862E',
+          light: '#E7B45C',
+          soft: '#F0DCB4'
+        },
         line: '#DDD2BE'
       },
       fontFamily: {
@@ -93,6 +106,26 @@ export default <Partial<Config>>{
       },
       transitionTimingFunction: {
         editorial: 'cubic-bezier(0.22, 1, 0.36, 1)'
+      },
+      keyframes: {
+        kenburns: {
+          '0%': { transform: 'scale(1.12) translate3d(0, 0, 0)' },
+          '100%': { transform: 'scale(1) translate3d(0, 0, 0)' }
+        },
+        riseIn: {
+          '0%': { opacity: '0', transform: 'translate3d(0, 110%, 0)' },
+          '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' }
+        },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translate3d(0, 24px, 0)' },
+          '100%': { opacity: '1', transform: 'translate3d(0, 0, 0)' }
+        }
+      },
+      animation: {
+        // Slow enough to read as depth rather than movement.
+        kenburns: 'kenburns 26s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+        'rise-in': 'riseIn 1s cubic-bezier(0.22, 1, 0.36, 1) both',
+        'fade-up': 'fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both'
       }
     }
   }

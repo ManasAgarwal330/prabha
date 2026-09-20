@@ -65,7 +65,7 @@ useJsonLd(
         :class="index % 2 === 1 ? 'section-dark' : ''"
       >
         <div class="container-prabha grid items-center gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
-          <div class="reveal overflow-hidden rounded-card" :class="index % 2 === 1 ? 'lg:order-2' : ''">
+          <div class="reveal-media overflow-hidden rounded-card" :class="index % 2 === 1 ? 'lg:order-2' : ''">
             <AppImage
               :src="experience.image"
               :alt="experience.name"

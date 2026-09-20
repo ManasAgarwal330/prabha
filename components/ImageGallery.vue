@@ -12,7 +12,7 @@ defineProps<{
     <li
       v-for="(image, index) in images"
       :key="image"
-      class="reveal min-w-0 overflow-hidden rounded-card"
+      class="reveal-media min-w-0 overflow-hidden rounded-card"
       :style="{ transitionDelay: `${index * 60}ms` }"
     >
       <AppImage

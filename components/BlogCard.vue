@@ -27,9 +27,9 @@ withDefaults(
       <p class="eyebrow text-accent">{{ article.category }}</p>
 
       <h3 class="mt-3 font-display leading-snug" :class="featured ? 'text-display-sm' : 'text-xl'">
-        <NuxtLink :to="`/blog/${article.slug}`" class="transition-colors hover:text-accent">
+        <NuxtLink :to="`/blog/${article.slug}`" class="transition-colors">
           <span class="absolute inset-0" />
-          {{ article.title }}
+          <span class="sweep">{{ article.title }}</span>
         </NuxtLink>
       </h3>
 

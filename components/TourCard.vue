@@ -25,9 +25,9 @@ withDefaults(
       </p>
 
       <h3 class="mt-2.5 font-display text-2xl leading-snug">
-        <NuxtLink :to="`/tours/${tour.slug}`" class="transition-colors hover:text-accent">
+        <NuxtLink :to="`/tours/${tour.slug}`" class="transition-colors">
           <span class="absolute inset-0" />
-          {{ tour.title }}
+          <span class="sweep">{{ tour.title }}</span>
         </NuxtLink>
       </h3>
 

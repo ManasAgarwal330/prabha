@@ -20,6 +20,7 @@ const experienceCount = computed(() => props.destination.experiences.length)
 <template>
   <NuxtLink
     :to="`/destinations/${destination.slug}`"
+    v-tilt
     class="group relative block h-full overflow-hidden rounded-card"
   >
     <AppImage
@@ -36,9 +37,9 @@ const experienceCount = computed(() => props.destination.experiences.length)
     />
 
     <div class="absolute inset-x-0 bottom-0 p-6 text-ivory-bright sm:p-7">
-      <p class="eyebrow mb-2 text-ivory-bright/85">{{ destination.state }}</p>
+      <p class="eyebrow mb-2 text-saffron-light">{{ destination.state }}</p>
       <h3 class="font-display leading-tight" :class="size === 'feature' ? 'text-display-sm' : 'text-2xl'">
-        {{ destination.name }}
+        <span class="sweep">{{ destination.name }}</span>
       </h3>
       <p
         class="mt-2 max-w-md text-sm leading-relaxed text-ivory-bright/90"

@@ -20,6 +20,9 @@
     --c-ink-muted: 106 99 89;
     --c-hairline: 221 210 190;
     --c-accent: 180 95 63;
+    /* Ochre rather than bright saffron: eyebrows are 12px, and the lighter tone
+       drops under 4.5:1 against the ivory canvas. */
+    --c-highlight: 154 110 34;
     --c-link: 46 74 60;
 
     /* Logo mark. Kept as plain colours rather than tokens so the brand clay and
@@ -28,32 +31,35 @@
     --logo-range: #2e4a3c;
   }
 
+  /* Deep pine, not neutral charcoal — the dark bands carry brand colour. */
   .section-dark {
-    --c-canvas: 31 29 26;
-    --c-canvas-alt: 23 21 17;
-    --c-surface: 42 39 33;
-    --c-ink: 243 237 225;
-    --c-ink-soft: 214 206 191;
-    --c-ink-muted: 167 156 140;
-    --c-hairline: 58 53 44;
-    /* Clay and forest both need lifting to hold contrast against charcoal. */
-    --c-accent: 208 138 102;
-    --c-link: 143 185 161;
-    --logo-sun: #d08a66;
-    --logo-range: #8fb9a1;
+    --c-canvas: 20 33 27;
+    --c-canvas-alt: 14 24 19;
+    --c-surface: 28 44 37;
+    --c-ink: 242 237 227;
+    --c-ink-soft: 214 209 194;
+    --c-ink-muted: 158 175 164;
+    --c-hairline: 44 64 54;
+    /* Clay and forest both need lifting to hold contrast against pine. */
+    --c-accent: 217 140 99;
+    --c-highlight: 231 180 92;
+    --c-link: 156 199 174;
+    --logo-sun: #e7b45c;
+    --logo-range: #9cc7ae;
   }
 
   .section-forest {
-    --c-canvas: 46 74 60;
-    --c-canvas-alt: 31 51 42;
-    --c-surface: 31 51 42;
+    --c-canvas: 51 84 68;
+    --c-canvas-alt: 36 61 49;
+    --c-surface: 36 61 49;
     --c-ink: 250 247 241;
     --c-ink-soft: 226 219 205;
     --c-ink-muted: 180 194 183;
-    --c-hairline: 74 107 89;
-    --c-accent: 226 211 182;
-    --c-link: 226 211 182;
-    --logo-sun: #e2d3b6;
+    --c-hairline: 82 118 98;
+    --c-accent: 240 220 180;
+    --c-highlight: 240 220 180;
+    --c-link: 240 220 180;
+    --logo-sun: #f0dcb4;
     --logo-range: #faf7f1;
   }
 
@@ -97,20 +103,52 @@
   /* Dark bands bleed to the page edge and carry their own background. */
   .section-dark,
   .section-forest {
-    @apply bg-canvas text-ink;
+    @apply relative isolate bg-canvas text-ink;
+  }
+
+  /* A soft saffron bloom at the top of every dark band. Costs nothing and stops
+     the flat fill reading as a grey box. */
+  .section-dark::before,
+  .section-forest::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(70% 55% at 12% 0%, rgb(var(--c-highlight) / 0.13), transparent 62%),
+      radial-gradient(55% 45% at 88% 8%, rgb(var(--c-link) / 0.1), transparent 60%);
+  }
+
+  .eyebrow {
+    @apply text-eyebrow font-sans font-medium uppercase tracking-[0.18em] text-highlight;
   }
 
   .container-prabha {
     @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
   }
 
-  .eyebrow {
-    @apply text-eyebrow font-sans font-medium uppercase tracking-[0.18em] text-ink-muted;
+  .btn {
+    @apply relative isolate inline-flex shrink-0 items-center justify-center gap-2 overflow-hidden
+           whitespace-nowrap rounded-pill px-6 py-3 text-sm font-medium transition-all duration-300
+           ease-editorial focus-visible:outline-none;
   }
 
-  .btn {
-    @apply inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-pill px-6 py-3
-           text-sm font-medium transition-all duration-300 ease-editorial focus-visible:outline-none;
+  /* Hover fills from the left instead of swapping background colour. */
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    background: currentColor;
+    opacity: 0.12;
+  }
+
+  .btn:hover::before {
+    transform: scaleX(1);
   }
 
   .btn-primary {
@@ -133,6 +171,11 @@
 
   .btn-ghost {
     @apply btn px-0 py-1 text-ink underline-offset-4 hover:text-accent;
+  }
+
+  /* Text-only, so the fill sweep would just be a floating tint block. */
+  .btn-ghost::before {
+    content: none;
   }
 
   .link-underline {
@@ -205,14 +248,101 @@
    paint. If scripting is unavailable or fails, nothing is ever hidden. */
 .js .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translate3d(0, 22px, 0);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
 .js .reveal.is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* Images wipe open from the bottom edge. Only clip-path animates, so the
+   hover zoom on the inner <img> keeps working untouched. */
+.js .reveal-media {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path;
+}
+
+.js .reveal-media.is-visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* --- Hero entrance ---
+   Each word rides up from behind a mask. Pure CSS, so it plays even if the
+   hydration bundle is slow, and the reduced-motion rule below neutralises it. */
+.hero-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+}
+
+.hero-word {
+  display: inline-block;
+  animation: riseIn 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-fade {
+  animation: fadeUp 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --- Pointer tilt (see plugins/tilt.client.ts) --- */
+[data-tilt] {
+  transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translate3d(0, 0, 0);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* While tracking the pointer the transform must keep up, not ease behind it. */
+[data-tilt].is-tilting {
+  transition: transform 0.1s linear;
+}
+
+/* --- Scroll progress ---
+   Driven entirely by the scroll timeline where supported; stays at scaleX(0)
+   and therefore invisible where it is not. No JavaScript either way. */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, theme('colors.saffron.DEFAULT'), theme('colors.clay.DEFAULT'));
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: progressGrow linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes progressGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* --- Underline that draws in on card hover --- */
+.sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  padding-bottom: 0.06em;
+}
+
+.group:hover .sweep,
+.group:focus-within .sweep {
+  background-size: 100% 1px;
 }
 
 /* --- Route transition --- */
@@ -243,5 +373,22 @@
   .js .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .js .reveal-media {
+    clip-path: none;
+  }
+
+  /* Motion that runs on its own stops entirely. */
+  .animate-kenburns {
+    animation: none !important;
+  }
+
+  [data-tilt] {
+    transform: none !important;
+  }
+
+  .scroll-progress {
+    display: none;
   }
 }

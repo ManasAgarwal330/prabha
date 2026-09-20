@@ -17,7 +17,7 @@ export const useScrollReveal = () => {
   let frame = 0
 
   const revealAll = () => {
-    document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible), .reveal-media:not(.is-visible)').forEach((el) => {
       el.classList.add('is-visible')
     })
   }
@@ -27,7 +27,7 @@ export const useScrollReveal = () => {
       revealAll()
       return
     }
-    document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)').forEach((el) => {
+    document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible), .reveal-media:not(.is-visible)').forEach((el) => {
       observer!.observe(el)
     })
   }

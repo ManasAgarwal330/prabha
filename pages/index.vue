@@ -10,6 +10,9 @@ import { brandStory, howItWorks, site, valueProps } from '~/data/site'
 const HERO_IMAGE = 'photo-1506905925346-21bda4d32df4'
 const STORY_IMAGE = 'photo-1501555088652-021faa106b9b'
 
+/** Split so each word can ride up from behind its own mask. */
+const taglineWords = site.tagline.split(' ')
+
 const gridDestinations = destinations.slice(0, 6)
 const journeys = popularTours.slice(0, 3)
 const stories = sortedArticles.slice(0, 3)
@@ -27,49 +30,70 @@ usePageSeo({
 <template>
   <div>
     <!-- Hero -->
-    <section class="relative isolate flex min-h-[92svh] items-end overflow-hidden">
-      <AppImage
-        :src="HERO_IMAGE"
-        alt="First light over a Himalayan range above the clouds"
-        :ratio="16 / 9"
-        sizes="100vw"
-        priority
-        :zoom="false"
-        class="absolute inset-0 h-full w-full"
-      />
+    <!-- Full small-viewport height: at scroll 0 the image fills the screen with
+         no strip of the next section showing. `svh` (not `vh`) so mobile browser
+         chrome cannot leave a gap when the toolbar collapses. -->
+    <section class="relative isolate flex min-h-[100svh] items-end overflow-hidden">
+      <!-- The slow push-in sits on a wrapper so it never fights the image's own transforms. -->
+      <div class="absolute inset-0 animate-kenburns will-change-transform">
+        <AppImage
+          :src="HERO_IMAGE"
+          alt="First light over a Himalayan range above the clouds"
+          :ratio="16 / 9"
+          sizes="100vw"
+          priority
+          :zoom="false"
+          class="h-full w-full"
+        />
+      </div>
       <div
-        class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/35 to-charcoal/45"
+        class="absolute inset-0 bg-gradient-to-t from-pine-deep/90 via-pine/40 to-pine/50"
         aria-hidden="true"
       />
 
       <div class="container-prabha relative w-full pb-16 pt-32 sm:pb-20 lg:pb-24">
-        <p class="eyebrow text-ivory-bright/80">{{ site.name }}</p>
+        <p class="eyebrow hero-fade text-saffron-light" style="animation-delay: 0.1s">{{ site.name }}</p>
+
         <h1 class="mt-5 max-w-4xl text-display-xl text-ivory-bright text-shadow-hero">
-          {{ site.tagline }}
+          <span v-for="(word, index) in taglineWords" :key="`${word}-${index}`" class="hero-mask mr-[0.26em]">
+            <span class="hero-word" :style="{ animationDelay: `${0.25 + index * 0.09}s` }">{{ word }}</span>
+          </span>
         </h1>
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-ivory-bright/85 sm:text-lg">
+
+        <p
+          class="hero-fade mt-6 max-w-xl text-base leading-relaxed text-ivory-bright/85 sm:text-lg"
+          style="animation-delay: 0.62s"
+        >
           Discover thoughtfully crafted journeys across extraordinary places, designed around the way you want to
           travel.
         </p>
 
-        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-          <NuxtLink to="/tours" class="btn-light w-full sm:w-auto">
+        <div class="hero-fade mt-9 flex flex-col gap-3 sm:flex-row" style="animation-delay: 0.74s">
+          <NuxtLink to="/tours" class="btn-light group w-full sm:w-auto">
             Explore Journeys
-            <ArrowRight class="h-4 w-4" aria-hidden="true" />
+            <ArrowRight
+              class="h-4 w-4 transition-transform duration-300 ease-editorial group-hover:translate-x-1"
+              aria-hidden="true"
+            />
           </NuxtLink>
           <NuxtLink
             to="/plan-my-trip"
-            class="btn w-full border border-ivory-bright/40 text-ivory-bright hover:border-ivory-bright hover:bg-ivory-bright/10 sm:w-auto"
+            class="btn w-full border border-ivory-bright/40 text-ivory-bright hover:border-ivory-bright sm:w-auto"
           >
             Plan My Trip
           </NuxtLink>
         </div>
 
-        <dl class="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-ivory-bright/20 pt-7 sm:mt-16">
+        <dl
+          class="hero-fade mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-ivory-bright/20 pt-7 sm:mt-16"
+          style="animation-delay: 0.86s"
+        >
           <div v-for="stat in brandStory.stats" :key="stat.label">
             <dt class="sr-only">{{ stat.label }}</dt>
             <dd>
-              <span class="block font-display text-3xl text-ivory-bright sm:text-4xl">{{ stat.value }}</span>
+              <span class="block font-display text-3xl text-ivory-bright sm:text-4xl">
+                <CountUp :value="stat.value" />
+              </span>
               <span class="mt-1 block text-xs leading-snug text-ivory-bright/70">{{ stat.label }}</span>
             </dd>
           </div>
@@ -162,7 +186,7 @@ usePageSeo({
     <!-- Brand story -->
     <section class="border-y border-hairline bg-canvas-alt py-20 lg:py-28">
       <div class="container-prabha grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        <div class="reveal order-2 overflow-hidden rounded-card lg:order-1">
+        <div class="reveal-media order-2 overflow-hidden rounded-card lg:order-1">
           <AppImage
             :src="STORY_IMAGE"
             alt="A traveller looking out across a green valley in the Indian Himalaya"

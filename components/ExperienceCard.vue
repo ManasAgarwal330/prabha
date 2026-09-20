@@ -16,6 +16,7 @@ const icon = computed(() => resolveIcon(props.experience.icon))
 <template>
   <NuxtLink
     :to="`/experiences#${experience.slug}`"
+    v-tilt
     class="group relative block h-full overflow-hidden rounded-card"
   >
     <AppImage
