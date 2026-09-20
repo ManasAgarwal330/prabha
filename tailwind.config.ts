@@ -18,15 +18,39 @@ export default <Partial<Config>>{
   theme: {
     extend: {
       colors: {
+        /**
+         * Semantic tokens. These resolve to CSS variables, which `.section-dark`
+         * and `.section-forest` reassign — so a card, heading or form field reads
+         * correctly on a light band and a dark one without any per-section classes.
+         * Use these in components; use the raw palette below only when a colour
+         * must stay fixed regardless of the surface (e.g. text over a photograph).
+         */
+        canvas: {
+          DEFAULT: 'rgb(var(--c-canvas) / <alpha-value>)',
+          alt: 'rgb(var(--c-canvas-alt) / <alpha-value>)'
+        },
+        surface: 'rgb(var(--c-surface) / <alpha-value>)',
+        ink: {
+          DEFAULT: 'rgb(var(--c-ink) / <alpha-value>)',
+          soft: 'rgb(var(--c-ink-soft) / <alpha-value>)',
+          muted: 'rgb(var(--c-ink-muted) / <alpha-value>)'
+        },
+        hairline: 'rgb(var(--c-hairline) / <alpha-value>)',
+        accent: 'rgb(var(--c-accent) / <alpha-value>)',
+        link: 'rgb(var(--c-link) / <alpha-value>)',
+
         ivory: {
-          DEFAULT: '#FAF7F1',
-          deep: '#F2ECE1',
-          warm: '#EFE7DA'
+          DEFAULT: '#F5EFE4',
+          deep: '#EAE1D0',
+          warm: '#E5DBC8',
+          /** Text and logos sitting on photographs or dark bands. */
+          bright: '#FAF7F1'
         },
         charcoal: {
           DEFAULT: '#1F1D1A',
+          raised: '#2A2721',
           soft: '#3A3631',
-          muted: '#6B645B'
+          muted: '#6A6359'
         },
         forest: {
           DEFAULT: '#2E4A3C',
@@ -42,7 +66,7 @@ export default <Partial<Config>>{
           DEFAULT: '#B08B4F',
           soft: '#E2D3B6'
         },
-        line: '#E3DACB'
+        line: '#DDD2BE'
       },
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],

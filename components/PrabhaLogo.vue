@@ -30,10 +30,10 @@ const sizeMap = {
       class="shrink-0"
       :class="sizeMap[size].mark"
     >
-      <circle cx="20" cy="10" r="4.6" :fill="tone === 'brand' ? '#B45F3F' : 'currentColor'" />
+      <circle cx="20" cy="10" r="4.6" :fill="tone === 'brand' ? 'var(--logo-sun)' : 'currentColor'" />
       <path
         d="M2.8 33.2 12.6 21.4 19.6 29.2 27 19.4 37.2 33.2"
-        :stroke="tone === 'brand' ? '#2E4A3C' : 'currentColor'"
+        :stroke="tone === 'brand' ? 'var(--logo-range)' : 'currentColor'"
         stroke-width="3"
         stroke-linecap="round"
         stroke-linejoin="round"

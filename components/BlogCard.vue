@@ -24,20 +24,20 @@ withDefaults(
     </NuxtLink>
 
     <div class="flex flex-1 flex-col pt-5">
-      <p class="eyebrow text-clay">{{ article.category }}</p>
+      <p class="eyebrow text-accent">{{ article.category }}</p>
 
       <h3 class="mt-3 font-display leading-snug" :class="featured ? 'text-display-sm' : 'text-xl'">
-        <NuxtLink :to="`/blog/${article.slug}`" class="transition-colors hover:text-clay">
+        <NuxtLink :to="`/blog/${article.slug}`" class="transition-colors hover:text-accent">
           <span class="absolute inset-0" />
           {{ article.title }}
         </NuxtLink>
       </h3>
 
-      <p class="mt-3 text-sm leading-relaxed text-charcoal-muted" :class="featured ? '' : 'line-clamp-3'">
+      <p class="mt-3 text-sm leading-relaxed text-ink-muted" :class="featured ? '' : 'line-clamp-3'">
         {{ article.excerpt }}
       </p>
 
-      <p class="mt-5 text-xs text-charcoal-muted">
+      <p class="mt-5 text-xs text-ink-muted">
         <time :datetime="article.publishedAt">{{ formatDate(article.publishedAt) }}</time>
         · {{ article.readingTime }} min read
       </p>

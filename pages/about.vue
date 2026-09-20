@@ -88,8 +88,8 @@ useJsonLd(
 
         <aside class="reveal lg:col-span-4 lg:col-start-9">
           <dl class="space-y-8">
-            <div v-for="stat in brandStory.stats" :key="stat.label" class="border-t border-line pt-5">
-              <dt class="text-sm text-charcoal-muted">{{ stat.label }}</dt>
+            <div v-for="stat in brandStory.stats" :key="stat.label" class="border-t border-hairline pt-5">
+              <dt class="text-sm text-ink-muted">{{ stat.label }}</dt>
               <dd class="mt-1 font-display text-4xl">{{ stat.value }}</dd>
             </div>
           </dl>
@@ -98,7 +98,7 @@ useJsonLd(
     </section>
 
     <!-- What we believe -->
-    <section class="border-y border-line bg-ivory-warm py-20 lg:py-24">
+    <section class="section-dark py-20 lg:py-24">
       <div class="container-prabha">
         <SectionHeading eyebrow="What we believe" title="Four things we will not trade away." />
 
@@ -106,11 +106,11 @@ useJsonLd(
           <div
             v-for="(principle, index) in principles"
             :key="principle.title"
-            class="reveal border-t border-line pt-6"
+            class="reveal border-t border-hairline pt-6"
             :style="{ transitionDelay: `${index * 70}ms` }"
           >
             <h3 class="font-display text-xl leading-snug">{{ principle.title }}</h3>
-            <p class="mt-3 text-[0.95rem] leading-relaxed text-charcoal-muted">{{ principle.body }}</p>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ principle.body }}</p>
           </div>
         </div>
       </div>
@@ -124,12 +124,12 @@ useJsonLd(
         <li
           v-for="(step, index) in howItWorks"
           :key="step.number"
-          class="reveal border-t border-line pt-6"
+          class="reveal border-t border-hairline pt-6"
           :style="{ transitionDelay: `${index * 80}ms` }"
         >
-          <span class="font-display text-sm tracking-[0.2em] text-clay">{{ step.number }}</span>
+          <span class="font-display text-sm tracking-[0.2em] text-accent">{{ step.number }}</span>
           <h3 class="mt-4 font-display text-2xl">{{ step.title }}</h3>
-          <p class="mt-3 text-[0.95rem] leading-relaxed text-charcoal-muted">{{ step.description }}</p>
+          <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ step.description }}</p>
         </li>
       </ol>
 
@@ -140,15 +140,15 @@ useJsonLd(
           class="reveal"
           :style="{ transitionDelay: `${index * 60}ms` }"
         >
-          <component :is="resolveIcon(value.icon)" class="h-6 w-6 text-clay" aria-hidden="true" />
+          <component :is="resolveIcon(value.icon)" class="h-6 w-6 text-accent" aria-hidden="true" />
           <h3 class="mt-5 font-display text-xl">{{ value.title }}</h3>
-          <p class="mt-3 text-[0.95rem] leading-relaxed text-charcoal-muted">{{ value.description }}</p>
+          <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ value.description }}</p>
         </div>
       </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="border-y border-line bg-ivory-deep py-20 lg:py-24">
+    <section class="border-y border-hairline bg-canvas-alt py-20 lg:py-24">
       <div class="container-prabha">
         <SectionHeading eyebrow="In their words" title="What travellers tell us afterwards." />
         <div class="mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
@@ -187,20 +187,20 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="border-t border-line bg-forest py-20 text-ivory lg:py-24">
+    <section class="section-forest py-20 lg:py-24">
       <div class="container-prabha flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
         <div class="reveal max-w-xl">
-          <h2 class="text-display-md text-ivory">Have a question before you plan anything?</h2>
-          <p class="mt-4 leading-relaxed text-ivory/75">
+          <h2 class="text-display-md">Have a question before you plan anything?</h2>
+          <p class="mt-4 leading-relaxed text-ink-soft">
             Ask it. We answer questions about routes and seasons whether or not you end up booking with us.
           </p>
         </div>
         <div class="reveal flex flex-col gap-3 sm:flex-row">
-          <NuxtLink to="/contact" class="btn-light">
+          <NuxtLink to="/contact" class="btn-primary">
             Contact us
             <ArrowRight class="h-4 w-4" aria-hidden="true" />
           </NuxtLink>
-          <NuxtLink to="/plan-my-trip" class="btn border border-ivory/40 text-ivory hover:border-ivory hover:bg-ivory/10">
+          <NuxtLink to="/plan-my-trip" class="btn border border-ink/40 text-ink hover:border-ink hover:bg-ink/10">
             Plan My Trip
           </NuxtLink>
         </div>

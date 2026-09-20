@@ -21,7 +21,7 @@ usePageSeo({
 
     <div class="mt-8 max-w-3xl">
       <h1 class="text-display-lg">Privacy Policy</h1>
-      <p class="mt-4 text-sm text-charcoal-muted">Last updated {{ updated }}</p>
+      <p class="mt-4 text-sm text-ink-muted">Last updated {{ updated }}</p>
     </div>
 
     <div class="prose-prabha mt-12">

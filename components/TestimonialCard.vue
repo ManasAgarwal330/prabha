@@ -6,7 +6,7 @@ defineProps<{ testimonial: Testimonial }>()
 </script>
 
 <template>
-  <figure class="flex h-full flex-col border-t border-line pt-7">
+  <figure class="flex h-full flex-col border-t border-hairline pt-7">
     <div v-if="testimonial.rating" class="mb-4 flex gap-0.5" :aria-label="`${testimonial.rating} out of 5`">
       <Star
         v-for="index in testimonial.rating"
@@ -17,12 +17,12 @@ defineProps<{ testimonial: Testimonial }>()
     </div>
 
     <blockquote class="flex-1">
-      <p class="font-display text-lg leading-relaxed text-charcoal">“{{ testimonial.quote }}”</p>
+      <p class="font-display text-lg leading-relaxed text-ink">“{{ testimonial.quote }}”</p>
     </blockquote>
 
     <figcaption class="mt-6 text-sm">
-      <span class="block font-medium text-charcoal">{{ testimonial.name }}</span>
-      <span class="block text-charcoal-muted">{{ testimonial.location }} · {{ testimonial.trip }}</span>
+      <span class="block font-medium text-ink">{{ testimonial.name }}</span>
+      <span class="block text-ink-muted">{{ testimonial.location }} · {{ testimonial.trip }}</span>
     </figcaption>
   </figure>
 </template>

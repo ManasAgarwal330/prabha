@@ -51,34 +51,34 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
 
       <div class="container-prabha relative w-full pb-14 pt-32 lg:pb-20">
         <Breadcrumbs :items="crumbs" light />
-        <p class="eyebrow mt-7 text-ivory/75">{{ current.state }}</p>
-        <h1 class="mt-4 max-w-3xl text-display-xl text-ivory text-shadow-hero">{{ current.name }}</h1>
-        <p class="mt-5 max-w-xl text-lg text-ivory/85">{{ current.tagline }}</p>
+        <p class="eyebrow mt-7 text-ivory-bright/75">{{ current.state }}</p>
+        <h1 class="mt-4 max-w-3xl text-display-xl text-ivory-bright text-shadow-hero">{{ current.name }}</h1>
+        <p class="mt-5 max-w-xl text-lg text-ivory-bright/85">{{ current.tagline }}</p>
       </div>
     </section>
 
     <!-- Quick facts -->
-    <section class="border-b border-line bg-ivory-deep">
+    <section class="border-b border-hairline bg-canvas-alt">
       <div class="container-prabha grid gap-6 py-7 sm:grid-cols-3">
         <div class="flex items-start gap-3">
-          <CalendarDays class="mt-0.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+          <CalendarDays class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
           <div>
-            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-charcoal-muted">Best time to visit</p>
-            <p class="mt-1 text-sm text-charcoal">{{ current.bestTimeToVisit }}</p>
+            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">Best time to visit</p>
+            <p class="mt-1 text-sm text-ink">{{ current.bestTimeToVisit }}</p>
           </div>
         </div>
         <div class="flex items-start gap-3">
-          <Clock class="mt-0.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+          <Clock class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
           <div>
-            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-charcoal-muted">Ideal duration</p>
-            <p class="mt-1 text-sm text-charcoal">{{ current.idealDuration }}</p>
+            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">Ideal duration</p>
+            <p class="mt-1 text-sm text-ink">{{ current.idealDuration }}</p>
           </div>
         </div>
         <div class="flex items-start gap-3">
-          <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+          <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
           <div>
-            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-charcoal-muted">Good for</p>
-            <p class="mt-1 text-sm text-charcoal">{{ current.categories.join(' · ') }}</p>
+            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">Good for</p>
+            <p class="mt-1 text-sm text-ink">{{ current.categories.join(' · ') }}</p>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
         <aside class="reveal lg:col-span-4 lg:col-start-9">
           <div class="surface-card p-7">
             <h2 class="font-display text-xl">Things to do in {{ current.name }}</h2>
-            <ul class="mt-5 space-y-3 text-sm leading-relaxed text-charcoal-soft">
+            <ul class="mt-5 space-y-3 text-sm leading-relaxed text-ink-soft">
               <li v-for="item in current.experiences" :key="item" class="flex gap-3">
                 <span class="mt-2 h-1 w-1 shrink-0 rounded-pill bg-clay" aria-hidden="true" />
                 {{ item }}
@@ -112,7 +112,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     </section>
 
     <!-- Why visit -->
-    <section class="border-y border-line bg-ivory-warm py-20 lg:py-24">
+    <section class="section-dark py-20 lg:py-24">
       <div class="container-prabha">
         <SectionHeading eyebrow="Why visit" :title="`What makes ${current.name} worth the journey.`" />
 
@@ -120,11 +120,11 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
           <div
             v-for="(item, index) in current.whyVisit"
             :key="item.title"
-            class="reveal border-t border-line pt-6"
+            class="reveal border-t border-hairline pt-6"
             :style="{ transitionDelay: `${index * 70}ms` }"
           >
             <h3 class="font-display text-xl leading-snug">{{ item.title }}</h3>
-            <p class="mt-3 text-[0.95rem] leading-relaxed text-charcoal-muted">{{ item.description }}</p>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ item.description }}</p>
           </div>
         </div>
       </div>
@@ -142,12 +142,12 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
         <div
           v-for="(season, index) in current.seasons"
           :key="season.window"
-          class="reveal border-t border-line pt-6"
+          class="reveal border-t border-hairline pt-6"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
-          <p class="eyebrow text-clay">{{ season.window }}</p>
+          <p class="eyebrow text-accent">{{ season.window }}</p>
           <h3 class="mt-3 font-display text-lg">{{ season.label }}</h3>
-          <p class="mt-2.5 text-sm leading-relaxed text-charcoal-muted">{{ season.description }}</p>
+          <p class="mt-2.5 text-sm leading-relaxed text-ink-muted">{{ season.description }}</p>
         </div>
       </div>
     </section>
@@ -159,7 +159,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     </section>
 
     <!-- Recommended tours -->
-    <section v-if="relatedTours.length" class="border-y border-line bg-ivory-deep py-20 lg:py-24">
+    <section v-if="relatedTours.length" class="section-dark py-20 lg:py-24">
       <div class="container-prabha">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading eyebrow="Recommended journeys" :title="`Ways to travel ${current.name}.`" />
@@ -183,11 +183,11 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
                and offers the custom route instead of an empty column. -->
           <div
             v-if="relatedTours.length < 3"
-            class="reveal flex flex-col justify-center rounded-card border border-dashed border-line p-8"
+            class="reveal flex flex-col justify-center rounded-card border border-dashed border-hairline p-8"
             :style="{ transitionDelay: `${relatedTours.length * 80}ms` }"
           >
             <h3 class="font-display text-2xl leading-snug">Something else in {{ current.name }}?</h3>
-            <p class="mt-3 text-sm leading-relaxed text-charcoal-muted">
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">
               These are the routes we publish. Most trips we run are built from scratch — tell us the days you
               have and what you want out of them.
             </p>
@@ -210,17 +210,17 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
           <li
             v-for="(tip, index) in current.travelTips"
             :key="tip"
-            class="flex gap-5 border-t border-line pt-6"
+            class="flex gap-5 border-t border-hairline pt-6"
           >
-            <span class="font-display text-sm text-clay">{{ String(index + 1).padStart(2, '0') }}</span>
-            <p class="text-[0.95rem] leading-relaxed text-charcoal-soft">{{ tip }}</p>
+            <span class="font-display text-sm text-accent">{{ String(index + 1).padStart(2, '0') }}</span>
+            <p class="text-[0.95rem] leading-relaxed text-ink-soft">{{ tip }}</p>
           </li>
         </ol>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="border-t border-line bg-ivory-deep py-20 lg:py-24">
+    <section class="section-dark py-20 lg:py-24">
       <div class="container-prabha grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="FAQ" :title="`${current.name} questions we get asked.`" />

@@ -30,9 +30,9 @@ const icon = computed(() => resolveIcon(props.experience.icon))
       aria-hidden="true"
     />
     <div class="absolute inset-x-0 bottom-0 p-5">
-      <component :is="icon" class="mb-3 h-5 w-5 text-ivory/80" aria-hidden="true" />
-      <h3 class="font-display text-xl text-ivory">{{ experience.name }}</h3>
-      <p class="mt-1.5 line-clamp-2 text-xs leading-relaxed text-ivory/80">
+      <component :is="icon" class="mb-3 h-5 w-5 text-ivory-bright/80" aria-hidden="true" />
+      <h3 class="font-display text-xl text-ivory-bright">{{ experience.name }}</h3>
+      <p class="mt-1.5 line-clamp-2 text-xs leading-relaxed text-ivory-bright/80">
         {{ experience.description }}
       </p>
     </div>

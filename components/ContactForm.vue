@@ -62,7 +62,7 @@ const reset = () => {
 }
 
 const fieldClass =
-  'w-full rounded-lg border bg-white/70 px-4 py-3 text-[0.95rem] text-charcoal placeholder:text-charcoal-muted/60 transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest'
+  'w-full rounded-lg border bg-surface px-4 py-3 text-[0.95rem] text-ink placeholder:text-ink-muted/60 transition-colors focus:border-link focus:outline-none focus:ring-1 focus:ring-link'
 </script>
 
 <template>
@@ -74,14 +74,14 @@ const fieldClass =
       role="status"
       aria-live="polite"
     >
-      <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-pill bg-forest/10 text-forest">
+      <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-pill bg-forest/10 text-link">
         <Check class="h-6 w-6" aria-hidden="true" />
       </span>
       <h3 class="mt-6 text-display-sm">Thank you — we have your enquiry.</h3>
-      <p class="mx-auto mt-4 max-w-md leading-relaxed text-charcoal-muted">
+      <p class="mx-auto mt-4 max-w-md leading-relaxed text-ink-muted">
         One of our trip designers will write back within one working day with a suggested route and an indicative
         cost. If it is urgent, reach us on
-        <a :href="`tel:${site.contact.phoneHref}`" class="text-forest underline underline-offset-4">
+        <a :href="`tel:${site.contact.phoneHref}`" class="text-link underline underline-offset-4">
           {{ site.contact.phoneDisplay }}</a
         >.
       </p>
@@ -95,7 +95,7 @@ const fieldClass =
     <form v-else class="space-y-5" novalidate @submit.prevent="onSubmit">
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
-          <label for="enq-name" class="mb-2 block text-sm font-medium text-charcoal">Name</label>
+          <label for="enq-name" class="mb-2 block text-sm font-medium text-ink">Name</label>
           <input
             id="enq-name"
             v-model="form.name"
@@ -103,16 +103,16 @@ const fieldClass =
             name="name"
             autocomplete="name"
             placeholder="Your full name"
-            :class="[fieldClass, errors.name ? 'border-clay' : 'border-line']"
+            :class="[fieldClass, errors.name ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.name)"
             :data-invalid="Boolean(errors.name)"
             :aria-describedby="errors.name ? 'enq-name-error' : undefined"
           />
-          <p v-if="errors.name" id="enq-name-error" class="mt-1.5 text-xs text-clay">{{ errors.name }}</p>
+          <p v-if="errors.name" id="enq-name-error" class="mt-1.5 text-xs text-accent">{{ errors.name }}</p>
         </div>
 
         <div>
-          <label for="enq-email" class="mb-2 block text-sm font-medium text-charcoal">Email</label>
+          <label for="enq-email" class="mb-2 block text-sm font-medium text-ink">Email</label>
           <input
             id="enq-email"
             v-model="form.email"
@@ -120,16 +120,16 @@ const fieldClass =
             name="email"
             autocomplete="email"
             placeholder="you@example.com"
-            :class="[fieldClass, errors.email ? 'border-clay' : 'border-line']"
+            :class="[fieldClass, errors.email ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.email)"
             :data-invalid="Boolean(errors.email)"
             :aria-describedby="errors.email ? 'enq-email-error' : undefined"
           />
-          <p v-if="errors.email" id="enq-email-error" class="mt-1.5 text-xs text-clay">{{ errors.email }}</p>
+          <p v-if="errors.email" id="enq-email-error" class="mt-1.5 text-xs text-accent">{{ errors.email }}</p>
         </div>
 
         <div>
-          <label for="enq-phone" class="mb-2 block text-sm font-medium text-charcoal">Phone</label>
+          <label for="enq-phone" class="mb-2 block text-sm font-medium text-ink">Phone</label>
           <input
             id="enq-phone"
             v-model="form.phone"
@@ -137,21 +137,21 @@ const fieldClass =
             name="phone"
             autocomplete="tel"
             placeholder="+91 90000 00000"
-            :class="[fieldClass, errors.phone ? 'border-clay' : 'border-line']"
+            :class="[fieldClass, errors.phone ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.phone)"
             :data-invalid="Boolean(errors.phone)"
             :aria-describedby="errors.phone ? 'enq-phone-error' : undefined"
           />
-          <p v-if="errors.phone" id="enq-phone-error" class="mt-1.5 text-xs text-clay">{{ errors.phone }}</p>
+          <p v-if="errors.phone" id="enq-phone-error" class="mt-1.5 text-xs text-accent">{{ errors.phone }}</p>
         </div>
 
         <div>
-          <label for="enq-destination" class="mb-2 block text-sm font-medium text-charcoal">Destination</label>
+          <label for="enq-destination" class="mb-2 block text-sm font-medium text-ink">Destination</label>
           <select
             id="enq-destination"
             v-model="form.destination"
             name="destination"
-            :class="[fieldClass, errors.destination ? 'border-clay' : 'border-line']"
+            :class="[fieldClass, errors.destination ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.destination)"
             :data-invalid="Boolean(errors.destination)"
             :aria-describedby="errors.destination ? 'enq-destination-error' : undefined"
@@ -163,15 +163,15 @@ const fieldClass =
             <option value="Somewhere else in India">Somewhere else in India</option>
             <option value="Not decided yet">Not decided yet</option>
           </select>
-          <p v-if="errors.destination" id="enq-destination-error" class="mt-1.5 text-xs text-clay">
+          <p v-if="errors.destination" id="enq-destination-error" class="mt-1.5 text-xs text-accent">
             {{ errors.destination }}
           </p>
         </div>
 
         <div>
-          <label for="enq-dates" class="mb-2 block text-sm font-medium text-charcoal">
+          <label for="enq-dates" class="mb-2 block text-sm font-medium text-ink">
             Preferred travel dates
-            <span class="font-normal text-charcoal-muted">(optional)</span>
+            <span class="font-normal text-ink-muted">(optional)</span>
           </label>
           <input
             id="enq-dates"
@@ -179,32 +179,32 @@ const fieldClass =
             type="text"
             name="travelDates"
             placeholder="e.g. mid-March, or 12–19 Oct"
-            :class="[fieldClass, 'border-line']"
+            :class="[fieldClass, 'border-hairline']"
           />
         </div>
 
         <div>
-          <label for="enq-travellers" class="mb-2 block text-sm font-medium text-charcoal">Travellers</label>
+          <label for="enq-travellers" class="mb-2 block text-sm font-medium text-ink">Travellers</label>
           <select
             id="enq-travellers"
             v-model="form.travellers"
             name="travellers"
-            :class="[fieldClass, 'border-line']"
+            :class="[fieldClass, 'border-hairline']"
           >
             <option v-for="count in travellerCounts" :key="count" :value="count">{{ count }}</option>
           </select>
         </div>
 
         <div class="sm:col-span-2">
-          <label for="enq-budget" class="mb-2 block text-sm font-medium text-charcoal">Budget range</label>
-          <select id="enq-budget" v-model="form.budget" name="budget" :class="[fieldClass, 'border-line']">
+          <label for="enq-budget" class="mb-2 block text-sm font-medium text-ink">Budget range</label>
+          <select id="enq-budget" v-model="form.budget" name="budget" :class="[fieldClass, 'border-hairline']">
             <option v-for="range in budgetRanges" :key="range" :value="range">{{ range }}</option>
           </select>
         </div>
       </div>
 
       <div>
-        <label for="enq-message" class="mb-2 block text-sm font-medium text-charcoal">
+        <label for="enq-message" class="mb-2 block text-sm font-medium text-ink">
           Tell us about the trip
         </label>
         <textarea
@@ -213,15 +213,15 @@ const fieldClass =
           name="message"
           :rows="compact ? 4 : 5"
           placeholder="Who is travelling, what you would like to see, how fast or slow you want to move."
-          :class="[fieldClass, 'resize-y', errors.message ? 'border-clay' : 'border-line']"
+          :class="[fieldClass, 'resize-y', errors.message ? 'border-accent' : 'border-hairline']"
           :aria-invalid="Boolean(errors.message)"
           :data-invalid="Boolean(errors.message)"
           :aria-describedby="errors.message ? 'enq-message-error' : undefined"
         />
-        <p v-if="errors.message" id="enq-message-error" class="mt-1.5 text-xs text-clay">{{ errors.message }}</p>
+        <p v-if="errors.message" id="enq-message-error" class="mt-1.5 text-xs text-accent">{{ errors.message }}</p>
       </div>
 
-      <p v-if="status === 'error'" class="text-sm text-clay" role="alert">
+      <p v-if="status === 'error'" class="text-sm text-accent" role="alert">
         Something went wrong sending that. Please email us at
         <a :href="`mailto:${site.contact.email}`" class="underline underline-offset-4">{{ site.contact.email }}</a
         >.
@@ -232,7 +232,7 @@ const fieldClass =
           <Loader2 v-if="status === 'submitting'" class="h-4 w-4 animate-spin" aria-hidden="true" />
           {{ status === 'submitting' ? 'Sending…' : 'Send enquiry' }}
         </button>
-        <p class="text-xs leading-relaxed text-charcoal-muted">
+        <p class="text-xs leading-relaxed text-ink-muted">
           We reply within one working day. No spam, and we never share your details.
         </p>
       </div>

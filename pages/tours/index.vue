@@ -61,7 +61,7 @@ useJsonLd(
       <div class="mt-8 max-w-3xl">
         <p class="eyebrow mb-4">Journeys</p>
         <h1 class="text-display-lg">Itineraries built to be changed.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-muted">
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           Each of these is a route we run and would happily travel ourselves. Treat the days, the stays and the
           pace as a draft — most trips end up looking quite different by the time we are done.
         </p>
@@ -70,15 +70,15 @@ useJsonLd(
 
     <!-- Filters -->
     <section class="container-prabha pt-10">
-      <div class="flex flex-col gap-5 border-y border-line py-5 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex flex-col gap-5 border-y border-hairline py-5 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex flex-wrap gap-2" role="group" aria-label="Filter journeys by destination">
           <button
             type="button"
             class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
             :class="
               activeDestination === 'all'
-                ? 'border-forest bg-forest text-ivory'
-                : 'border-line text-charcoal-soft hover:border-charcoal/40'
+                ? 'border-forest bg-forest text-ivory-bright'
+                : 'border-hairline text-ink-soft hover:border-ink/40'
             "
             :aria-pressed="activeDestination === 'all'"
             @click="activeDestination = 'all'"
@@ -92,8 +92,8 @@ useJsonLd(
             class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
             :class="
               activeDestination === destination.slug
-                ? 'border-forest bg-forest text-ivory'
-                : 'border-line text-charcoal-soft hover:border-charcoal/40'
+                ? 'border-forest bg-forest text-ivory-bright'
+                : 'border-hairline text-ink-soft hover:border-ink/40'
             "
             :aria-pressed="activeDestination === destination.slug"
             @click="activeDestination = destination.slug"
@@ -103,11 +103,11 @@ useJsonLd(
         </div>
 
         <div class="flex shrink-0 items-center gap-3">
-          <label for="tour-sort" class="text-xs text-charcoal-muted">Sort</label>
+          <label for="tour-sort" class="text-xs text-ink-muted">Sort</label>
           <select
             id="tour-sort"
             v-model="sort"
-            class="rounded-pill border border-line bg-white/70 px-4 py-2 text-xs text-charcoal transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest"
+            class="rounded-pill border border-hairline bg-surface px-4 py-2 text-xs text-ink transition-colors focus:border-link focus:outline-none focus:ring-1 focus:ring-link"
           >
             <option v-for="option in sortOptions" :key="option.value" :value="option.value">
               {{ option.label }}
@@ -119,7 +119,7 @@ useJsonLd(
 
     <!-- Results -->
     <section class="container-prabha py-12 lg:py-16">
-      <p class="mb-10 text-sm text-charcoal-muted" aria-live="polite">
+      <p class="mb-10 text-sm text-ink-muted" aria-live="polite">
         {{ filtered.length }} {{ filtered.length === 1 ? 'journey' : 'journeys' }}
       </p>
 
@@ -131,31 +131,31 @@ useJsonLd(
 
       <div v-else class="surface-card px-6 py-16 text-center">
         <h2 class="font-display text-2xl">No journeys listed there yet.</h2>
-        <p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-charcoal-muted">
+        <p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
           We build custom routes for every region we cover. Send us the idea and we will price it.
         </p>
         <NuxtLink to="/plan-my-trip" class="btn-primary mt-7">Plan My Trip</NuxtLink>
       </div>
     </section>
 
-    <section class="border-t border-line bg-ivory-deep py-16 lg:py-20">
+    <section class="section-dark py-16 lg:py-20">
       <div class="container-prabha grid gap-8 sm:grid-cols-3">
         <div class="reveal">
           <h2 class="font-display text-xl">Prices are honest starting points</h2>
-          <p class="mt-3 text-sm leading-relaxed text-charcoal-muted">
+          <p class="mt-3 text-sm leading-relaxed text-ink-muted">
             Per person on twin sharing, covering the stays, transport and experiences listed on each journey. What
             is excluded is written down, not buried.
           </p>
         </div>
         <div class="reveal" style="transition-delay: 80ms">
           <h2 class="font-display text-xl">Private by default</h2>
-          <p class="mt-3 text-sm leading-relaxed text-charcoal-muted">
+          <p class="mt-3 text-sm leading-relaxed text-ink-muted">
             Your own vehicle, driver and guides. We do not merge groups unless you have asked us to.
           </p>
         </div>
         <div class="reveal" style="transition-delay: 160ms">
           <h2 class="font-display text-xl">Nothing is fixed</h2>
-          <p class="mt-3 text-sm leading-relaxed text-charcoal-muted">
+          <p class="mt-3 text-sm leading-relaxed text-ink-muted">
             Add days, swap a stay, slow the pace down or combine two journeys into one. Ask and we will redraw it.
           </p>
         </div>

@@ -32,7 +32,7 @@ useJsonLd(
       <div class="mt-8 max-w-3xl">
         <p class="eyebrow mb-4">Frequently asked</p>
         <h1 class="text-display-lg">Straight answers, before you commit to anything.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-muted">
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           How planning works, what prices cover, and what happens if something changes. If your question is not
           here, ask it — we will add it.
         </p>
@@ -46,14 +46,14 @@ useJsonLd(
             <p class="eyebrow mb-5">On this page</p>
             <ul class="space-y-3 text-sm">
               <li>
-                <a href="#general" class="link-underline text-charcoal-soft transition-colors hover:text-clay">
+                <a href="#general" class="link-underline text-ink-soft transition-colors hover:text-accent">
                   Planning &amp; booking
                 </a>
               </li>
               <li v-for="destination in destinations" :key="destination.slug">
                 <a
                   :href="`#${destination.slug}`"
-                  class="link-underline text-charcoal-soft transition-colors hover:text-clay"
+                  class="link-underline text-ink-soft transition-colors hover:text-accent"
                 >
                   {{ destination.name }}
                 </a>

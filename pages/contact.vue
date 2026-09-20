@@ -31,7 +31,7 @@ useJsonLd(
       <div class="mt-8 max-w-3xl">
         <p class="eyebrow mb-4">Contact</p>
         <h1 class="text-display-lg">Talk to someone who has been there.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-muted">
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           Every enquiry is answered by a trip designer, not a queue. Write, call or message — whichever is easier.
         </p>
       </div>
@@ -46,9 +46,9 @@ useJsonLd(
               <h2 class="eyebrow mb-4">Write to us</h2>
               <a
                 :href="`mailto:${site.contact.email}`"
-                class="flex items-start gap-3 font-display text-xl transition-colors hover:text-clay"
+                class="flex items-start gap-3 font-display text-xl transition-colors hover:text-accent"
               >
-                <Mail class="mt-1.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+                <Mail class="mt-1.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                 {{ site.contact.email }}
               </a>
             </div>
@@ -57,12 +57,12 @@ useJsonLd(
               <h2 class="eyebrow mb-4">Call us</h2>
               <a
                 :href="`tel:${site.contact.phoneHref}`"
-                class="flex items-start gap-3 font-display text-xl transition-colors hover:text-clay"
+                class="flex items-start gap-3 font-display text-xl transition-colors hover:text-accent"
               >
-                <Phone class="mt-1.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+                <Phone class="mt-1.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                 {{ site.contact.phoneDisplay }}
               </a>
-              <p class="mt-3 flex items-start gap-3 text-sm text-charcoal-muted">
+              <p class="mt-3 flex items-start gap-3 text-sm text-ink-muted">
                 <Clock class="mt-0.5 h-4 w-4 shrink-0 opacity-60" aria-hidden="true" />
                 {{ site.contact.hours }}
               </p>
@@ -70,7 +70,7 @@ useJsonLd(
 
             <div class="reveal">
               <h2 class="eyebrow mb-4">Message us</h2>
-              <p class="mb-4 text-sm leading-relaxed text-charcoal-muted">
+              <p class="mb-4 text-sm leading-relaxed text-ink-muted">
                 Fastest way to reach us. Send your dates and we will take it from there.
               </p>
               <WhatsAppButton variant="inline" />
@@ -78,8 +78,8 @@ useJsonLd(
 
             <div class="reveal">
               <h2 class="eyebrow mb-4">Find us</h2>
-              <address class="flex items-start gap-3 text-sm not-italic leading-relaxed text-charcoal-soft">
-                <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+              <address class="flex items-start gap-3 text-sm not-italic leading-relaxed text-ink-soft">
+                <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                 <span>
                   {{ site.contact.address.line1 }}<br />
                   {{ site.contact.address.line2 }}<br />
@@ -88,15 +88,15 @@ useJsonLd(
                   {{ site.contact.address.country }}
                 </span>
               </address>
-              <p class="mt-3 text-xs text-charcoal-muted">
+              <p class="mt-3 text-xs text-ink-muted">
                 Visits by appointment — most of our planning happens over a call.
               </p>
             </div>
 
-            <div class="reveal border-t border-line pt-6">
-              <p class="text-sm leading-relaxed text-charcoal-muted">
+            <div class="reveal border-t border-hairline pt-6">
+              <p class="text-sm leading-relaxed text-ink-muted">
                 Looking for something specific?
-                <NuxtLink to="/faq" class="link-underline font-medium text-forest">
+                <NuxtLink to="/faq" class="link-underline font-medium text-link">
                   Read the frequently asked questions
                 </NuxtLink>
                 first — the answer is often already there.
@@ -107,9 +107,9 @@ useJsonLd(
 
         <!-- Form -->
         <div class="reveal lg:col-span-7 lg:col-start-6">
-          <div class="surface-card bg-white/70 p-7 sm:p-10">
+          <div class="surface-card bg-surface p-7 sm:p-10">
             <h2 class="text-display-sm">Send us a message</h2>
-            <p class="mt-3 text-[0.95rem] leading-relaxed text-charcoal-muted">
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">
               The more you tell us, the more useful our first reply will be.
             </p>
             <div class="mt-8">
@@ -121,7 +121,7 @@ useJsonLd(
     </section>
 
     <!-- FAQ preview -->
-    <section class="border-t border-line bg-ivory-deep py-20 lg:py-24">
+    <section class="section-dark py-20 lg:py-24">
       <div class="container-prabha grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="Before you ask" title="The questions we get most." />

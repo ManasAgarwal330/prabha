@@ -35,23 +35,23 @@ const experienceCount = computed(() => props.destination.experiences.length)
       aria-hidden="true"
     />
 
-    <div class="absolute inset-x-0 bottom-0 p-6 text-ivory sm:p-7">
-      <p class="eyebrow mb-2 text-ivory/85">{{ destination.state }}</p>
+    <div class="absolute inset-x-0 bottom-0 p-6 text-ivory-bright sm:p-7">
+      <p class="eyebrow mb-2 text-ivory-bright/85">{{ destination.state }}</p>
       <h3 class="font-display leading-tight" :class="size === 'feature' ? 'text-display-sm' : 'text-2xl'">
         {{ destination.name }}
       </h3>
       <p
-        class="mt-2 max-w-md text-sm leading-relaxed text-ivory/90"
+        class="mt-2 max-w-md text-sm leading-relaxed text-ivory-bright/90"
         :class="size === 'feature' ? '' : 'line-clamp-2'"
       >
         {{ destination.description }}
       </p>
 
-      <div class="mt-5 flex items-center justify-between gap-4 border-t border-ivory/20 pt-4">
-        <span class="text-xs text-ivory/75">
+      <div class="mt-5 flex items-center justify-between gap-4 border-t border-ivory-bright/20 pt-4">
+        <span class="text-xs text-ivory-bright/75">
           {{ tourCount }} {{ tourCount === 1 ? 'journey' : 'journeys' }} · {{ experienceCount }} experiences
         </span>
-        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-ivory">
+        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-ivory-bright">
           Explore
           <ArrowUpRight
             class="h-4 w-4 transition-transform duration-300 ease-editorial group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

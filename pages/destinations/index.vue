@@ -85,65 +85,72 @@ useJsonLd(
       <div class="mt-8 max-w-3xl">
         <p class="eyebrow mb-4">Destinations</p>
         <h1 class="text-display-lg">Six regions we know well enough to plan properly.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-muted">
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           We would rather go deep in a handful of places than thin across all of India. Filter by the kind of trip
           you are after, or search for something specific.
         </p>
       </div>
     </section>
 
-    <!-- Search + filters -->
-    <section class="container-prabha sticky top-20 z-30 -mx-0 bg-ivory/95 py-6 backdrop-blur-sm">
-      <div class="relative">
-        <Search
-          class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-charcoal-muted"
-          aria-hidden="true"
-        />
-        <label for="destination-search" class="sr-only">Search destinations</label>
-        <input
-          id="destination-search"
-          v-model="query"
-          type="search"
-          placeholder="Search a place, a season or an experience"
-          class="w-full rounded-pill border border-line bg-white/70 py-3 pl-11 pr-4 text-[0.95rem] text-charcoal placeholder:text-charcoal-muted/70 transition-colors focus:border-forest focus:outline-none focus:ring-1 focus:ring-forest"
-        />
-      </div>
+    <!-- Search, filters and results share a wrapper so the sticky bar releases
+         once you are past the results rather than following you down the page. -->
+    <div>
+      <!-- Search + filters -->
+      <!-- The sticky backdrop spans the full width; only the contents are
+           constrained, so the bar lines up with the page grid at every size. -->
+      <section class="sticky top-16 z-30 border-b border-hairline/60 bg-canvas/95 backdrop-blur-sm">
+      <div class="container-prabha py-6">
+        <div class="relative">
+          <Search
+            class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted"
+            aria-hidden="true"
+          />
+          <label for="destination-search" class="sr-only">Search destinations</label>
+          <input
+            id="destination-search"
+            v-model="query"
+            type="search"
+            placeholder="Search a place, a season or an experience"
+            class="w-full rounded-pill border border-hairline bg-surface py-3 pl-11 pr-4 text-[0.95rem] text-ink placeholder:text-ink-muted/70 transition-colors focus:border-link focus:outline-none focus:ring-1 focus:ring-link"
+          />
+        </div>
 
-      <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter destinations by type">
-        <button
-          type="button"
-          class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
-          :class="
-            activeCategory === 'All'
-              ? 'border-forest bg-forest text-ivory'
-              : 'border-line text-charcoal-soft hover:border-charcoal/40'
-          "
-          :aria-pressed="activeCategory === 'All'"
-          @click="activeCategory = 'All'"
-        >
-          All
-        </button>
-        <button
-          v-for="category in destinationCategories"
-          :key="category"
-          type="button"
-          class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
-          :class="
-            activeCategory === category
-              ? 'border-forest bg-forest text-ivory'
-              : 'border-line text-charcoal-soft hover:border-charcoal/40'
-          "
-          :aria-pressed="activeCategory === category"
-          @click="activeCategory = category"
-        >
-          {{ category }}
-        </button>
+        <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter destinations by type">
+          <button
+            type="button"
+            class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
+            :class="
+              activeCategory === 'All'
+                ? 'border-forest bg-forest text-ivory-bright'
+                : 'border-hairline text-ink-soft hover:border-ink/40'
+            "
+            :aria-pressed="activeCategory === 'All'"
+            @click="activeCategory = 'All'"
+          >
+            All
+          </button>
+          <button
+            v-for="category in destinationCategories"
+            :key="category"
+            type="button"
+            class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
+            :class="
+              activeCategory === category
+                ? 'border-forest bg-forest text-ivory-bright'
+                : 'border-hairline text-ink-soft hover:border-ink/40'
+            "
+            :aria-pressed="activeCategory === category"
+            @click="activeCategory = category"
+          >
+            {{ category }}
+          </button>
+        </div>
       </div>
     </section>
 
     <!-- Results -->
     <section class="container-prabha pb-20 pt-6 lg:pb-28">
-      <p class="mb-8 text-sm text-charcoal-muted" aria-live="polite">
+      <p class="mb-8 text-sm text-ink-muted" aria-live="polite">
         {{ filtered.length }} {{ filtered.length === 1 ? 'destination' : 'destinations' }}
         <template v-if="activeCategory !== 'All'"> for {{ activeCategory }}</template>
       </p>
@@ -156,7 +163,7 @@ useJsonLd(
 
       <div v-else class="surface-card px-6 py-16 text-center">
         <h2 class="font-display text-2xl">Nothing matched that.</h2>
-        <p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-charcoal-muted">
+        <p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
           We are adding regions steadily. Tell us where you want to go and we will plan it whether or not it is
           listed here.
         </p>
@@ -168,10 +175,11 @@ useJsonLd(
           <NuxtLink to="/plan-my-trip" class="btn-primary">Plan My Trip</NuxtLink>
         </div>
       </div>
-    </section>
+      </section>
+    </div>
 
     <!-- Seasonal recommendations -->
-    <section class="border-t border-line bg-ivory-deep py-20 lg:py-28">
+    <section class="section-dark py-20 lg:py-28">
       <div class="container-prabha">
         <SectionHeading
           eyebrow="When to go"
@@ -183,16 +191,16 @@ useJsonLd(
           <div
             v-for="(season, index) in seasonal"
             :key="season.window"
-            class="reveal border-t border-line pt-6"
+            class="reveal border-t border-hairline pt-6"
             :style="{ transitionDelay: `${index * 80}ms` }"
           >
             <h3 class="font-display text-xl leading-snug">{{ season.window }}</h3>
-            <p class="mt-3 text-sm leading-relaxed text-charcoal-muted">{{ season.note }}</p>
+            <p class="mt-3 text-sm leading-relaxed text-ink-muted">{{ season.note }}</p>
             <ul class="mt-5 space-y-2">
               <li v-for="slug in season.slugs" :key="slug">
                 <NuxtLink
                   :to="`/destinations/${slug}`"
-                  class="link-underline text-sm font-medium text-forest"
+                  class="link-underline text-sm font-medium text-link"
                 >
                   {{ bySlug(slug)?.name }}
                 </NuxtLink>

@@ -3,8 +3,58 @@
 @tailwind utilities;
 
 @layer base {
+  /**
+   * Surface tokens. `.section-dark` / `.section-forest` reassign these, so every
+   * component built on the semantic colours (canvas, surface, ink, hairline,
+   * accent, link) adapts to whichever band it sits in.
+   * Values are space-separated RGB channels so Tailwind's `/opacity` still works.
+   */
   :root {
     --page-gutter: 1.25rem;
+
+    --c-canvas: 245 239 228;
+    --c-canvas-alt: 234 225 208;
+    --c-surface: 252 249 243;
+    --c-ink: 31 29 26;
+    --c-ink-soft: 58 54 49;
+    --c-ink-muted: 106 99 89;
+    --c-hairline: 221 210 190;
+    --c-accent: 180 95 63;
+    --c-link: 46 74 60;
+
+    /* Logo mark. Kept as plain colours rather than tokens so the brand clay and
+       forest stay exact on light surfaces, and only lift where they must. */
+    --logo-sun: #b45f3f;
+    --logo-range: #2e4a3c;
+  }
+
+  .section-dark {
+    --c-canvas: 31 29 26;
+    --c-canvas-alt: 23 21 17;
+    --c-surface: 42 39 33;
+    --c-ink: 243 237 225;
+    --c-ink-soft: 214 206 191;
+    --c-ink-muted: 167 156 140;
+    --c-hairline: 58 53 44;
+    /* Clay and forest both need lifting to hold contrast against charcoal. */
+    --c-accent: 208 138 102;
+    --c-link: 143 185 161;
+    --logo-sun: #d08a66;
+    --logo-range: #8fb9a1;
+  }
+
+  .section-forest {
+    --c-canvas: 46 74 60;
+    --c-canvas-alt: 31 51 42;
+    --c-surface: 31 51 42;
+    --c-ink: 250 247 241;
+    --c-ink-soft: 226 219 205;
+    --c-ink-muted: 180 194 183;
+    --c-hairline: 74 107 89;
+    --c-accent: 226 211 182;
+    --c-link: 226 211 182;
+    --logo-sun: #e2d3b6;
+    --logo-range: #faf7f1;
   }
 
   html {
@@ -13,14 +63,14 @@
   }
 
   body {
-    @apply bg-ivory text-charcoal font-sans antialiased;
+    @apply bg-canvas text-ink font-sans antialiased;
     font-size: 1rem;
     line-height: 1.7;
     overflow-x: hidden;
   }
 
   /* No colour here on purpose — headings inherit, so the same components read
-     correctly over ivory and over a dark image. */
+     correctly over ivory, over charcoal and over a dark image. */
   h1, h2, h3, h4 {
     @apply font-display font-normal;
     text-wrap: balance;
@@ -35,7 +85,7 @@
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-forest ring-offset-2 ring-offset-ivory rounded-sm;
+    @apply outline-none ring-2 ring-link ring-offset-2 ring-offset-canvas rounded-sm;
   }
 
   img {
@@ -44,12 +94,18 @@
 }
 
 @layer components {
+  /* Dark bands bleed to the page edge and carry their own background. */
+  .section-dark,
+  .section-forest {
+    @apply bg-canvas text-ink;
+  }
+
   .container-prabha {
     @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
   }
 
   .eyebrow {
-    @apply text-eyebrow font-sans font-medium uppercase tracking-[0.18em] text-charcoal-muted;
+    @apply text-eyebrow font-sans font-medium uppercase tracking-[0.18em] text-ink-muted;
   }
 
   .btn {
@@ -58,19 +114,25 @@
   }
 
   .btn-primary {
-    @apply btn bg-forest text-ivory hover:bg-forest-deep hover:-translate-y-[1px] active:translate-y-0;
+    @apply btn bg-forest text-ivory-bright hover:bg-forest-deep hover:-translate-y-[1px] active:translate-y-0;
+  }
+
+  /* On a dark band the forest fill loses separation — go light instead. */
+  .section-dark .btn-primary,
+  .section-forest .btn-primary {
+    @apply bg-ivory-bright text-charcoal hover:bg-white;
   }
 
   .btn-secondary {
-    @apply btn border border-charcoal/20 bg-transparent text-charcoal hover:border-charcoal/60 hover:bg-charcoal/[0.03];
+    @apply btn border border-ink/25 bg-transparent text-ink hover:border-ink/60 hover:bg-ink/[0.04];
   }
 
   .btn-light {
-    @apply btn bg-ivory text-charcoal hover:bg-white;
+    @apply btn bg-ivory-bright text-charcoal hover:bg-white;
   }
 
   .btn-ghost {
-    @apply btn px-0 py-1 text-charcoal underline-offset-4 hover:text-clay;
+    @apply btn px-0 py-1 text-ink underline-offset-4 hover:text-accent;
   }
 
   .link-underline {
@@ -79,11 +141,11 @@
   }
 
   .surface-card {
-    @apply rounded-card border border-line bg-white/60 transition-shadow duration-300 ease-editorial;
+    @apply rounded-card border border-hairline bg-surface transition-shadow duration-300 ease-editorial;
   }
 
   .media {
-    @apply relative overflow-hidden bg-ivory-warm;
+    @apply relative overflow-hidden bg-canvas-alt;
   }
 
   .media img {
@@ -95,7 +157,7 @@
   }
 
   .prose-prabha {
-    @apply max-w-prose text-[1.0625rem] leading-[1.8] text-charcoal-soft;
+    @apply max-w-prose text-[1.0625rem] leading-[1.8] text-ink-soft;
   }
 
   .prose-prabha h2 {
@@ -115,15 +177,15 @@
   }
 
   .prose-prabha li {
-    @apply list-disc marker:text-clay;
+    @apply list-disc marker:text-accent;
   }
 
   .prose-prabha a {
-    @apply text-forest underline underline-offset-4 hover:text-clay;
+    @apply text-link underline underline-offset-4 hover:text-accent;
   }
 
   .prose-prabha blockquote {
-    @apply my-8 border-l-2 border-clay pl-6 font-display text-xl italic text-charcoal;
+    @apply my-8 border-l-2 border-accent pl-6 font-display text-xl italic text-ink;
   }
 }
 

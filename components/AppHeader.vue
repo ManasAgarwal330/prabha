@@ -45,7 +45,7 @@ const onKeydown = (event: KeyboardEvent) => {
 <template>
   <header
     class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-editorial"
-    :class="transparent ? 'bg-transparent' : 'border-b border-line bg-ivory/90 backdrop-blur-md'"
+    :class="transparent ? 'bg-transparent' : 'border-b border-hairline bg-canvas/90 backdrop-blur-md'"
     @keydown="onKeydown"
   >
     <div class="container-prabha">
@@ -58,7 +58,7 @@ const onKeydown = (event: KeyboardEvent) => {
           class="shrink-0 rounded-sm transition-opacity hover:opacity-80"
           :aria-label="`${site.name} — home`"
         >
-          <PrabhaLogo :tone="transparent ? 'inherit' : 'brand'" :class="transparent ? 'text-ivory' : 'text-charcoal'" />
+          <PrabhaLogo :tone="transparent ? 'inherit' : 'brand'" :class="transparent ? 'text-ivory-bright' : 'text-ink'" />
         </NuxtLink>
 
         <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
@@ -67,7 +67,7 @@ const onKeydown = (event: KeyboardEvent) => {
             :key="item.to"
             :to="item.to"
             class="link-underline text-sm font-medium transition-colors"
-            :class="transparent ? 'text-ivory/90 hover:text-ivory' : 'text-charcoal-soft hover:text-charcoal'"
+            :class="transparent ? 'text-ivory-bright/90 hover:text-ivory-bright' : 'text-ink-soft hover:text-ink'"
           >
             {{ item.label }}
           </NuxtLink>
@@ -85,7 +85,7 @@ const onKeydown = (event: KeyboardEvent) => {
           <button
             type="button"
             class="inline-flex h-10 w-10 items-center justify-center rounded-pill transition-colors lg:hidden"
-            :class="transparent ? 'text-ivory hover:bg-ivory/15' : 'text-charcoal hover:bg-charcoal/5'"
+            :class="transparent ? 'text-ivory-bright hover:bg-ivory-bright/15' : 'text-ink hover:bg-ink/5'"
             :aria-expanded="menuOpen"
             aria-controls="mobile-menu"
             :aria-label="menuOpen ? 'Close menu' : 'Open menu'"
@@ -107,21 +107,21 @@ const onKeydown = (event: KeyboardEvent) => {
       <div
         v-if="menuOpen"
         id="mobile-menu"
-        class="border-t border-line bg-ivory lg:hidden"
+        class="border-t border-hairline bg-canvas lg:hidden"
       >
         <nav class="container-prabha flex flex-col py-6" aria-label="Mobile">
           <NuxtLink
             v-for="item in primaryNav"
             :key="item.to"
             :to="item.to"
-            class="border-b border-line/70 py-4 font-display text-2xl text-charcoal transition-colors hover:text-clay"
+            class="border-b border-hairline/70 py-4 font-display text-2xl text-ink transition-colors hover:text-accent"
           >
             {{ item.label }}
           </NuxtLink>
           <NuxtLink to="/plan-my-trip" class="btn-primary mt-6 w-full">Plan My Trip</NuxtLink>
           <a
             :href="`tel:${site.contact.phoneHref}`"
-            class="mt-4 text-center text-sm text-charcoal-muted transition-colors hover:text-clay"
+            class="mt-4 text-center text-sm text-ink-muted transition-colors hover:text-accent"
           >
             {{ site.contact.phoneDisplay }}
           </a>

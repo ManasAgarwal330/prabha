@@ -9,7 +9,7 @@ useHead({ title: isNotFound.value ? 'Page not found' : 'Something went wrong' })
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col bg-ivory">
+  <div class="flex min-h-screen flex-col bg-canvas">
     <AppHeader />
 
     <main class="flex flex-1 items-center pt-20">
@@ -18,7 +18,7 @@ useHead({ title: isNotFound.value ? 'Page not found' : 'Something went wrong' })
         <h1 class="mx-auto max-w-2xl text-display-lg">
           {{ isNotFound ? 'This route does not exist — yet.' : 'Something went wrong on our side.' }}
         </h1>
-        <p class="mx-auto mt-5 max-w-md leading-relaxed text-charcoal-muted">
+        <p class="mx-auto mt-5 max-w-md leading-relaxed text-ink-muted">
           {{
             isNotFound
               ? 'The page you were looking for has moved or never existed. The journeys below are a good place to restart.'

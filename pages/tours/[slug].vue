@@ -52,21 +52,21 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
 
       <div class="container-prabha relative w-full pb-14 pt-32 lg:pb-20">
         <Breadcrumbs :items="crumbs" light />
-        <p class="eyebrow mt-7 text-ivory/75">{{ current.destination }}</p>
-        <h1 class="mt-4 max-w-3xl text-display-lg text-ivory text-shadow-hero">{{ current.title }}</h1>
-        <p class="mt-5 max-w-xl text-lg leading-relaxed text-ivory/85">{{ current.description }}</p>
+        <p class="eyebrow mt-7 text-ivory-bright/75">{{ current.destination }}</p>
+        <h1 class="mt-4 max-w-3xl text-display-lg text-ivory-bright text-shadow-hero">{{ current.title }}</h1>
+        <p class="mt-5 max-w-xl text-lg leading-relaxed text-ivory-bright/85">{{ current.description }}</p>
 
-        <dl class="mt-9 flex flex-wrap gap-x-10 gap-y-5 border-t border-ivory/20 pt-6 text-ivory">
+        <dl class="mt-9 flex flex-wrap gap-x-10 gap-y-5 border-t border-ivory-bright/20 pt-6 text-ivory-bright">
           <div>
-            <dt class="text-[0.7rem] uppercase tracking-[0.14em] text-ivory/60">Duration</dt>
+            <dt class="text-[0.7rem] uppercase tracking-[0.14em] text-ivory-bright/60">Duration</dt>
             <dd class="mt-1.5 font-display text-lg">{{ current.duration }}</dd>
           </div>
           <div>
-            <dt class="text-[0.7rem] uppercase tracking-[0.14em] text-ivory/60">Starting from</dt>
+            <dt class="text-[0.7rem] uppercase tracking-[0.14em] text-ivory-bright/60">Starting from</dt>
             <dd class="mt-1.5 font-display text-lg">{{ formatPrice(current.price) }}</dd>
           </div>
           <div>
-            <dt class="text-[0.7rem] uppercase tracking-[0.14em] text-ivory/60">Group size</dt>
+            <dt class="text-[0.7rem] uppercase tracking-[0.14em] text-ivory-bright/60">Group size</dt>
             <dd class="mt-1.5 font-display text-lg">{{ current.groupSize }}</dd>
           </div>
         </dl>
@@ -87,7 +87,7 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
               <li
                 v-for="theme in current.themes"
                 :key="theme"
-                class="rounded-pill border border-line px-3.5 py-1.5 text-xs text-charcoal-muted"
+                class="rounded-pill border border-hairline px-3.5 py-1.5 text-xs text-ink-muted"
               >
                 {{ theme }}
               </li>
@@ -100,9 +100,9 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
               <li
                 v-for="highlight in current.highlights"
                 :key="highlight"
-                class="flex gap-3.5 text-[0.975rem] leading-relaxed text-charcoal-soft"
+                class="flex gap-3.5 text-[0.975rem] leading-relaxed text-ink-soft"
               >
-                <Check class="mt-1 h-4 w-4 shrink-0 text-forest" aria-hidden="true" />
+                <Check class="mt-1 h-4 w-4 shrink-0 text-link" aria-hidden="true" />
                 {{ highlight }}
               </li>
             </ul>
@@ -118,18 +118,18 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
           <section class="mt-16 grid gap-10 sm:grid-cols-2">
             <div class="reveal">
               <h2 class="font-display text-2xl">What is included</h2>
-              <ul class="mt-5 space-y-3 text-sm leading-relaxed text-charcoal-soft">
+              <ul class="mt-5 space-y-3 text-sm leading-relaxed text-ink-soft">
                 <li v-for="item in current.inclusions" :key="item" class="flex gap-3">
-                  <Check class="mt-0.5 h-4 w-4 shrink-0 text-forest" aria-hidden="true" />
+                  <Check class="mt-0.5 h-4 w-4 shrink-0 text-link" aria-hidden="true" />
                   {{ item }}
                 </li>
               </ul>
             </div>
             <div class="reveal" style="transition-delay: 80ms">
               <h2 class="font-display text-2xl">What is not included</h2>
-              <ul class="mt-5 space-y-3 text-sm leading-relaxed text-charcoal-muted">
+              <ul class="mt-5 space-y-3 text-sm leading-relaxed text-ink-muted">
                 <li v-for="item in current.exclusions" :key="item" class="flex gap-3">
-                  <Minus class="mt-0.5 h-4 w-4 shrink-0 text-charcoal-muted/60" aria-hidden="true" />
+                  <Minus class="mt-0.5 h-4 w-4 shrink-0 text-ink-muted/60" aria-hidden="true" />
                   {{ item }}
                 </li>
               </ul>
@@ -142,10 +142,10 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
               <li
                 v-for="(item, index) in current.importantInfo"
                 :key="item"
-                class="flex gap-5 border-t border-line pt-5"
+                class="flex gap-5 border-t border-hairline pt-5"
               >
-                <span class="font-display text-sm text-clay">{{ String(index + 1).padStart(2, '0') }}</span>
-                <p class="text-[0.95rem] leading-relaxed text-charcoal-soft">{{ item }}</p>
+                <span class="font-display text-sm text-accent">{{ String(index + 1).padStart(2, '0') }}</span>
+                <p class="text-[0.95rem] leading-relaxed text-ink-soft">{{ item }}</p>
               </li>
             </ol>
           </section>
@@ -154,33 +154,33 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
         <!-- Sticky enquiry card -->
         <aside class="lg:col-span-4 lg:col-start-9">
           <div class="lg:sticky lg:top-28">
-            <div class="surface-card bg-white/80 p-7">
-              <p class="text-[0.7rem] uppercase tracking-[0.14em] text-charcoal-muted">Starting from</p>
+            <div class="surface-card bg-surface p-7">
+              <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">Starting from</p>
               <p class="mt-1.5 font-display text-4xl">
                 {{ formatPrice(current.price) }}
-                <span class="align-middle text-sm font-sans text-charcoal-muted">per person</span>
+                <span class="align-middle text-sm font-sans text-ink-muted">per person</span>
               </p>
 
-              <dl class="mt-7 space-y-4 border-t border-line pt-6 text-sm">
+              <dl class="mt-7 space-y-4 border-t border-hairline pt-6 text-sm">
                 <div class="flex items-start gap-3">
-                  <Clock class="mt-0.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+                  <Clock class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   <div>
-                    <dt class="text-charcoal-muted">Duration</dt>
-                    <dd class="text-charcoal">{{ current.duration }}</dd>
+                    <dt class="text-ink-muted">Duration</dt>
+                    <dd class="text-ink">{{ current.duration }}</dd>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <CalendarDays class="mt-0.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+                  <CalendarDays class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   <div>
-                    <dt class="text-charcoal-muted">Best time to travel</dt>
-                    <dd class="text-charcoal">{{ current.bestTimeToTravel }}</dd>
+                    <dt class="text-ink-muted">Best time to travel</dt>
+                    <dd class="text-ink">{{ current.bestTimeToTravel }}</dd>
                   </div>
                 </div>
                 <div class="flex items-start gap-3">
-                  <Users class="mt-0.5 h-4 w-4 shrink-0 text-clay" aria-hidden="true" />
+                  <Users class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   <div>
-                    <dt class="text-charcoal-muted">Group size</dt>
-                    <dd class="text-charcoal">{{ current.groupSize }}</dd>
+                    <dt class="text-ink-muted">Group size</dt>
+                    <dd class="text-ink">{{ current.groupSize }}</dd>
                   </div>
                 </div>
               </dl>
@@ -189,7 +189,7 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
               <div class="mt-3 flex justify-center">
                 <WhatsAppButton variant="inline" />
               </div>
-              <p class="mt-5 text-center text-xs leading-relaxed text-charcoal-muted">
+              <p class="mt-5 text-center text-xs leading-relaxed text-ink-muted">
                 No payment now. We reply within one working day.
               </p>
             </div>
@@ -197,16 +197,16 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
             <NuxtLink
               v-if="destination"
               :to="`/destinations/${destination.slug}`"
-              class="group mt-5 flex items-center justify-between gap-4 rounded-card border border-line px-6 py-5 transition-colors hover:border-charcoal/30"
+              class="group mt-5 flex items-center justify-between gap-4 rounded-card border border-hairline px-6 py-5 transition-colors hover:border-ink/40"
             >
               <span>
-                <span class="block text-[0.7rem] uppercase tracking-[0.14em] text-charcoal-muted">
+                <span class="block text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">
                   Destination guide
                 </span>
                 <span class="mt-1 block font-display text-lg">{{ destination.name }}</span>
               </span>
               <ArrowRight
-                class="h-4 w-4 shrink-0 text-charcoal-muted transition-transform duration-300 ease-editorial group-hover:translate-x-1"
+                class="h-4 w-4 shrink-0 text-ink-muted transition-transform duration-300 ease-editorial group-hover:translate-x-1"
                 aria-hidden="true"
               />
             </NuxtLink>
@@ -222,11 +222,11 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
     </section>
 
     <!-- Enquiry -->
-    <section id="enquire" class="scroll-mt-24 border-y border-line bg-ivory-deep py-20 lg:py-24">
+    <section id="enquire" class="scroll-mt-24 border-y border-hairline bg-canvas-alt py-20 lg:py-24">
       <div class="container-prabha grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="Enquire" :title="`Ask us about ${current.title}.`" />
-          <p class="reveal mt-6 text-[0.95rem] leading-relaxed text-charcoal-muted">
+          <p class="reveal mt-6 text-[0.95rem] leading-relaxed text-ink-muted">
             Tell us your dates and who is travelling. We will send a route, a stay list and an indicative cost —
             usually within a working day, and always before you pay anything.
           </p>
@@ -254,7 +254,7 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
     </section>
 
     <!-- Related -->
-    <section class="border-t border-line bg-ivory-deep py-20 lg:py-24">
+    <section class="section-dark py-20 lg:py-24">
       <div class="container-prabha">
         <SectionHeading eyebrow="Related journeys" title="Other routes you might like." />
         <div class="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">

@@ -18,7 +18,7 @@ withDefaults(
     <component :is="as" class="text-display-md">
       {{ title }}
     </component>
-    <p v-if="intro" class="mt-5 text-lg leading-relaxed text-charcoal-muted">
+    <p v-if="intro" class="mt-5 text-lg leading-relaxed text-ink-muted">
       {{ intro }}
     </p>
   </div>

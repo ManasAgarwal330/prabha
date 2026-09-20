@@ -69,9 +69,33 @@ Nothing below requires touching a component.
 | Blog articles | `data/blog.ts` |
 | Site-wide FAQs | `data/faq.ts` |
 | Colours, fonts, radii, shadows | `tailwind.config.ts` |
+| Which sections are dark | `section-dark` / `section-forest` classes in `pages/` |
 | Logo, symbol, favicon | `public/brand/*.svg` |
 
 **Placeholders to replace before launch:** the phone number, WhatsApp number (`919000000000`), email, street address and the three social URLs — all in `data/site.ts`. Prices in `data/tours.ts` are indicative. Testimonials in `data/testimonials.ts` are written examples, not real customer feedback.
+
+### Light and dark bands
+
+The site alternates light and dark sections. Colours are **semantic tokens** backed by CSS variables, not fixed values:
+
+| Token | Use |
+| --- | --- |
+| `canvas`, `canvas-alt` | page and alternate band backgrounds |
+| `surface` | cards, form fields |
+| `ink`, `ink-soft`, `ink-muted` | text, in three weights |
+| `hairline` | borders and dividers |
+| `accent` | clay highlights, eyebrows |
+| `link` | inline links |
+
+Adding `section-dark` or `section-forest` to a `<section>` reassigns those variables for everything inside it, so cards, headings, borders, buttons and form fields all flip automatically:
+
+```html
+<section class="section-dark py-20">…</section>
+```
+
+To make a band light again, drop the class. To change the dark palette globally, edit `.section-dark` in `assets/css/main.css` — every dark band follows.
+
+Use the raw palette (`ivory-bright`, `charcoal`, `forest`, `clay`, `gold`) only where a colour must stay fixed regardless of the surface — text over a photograph, for example.
 
 ### Images
 

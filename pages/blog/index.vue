@@ -41,7 +41,7 @@ useJsonLd(
       <div class="mt-8 max-w-3xl">
         <p class="eyebrow mb-4">Travel stories</p>
         <h1 class="text-display-lg">Notes from the road.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-muted">
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           Guides, seasons and the practical detail we would want before booking a trip ourselves. Written by the
           people who plan them.
         </p>
@@ -62,16 +62,16 @@ useJsonLd(
         </NuxtLink>
 
         <div>
-          <p class="eyebrow text-clay">{{ lead.category }}</p>
+          <p class="eyebrow text-accent">{{ lead.category }}</p>
           <h2 class="mt-4 text-display-md">
-            <NuxtLink :to="`/blog/${lead.slug}`" class="transition-colors hover:text-clay">
+            <NuxtLink :to="`/blog/${lead.slug}`" class="transition-colors hover:text-accent">
               {{ lead.title }}
             </NuxtLink>
           </h2>
-          <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-charcoal-muted">
+          <p class="mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-ink-muted">
             {{ lead.excerpt }}
           </p>
-          <p class="mt-6 text-xs text-charcoal-muted">
+          <p class="mt-6 text-xs text-ink-muted">
             <time :datetime="lead.publishedAt">{{ formatDate(lead.publishedAt) }}</time>
             · {{ lead.readingTime }} min read
           </p>
@@ -82,7 +82,7 @@ useJsonLd(
 
     <!-- Category filter -->
     <section class="container-prabha">
-      <div class="flex flex-wrap gap-2 border-y border-line py-5" role="group" aria-label="Filter stories by category">
+      <div class="flex flex-wrap gap-2 border-y border-hairline py-5" role="group" aria-label="Filter stories by category">
         <button
           v-for="category in categories"
           :key="category"
@@ -90,8 +90,8 @@ useJsonLd(
           class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
           :class="
             activeCategory === category
-              ? 'border-forest bg-forest text-ivory'
-              : 'border-line text-charcoal-soft hover:border-charcoal/40'
+              ? 'border-forest bg-forest text-ivory-bright'
+              : 'border-hairline text-ink-soft hover:border-ink/40'
           "
           :aria-pressed="activeCategory === category"
           @click="activeCategory = category"

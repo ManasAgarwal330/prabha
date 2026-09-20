@@ -43,11 +43,11 @@ usePageSeo({
       />
 
       <div class="container-prabha relative w-full pb-16 pt-32 sm:pb-20 lg:pb-24">
-        <p class="eyebrow text-ivory/80">{{ site.name }}</p>
-        <h1 class="mt-5 max-w-4xl text-display-xl text-ivory text-shadow-hero">
+        <p class="eyebrow text-ivory-bright/80">{{ site.name }}</p>
+        <h1 class="mt-5 max-w-4xl text-display-xl text-ivory-bright text-shadow-hero">
           {{ site.tagline }}
         </h1>
-        <p class="mt-6 max-w-xl text-base leading-relaxed text-ivory/85 sm:text-lg">
+        <p class="mt-6 max-w-xl text-base leading-relaxed text-ivory-bright/85 sm:text-lg">
           Discover thoughtfully crafted journeys across extraordinary places, designed around the way you want to
           travel.
         </p>
@@ -59,18 +59,18 @@ usePageSeo({
           </NuxtLink>
           <NuxtLink
             to="/plan-my-trip"
-            class="btn w-full border border-ivory/40 text-ivory hover:border-ivory hover:bg-ivory/10 sm:w-auto"
+            class="btn w-full border border-ivory-bright/40 text-ivory-bright hover:border-ivory-bright hover:bg-ivory-bright/10 sm:w-auto"
           >
             Plan My Trip
           </NuxtLink>
         </div>
 
-        <dl class="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-ivory/20 pt-7 sm:mt-16">
+        <dl class="mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-ivory-bright/20 pt-7 sm:mt-16">
           <div v-for="stat in brandStory.stats" :key="stat.label">
             <dt class="sr-only">{{ stat.label }}</dt>
             <dd>
-              <span class="block font-display text-3xl text-ivory sm:text-4xl">{{ stat.value }}</span>
-              <span class="mt-1 block text-xs leading-snug text-ivory/70">{{ stat.label }}</span>
+              <span class="block font-display text-3xl text-ivory-bright sm:text-4xl">{{ stat.value }}</span>
+              <span class="mt-1 block text-xs leading-snug text-ivory-bright/70">{{ stat.label }}</span>
             </dd>
           </div>
         </dl>
@@ -111,7 +111,7 @@ usePageSeo({
     </section>
 
     <!-- Popular journeys -->
-    <section class="bg-ivory-deep py-20 lg:py-28">
+    <section class="section-dark py-20 lg:py-28">
       <div class="container-prabha">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
@@ -152,15 +152,15 @@ usePageSeo({
           class="reveal"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
-          <component :is="resolveIcon(value.icon)" class="h-6 w-6 text-clay" aria-hidden="true" />
+          <component :is="resolveIcon(value.icon)" class="h-6 w-6 text-accent" aria-hidden="true" />
           <h3 class="mt-5 font-display text-xl">{{ value.title }}</h3>
-          <p class="mt-3 text-[0.95rem] leading-relaxed text-charcoal-muted">{{ value.description }}</p>
+          <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ value.description }}</p>
         </div>
       </div>
     </section>
 
     <!-- Brand story -->
-    <section class="border-y border-line bg-ivory-warm py-20 lg:py-28">
+    <section class="border-y border-hairline bg-canvas-alt py-20 lg:py-28">
       <div class="container-prabha grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div class="reveal order-2 overflow-hidden rounded-card lg:order-1">
           <AppImage
@@ -173,7 +173,7 @@ usePageSeo({
 
         <div class="order-1 lg:order-2">
           <SectionHeading :eyebrow="brandStory.eyebrow" :title="brandStory.title" />
-          <div class="reveal mt-6 space-y-5 text-[1.0625rem] leading-relaxed text-charcoal-soft">
+          <div class="reveal mt-6 space-y-5 text-[1.0625rem] leading-relaxed text-ink-soft">
             <p v-for="paragraph in brandStory.body" :key="paragraph">{{ paragraph }}</p>
           </div>
           <NuxtLink to="/about" class="btn-secondary reveal mt-9">
@@ -185,47 +185,49 @@ usePageSeo({
     </section>
 
     <!-- Experiences -->
-    <section class="container-prabha py-20 lg:py-28">
-      <SectionHeading
-        eyebrow="How you travel"
-        title="We sell experiences, not transport and hotels."
-        intro="Pick the thread that interests you and we will build the route around it."
-      />
+    <section class="section-dark py-20 lg:py-28">
+      <div class="container-prabha">
+        <SectionHeading
+          eyebrow="How you travel"
+          title="We sell experiences, not transport and hotels."
+          intro="Pick the thread that interests you and we will build the route around it."
+        />
 
-      <div class="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-        <div
-          v-for="(experience, index) in experiences"
-          :key="experience.slug"
-          class="reveal"
-          :style="{ transitionDelay: `${Math.min(index, 5) * 60}ms` }"
-        >
-          <ExperienceCard :experience="experience" :tall="index % 4 === 1 || index % 4 === 2" />
+        <div class="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          <div
+            v-for="(experience, index) in experiences"
+            :key="experience.slug"
+            class="reveal"
+            :style="{ transitionDelay: `${Math.min(index, 5) * 60}ms` }"
+          >
+            <ExperienceCard :experience="experience" :tall="index % 4 === 1 || index % 4 === 2" />
+          </div>
         </div>
       </div>
     </section>
 
     <!-- How it works -->
-    <section class="bg-forest py-20 text-ivory lg:py-28">
+    <section class="section-forest py-20 lg:py-28">
       <div class="container-prabha">
         <div class="reveal max-w-3xl">
-          <p class="eyebrow mb-4 text-ivory/60">How it works</p>
-          <h2 class="text-display-md text-ivory">Three steps, and then you are travelling.</h2>
+          <p class="eyebrow mb-4">How it works</p>
+          <h2 class="text-display-md">Three steps, and then you are travelling.</h2>
         </div>
 
         <ol class="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">
           <li
             v-for="(step, index) in howItWorks"
             :key="step.number"
-            class="reveal border-t border-ivory/25 pt-6"
+            class="reveal border-t border-hairline pt-6"
             :style="{ transitionDelay: `${index * 90}ms` }"
           >
-            <span class="font-display text-sm tracking-[0.2em] text-gold-soft">{{ step.number }}</span>
-            <h3 class="mt-4 font-display text-2xl text-ivory">{{ step.title }}</h3>
-            <p class="mt-3 text-[0.95rem] leading-relaxed text-ivory/75">{{ step.description }}</p>
+            <span class="font-display text-sm tracking-[0.2em] text-accent">{{ step.number }}</span>
+            <h3 class="mt-4 font-display text-2xl">{{ step.title }}</h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-soft">{{ step.description }}</p>
           </li>
         </ol>
 
-        <NuxtLink to="/plan-my-trip" class="btn-light reveal mt-12">
+        <NuxtLink to="/plan-my-trip" class="btn-primary reveal mt-12">
           Start planning
           <ArrowRight class="h-4 w-4" aria-hidden="true" />
         </NuxtLink>
@@ -259,7 +261,7 @@ usePageSeo({
     </section>
 
     <!-- Testimonials -->
-    <section class="border-t border-line bg-ivory-deep py-20 lg:py-28">
+    <section class="section-dark py-20 lg:py-28">
       <div class="container-prabha">
         <SectionHeading eyebrow="In their words" title="What travellers tell us afterwards." />
 

@@ -37,10 +37,10 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
       <Breadcrumbs :items="crumbs" />
 
       <div class="mx-auto mt-8 max-w-3xl text-center">
-        <p class="eyebrow text-clay">{{ current.category }}</p>
+        <p class="eyebrow text-accent">{{ current.category }}</p>
         <h1 class="mt-5 text-display-lg">{{ current.title }}</h1>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-muted">{{ current.excerpt }}</p>
-        <p class="mt-7 text-xs text-charcoal-muted">
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">{{ current.excerpt }}</p>
+        <p class="mt-7 text-xs text-ink-muted">
           {{ current.author }} ·
           <time :datetime="current.publishedAt">{{ formatDate(current.publishedAt) }}</time>
           · {{ current.readingTime }} min read
@@ -70,7 +70,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
 
           <p
             v-else-if="block.type === 'paragraph'"
-            class="mt-5 text-[1.0625rem] leading-[1.8] text-charcoal-soft"
+            class="mt-5 text-[1.0625rem] leading-[1.8] text-ink-soft"
           >
             {{ block.text }}
           </p>
@@ -79,7 +79,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
             <li
               v-for="item in block.items"
               :key="item"
-              class="list-disc text-[1.0625rem] leading-[1.75] text-charcoal-soft marker:text-clay"
+              class="list-disc text-[1.0625rem] leading-[1.75] text-ink-soft marker:text-accent"
             >
               {{ item }}
             </li>
@@ -87,23 +87,23 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
 
           <blockquote
             v-else-if="block.type === 'quote'"
-            class="my-10 border-l-2 border-clay pl-6 font-display text-xl leading-relaxed text-charcoal"
+            class="my-10 border-l-2 border-accent pl-6 font-display text-xl leading-relaxed text-ink"
           >
             {{ block.text }}
           </blockquote>
         </template>
 
-        <div class="mt-14 border-t border-line pt-8">
-          <p class="text-sm leading-relaxed text-charcoal-muted">
+        <div class="mt-14 border-t border-hairline pt-8">
+          <p class="text-sm leading-relaxed text-ink-muted">
             Written by the {{ current.author }} team. If this raised a question about planning your own trip,
-            <NuxtLink to="/plan-my-trip" class="link-underline font-medium text-forest">ask us directly</NuxtLink>
+            <NuxtLink to="/plan-my-trip" class="link-underline font-medium text-link">ask us directly</NuxtLink>
             — we answer whether or not you book.
           </p>
         </div>
       </div>
     </div>
 
-    <section class="border-t border-line bg-ivory-deep py-20 lg:py-24">
+    <section class="section-dark py-20 lg:py-24">
       <div class="container-prabha">
         <SectionHeading eyebrow="Keep reading" title="More notes from the road." />
         <div class="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">

@@ -35,15 +35,15 @@ withDefaults(
       <div class="absolute inset-0 bg-charcoal/65" aria-hidden="true" />
 
       <div class="relative px-6 py-20 text-center sm:px-10 sm:py-24 lg:py-32">
-        <h2 class="mx-auto max-w-2xl text-display-lg text-ivory">{{ title }}</h2>
-        <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ivory/80 sm:text-lg">
+        <h2 class="mx-auto max-w-2xl text-display-lg text-ivory-bright">{{ title }}</h2>
+        <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ivory-bright/80 sm:text-lg">
           {{ body }}
         </p>
         <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <NuxtLink :to="primaryTo" class="btn-light w-full sm:w-auto">{{ primaryLabel }}</NuxtLink>
           <NuxtLink
             :to="secondaryTo"
-            class="btn w-full border border-ivory/40 text-ivory hover:border-ivory hover:bg-ivory/10 sm:w-auto"
+            class="btn w-full border border-ivory-bright/40 text-ivory-bright hover:border-ivory-bright hover:bg-ivory-bright/10 sm:w-auto"
           >
             {{ secondaryLabel }}
           </NuxtLink>

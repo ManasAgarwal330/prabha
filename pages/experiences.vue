@@ -34,7 +34,7 @@ useJsonLd(
       <div class="mt-8 max-w-3xl">
         <p class="eyebrow mb-4">Experiences</p>
         <h1 class="text-display-lg">Start with what you want to feel, not where you want to go.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-muted">
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           Most people come to us with a place in mind. The trips that work best usually start somewhere else — with
           a walk, a meal or a morning someone described to them. These are the threads we build routes around.
         </p>
@@ -56,13 +56,13 @@ useJsonLd(
     </section>
 
     <!-- Detail sections -->
-    <section class="border-t border-line">
+    <section class="border-t border-hairline">
       <article
         v-for="(experience, index) in experiences"
         :id="experience.slug"
         :key="experience.slug"
-        class="scroll-mt-24 border-b border-line"
-        :class="index % 2 === 1 ? 'bg-ivory-deep' : ''"
+        class="scroll-mt-24 border-b border-hairline"
+        :class="index % 2 === 1 ? 'section-dark' : ''"
       >
         <div class="container-prabha grid items-center gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div class="reveal overflow-hidden rounded-card" :class="index % 2 === 1 ? 'lg:order-2' : ''">
@@ -75,9 +75,9 @@ useJsonLd(
           </div>
 
           <div :class="index % 2 === 1 ? 'lg:order-1' : ''">
-            <component :is="resolveIcon(experience.icon)" class="h-6 w-6 text-clay" aria-hidden="true" />
+            <component :is="resolveIcon(experience.icon)" class="h-6 w-6 text-accent" aria-hidden="true" />
             <h2 class="reveal mt-5 text-display-sm">{{ experience.name }}</h2>
-            <p class="reveal mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-charcoal-soft">
+            <p class="reveal mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-ink-soft">
               {{ experience.description }}
             </p>
 
@@ -88,13 +88,13 @@ useJsonLd(
                   <NuxtLink
                     v-if="slugFor(name)"
                     :to="`/destinations/${slugFor(name)}`"
-                    class="inline-block rounded-pill border border-line px-4 py-2 text-xs font-medium text-charcoal-soft transition-colors hover:border-charcoal/40 hover:text-charcoal"
+                    class="inline-block rounded-pill border border-hairline px-4 py-2 text-xs font-medium text-ink-soft transition-colors hover:border-ink/40 hover:text-ink"
                   >
                     {{ name }}
                   </NuxtLink>
                   <span
                     v-else
-                    class="inline-block rounded-pill border border-line px-4 py-2 text-xs text-charcoal-muted"
+                    class="inline-block rounded-pill border border-hairline px-4 py-2 text-xs text-ink-muted"
                   >
                     {{ name }}
                   </span>

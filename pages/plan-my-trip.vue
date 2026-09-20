@@ -55,7 +55,7 @@ useJsonLd(
       <div class="mt-8 max-w-3xl">
         <p class="eyebrow mb-4">Plan my trip</p>
         <h1 class="text-display-lg">Tell us where you want to go.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-charcoal-muted">
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
           We will help you figure out the rest — the route, the season, the pace and what it actually costs. It
           takes two minutes to send, and there is nothing to pay for a plan.
         </p>
@@ -65,7 +65,7 @@ useJsonLd(
     <section class="container-prabha pb-20 lg:pb-24">
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div class="reveal lg:col-span-7">
-          <div class="surface-card bg-white/70 p-7 sm:p-10">
+          <div class="surface-card bg-surface p-7 sm:p-10">
             <ContactForm :preset-destination="presetDestination" source="plan-my-trip" />
           </div>
         </div>
@@ -75,18 +75,18 @@ useJsonLd(
             <h2 class="eyebrow mb-6">What happens next</h2>
             <ul class="space-y-7">
               <li v-for="item in reassurances" :key="item.title" class="reveal flex gap-4">
-                <component :is="item.icon" class="mt-1 h-5 w-5 shrink-0 text-clay" aria-hidden="true" />
+                <component :is="item.icon" class="mt-1 h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
                 <div>
                   <h3 class="font-display text-lg leading-snug">{{ item.title }}</h3>
-                  <p class="mt-1.5 text-sm leading-relaxed text-charcoal-muted">{{ item.body }}</p>
+                  <p class="mt-1.5 text-sm leading-relaxed text-ink-muted">{{ item.body }}</p>
                 </div>
               </li>
             </ul>
 
-            <div class="mt-10 border-t border-line pt-7">
-              <p class="text-sm leading-relaxed text-charcoal-muted">
+            <div class="mt-10 border-t border-hairline pt-7">
+              <p class="text-sm leading-relaxed text-ink-muted">
                 Prefer to talk it through? Call
-                <a :href="`tel:${site.contact.phoneHref}`" class="font-medium text-forest underline underline-offset-4">
+                <a :href="`tel:${site.contact.phoneHref}`" class="font-medium text-link underline underline-offset-4">
                   {{ site.contact.phoneDisplay }}</a
                 >
                 — we are on {{ site.contact.hours }}.
@@ -100,19 +100,19 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="border-t border-line bg-ivory-deep py-20 lg:py-24">
+    <section class="section-dark py-20 lg:py-24">
       <div class="container-prabha">
         <SectionHeading eyebrow="How it works" title="Three steps, and then you are travelling." />
         <ol class="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
           <li
             v-for="(step, index) in howItWorks"
             :key="step.number"
-            class="reveal border-t border-line pt-6"
+            class="reveal border-t border-hairline pt-6"
             :style="{ transitionDelay: `${index * 80}ms` }"
           >
-            <span class="font-display text-sm tracking-[0.2em] text-clay">{{ step.number }}</span>
+            <span class="font-display text-sm tracking-[0.2em] text-accent">{{ step.number }}</span>
             <h3 class="mt-4 font-display text-2xl">{{ step.title }}</h3>
-            <p class="mt-3 text-[0.95rem] leading-relaxed text-charcoal-muted">{{ step.description }}</p>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ step.description }}</p>
           </li>
         </ol>
       </div>
