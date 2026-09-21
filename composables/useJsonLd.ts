@@ -34,8 +34,8 @@ export const organizationLd = (): Json => {
     legalName: site.legalName,
     description: site.description,
     url: base,
-    logo: `${base}/brand/prabha-logo.svg`,
-    image: `${base}/brand/prabha-logo.svg`,
+    logo: `${base}/brand/pravaah-logo.svg`,
+    image: `${base}/brand/pravaah-logo.svg`,
     email: site.contact.email,
     telephone: site.contact.phoneDisplay,
     address: {

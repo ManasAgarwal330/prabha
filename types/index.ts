@@ -1,5 +1,5 @@
 /**
- * Prabha content models.
+ * Pravaah content models.
  * Every piece of copy, price and image on the site is typed here and lives in `data/`.
  * Swapping dummy content for real content never requires touching a component.
  */

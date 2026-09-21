@@ -1,8 +1,8 @@
-# Prabha
+# Pravaah
 
 > Journeys worth remembering.
 
-A premium, static, SEO-first marketing site for **Prabha**, a tour and travel studio planning custom journeys across India.
+A premium, static, SEO-first marketing site for **Pravaah**, a tour and travel studio planning custom journeys across India.
 
 Built with **Nuxt 3 + TypeScript + Tailwind CSS**. Every route is prerendered to plain HTML — no backend, no database, and it runs entirely on a free hosting tier.
 
@@ -35,9 +35,9 @@ Node 20.19 or newer is recommended (one transitive dependency asks for it).
    ```bash
    git init
    git add -A
-   git commit -m "Prabha launch site"
+   git commit -m "Pravaah launch site"
    git branch -M main
-   git remote add origin https://github.com/<you>/prabha.git
+   git remote add origin https://github.com/<you>/pravaah.git
    git push -u origin main
    ```
 2. In Netlify: **Add new site → Import an existing project → GitHub**, pick the repo.
@@ -68,7 +68,7 @@ Nothing below requires touching a component.
 | What | Where |
 | --- | --- |
 | Brand name, tagline, email, phone, **WhatsApp number**, address, socials | `data/site.ts` |
-| Why-Prabha blurbs, brand story, how-it-works steps, budget bands | `data/site.ts` |
+| Why-Pravaah blurbs, brand story, how-it-works steps, budget bands | `data/site.ts` |
 | Destinations, seasons, FAQs, travel tips | `data/destinations.ts` |
 | Tours, prices, itineraries, inclusions | `data/tours.ts` |
 | Experience categories | `data/experiences.ts` |
@@ -125,7 +125,7 @@ image: '/images/kashmir-dal-lake.jpg'       // self-hosted — works with no oth
 data/            all content, typed — the only files you edit to change copy
 types/           content models (Destination, Tour, Article, …)
 composables/     image URLs, SEO meta, JSON-LD, scroll reveal, enquiry submission
-components/      AppHeader, AppFooter, PrabhaLogo, cards, gallery, forms …
+components/      AppHeader, AppFooter, PravaahLogo, cards, gallery, forms …
 pages/           routes (see below)
 server/routes/   sitemap.xml, robots.txt — generated from the data files
 public/brand/    logo, symbol, favicon

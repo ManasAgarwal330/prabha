@@ -5,25 +5,25 @@ import type { Step, ValueProp } from '~/types'
  * Replace the placeholder contact details here — nothing else needs to change.
  */
 export const site = {
-  name: 'Prabha',
-  legalName: 'Prabha Travel Studio',
+  name: 'Pravaah',
+  legalName: 'Pravaah Travel Studio',
   tagline: 'Journeys worth remembering.',
   description:
-    'Prabha designs thoughtfully crafted journeys across India — built around places, people and the way you actually want to travel.',
+    'Pravaah designs thoughtfully crafted journeys across India — built around places, people and the way you actually want to travel.',
   // Update after connecting your custom domain in Netlify.
-  url: 'https://prabha-travel.netlify.app',
+  url: 'https://pravaah-travel.netlify.app',
   locale: 'en_IN',
   founded: '2025',
 
   contact: {
-    email: 'hello@prabha.travel',
+    email: 'hello@pravaah.travel',
     phoneDisplay: '+91 90000 00000',
     phoneHref: '+919000000000',
     // Placeholder WhatsApp number — swap for the real business number.
     whatsapp: '919000000000',
-    whatsappMessage: "Hi Prabha! I'd like to plan a trip.",
+    whatsappMessage: "Hi Pravaah! I'd like to plan a trip.",
     address: {
-      line1: 'Prabha Travel Studio',
+      line1: 'Pravaah Travel Studio',
       line2: '2nd Floor, Lake View Road',
       city: 'Bengaluru',
       state: 'Karnataka',
@@ -72,7 +72,7 @@ export const brandStory = {
   eyebrow: 'Our story',
   title: 'Travel should feel like more than moving from one place to another.',
   body: [
-    'Prabha creates journeys around places, people, culture and experiences — giving you the freedom to explore while we take care of the details.',
+    'Pravaah creates journeys around places, people, culture and experiences — giving you the freedom to explore while we take care of the details.',
     'We are a small studio of travellers, drivers, cooks, guides and hosts who have spent years on these roads. We plan the kind of trip we would want for ourselves: unhurried mornings, a route that makes sense, and people worth meeting at the other end.'
   ],
   stats: [

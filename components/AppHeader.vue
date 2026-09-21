@@ -48,7 +48,7 @@ const onKeydown = (event: KeyboardEvent) => {
     :class="transparent ? 'bg-transparent' : 'border-b border-hairline bg-canvas/90 backdrop-blur-md'"
     @keydown="onKeydown"
   >
-    <div class="container-prabha">
+    <div class="container-pravaah">
       <div
         class="flex items-center justify-between transition-all duration-500 ease-editorial"
         :class="scrolled ? 'h-16' : 'h-20'"
@@ -58,7 +58,7 @@ const onKeydown = (event: KeyboardEvent) => {
           class="shrink-0 rounded-sm transition-opacity hover:opacity-80"
           :aria-label="`${site.name} — home`"
         >
-          <PrabhaLogo :tone="transparent ? 'inherit' : 'brand'" :class="transparent ? 'text-ivory-bright' : 'text-ink'" />
+          <PravaahLogo :tone="transparent ? 'inherit' : 'brand'" :class="transparent ? 'text-ivory-bright' : 'text-ink'" />
         </NuxtLink>
 
         <nav class="hidden items-center gap-8 lg:flex" aria-label="Primary">
@@ -109,7 +109,7 @@ const onKeydown = (event: KeyboardEvent) => {
         id="mobile-menu"
         class="border-t border-hairline bg-canvas lg:hidden"
       >
-        <nav class="container-prabha flex flex-col py-6" aria-label="Mobile">
+        <nav class="container-pravaah flex flex-col py-6" aria-label="Mobile">
           <NuxtLink
             v-for="item in primaryNav"
             :key="item.to"

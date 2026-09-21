@@ -22,7 +22,7 @@ withDefaults(
 </script>
 
 <template>
-  <section class="container-prabha py-16 sm:py-20 lg:py-24">
+  <section class="container-pravaah py-16 sm:py-20 lg:py-24">
     <div class="reveal relative overflow-hidden rounded-card">
       <AppImage
         :src="image"

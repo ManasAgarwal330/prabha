@@ -13,11 +13,11 @@ const socials = [
 
 <template>
   <footer class="section-dark">
-    <div class="container-prabha py-16 lg:py-20">
+    <div class="container-pravaah py-16 lg:py-20">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div class="lg:col-span-4">
           <NuxtLink to="/" class="inline-block" :aria-label="`${site.name} — home`">
-            <PrabhaLogo size="lg" />
+            <PravaahLogo size="lg" />
           </NuxtLink>
           <p class="mt-5 max-w-sm text-sm leading-relaxed text-ink-muted">
             {{ site.description }}

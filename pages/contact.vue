@@ -4,8 +4,8 @@ import { site } from '~/data/site'
 import { generalFaqs } from '~/data/faq'
 
 usePageSeo({
-  title: 'Contact Prabha — Talk to a Trip Designer',
-  description: `Reach Prabha by email, phone or WhatsApp. We reply to every enquiry within one working day. ${site.contact.hours}.`,
+  title: 'Contact Pravaah — Talk to a Trip Designer',
+  description: `Reach Pravaah by email, phone or WhatsApp. We reply to every enquiry within one working day. ${site.contact.hours}.`,
   path: '/contact',
   image: 'photo-1602216056096-3b40cc0c9944'
 })
@@ -20,7 +20,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-prabha pb-14 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-14 pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -37,7 +37,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-prabha pb-20 lg:pb-24">
+    <section class="container-pravaah pb-20 lg:pb-24">
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <!-- Details -->
         <div class="lg:col-span-4">
@@ -122,7 +122,7 @@ useJsonLd(
 
     <!-- FAQ preview -->
     <section class="section-dark py-20 lg:py-24">
-      <div class="container-prabha grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="container-pravaah grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="Before you ask" title="The questions we get most." />
           <NuxtLink to="/faq" class="btn-ghost link-underline reveal mt-6">

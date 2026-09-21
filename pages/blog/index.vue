@@ -15,7 +15,7 @@ const filtered = computed(() =>
 usePageSeo({
   title: 'Travel Stories — Guides, Seasons & Notes from the Road',
   description:
-    'Destination guides, season-by-season advice and practical travel notes from the Prabha studio — Kashmir, Himachal, Rajasthan, Kerala and the northeast.',
+    'Destination guides, season-by-season advice and practical travel notes from the Pravaah studio — Kashmir, Himachal, Rajasthan, Kerala and the northeast.',
   path: '/blog',
   image: 'photo-1476514525535-07fb3b4ae5f1'
 })
@@ -30,7 +30,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-prabha pb-12 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-12 pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -49,7 +49,7 @@ useJsonLd(
     </section>
 
     <!-- Lead article -->
-    <section v-if="lead && activeCategory === 'All'" class="container-prabha pb-16">
+    <section v-if="lead && activeCategory === 'All'" class="container-pravaah pb-16">
       <div class="reveal grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <NuxtLink :to="`/blog/${lead.slug}`" class="block overflow-hidden rounded-card" tabindex="-1" aria-hidden="true">
           <AppImage
@@ -81,7 +81,7 @@ useJsonLd(
     </section>
 
     <!-- Category filter -->
-    <section class="container-prabha">
+    <section class="container-pravaah">
       <div class="flex flex-wrap gap-2 border-y border-hairline py-5" role="group" aria-label="Filter stories by category">
         <button
           v-for="category in categories"
@@ -102,7 +102,7 @@ useJsonLd(
     </section>
 
     <!-- Grid -->
-    <section class="container-prabha py-14 lg:py-16">
+    <section class="container-pravaah py-14 lg:py-16">
       <div class="grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
         <div v-for="article in activeCategory === 'All' ? rest : filtered" :key="article.slug">
           <BlogCard :article="article" />

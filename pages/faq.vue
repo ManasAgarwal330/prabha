@@ -3,9 +3,9 @@ import { destinations } from '~/data/destinations'
 import { generalFaqs } from '~/data/faq'
 
 usePageSeo({
-  title: 'Frequently Asked Questions — Planning a Trip with Prabha',
+  title: 'Frequently Asked Questions — Planning a Trip with Pravaah',
   description:
-    'How planning, pricing, payments, cancellations, permits and support work at Prabha, plus destination-specific questions for each region we cover.',
+    'How planning, pricing, payments, cancellations, permits and support work at Pravaah, plus destination-specific questions for each region we cover.',
   path: '/faq',
   image: 'photo-1544735716-392fe2489ffa'
 })
@@ -21,7 +21,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-prabha pb-14 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-14 pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -39,7 +39,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-prabha pb-20 lg:pb-24">
+    <section class="container-pravaah pb-20 lg:pb-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <nav class="lg:sticky lg:top-28" aria-label="FAQ sections">

@@ -50,7 +50,7 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
       />
       <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-charcoal/40" aria-hidden="true" />
 
-      <div class="container-prabha relative w-full pb-14 pt-32 lg:pb-20">
+      <div class="container-pravaah relative w-full pb-14 pt-32 lg:pb-20">
         <Breadcrumbs :items="crumbs" light />
         <p class="eyebrow mt-7 text-ivory-bright/75">{{ current.destination }}</p>
         <h1 class="mt-4 max-w-3xl text-display-lg text-ivory-bright text-shadow-hero">{{ current.title }}</h1>
@@ -73,13 +73,13 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
       </div>
     </section>
 
-    <div class="container-prabha py-20 lg:py-24">
+    <div class="container-pravaah py-20 lg:py-24">
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <!-- Main column -->
         <div class="lg:col-span-7">
           <section>
             <h2 class="reveal text-display-sm">About this journey</h2>
-            <div class="reveal prose-prabha mt-6">
+            <div class="reveal prose-pravaah mt-6">
               <p v-for="paragraph in current.overview" :key="paragraph">{{ paragraph }}</p>
             </div>
 
@@ -216,14 +216,14 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
     </div>
 
     <!-- Gallery -->
-    <section class="container-prabha pb-20 lg:pb-24">
+    <section class="container-pravaah pb-20 lg:pb-24">
       <h2 class="reveal sr-only">Photographs from {{ current.title }}</h2>
       <ImageGallery :images="current.gallery" :label="current.title" />
     </section>
 
     <!-- Enquiry -->
     <section id="enquire" class="scroll-mt-24 border-y border-hairline bg-canvas-alt py-20 lg:py-24">
-      <div class="container-prabha grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="container-pravaah grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="Enquire" :title="`Ask us about ${current.title}.`" />
           <p class="reveal mt-6 text-[0.95rem] leading-relaxed text-ink-muted">
@@ -238,7 +238,7 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
     </section>
 
     <!-- Destination FAQ -->
-    <section v-if="destination" class="container-prabha py-20 lg:py-24">
+    <section v-if="destination" class="container-pravaah py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="FAQ" :title="`Questions about ${destination.name}.`" />
@@ -255,7 +255,7 @@ useJsonLd(tourLd(current), breadcrumbLd(crumbs))
 
     <!-- Related -->
     <section class="section-dark py-20 lg:py-24">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading eyebrow="Related journeys" title="Other routes you might like." />
         <div class="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           <div

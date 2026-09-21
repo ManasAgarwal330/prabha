@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://prabha-travel.netlify.app'
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://pravaah-travel.netlify.app'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
@@ -30,10 +30,10 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en-IN' },
       // Fallback for the client-rendered shells (404.html / 200.html).
-      title: 'Prabha — Journeys worth remembering.',
+      title: 'Pravaah — Journeys worth remembering.',
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/brand/favicon.svg' },
-        { rel: 'apple-touch-icon', href: '/brand/prabha-symbol.svg' },
+        { rel: 'apple-touch-icon', href: '/brand/pravaah-symbol.svg' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'preconnect', href: 'https://images.unsplash.com' },

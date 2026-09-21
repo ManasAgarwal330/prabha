@@ -13,7 +13,7 @@ useHead({ title: isNotFound.value ? 'Page not found' : 'Something went wrong' })
     <AppHeader />
 
     <main class="flex flex-1 items-center pt-20">
-      <div class="container-prabha py-24 text-center">
+      <div class="container-pravaah py-24 text-center">
         <p class="eyebrow mb-5">{{ error?.statusCode || 500 }}</p>
         <h1 class="mx-auto max-w-2xl text-display-lg">
           {{ isNotFound ? 'This route does not exist — yet.' : 'Something went wrong on our side.' }}

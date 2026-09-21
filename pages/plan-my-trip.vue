@@ -27,9 +27,9 @@ const reassurances = [
 ]
 
 usePageSeo({
-  title: 'Plan My Trip — Tell Prabha Where You Want to Go',
+  title: 'Plan My Trip — Tell Pravaah Where You Want to Go',
   description:
-    'Share your dates, destination and budget and a Prabha trip designer will come back within one working day with a suggested route and an indicative cost.',
+    'Share your dates, destination and budget and a Pravaah trip designer will come back within one working day with a suggested route and an indicative cost.',
   path: '/plan-my-trip',
   image: 'photo-1493246507139-91e8fad9978e'
 })
@@ -44,7 +44,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-prabha pb-14 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-14 pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -62,7 +62,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-prabha pb-20 lg:pb-24">
+    <section class="container-pravaah pb-20 lg:pb-24">
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div class="reveal lg:col-span-7">
           <div class="surface-card bg-surface p-7 sm:p-10">
@@ -101,7 +101,7 @@ useJsonLd(
     </section>
 
     <section class="section-dark py-20 lg:py-24">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading eyebrow="How it works" title="Three steps, and then you are travelling." />
         <ol class="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
           <li

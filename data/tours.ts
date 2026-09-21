@@ -119,7 +119,7 @@ export const tours: Tour[] = [
     seo: {
       title: 'Magical Kashmir Tour — 7 Days in Srinagar, Gulmarg & Pahalgam',
       description:
-        'A 7-day Kashmir itinerary from Prabha covering Dal Lake houseboats, Gulmarg, Pahalgam and Sonamarg. Starting from ₹24,999 per person.'
+        'A 7-day Kashmir itinerary from Pravaah covering Dal Lake houseboats, Gulmarg, Pahalgam and Sonamarg. Starting from ₹24,999 per person.'
     }
   },
 
@@ -226,7 +226,7 @@ export const tours: Tour[] = [
     seo: {
       title: 'Himachal Hill Trail — 6-Day Shimla, Tirthan & Manali Tour',
       description:
-        'A 6-day Himachal itinerary from Prabha covering Shimla, the Tirthan valley, Jalori Pass and Manali. Starting from ₹21,499 per person.'
+        'A 6-day Himachal itinerary from Pravaah covering Shimla, the Tirthan valley, Jalori Pass and Manali. Starting from ₹21,499 per person.'
     }
   },
 
@@ -351,7 +351,7 @@ export const tours: Tour[] = [
     seo: {
       title: 'Royal Rajasthan Tour — 8 Days in Jaipur, Jodhpur & Udaipur',
       description:
-        'An 8-day Rajasthan itinerary from Prabha with heritage stays, Amber and Mehrangarh forts, craft workshops and Lake Pichola. From ₹38,999 per person.'
+        'An 8-day Rajasthan itinerary from Pravaah with heritage stays, Amber and Mehrangarh forts, craft workshops and Lake Pichola. From ₹38,999 per person.'
     }
   },
 
@@ -460,7 +460,7 @@ export const tours: Tour[] = [
     seo: {
       title: 'Kerala Backwaters & Hills — 6-Day Kochi, Alleppey & Munnar Tour',
       description:
-        'A 6-day Kerala itinerary from Prabha with a private Alleppey houseboat, Munnar tea estate stay and Fort Kochi. From ₹27,499 per person.'
+        'A 6-day Kerala itinerary from Pravaah with a private Alleppey houseboat, Munnar tea estate stay and Fort Kochi. From ₹27,499 per person.'
     }
   },
 
@@ -560,7 +560,7 @@ export const tours: Tour[] = [
     seo: {
       title: 'Goa Coastal Escape — 5-Day South Goa Beach & Heritage Tour',
       description:
-        'A 5-day Goa itinerary from Prabha with quiet southern beaches, a Goan cooking class, Old Goa heritage and a sunset cruise. From ₹18,999 per person.'
+        'A 5-day Goa itinerary from Pravaah with quiet southern beaches, a Goan cooking class, Old Goa heritage and a sunset cruise. From ₹18,999 per person.'
     }
   },
 
@@ -678,7 +678,7 @@ export const tours: Tour[] = [
     seo: {
       title: 'Meghalaya & Kaziranga Tour — 7 Days in Northeast India',
       description:
-        'A 7-day Northeast India itinerary from Prabha with living root bridges, Cherrapunji, Dawki and two Kaziranga safaris. From ₹34,999 per person.'
+        'A 7-day Northeast India itinerary from Pravaah with living root bridges, Cherrapunji, Dawki and two Kaziranga safaris. From ₹34,999 per person.'
     }
   },
 
@@ -811,7 +811,7 @@ export const tours: Tour[] = [
     seo: {
       title: 'Spiti Valley Expedition — 9-Day Kinnaur to Kaza Circuit',
       description:
-        'A 9-day Spiti itinerary from Prabha via Kinnaur, with Key, Dhankar and Tabo monasteries, village homestays and Chandratal. From ₹42,999 per person.'
+        'A 9-day Spiti itinerary from Pravaah via Kinnaur, with Key, Dhankar and Tabo monasteries, village homestays and Chandratal. From ₹42,999 per person.'
     }
   },
 
@@ -912,7 +912,7 @@ export const tours: Tour[] = [
     seo: {
       title: 'Golden Triangle Tour — 5 Days in Delhi, Agra & Jaipur',
       description:
-        'A 5-day Golden Triangle itinerary from Prabha with a Taj Mahal sunrise, Old Delhi walk, Fatehpur Sikri and Amber Fort. From ₹19,999 per person.'
+        'A 5-day Golden Triangle itinerary from Pravaah with a Taj Mahal sunrise, Old Delhi walk, Fatehpur Sikri and Amber Fort. From ₹19,999 per person.'
     }
   }
 ]

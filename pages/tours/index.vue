@@ -33,9 +33,9 @@ const filtered = computed(() => {
 })
 
 usePageSeo({
-  title: 'Tours & Journeys Across India — Prabha',
+  title: 'Tours & Journeys Across India — Pravaah',
   description:
-    'Browse Prabha journeys across Kashmir, Himachal, Rajasthan, Kerala, Goa and Northeast India. Private, fully customisable itineraries with transparent starting prices.',
+    'Browse Pravaah journeys across Kashmir, Himachal, Rajasthan, Kerala, Goa and Northeast India. Private, fully customisable itineraries with transparent starting prices.',
   path: '/tours',
   image: 'photo-1501785888041-af3ef285b470'
 })
@@ -50,7 +50,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-prabha pb-2 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-2 pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -69,7 +69,7 @@ useJsonLd(
     </section>
 
     <!-- Filters -->
-    <section class="container-prabha pt-10">
+    <section class="container-pravaah pt-10">
       <div class="flex flex-col gap-5 border-y border-hairline py-5 lg:flex-row lg:items-center lg:justify-between">
         <div class="flex flex-wrap gap-2" role="group" aria-label="Filter journeys by destination">
           <button
@@ -118,7 +118,7 @@ useJsonLd(
     </section>
 
     <!-- Results -->
-    <section class="container-prabha py-12 lg:py-16">
+    <section class="container-pravaah py-12 lg:py-16">
       <p class="mb-10 text-sm text-ink-muted" aria-live="polite">
         {{ filtered.length }} {{ filtered.length === 1 ? 'journey' : 'journeys' }}
       </p>
@@ -139,7 +139,7 @@ useJsonLd(
     </section>
 
     <section class="section-dark py-16 lg:py-20">
-      <div class="container-prabha grid gap-8 sm:grid-cols-3">
+      <div class="container-pravaah grid gap-8 sm:grid-cols-3">
         <div class="reveal">
           <h2 class="font-display text-xl">Prices are honest starting points</h2>
           <p class="mt-3 text-sm leading-relaxed text-ink-muted">

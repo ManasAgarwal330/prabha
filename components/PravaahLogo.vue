@@ -2,7 +2,7 @@
 import { site } from '~/data/site'
 
 /**
- * The Prabha mark: a sun rising over a range — light, horizon and path.
+ * The Pravaah mark: a sun rising over a range — light, horizon and path.
  * `symbol` colours follow `currentColor` so the logo works in ivory, charcoal and full colour.
  */
 withDefaults(

@@ -49,7 +49,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
       />
       <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-charcoal/40" aria-hidden="true" />
 
-      <div class="container-prabha relative w-full pb-14 pt-32 lg:pb-20">
+      <div class="container-pravaah relative w-full pb-14 pt-32 lg:pb-20">
         <Breadcrumbs :items="crumbs" light />
         <p class="eyebrow mt-7 text-ivory-bright/75">{{ current.state }}</p>
         <h1 class="mt-4 max-w-3xl text-display-xl text-ivory-bright text-shadow-hero">{{ current.name }}</h1>
@@ -59,7 +59,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
 
     <!-- Quick facts -->
     <section class="border-b border-hairline bg-canvas-alt">
-      <div class="container-prabha grid gap-6 py-7 sm:grid-cols-3">
+      <div class="container-pravaah grid gap-6 py-7 sm:grid-cols-3">
         <div class="flex items-start gap-3">
           <CalendarDays class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
           <div>
@@ -85,11 +85,11 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     </section>
 
     <!-- Overview -->
-    <section class="container-prabha py-20 lg:py-24">
+    <section class="container-pravaah py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-7">
           <h2 class="reveal text-display-sm">Overview</h2>
-          <div class="reveal prose-prabha mt-6">
+          <div class="reveal prose-pravaah mt-6">
             <p v-for="paragraph in current.overview" :key="paragraph">{{ paragraph }}</p>
           </div>
         </div>
@@ -113,7 +113,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
 
     <!-- Why visit -->
     <section class="section-dark py-20 lg:py-24">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading eyebrow="Why visit" :title="`What makes ${current.name} worth the journey.`" />
 
         <div class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2">
@@ -131,7 +131,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     </section>
 
     <!-- Best time to visit -->
-    <section class="container-prabha py-20 lg:py-24">
+    <section class="container-pravaah py-20 lg:py-24">
       <SectionHeading
         eyebrow="Best time to visit"
         :title="`${current.name}, season by season.`"
@@ -153,14 +153,14 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     </section>
 
     <!-- Gallery -->
-    <section class="container-prabha pb-20 lg:pb-24">
+    <section class="container-pravaah pb-20 lg:pb-24">
       <h2 class="reveal sr-only">Photographs of {{ current.name }}</h2>
       <ImageGallery :images="current.gallery" :label="current.name" />
     </section>
 
     <!-- Recommended tours -->
     <section v-if="relatedTours.length" class="section-dark py-20 lg:py-24">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading eyebrow="Recommended journeys" :title="`Ways to travel ${current.name}.`" />
           <NuxtLink to="/tours" class="btn-ghost link-underline reveal shrink-0">
@@ -201,7 +201,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     </section>
 
     <!-- Travel tips -->
-    <section class="container-prabha py-20 lg:py-24">
+    <section class="container-pravaah py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-5">
           <SectionHeading eyebrow="Travel tips" :title="`Practical notes for ${current.name}.`" />
@@ -221,7 +221,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
 
     <!-- FAQ -->
     <section class="section-dark py-20 lg:py-24">
-      <div class="container-prabha grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="container-pravaah grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="FAQ" :title="`${current.name} questions we get asked.`" />
           <NuxtLink to="/faq" class="btn-ghost link-underline reveal mt-6">
@@ -236,7 +236,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     </section>
 
     <!-- Other destinations -->
-    <section class="container-prabha py-20 lg:py-24">
+    <section class="container-pravaah py-20 lg:py-24">
       <SectionHeading eyebrow="Keep exploring" title="Other regions worth a look." />
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         <div v-for="other in otherDestinations" :key="other.slug" class="reveal h-72 min-w-0">

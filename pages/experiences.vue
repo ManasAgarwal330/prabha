@@ -8,7 +8,7 @@ const slugFor = (name: string) => destinations.find((d) => d.name === name)?.slu
 usePageSeo({
   title: 'Travel Experiences in India — Adventure, Culture, Food & More',
   description:
-    'The eight threads Prabha builds journeys around: adventure, culture, nature, beaches, mountains, food, wildlife and wellness across India.',
+    'The eight threads Pravaah builds journeys around: adventure, culture, nature, beaches, mountains, food, wildlife and wellness across India.',
   path: '/experiences',
   image: 'photo-1626621341517-bbf3d9990a23'
 })
@@ -23,7 +23,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-prabha pb-12 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-12 pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -42,7 +42,7 @@ useJsonLd(
     </section>
 
     <!-- Grid overview -->
-    <section class="container-prabha pb-20">
+    <section class="container-pravaah pb-20">
       <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         <div
           v-for="(experience, index) in experiences"
@@ -64,7 +64,7 @@ useJsonLd(
         class="scroll-mt-24 border-b border-hairline"
         :class="index % 2 === 1 ? 'section-dark' : ''"
       >
-        <div class="container-prabha grid items-center gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
+        <div class="container-pravaah grid items-center gap-10 py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div class="reveal-media overflow-hidden rounded-card" :class="index % 2 === 1 ? 'lg:order-2' : ''">
             <AppImage
               :src="experience.image"

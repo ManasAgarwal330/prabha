@@ -33,7 +33,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
 
 <template>
   <article>
-    <header class="container-prabha pb-10 pt-16 lg:pt-20">
+    <header class="container-pravaah pb-10 pt-16 lg:pt-20">
       <Breadcrumbs :items="crumbs" />
 
       <div class="mx-auto mt-8 max-w-3xl text-center">
@@ -48,7 +48,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
       </div>
     </header>
 
-    <div class="container-prabha">
+    <div class="container-pravaah">
       <div class="overflow-hidden rounded-card">
         <AppImage
           :src="current.coverImage"
@@ -61,7 +61,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
       </div>
     </div>
 
-    <div class="container-prabha py-16 lg:py-20">
+    <div class="container-pravaah py-16 lg:py-20">
       <div class="mx-auto max-w-prose">
         <template v-for="(block, index) in current.body" :key="index">
           <h2 v-if="block.type === 'heading'" class="mt-12 text-display-sm first:mt-0">
@@ -104,7 +104,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
     </div>
 
     <section class="section-dark py-20 lg:py-24">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading eyebrow="Keep reading" title="More notes from the road." />
         <div class="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           <div

@@ -114,7 +114,7 @@ export const destinations: Destination[] = [
     seo: {
       title: 'Kashmir Travel Guide — Tours, Best Time to Visit & Itineraries',
       description:
-        'Plan a Kashmir trip with Prabha: Dal Lake houseboats, Gulmarg meadows, Pahalgam valleys and Sonamarg glaciers, with the best time to visit and custom itineraries.'
+        'Plan a Kashmir trip with Pravaah: Dal Lake houseboats, Gulmarg meadows, Pahalgam valleys and Sonamarg glaciers, with the best time to visit and custom itineraries.'
     }
   },
 
@@ -219,7 +219,7 @@ export const destinations: Destination[] = [
     seo: {
       title: 'Himachal Pradesh Travel Guide — Tours, Best Time to Visit & Trips',
       description:
-        'Plan a Himachal Pradesh trip with Prabha: Manali, Tirthan, Parvati valley and the Spiti circuit, with seasons, trek options and custom itineraries.'
+        'Plan a Himachal Pradesh trip with Pravaah: Manali, Tirthan, Parvati valley and the Spiti circuit, with seasons, trek options and custom itineraries.'
     }
   },
 
@@ -324,7 +324,7 @@ export const destinations: Destination[] = [
     seo: {
       title: 'Rajasthan Travel Guide — Forts, Tours & Best Time to Visit',
       description:
-        'Plan a Rajasthan trip with Prabha: Jaipur, Jodhpur, Udaipur and Jaisalmer, heritage stays, craft workshops and tiger safaris in Ranthambore.'
+        'Plan a Rajasthan trip with Pravaah: Jaipur, Jodhpur, Udaipur and Jaisalmer, heritage stays, craft workshops and tiger safaris in Ranthambore.'
     }
   },
 
@@ -429,7 +429,7 @@ export const destinations: Destination[] = [
     seo: {
       title: 'Kerala Travel Guide — Backwaters, Munnar & Best Time to Visit',
       description:
-        'Plan a Kerala trip with Prabha: Alleppey houseboats, Munnar tea country, Fort Kochi and Periyar, with seasons, tips and custom itineraries.'
+        'Plan a Kerala trip with Pravaah: Alleppey houseboats, Munnar tea country, Fort Kochi and Periyar, with seasons, tips and custom itineraries.'
     }
   },
 
@@ -534,7 +534,7 @@ export const destinations: Destination[] = [
     seo: {
       title: 'Goa Travel Guide — Beaches, Heritage & Best Time to Visit',
       description:
-        'Plan a Goa trip with Prabha: quiet southern beaches, Portuguese-era heritage, Goan food and day trips, with seasons and custom itineraries.'
+        'Plan a Goa trip with Pravaah: quiet southern beaches, Portuguese-era heritage, Goan food and day trips, with seasons and custom itineraries.'
     }
   },
 
@@ -639,7 +639,7 @@ export const destinations: Destination[] = [
     seo: {
       title: 'Northeast India Travel Guide — Meghalaya, Assam & Best Time to Visit',
       description:
-        'Plan a Northeast India trip with Prabha: living root bridges, Cherrapunji waterfalls, Dawki, Kaziranga safaris and Majuli island.'
+        'Plan a Northeast India trip with Pravaah: living root bridges, Cherrapunji waterfalls, Dawki, Kaziranga safaris and Majuli island.'
     }
   }
 ]

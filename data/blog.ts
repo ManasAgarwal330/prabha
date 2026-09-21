@@ -12,7 +12,7 @@ export const articles: Article[] = [
       'Beyond the standard Srinagar–Gulmarg–Pahalgam loop: the meadows, workshops and roads that make a week in the valley feel like a month.',
     category: 'Destination Guide',
     coverImage: 'photo-1476514525535-07fb3b4ae5f1',
-    author: 'Prabha Travel Studio',
+    author: 'Pravaah Travel Studio',
     publishedAt: '2026-08-28',
     readingTime: 7,
     body: [
@@ -80,7 +80,7 @@ export const articles: Article[] = [
       }
     ],
     seo: {
-      title: "10 Places in Kashmir You Shouldn't Miss — Prabha Travel Stories",
+      title: "10 Places in Kashmir You Shouldn't Miss — Pravaah Travel Stories",
       description:
         'Ten places in Kashmir worth building an itinerary around, from dawn on Dal Lake to the saffron harvest at Pampore and the meadows at Yusmarg.'
     }
@@ -93,7 +93,7 @@ export const articles: Article[] = [
       'How to sequence the cities, when to visit the forts, and the one decision that makes the biggest difference to a first Rajasthan trip.',
     category: 'Travel Tips',
     coverImage: 'photo-1477587458883-47145ed94245',
-    author: 'Prabha Travel Studio',
+    author: 'Pravaah Travel Studio',
     publishedAt: '2026-08-12',
     readingTime: 6,
     body: [
@@ -146,7 +146,7 @@ export const articles: Article[] = [
       }
     ],
     seo: {
-      title: "A First-Timer's Guide to Rajasthan — Prabha Travel Stories",
+      title: "A First-Timer's Guide to Rajasthan — Pravaah Travel Stories",
       description:
         'How to plan a first Rajasthan trip: which three cities to choose, when to visit the forts, where to stay and how to get between Jaipur, Jodhpur and Udaipur.'
     }
@@ -159,7 +159,7 @@ export const articles: Article[] = [
       'A month-by-month look at the passes, the rain and the snow — and why the right answer depends entirely on which Himachal you mean.',
     category: 'Seasons',
     coverImage: 'photo-1418065460487-3e41a6c84dc5',
-    author: 'Prabha Travel Studio',
+    author: 'Pravaah Travel Studio',
     publishedAt: '2026-07-19',
     readingTime: 5,
     body: [
@@ -221,7 +221,7 @@ export const articles: Article[] = [
       'Root bridges, a river island and the clearest water in the country — eight places in the northeast that still feel genuinely undiscovered.',
     category: 'Destination Guide',
     coverImage: 'photo-1469474968028-56623f02e42e',
-    author: 'Prabha Travel Studio',
+    author: 'Pravaah Travel Studio',
     publishedAt: '2026-06-30',
     readingTime: 8,
     body: [
@@ -295,7 +295,7 @@ export const articles: Article[] = [
       'Three bases, short drives and a deliberate lack of sightseeing — the case for doing less in Kerala than your itinerary suggests.',
     category: 'Travel Tips',
     coverImage: 'photo-1593693411515-c20261bcad6e',
-    author: 'Prabha Travel Studio',
+    author: 'Pravaah Travel Studio',
     publishedAt: '2026-06-04',
     readingTime: 5,
     body: [
@@ -343,7 +343,7 @@ export const articles: Article[] = [
       }
     ],
     seo: {
-      title: 'How to Plan a Slow Kerala Trip — Prabha Travel Stories',
+      title: 'How to Plan a Slow Kerala Trip — Pravaah Travel Stories',
       description:
         'A practical guide to planning an unhurried Kerala trip: three bases, one houseboat night, short drives and planning around meals rather than monuments.'
     }
@@ -356,7 +356,7 @@ export const articles: Article[] = [
       'A layering system that works from Manali to Spiti, plus the four things most travellers forget and regret at 4,000 metres.',
     category: 'Travel Tips',
     coverImage: 'photo-1533240332313-0db49b459ad6',
-    author: 'Prabha Travel Studio',
+    author: 'Pravaah Travel Studio',
     publishedAt: '2026-05-15',
     readingTime: 4,
     body: [

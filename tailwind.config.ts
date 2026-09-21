@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 /**
- * Prabha design tokens.
+ * Pravaah design tokens.
  * Colours, type scale, radii and shadows live here only — never inline in components.
  */
 export default <Partial<Config>>{
@@ -37,7 +37,7 @@ export default <Partial<Config>>{
         },
         hairline: 'rgb(var(--c-hairline) / <alpha-value>)',
         accent: 'rgb(var(--c-accent) / <alpha-value>)',
-        /** Saffron. Eyebrows, numerals, rules — the "prabha" (light) in the brand. */
+        /** Saffron. Eyebrows, numerals, rules — the "pravaah" (flow) running through the brand. */
         highlight: 'rgb(var(--c-highlight) / <alpha-value>)',
         link: 'rgb(var(--c-link) / <alpha-value>)',
 

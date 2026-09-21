@@ -25,9 +25,9 @@ const principles = [
 ]
 
 usePageSeo({
-  title: 'About Prabha — A Travel Studio Built Around India',
+  title: 'About Pravaah — A Travel Studio Built Around India',
   description:
-    'Prabha is a small travel studio planning custom journeys across six regions of India. How we work, what we believe, and who is behind the trips.',
+    'Pravaah is a small travel studio planning custom journeys across six regions of India. How we work, what we believe, and who is behind the trips.',
   path: '/about',
   image: HERO_IMAGE
 })
@@ -42,7 +42,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-prabha pb-14 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-14 pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -56,7 +56,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-prabha">
+    <section class="container-pravaah">
       <div class="reveal-media overflow-hidden rounded-card">
         <AppImage
           :src="HERO_IMAGE"
@@ -68,15 +68,15 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-prabha py-20 lg:py-24">
+    <section class="container-pravaah py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-7">
-          <div class="reveal prose-prabha">
+          <div class="reveal prose-pravaah">
             <p v-for="paragraph in brandStory.body" :key="paragraph">{{ paragraph }}</p>
             <p>
-              Prabha means light — the first of it, the kind that arrives over a ridge before the sun does. It
-              seemed like the right name for a company built around early mornings and the places you reach just
-              in time.
+              Pravaah means flow — the movement of a river, the way a current finds its own line through a
+              valley. It seemed like the right name for a company built around journeys that carry you along
+              rather than march you through.
             </p>
             <p>
               We are new as a business and not new to this work. Between us we have spent years driving these
@@ -99,7 +99,7 @@ useJsonLd(
 
     <!-- What we believe -->
     <section class="section-dark py-20 lg:py-24">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading eyebrow="What we believe" title="Four things we will not trade away." />
 
         <div class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2">
@@ -117,7 +117,7 @@ useJsonLd(
     </section>
 
     <!-- How we work -->
-    <section class="container-prabha py-20 lg:py-24">
+    <section class="container-pravaah py-20 lg:py-24">
       <SectionHeading eyebrow="How we work" title="From first message to the last mile home." />
 
       <ol class="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
@@ -149,7 +149,7 @@ useJsonLd(
 
     <!-- Testimonials -->
     <section class="border-y border-hairline bg-canvas-alt py-20 lg:py-24">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading eyebrow="In their words" title="What travellers tell us afterwards." />
         <div class="mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
           <div
@@ -165,17 +165,17 @@ useJsonLd(
     </section>
 
     <!-- Careers -->
-    <section id="careers" class="container-prabha scroll-mt-24 py-20 lg:py-24">
+    <section id="careers" class="container-pravaah scroll-mt-24 py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-5">
           <SectionHeading eyebrow="Careers" title="We are small, and we hire slowly." />
         </div>
         <div class="reveal lg:col-span-6 lg:col-start-7">
-          <p class="prose-prabha">
+          <p class="prose-pravaah">
             There are no open roles right now. We do keep a list, and when we add trip designers, guides or
             drivers it is almost always someone already on it.
           </p>
-          <p class="prose-prabha">
+          <p class="prose-pravaah">
             If you know a region deeply — properly, not from a listicle — write to us with where you have been and
             what you would plan differently.
           </p>
@@ -188,7 +188,7 @@ useJsonLd(
     </section>
 
     <section class="section-forest py-20 lg:py-24">
-      <div class="container-prabha flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
+      <div class="container-pravaah flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
         <div class="reveal max-w-xl">
           <h2 class="text-display-md">Have a question before you plan anything?</h2>
           <p class="mt-4 leading-relaxed text-ink-soft">

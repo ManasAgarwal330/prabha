@@ -38,7 +38,7 @@ const USE_ENDPOINT = false
 
 export const submitEnquiry = async (payload: EnquiryPayload): Promise<void> => {
   if (!USE_ENDPOINT) {
-    if (import.meta.dev) console.info('[prabha] enquiry captured', payload)
+    if (import.meta.dev) console.info('[pravaah] enquiry captured', payload)
     await new Promise((resolve) => setTimeout(resolve, 600))
     return
   }

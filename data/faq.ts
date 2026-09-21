@@ -3,7 +3,7 @@ import type { FaqItem } from '~/types'
 /** Site-wide FAQs. Destination and tour pages carry their own. */
 export const generalFaqs: FaqItem[] = [
   {
-    question: 'How does planning a trip with Prabha work?',
+    question: 'How does planning a trip with Pravaah work?',
     answer:
       'Send us an enquiry with your dates and a rough idea of what you want. We come back within one working day with a suggested route and an indicative cost, then refine it with you until it fits. Nothing is booked until you confirm.'
   },

@@ -124,7 +124,7 @@
     @apply text-eyebrow font-sans font-medium uppercase tracking-[0.18em] text-highlight;
   }
 
-  .container-prabha {
+  .container-pravaah {
     @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-12;
   }
 
@@ -199,35 +199,35 @@
     @apply scale-[1.04];
   }
 
-  .prose-prabha {
+  .prose-pravaah {
     @apply max-w-prose text-[1.0625rem] leading-[1.8] text-ink-soft;
   }
 
-  .prose-prabha h2 {
+  .prose-pravaah h2 {
     @apply mt-12 mb-4 text-display-sm;
   }
 
-  .prose-prabha h3 {
+  .prose-pravaah h3 {
     @apply mt-9 mb-3 text-xl font-display;
   }
 
-  .prose-prabha p {
+  .prose-pravaah p {
     @apply mb-5;
   }
 
-  .prose-prabha ul {
+  .prose-pravaah ul {
     @apply mb-6 space-y-2 pl-5;
   }
 
-  .prose-prabha li {
+  .prose-pravaah li {
     @apply list-disc marker:text-accent;
   }
 
-  .prose-prabha a {
+  .prose-pravaah a {
     @apply text-link underline underline-offset-4 hover:text-accent;
   }
 
-  .prose-prabha blockquote {
+  .prose-pravaah blockquote {
     @apply my-8 border-l-2 border-accent pl-6 font-display text-xl italic text-ink;
   }
 }

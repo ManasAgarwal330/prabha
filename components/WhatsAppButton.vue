@@ -17,7 +17,7 @@ const href = computed(
     target="_blank"
     rel="noopener noreferrer"
     class="fixed bottom-5 right-5 z-40 inline-flex h-12 w-12 items-center justify-center rounded-pill bg-forest text-ivory-bright shadow-lift transition-all duration-300 ease-editorial hover:-translate-y-0.5 hover:bg-forest-deep sm:bottom-7 sm:right-7"
-    aria-label="Chat with Prabha on WhatsApp"
+    aria-label="Chat with Pravaah on WhatsApp"
   >
     <MessageCircle class="h-5 w-5" aria-hidden="true" />
   </a>

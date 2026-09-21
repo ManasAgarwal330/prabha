@@ -51,7 +51,7 @@ usePageSeo({
         aria-hidden="true"
       />
 
-      <div class="container-prabha relative w-full pb-16 pt-32 sm:pb-20 lg:pb-24">
+      <div class="container-pravaah relative w-full pb-16 pt-32 sm:pb-20 lg:pb-24">
         <p class="eyebrow hero-fade text-saffron-light" style="animation-delay: 0.1s">{{ site.name }}</p>
 
         <h1 class="mt-5 max-w-4xl text-display-xl text-ivory-bright text-shadow-hero">
@@ -102,7 +102,7 @@ usePageSeo({
     </section>
 
     <!-- Featured destinations -->
-    <section class="container-prabha py-20 lg:py-28">
+    <section class="container-pravaah py-20 lg:py-28">
       <div class="flex flex-wrap items-end justify-between gap-6">
         <SectionHeading
           eyebrow="Where to go"
@@ -136,7 +136,7 @@ usePageSeo({
 
     <!-- Popular journeys -->
     <section class="section-dark py-20 lg:py-28">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
             eyebrow="Popular journeys"
@@ -162,10 +162,10 @@ usePageSeo({
       </div>
     </section>
 
-    <!-- Why Prabha -->
-    <section class="container-prabha py-20 lg:py-28">
+    <!-- Why Pravaah -->
+    <section class="container-pravaah py-20 lg:py-28">
       <SectionHeading
-        eyebrow="Why Prabha"
+        eyebrow="Why Pravaah"
         title="A small studio, built around the parts of travel that matter."
       />
 
@@ -185,7 +185,7 @@ usePageSeo({
 
     <!-- Brand story -->
     <section class="border-y border-hairline bg-canvas-alt py-20 lg:py-28">
-      <div class="container-prabha grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div class="container-pravaah grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div class="reveal-media order-2 overflow-hidden rounded-card lg:order-1">
           <AppImage
             :src="STORY_IMAGE"
@@ -201,7 +201,7 @@ usePageSeo({
             <p v-for="paragraph in brandStory.body" :key="paragraph">{{ paragraph }}</p>
           </div>
           <NuxtLink to="/about" class="btn-secondary reveal mt-9">
-            More about Prabha
+            More about Pravaah
             <ArrowRight class="h-4 w-4" aria-hidden="true" />
           </NuxtLink>
         </div>
@@ -210,7 +210,7 @@ usePageSeo({
 
     <!-- Experiences -->
     <section class="section-dark py-20 lg:py-28">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading
           eyebrow="How you travel"
           title="We sell experiences, not transport and hotels."
@@ -232,7 +232,7 @@ usePageSeo({
 
     <!-- How it works -->
     <section class="section-forest py-20 lg:py-28">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <div class="reveal max-w-3xl">
           <p class="eyebrow mb-4">How it works</p>
           <h2 class="text-display-md">Three steps, and then you are travelling.</h2>
@@ -259,7 +259,7 @@ usePageSeo({
     </section>
 
     <!-- Travel stories -->
-    <section class="container-prabha py-20 lg:py-28">
+    <section class="container-pravaah py-20 lg:py-28">
       <div class="flex flex-wrap items-end justify-between gap-6">
         <SectionHeading
           eyebrow="Travel stories"
@@ -286,7 +286,7 @@ usePageSeo({
 
     <!-- Testimonials -->
     <section class="section-dark py-20 lg:py-28">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading eyebrow="In their words" title="What travellers tell us afterwards." />
 
         <div class="mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">

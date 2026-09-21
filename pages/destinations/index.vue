@@ -57,9 +57,9 @@ const seasonal = [
 const bySlug = (slug: string) => destinations.find((d) => d.slug === slug)
 
 usePageSeo({
-  title: 'Destinations in India — Where Prabha Travels',
+  title: 'Destinations in India — Where Pravaah Travels',
   description:
-    'Explore the six regions Prabha plans journeys across: Kashmir, Himachal Pradesh, Rajasthan, Kerala, Goa and Northeast India, with seasons and trip ideas for each.',
+    'Explore the six regions Pravaah plans journeys across: Kashmir, Himachal Pradesh, Rajasthan, Kerala, Goa and Northeast India, with seasons and trip ideas for each.',
   path: '/destinations',
   image: 'photo-1598091383021-15ddea10925d'
 })
@@ -74,7 +74,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-prabha pb-4 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-4 pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -99,7 +99,7 @@ useJsonLd(
       <!-- The sticky backdrop spans the full width; only the contents are
            constrained, so the bar lines up with the page grid at every size. -->
       <section class="sticky top-16 z-30 border-b border-hairline/60 bg-canvas/95 backdrop-blur-sm">
-      <div class="container-prabha py-6">
+      <div class="container-pravaah py-6">
         <div class="relative">
           <Search
             class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted"
@@ -149,7 +149,7 @@ useJsonLd(
     </section>
 
     <!-- Results -->
-    <section class="container-prabha pb-20 pt-6 lg:pb-28">
+    <section class="container-pravaah pb-20 pt-6 lg:pb-28">
       <p class="mb-8 text-sm text-ink-muted" aria-live="polite">
         {{ filtered.length }} {{ filtered.length === 1 ? 'destination' : 'destinations' }}
         <template v-if="activeCategory !== 'All'"> for {{ activeCategory }}</template>
@@ -180,7 +180,7 @@ useJsonLd(
 
     <!-- Seasonal recommendations -->
     <section class="section-dark py-20 lg:py-28">
-      <div class="container-prabha">
+      <div class="container-pravaah">
         <SectionHeading
           eyebrow="When to go"
           title="What is at its best, and when."

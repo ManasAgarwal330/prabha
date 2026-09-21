@@ -11,7 +11,7 @@ usePageSeo({
 </script>
 
 <template>
-  <div class="container-prabha py-16 lg:py-20">
+  <div class="container-pravaah py-16 lg:py-20">
     <Breadcrumbs
       :items="[
         { name: 'Home', path: '/' },
@@ -24,7 +24,7 @@ usePageSeo({
       <p class="mt-4 text-sm text-ink-muted">Last updated {{ updated }}</p>
     </div>
 
-    <div class="prose-prabha mt-12">
+    <div class="prose-pravaah mt-12">
       <p>
         These terms apply when you book a journey with {{ site.legalName }} (&ldquo;{{ site.name }}&rdquo;). The
         specific terms for your trip — including the payment schedule and cancellation bands — are confirmed in

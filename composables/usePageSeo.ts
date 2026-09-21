@@ -24,7 +24,7 @@ export const usePageSeo = (input: PageSeoInput) => {
 
   const image = input.image
     ? buildImageUrl(input.image, { width: 1200, ratio: 1.91, quality: 75 })
-    : `${base}/brand/prabha-logo.svg`
+    : `${base}/brand/pravaah-logo.svg`
 
   useHead({
     title: input.title,
