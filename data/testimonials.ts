@@ -5,9 +5,9 @@ export const testimonials: Testimonial[] = [
   {
     name: 'Ananya Menon',
     location: 'Bengaluru',
-    trip: 'Kerala Backwaters & Hills',
+    trip: 'Kumaon Hills',
     quote:
-      'They moved our houseboat a day later so we could stay longer in Fort Kochi, and nobody made it feel like a favour. The tea estate stay was the part we still talk about.',
+      'They pushed our Munsiyari leg back a day so we could stay longer in Hartola, and nobody made it feel like a favour. The orchard homestay was the part we still talk about.',
     rating: 5
   },
   {

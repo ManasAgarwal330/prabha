@@ -1,5 +1,5 @@
 import { destinations } from '~/data/destinations'
-import { tours } from '~/data/tours'
+import { allListings, listingPath } from '~/data/listings'
 import { articles } from '~/data/blog'
 import { site } from '~/data/site'
 
@@ -13,9 +13,11 @@ interface Entry {
 const staticEntries: Entry[] = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/destinations', changefreq: 'weekly', priority: '0.9' },
-  { path: '/tours', changefreq: 'weekly', priority: '0.9' },
-  { path: '/experiences', changefreq: 'monthly', priority: '0.8' },
-  { path: '/blog', changefreq: 'weekly', priority: '0.8' },
+  { path: '/stays', changefreq: 'weekly', priority: '0.9' },
+  { path: '/experiences', changefreq: 'weekly', priority: '0.9' },
+  { path: '/expeditions', changefreq: 'weekly', priority: '0.9' },
+  { path: '/events', changefreq: 'weekly', priority: '0.8' },
+  { path: '/journals', changefreq: 'weekly', priority: '0.8' },
   { path: '/about', changefreq: 'monthly', priority: '0.7' },
   { path: '/plan-my-trip', changefreq: 'monthly', priority: '0.8' },
   { path: '/contact', changefreq: 'monthly', priority: '0.7' },
@@ -35,13 +37,13 @@ export default defineEventHandler((event) => {
       changefreq: 'monthly' as const,
       priority: '0.8'
     })),
-    ...tours.map((tour) => ({
-      path: `/tours/${tour.slug}`,
+    ...allListings.map((listing) => ({
+      path: listingPath(listing),
       changefreq: 'monthly' as const,
       priority: '0.8'
     })),
     ...articles.map((article) => ({
-      path: `/blog/${article.slug}`,
+      path: `/journals/${article.slug}`,
       changefreq: 'yearly' as const,
       priority: '0.6',
       lastmod: article.publishedAt

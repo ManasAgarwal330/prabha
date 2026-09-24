@@ -5,7 +5,7 @@ import { howItWorks } from '~/data/site'
 
 const route = useRoute()
 
-/** Allows deep links like /plan-my-trip?destination=Kerala from anywhere on the site. */
+/** Allows deep links like /plan-my-trip?destination=Uttarakhand from anywhere on the site. */
 const presetDestination = computed(() => String(route.query.destination || ''))
 
 const reassurances = [

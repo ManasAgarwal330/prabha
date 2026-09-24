@@ -1,6 +1,6 @@
 import { site } from '~/data/site'
 import { buildImageUrl } from '~/composables/useImageSource'
-import type { Article, Destination, FaqItem, Tour } from '~/types'
+import type { Article, Destination, FaqItem, Listing } from '~/types'
 
 type Json = Record<string, unknown>
 
@@ -34,8 +34,9 @@ export const organizationLd = (): Json => {
     legalName: site.legalName,
     description: site.description,
     url: base,
-    logo: `${base}/brand/pravaah-logo.svg`,
-    image: `${base}/brand/pravaah-logo.svg`,
+    logo: `${base}/brand/pravaah-logo.png`,
+    image: `${base}/brand/pravaah-logo-square.jpg`,
+    slogan: site.tagline,
     email: site.contact.email,
     telephone: site.contact.phoneDisplay,
     address: {
@@ -47,7 +48,7 @@ export const organizationLd = (): Json => {
       addressCountry: 'IN'
     },
     areaServed: { '@type': 'Country', name: 'India' },
-    sameAs: [site.social.instagram, site.social.facebook, site.social.youtube]
+    sameAs: [site.social.instagram]
   }
 }
 
@@ -117,36 +118,48 @@ export const destinationLd = (destination: Destination): Json => {
 }
 
 /**
- * Tours are described as TouristTrip with a Offer for the starting price.
- * No aggregateRating or review schema is emitted — we do not publish fabricated ratings.
+ * Stays are described as LodgingBusiness; everything else as a TouristTrip.
+ * No prices, ratings or review schema are emitted — rates are on request and
+ * we do not publish fabricated ratings.
  */
-export const tourLd = (tour: Tour): Json => {
+export const listingLd = (listing: Listing): Json => {
   const base = baseUrl()
+  const url = `${base}/${listing.section}/${listing.slug}`
+  const image = buildImageUrl(listing.image, { width: 1600, ratio: 1.6 })
+
+  if (listing.section === 'stays') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'LodgingBusiness',
+      name: listing.title,
+      description: listing.description,
+      url,
+      image,
+      address: { '@type': 'PostalAddress', addressLocality: listing.location, addressCountry: 'IN' }
+    }
+  }
+
   return {
     '@context': 'https://schema.org',
     '@type': 'TouristTrip',
-    name: tour.title,
-    description: tour.description,
-    url: `${base}/tours/${tour.slug}`,
-    image: buildImageUrl(tour.image, { width: 1600, ratio: 1.6 }),
+    name: listing.title,
+    description: listing.description,
+    url,
+    image,
     provider: { '@id': `${base}/#organization` },
-    touristType: tour.themes,
-    itinerary: {
-      '@type': 'ItemList',
-      numberOfItems: tour.itinerary.length,
-      itemListElement: tour.itinerary.map((day) => ({
-        '@type': 'ListItem',
-        position: day.day,
-        item: { '@type': 'TouristAttraction', name: day.title, description: day.description }
-      }))
-    },
-    offers: {
-      '@type': 'Offer',
-      price: tour.price,
-      priceCurrency: 'INR',
-      availability: 'https://schema.org/InStock',
-      url: `${base}/tours/${tour.slug}`
-    }
+    ...(listing.itinerary?.length
+      ? {
+          itinerary: {
+            '@type': 'ItemList',
+            numberOfItems: listing.itinerary.length,
+            itemListElement: listing.itinerary.map((day) => ({
+              '@type': 'ListItem',
+              position: day.day,
+              item: { '@type': 'TouristAttraction', name: day.title, description: day.description }
+            }))
+          }
+        }
+      : {})
   }
 }
 
@@ -157,14 +170,14 @@ export const articleLd = (article: Article): Json => {
     '@type': 'Article',
     headline: article.title,
     description: article.excerpt,
-    url: `${base}/blog/${article.slug}`,
+    url: `${base}/journals/${article.slug}`,
     image: buildImageUrl(article.coverImage, { width: 1600, ratio: 1.6 }),
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
     articleSection: article.category,
     author: { '@type': 'Organization', name: article.author },
     publisher: { '@id': `${base}/#organization` },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${base}/blog/${article.slug}` },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${base}/journals/${article.slug}` },
     inLanguage: 'en-IN'
   }
 }

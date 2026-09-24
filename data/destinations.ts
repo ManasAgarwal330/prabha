@@ -1,4 +1,36 @@
-import type { Destination, DestinationCategory } from '~/types'
+import type { Destination, DestinationCategory, Region } from '~/types'
+
+/**
+ * The regions shown under Destinations. `india` is the umbrella view that
+ * lists everything; the rest filter destinations by their `region` field.
+ */
+export const regions: Region[] = [
+  {
+    slug: 'india',
+    name: 'India',
+    description:
+      'Every region we plan for, from the Kumaon Himalaya to the Rajasthan desert and the hills of the northeast.'
+  },
+  {
+    slug: 'north-india',
+    name: 'North India',
+    description:
+      'The Himalayan states — Uttarakhand, Himachal and Kashmir. High valleys, base camps, river towns and the Char Dham circuit.'
+  },
+  {
+    slug: 'northeast-india',
+    name: 'Northeast India',
+    description:
+      'Meghalaya, Assam and Nagaland. Living root bridges, tea country and two of the best festivals in the country.'
+  },
+  {
+    slug: 'west-india',
+    name: 'West India',
+    description: 'Rajasthan and Goa. Desert forts, Holi in Pushkar and a coastline that slows everything down.'
+  }
+]
+
+export const getRegion = (slug: string) => regions.find((r) => r.slug === slug)
 
 export const destinationCategories: DestinationCategory[] = [
   'Mountains',
@@ -13,9 +45,124 @@ export const destinationCategories: DestinationCategory[] = [
 
 export const destinations: Destination[] = [
   {
+    slug: 'uttarakhand',
+    name: 'Uttarakhand',
+    state: 'Uttarakhand',
+    region: 'north-india',
+    tagline: 'Where the Ganga begins',
+    description:
+      'Kumaon lakes and orchards, the high valleys of Darma, Johar and Niti, and the source of the Ganga — our home ground.',
+    overview: [
+      'Uttarakhand is where most of what we do begins. The state splits into two old kingdoms: Garhwal in the west, with Rishikesh, the Char Dham shrines and the Niti valley, and Kumaon in the east, with the lake country around Bhimtal, orchard villages like Hartola, and the long road up to Munsiyari and the Panchachuli peaks.',
+      'It rewards travellers who go beyond the hill stations. A few hours past the last big town you are in villages that still move with the seasons, on trails to base camps that see a handful of groups a year, and in valleys that sit a day away from the Tibetan border. We stay in small, locally run places and travel with guides who grew up in these valleys.'
+    ],
+    image: 'photo-1597074866923-dc0589150358',
+    heroImage: 'photo-1486911278844-a81c5267e227',
+    gallery: [
+      'photo-1609920658906-8223bd289001',
+      'photo-1622308644420-b20142dc993c',
+      'photo-1551632811-561732d1e306',
+      'photo-1508672019048-805c876b67e2'
+    ],
+    categories: ['Mountains', 'Adventure', 'Family', 'Weekend'],
+    bestTimeToVisit: 'March to June and September to November',
+    idealDuration: '5 – 10 days',
+    seasons: [
+      {
+        window: 'March – June',
+        label: 'Rhododendron & trek season',
+        description:
+          'Rhododendron forests in bloom, high trails opening up and the Char Dham portals opening from late April or May.'
+      },
+      {
+        window: 'July – August',
+        label: 'Monsoon',
+        description:
+          'Green and dramatic, with landslide risk on the mountain roads. Best for lake stays and short foothill trips.'
+      },
+      {
+        window: 'September – November',
+        label: 'Clear skies',
+        description:
+          'The clearest Himalayan views of the year, Nanda Ashtami in Kumaon, and the best window for the high valleys.'
+      },
+      {
+        window: 'December – February',
+        label: 'Winter light',
+        description:
+          'Snow at Hartola, Munsiyari and Khaliya Top, crisp days in Kumaon, and quiet homestays with a fire going.'
+      }
+    ],
+    whyVisit: [
+      {
+        title: 'Views of the high Himalaya',
+        description:
+          'Panchachuli from Munsiyari, Nanda Devi and Trishul from the Kumaon ridges — a wall of peaks from your window.'
+      },
+      {
+        title: 'Valleys few people reach',
+        description:
+          'Darma, Johar and Niti are old trade valleys near the Tibetan border, with stone villages, glaciers and permits to match.'
+      },
+      {
+        title: 'The river and the shrines',
+        description:
+          'From Gangotri down to Rishikesh, the Ganga ties together the Char Dham, the ghats and the towns built along its banks.'
+      },
+      {
+        title: 'Stays with a sense of place',
+        description:
+          'Orchard homestays, organic farms, glamping in the woods and lakeside hotels — chosen for the hosts as much as the rooms.'
+      }
+    ],
+    experiences: [
+      'Sunrise over Panchachuli from Khaliya Top',
+      'Base camp treks to Bankatiya and Panchachuli',
+      '4x4 journeys into the Darma, Johar and Niti valleys',
+      'The Char Dham yatra, planned at a humane pace',
+      'Orchard walks and farm-to-table meals in Kumaon'
+    ],
+    travelTips: [
+      'Mountain roads are slow. Plan on 25 – 30 km an hour in the high country and avoid driving after dark.',
+      'Darma, Johar and Niti need an Inner Line Permit. We arrange it — carry original photo ID and passport photographs.',
+      'In the monsoon, keep one buffer day in any itinerary that crosses a pass or a river valley.',
+      'Mobile coverage drops off beyond Munsiyari and Dharchula. Let family know you may be offline for a few days.'
+    ],
+    faqs: [
+      {
+        question: 'How do I reach Kumaon?',
+        answer:
+          'The nearest railhead is Kathgodam, with overnight trains from Delhi, and Pantnagar has the nearest airport. From Kathgodam, Bhimtal is about an hour away; Munsiyari is a long day or two easier days by road.'
+      },
+      {
+        question: 'Do I need a permit for the border valleys?',
+        answer:
+          'Yes. Darma, Johar and Niti are inner-line areas and need a permit from the local administration before you travel. Foreign nationals may need additional permissions. We handle the paperwork as part of the booking.'
+      },
+      {
+        question: 'Is Uttarakhand good for a first trip to the mountains?',
+        answer:
+          'Very. Bhimtal, Hartola and Rishikesh are easy, comfortable introductions, and Khaliya Top is a good first overnight trek. We would save the high valleys for a second visit.'
+      },
+      {
+        question: 'When is the Char Dham yatra open?',
+        answer:
+          'The shrines open around late April or May and close around Diwali, with exact dates announced each year. May – June and September – October are the most comfortable windows.'
+      }
+    ],
+    featured: true,
+    seo: {
+      title: 'Uttarakhand Travel Guide — Kumaon Stays, Treks & High Valleys',
+      description:
+        'Plan an Uttarakhand trip with Pravaah: Bhimtal and Hartola stays, Munsiyari and Panchachuli, base camp treks, the Darma, Johar and Niti valleys, and the Char Dham.'
+    }
+  },
+
+  {
     slug: 'kashmir',
     name: 'Kashmir',
     state: 'Jammu & Kashmir',
+    region: 'north-india',
     tagline: 'Meadows, water and light',
     description:
       'Alpine meadows, houseboats on still water and a valley that changes colour with every month of the year.',
@@ -122,6 +269,7 @@ export const destinations: Destination[] = [
     slug: 'himachal-pradesh',
     name: 'Himachal Pradesh',
     state: 'Himachal Pradesh',
+    region: 'north-india',
     tagline: 'River valleys and quiet ridges',
     description:
       'Deodar forests, glacial rivers and hill towns that reward slow travel — from the Parvati valley to the edge of Spiti.',
@@ -227,6 +375,7 @@ export const destinations: Destination[] = [
     slug: 'rajasthan',
     name: 'Rajasthan',
     state: 'Rajasthan',
+    region: 'west-india',
     tagline: 'Forts, courtyards and desert light',
     description:
       'Hill forts, lake palaces and old city lanes — the most theatrical landscape of heritage architecture in India.',
@@ -329,114 +478,10 @@ export const destinations: Destination[] = [
   },
 
   {
-    slug: 'kerala',
-    name: 'Kerala',
-    state: 'Kerala',
-    tagline: 'Backwaters, hills and long lunches',
-    description:
-      'Houseboats on the backwaters, tea country in the Western Ghats and a coastline that runs green all the way down.',
-    overview: [
-      'Kerala is the easiest state in India to travel slowly. Distances are short, the roads are good, and almost every drive passes water.',
-      'The standard arc goes coast to backwaters to hills — Kochi, Alleppey and then up to Munnar or Thekkady. It works because each stop changes the temperature and the pace, and because nothing is more than four hours from the last thing.'
-    ],
-    image: 'photo-1602216056096-3b40cc0c9944',
-    heroImage: 'photo-1602216056096-3b40cc0c9944',
-    gallery: [
-      'photo-1593693411515-c20261bcad6e',
-      'photo-1544084944-15269ec7b5a0',
-      'photo-1454391304352-2bf4678b1a7a',
-      'photo-1433086966358-54859d0ed716'
-    ],
-    categories: ['Beaches', 'Honeymoon', 'Family', 'Wildlife', 'Weekend'],
-    bestTimeToVisit: 'September to March',
-    idealDuration: '6 – 8 days',
-    seasons: [
-      {
-        window: 'September – November',
-        label: 'After the rain',
-        description: 'Everything is green, the backwaters are full and the crowds have not arrived yet.'
-      },
-      {
-        window: 'December – February',
-        label: 'Peak season',
-        description: 'Dry, warm and reliable. Book houseboats and hill stays well ahead over the holidays.'
-      },
-      {
-        window: 'March – May',
-        label: 'Warm',
-        description: 'Humid on the coast but comfortable in Munnar and Wayanad, and far quieter everywhere.'
-      },
-      {
-        window: 'June – August',
-        label: 'Monsoon',
-        description: 'Dramatic rain and the traditional season for Ayurvedic treatment. Beaches are largely off-limits.'
-      }
-    ],
-    whyVisit: [
-      {
-        title: 'A night on the backwaters',
-        description: 'A houseboat from Alleppey through the paddy-fed canals, with lunch cooked on board.'
-      },
-      {
-        title: 'Tea country',
-        description: 'The plantations around Munnar, where the hills are cut into green terraces to the skyline.'
-      },
-      {
-        title: 'Fort Kochi',
-        description: 'Colonial streets, Chinese fishing nets, a working spice market and the best café culture in the south.'
-      },
-      {
-        title: 'Food worth planning around',
-        description: 'Appam and stew, Syrian-Christian beef fry, Malabar biryani and fish grilled the hour it was landed.'
-      }
-    ],
-    experiences: [
-      'Overnight houseboat through the Alleppey backwaters',
-      'Tea estate walk and tasting near Munnar',
-      'Kathakali performance and a spice-market walk in Kochi',
-      'Periyar boat safari and a bamboo raft morning',
-      'Ayurvedic treatment at a certified centre'
-    ],
-    travelTips: [
-      'Book a smaller houseboat — the large ones stay on the main channel and miss the narrow canals.',
-      'Munnar is cold at night year round. Pack one warm layer even in April.',
-      'Kochi is the most convenient arrival airport for the classic loop; Trivandrum suits a southern beach trip.',
-      'Most Ayurvedic packages need a minimum of seven days to do anything meaningful.'
-    ],
-    faqs: [
-      {
-        question: 'Is one night enough on a houseboat?',
-        answer:
-          'For most travellers, yes. You board at midday, cruise through the afternoon, moor overnight and disembark after breakfast — a second night mostly repeats the first.'
-      },
-      {
-        question: 'Munnar or Wayanad?',
-        answer:
-          'Munnar for tea landscapes and easy access from Kochi. Wayanad for forest, wildlife and a quieter, less built-up feel.'
-      },
-      {
-        question: 'Does Kerala work during the monsoon?',
-        answer:
-          'It can be wonderful if you go for the rain, the greenery and Ayurveda rather than for beaches. We adjust the route to avoid the most flood-prone stretches.'
-      },
-      {
-        question: 'Is Kerala a good destination with small children?',
-        answer:
-          'One of the best. Short drives, calm water, good hospitals within reach and food that is easy to adapt.'
-      }
-    ],
-    featured: true,
-    seo: {
-      title: 'Kerala Travel Guide — Backwaters, Munnar & Best Time to Visit',
-      description:
-        'Plan a Kerala trip with Pravaah: Alleppey houseboats, Munnar tea country, Fort Kochi and Periyar, with seasons, tips and custom itineraries.'
-    }
-  },
-
-  {
     slug: 'goa',
     name: 'Goa',
     state: 'Goa',
+    region: 'west-india',
     tagline: 'Two coastlines, one pace',
     description:
       'Quiet southern sands, a busier north, and a Portuguese-era interior that most visitors never get to.',
@@ -541,7 +586,8 @@ export const destinations: Destination[] = [
   {
     slug: 'northeast-india',
     name: 'Northeast India',
-    state: 'Meghalaya, Assam & Arunachal',
+    state: 'Meghalaya, Assam & Nagaland',
+    region: 'northeast-india',
     tagline: 'Living roots and river islands',
     description:
       'Waterfall country in Meghalaya, tea estates along the Brahmaputra and some of the least-travelled roads in India.',
@@ -645,5 +691,8 @@ export const destinations: Destination[] = [
 ]
 
 export const getDestination = (slug: string) => destinations.find((d) => d.slug === slug)
+
+export const destinationsByRegion = (region: string) =>
+  region === 'india' ? destinations : destinations.filter((d) => d.region === region)
 
 export const featuredDestinations = destinations.filter((d) => d.featured)

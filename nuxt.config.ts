@@ -30,10 +30,10 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en-IN' },
       // Fallback for the client-rendered shells (404.html / 200.html).
-      title: 'Pravaah — Journeys worth remembering.',
+      title: 'Pravaah — Curated stays, experiences & expeditions',
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/brand/favicon.svg' },
-        { rel: 'apple-touch-icon', href: '/brand/pravaah-symbol.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '48x48', href: '/brand/favicon-48.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/brand/apple-touch-icon.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'preconnect', href: 'https://images.unsplash.com' },

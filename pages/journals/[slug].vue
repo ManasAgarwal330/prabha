@@ -15,14 +15,14 @@ const related = sortedArticles.filter((a) => a.slug !== current.slug).slice(0, 3
 
 const crumbs = [
   { name: 'Home', path: '/' },
-  { name: 'Travel Stories', path: '/blog' },
-  { name: current.title, path: `/blog/${current.slug}` }
+  { name: 'Journals', path: '/journals' },
+  { name: current.title, path: `/journals/${current.slug}` }
 ]
 
 usePageSeo({
   title: current.seo.title,
   description: current.seo.description,
-  path: `/blog/${current.slug}`,
+  path: `/journals/${current.slug}`,
   image: current.coverImage,
   type: 'article',
   publishedAt: current.publishedAt

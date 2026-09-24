@@ -14,7 +14,7 @@ withDefaults(
 
 <template>
   <article class="group relative flex h-full flex-col">
-    <NuxtLink :to="`/blog/${article.slug}`" class="block overflow-hidden rounded-card" tabindex="-1" aria-hidden="true">
+    <NuxtLink :to="`/journals/${article.slug}`" class="block overflow-hidden rounded-card" tabindex="-1" aria-hidden="true">
       <AppImage
         :src="article.coverImage"
         :alt="article.title"
@@ -27,7 +27,7 @@ withDefaults(
       <p class="eyebrow text-accent">{{ article.category }}</p>
 
       <h3 class="mt-3 font-display leading-snug" :class="featured ? 'text-display-sm' : 'text-xl'">
-        <NuxtLink :to="`/blog/${article.slug}`" class="transition-colors">
+        <NuxtLink :to="`/journals/${article.slug}`" class="transition-colors">
           <span class="absolute inset-0" />
           <span class="sweep">{{ article.title }}</span>
         </NuxtLink>

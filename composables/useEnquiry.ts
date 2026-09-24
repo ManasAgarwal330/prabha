@@ -7,7 +7,7 @@ export interface EnquiryPayload {
   travellers: string
   budget: string
   message: string
-  /** Where the enquiry came from, e.g. `tour:magical-kashmir`. */
+  /** Where the enquiry came from, e.g. `stays:pi-palace-bhimtal`. */
   source: string
 }
 

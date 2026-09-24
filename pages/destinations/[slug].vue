@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowRight, CalendarDays, Clock, MapPin } from 'lucide-vue-next'
 import { destinations, getDestination } from '~/data/destinations'
-import { toursByDestination } from '~/data/tours'
+import { listingsByDestination } from '~/data/listings'
 
 definePageMeta({ hero: true })
 
@@ -15,8 +15,13 @@ if (!destination.value) {
 }
 
 const current = destination.value!
-const relatedTours = toursByDestination(current.slug)
-const otherDestinations = destinations.filter((d) => d.slug !== current.slug).slice(0, 3)
+const relatedListings = listingsByDestination(current.slug)
+const featuredHere = [...relatedListings].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))).slice(0, 6)
+/** Neighbours in the same region first, then the rest of India. */
+const otherDestinations = destinations
+  .filter((d) => d.slug !== current.slug)
+  .sort((a, b) => Number(b.region === current.region) - Number(a.region === current.region))
+  .slice(0, 3)
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -158,38 +163,34 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
       <ImageGallery :images="current.gallery" :label="current.name" />
     </section>
 
-    <!-- Recommended tours -->
-    <section v-if="relatedTours.length" class="section-dark py-20 lg:py-24">
+    <!-- Stays, experiences and expeditions here -->
+    <section class="section-dark py-20 lg:py-24">
       <div class="container-pravaah">
-        <div class="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow="Recommended journeys" :title="`Ways to travel ${current.name}.`" />
-          <NuxtLink to="/tours" class="btn-ghost link-underline reveal shrink-0">
-            All journeys
-            <ArrowRight class="h-4 w-4" aria-hidden="true" />
-          </NuxtLink>
-        </div>
+        <SectionHeading
+          :eyebrow="`In ${current.name}`"
+          :title="relatedListings.length ? `Where to stay and what to do in ${current.name}.` : `Travel ${current.name} your way.`"
+        />
 
-        <div class="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           <div
-            v-for="(tour, index) in relatedTours"
-            :key="tour.slug"
+            v-for="(listing, index) in featuredHere"
+            :key="`${listing.section}-${listing.slug}`"
             class="reveal"
-            :style="{ transitionDelay: `${index * 80}ms` }"
+            :style="{ transitionDelay: `${Math.min(index, 4) * 80}ms` }"
           >
-            <TourCard :tour="tour" />
+            <ListingCard :listing="listing" />
           </div>
 
-          <!-- Keeps the row visually complete for regions with one or two listed journeys,
+          <!-- Keeps the row visually complete for regions with few listings,
                and offers the custom route instead of an empty column. -->
           <div
-            v-if="relatedTours.length < 3"
+            v-if="featuredHere.length % 3 !== 0 || featuredHere.length === 0"
             class="reveal flex flex-col justify-center rounded-card border border-dashed border-hairline p-8"
-            :style="{ transitionDelay: `${relatedTours.length * 80}ms` }"
           >
             <h3 class="font-display text-2xl leading-snug">Something else in {{ current.name }}?</h3>
             <p class="mt-3 text-sm leading-relaxed text-ink-muted">
-              These are the routes we publish. Most trips we run are built from scratch — tell us the days you
-              have and what you want out of them.
+              These are the stays and trips we publish. Most journeys we run are built from scratch — tell us the
+              days you have and what you want out of them.
             </p>
             <NuxtLink to="/plan-my-trip" class="btn-secondary mt-6 self-start">
               Build a custom route
@@ -249,7 +250,6 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
       :title="`Plan a trip to ${current.name}.`"
       body="Tell us your dates and how you like to travel. We will come back with a route and an indicative cost within a working day."
       :image="current.gallery[0] || current.heroImage"
-      secondary-label="See all journeys"
     />
   </div>
 </template>

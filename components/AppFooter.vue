@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { Instagram, Facebook, Youtube, Mail, Phone } from 'lucide-vue-next'
+import { Instagram, Mail, Phone } from 'lucide-vue-next'
 import { footerNav, site } from '~/data/site'
 
 const year = new Date().getFullYear()
 
 const socials = [
-  { label: 'Instagram', href: site.social.instagram, icon: Instagram },
-  { label: 'Facebook', href: site.social.facebook, icon: Facebook },
-  { label: 'YouTube', href: site.social.youtube, icon: Youtube }
+  { label: 'Instagram', handle: site.social.instagramHandle, href: site.social.instagram, icon: Instagram }
 ]
 </script>
 
@@ -17,7 +15,7 @@ const socials = [
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div class="lg:col-span-4">
           <NuxtLink to="/" class="inline-block" :aria-label="`${site.name} — home`">
-            <PravaahLogo size="lg" />
+            <PravaahLogo tone="light" size="lg" />
           </NuxtLink>
           <p class="mt-5 max-w-sm text-sm leading-relaxed text-ink-muted">
             {{ site.description }}
@@ -76,17 +74,18 @@ const socials = [
 
         <div class="lg:col-span-2">
           <h2 class="eyebrow mb-5">Follow</h2>
-          <div class="flex gap-3">
+          <div class="flex flex-col gap-3">
             <a
               v-for="social in socials"
               :key="social.label"
               :href="social.href"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex h-10 w-10 items-center justify-center rounded-pill border border-hairline text-ink-soft transition-colors hover:border-ink/40 hover:text-ink"
-              :aria-label="`${site.name} on ${social.label}`"
+              class="inline-flex items-center gap-2.5 self-start rounded-pill border border-hairline px-4 py-2.5 text-sm text-ink-soft transition-colors hover:border-ink/40 hover:text-ink"
+              :aria-label="`${site.name} on ${social.label} (${social.handle})`"
             >
-              <component :is="social.icon" class="h-4 w-4" aria-hidden="true" />
+              <component :is="social.icon" class="h-4 w-4 shrink-0" aria-hidden="true" />
+              {{ social.handle }}
             </a>
           </div>
         </div>

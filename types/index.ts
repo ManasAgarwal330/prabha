@@ -38,10 +38,19 @@ export interface SeasonNote {
   description: string
 }
 
+export type RegionSlug = 'india' | 'north-india' | 'northeast-india' | 'west-india'
+
+export interface Region {
+  slug: RegionSlug
+  name: string
+  description: string
+}
+
 export interface Destination {
   slug: string
   name: string
   state: string
+  region: Exclude<RegionSlug, 'india'>
   tagline: string
   /** One-line summary used on cards. */
   description: string
@@ -70,40 +79,57 @@ export interface ItineraryDay {
   meals?: string
 }
 
-export interface Tour {
-  slug: string
-  title: string
-  destinationSlug: string
-  destination: string
-  duration: string
-  nights: number
-  days: number
-  /** Starting price per person in INR. */
-  price: number
-  image: ImageRef
-  gallery: ImageRef[]
-  description: string
-  overview: string[]
-  themes: string[]
-  highlights: string[]
-  itinerary: ItineraryDay[]
-  inclusions: string[]
-  exclusions: string[]
-  importantInfo: string[]
-  bestTimeToTravel: string
-  groupSize: string
-  popular?: boolean
-  seo: SeoMeta
-}
+export type SectionKey = 'stays' | 'experiences' | 'expeditions' | 'events'
 
-export interface Experience {
+export interface ListingCategory {
   slug: string
   name: string
   description: string
+}
+
+/** A top-level offering tab — Stays, Experiences, Expeditions or Events. */
+export interface Section {
+  key: SectionKey
+  name: string
+  /** Lower-case singular used in copy, e.g. "stay". */
+  singular: string
+  path: string
+  title: string
+  intro: string
+  heroImage: ImageRef
+  categories: ListingCategory[]
+  seo: SeoMeta
+}
+
+export interface KeyFact {
+  label: string
+  value: string
+}
+
+/** A single stay, experience, expedition or event with its own detail page. */
+export interface Listing {
+  slug: string
+  section: SectionKey
+  /** Slug of a category within the section. */
+  category: string
+  title: string
+  location: string
+  destinationSlug?: string
+  tagline: string
+  /** One-line summary used on cards. */
+  description: string
+  overview: string[]
   image: ImageRef
-  /** Lucide icon name rendered by the ExperienceCard. */
-  icon: string
-  destinations: string[]
+  gallery: ImageRef[]
+  /** Short facts shown in the hero and the enquiry card, e.g. duration or altitude. */
+  facts: KeyFact[]
+  highlights: string[]
+  itinerary?: ItineraryDay[]
+  inclusions?: string[]
+  goodToKnow: string[]
+  bestTime: string
+  featured?: boolean
+  seo: SeoMeta
 }
 
 export interface Testimonial {

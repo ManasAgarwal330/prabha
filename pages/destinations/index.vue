@@ -1,185 +1,134 @@
 <script setup lang="ts">
-import { Search, X } from 'lucide-vue-next'
-import { destinationCategories, destinations } from '~/data/destinations'
-import type { DestinationCategory } from '~/types'
+import { ArrowRight } from 'lucide-vue-next'
+import { destinations, destinationsByRegion, regions } from '~/data/destinations'
 
-const query = ref('')
-const activeCategory = ref<DestinationCategory | 'All'>('All')
+/** `india` is the page itself; every other region gets an anchored block below. */
+const regionGroups = regions
+  .filter((region) => region.slug !== 'india')
+  .map((region) => ({ region, destinations: destinationsByRegion(region.slug) }))
+  .filter((group) => group.destinations.length > 0)
 
-const filtered = computed(() => {
-  const term = query.value.trim().toLowerCase()
+const india = regions.find((region) => region.slug === 'india')!
 
-  return destinations.filter((destination) => {
-    const matchesCategory =
-      activeCategory.value === 'All' || destination.categories.includes(activeCategory.value)
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Destinations', path: '/destinations' }
+]
 
-    if (!term) return matchesCategory
-
-    const haystack = [
-      destination.name,
-      destination.state,
-      destination.tagline,
-      destination.description,
-      ...destination.categories,
-      ...destination.experiences
-    ]
-      .join(' ')
-      .toLowerCase()
-
-    return matchesCategory && haystack.includes(term)
-  })
-})
-
-const clearFilters = () => {
-  query.value = ''
-  activeCategory.value = 'All'
-}
+definePageMeta({ hero: true })
 
 /** Groups destinations by the season they are at their best. */
 const seasonal = [
   {
     window: 'Right now — September to November',
-    note: 'Clear skies after the monsoon and the widest choice of routes in the year.',
-    slugs: ['kashmir', 'northeast-india', 'kerala']
+    note: 'Clear skies after the monsoon, festival season in the northeast and the best light of the year in the Himalaya.',
+    slugs: ['uttarakhand', 'kashmir', 'northeast-india']
   },
   {
     window: 'Winter — December to February',
-    note: 'Desert light, snow in the hills and the most comfortable weather in the south.',
-    slugs: ['rajasthan', 'goa', 'kerala']
+    note: 'Desert light in Rajasthan, the Goa coast at its best and snow on the Kumaon ridges.',
+    slugs: ['rajasthan', 'goa', 'uttarakhand']
   },
   {
     window: 'Spring & summer — March to June',
-    note: 'Blossom in the valley, high passes reopening and the season for the cold desert.',
-    slugs: ['himachal-pradesh', 'kashmir']
+    note: 'Holi in Pushkar, rhododendrons on the trails and the high passes reopening.',
+    slugs: ['uttarakhand', 'himachal-pradesh', 'rajasthan']
   }
 ]
 
 const bySlug = (slug: string) => destinations.find((d) => d.slug === slug)
 
 usePageSeo({
-  title: 'Destinations in India — Where Pravaah Travels',
+  title: 'Destinations in India — North, Northeast & West India',
   description:
-    'Explore the six regions Pravaah plans journeys across: Kashmir, Himachal Pradesh, Rajasthan, Kerala, Goa and Northeast India, with seasons and trip ideas for each.',
+    'Explore where Pravaah travels across India: Uttarakhand, Himachal and Kashmir in the north, Meghalaya and Nagaland in the northeast, and Rajasthan and Goa in the west.',
   path: '/destinations',
-  image: 'photo-1598091383021-15ddea10925d'
+  image: 'photo-1486911278844-a81c5267e227'
 })
 
-useJsonLd(
-  breadcrumbLd([
-    { name: 'Home', path: '/' },
-    { name: 'Destinations', path: '/destinations' }
-  ])
-)
+useJsonLd(breadcrumbLd(crumbs))
 </script>
 
 <template>
   <div>
-    <section class="container-pravaah pb-4 pt-16 lg:pt-20">
-      <Breadcrumbs
-        :items="[
-          { name: 'Home', path: '/' },
-          { name: 'Destinations', path: '/destinations' }
-        ]"
-      />
+    <PageHero
+      image="photo-1486911278844-a81c5267e227"
+      alt="Snow peaks of the Himalaya"
+      eyebrow="Destinations"
+      title="India, region by region."
+      :intro="`${india.description} We go deep in a handful of places rather than thin across the whole country.`"
+      :crumbs="crumbs"
+    >
+      <nav class="mt-9 flex flex-wrap gap-2" aria-label="Regions">
+        <NuxtLink
+          v-for="group in regionGroups"
+          :key="group.region.slug"
+          :to="{ hash: `#${group.region.slug}` }"
+          class="rounded-pill border border-ivory-bright/25 bg-ivory-bright/10 px-4 py-2 text-xs font-medium text-ivory-bright backdrop-blur-md transition-colors hover:border-ivory-bright/60 hover:bg-ivory-bright/20"
+        >
+          {{ group.region.name }}
+          <span class="ml-1 text-ivory-bright/60">{{ group.destinations.length }}</span>
+        </NuxtLink>
+      </nav>
+    </PageHero>
 
-      <div class="mt-8 max-w-3xl">
-        <p class="eyebrow mb-4">Destinations</p>
-        <h1 class="text-display-lg">Six regions we know well enough to plan properly.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
-          We would rather go deep in a handful of places than thin across all of India. Filter by the kind of trip
-          you are after, or search for something specific.
-        </p>
-      </div>
+    <section id="india" class="container-pravaah scroll-mt-24 py-16 lg:py-20">
+      <SectionHeading :eyebrow="india.name" title="Where we travel." />
+
+      <ul class="mt-12 grid gap-4 md:grid-cols-3 lg:gap-5">
+        <li
+          v-for="(group, index) in regionGroups"
+          :key="group.region.slug"
+          class="reveal"
+          :style="{ transitionDelay: `${index * 80}ms` }"
+        >
+          <NuxtLink
+            :to="{ hash: `#${group.region.slug}` }"
+            class="surface-card card-lift group flex h-full flex-col p-7 shadow-soft hover:shadow-lift"
+          >
+            <span class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">
+              {{ group.destinations.length }} {{ group.destinations.length === 1 ? 'destination' : 'destinations' }}
+            </span>
+            <span class="mt-3 font-display text-2xl leading-snug">{{ group.region.name }}</span>
+            <span class="mt-3 text-sm leading-relaxed text-ink-muted">{{ group.region.description }}</span>
+            <span class="mt-auto flex items-center gap-1.5 pt-6 text-xs font-medium text-accent">
+              {{ group.destinations.map((d) => d.name).join(' · ') }}
+              <ArrowRight
+                class="h-3.5 w-3.5 shrink-0 transition-transform duration-300 ease-editorial group-hover:translate-x-1"
+                aria-hidden="true"
+              />
+            </span>
+          </NuxtLink>
+        </li>
+      </ul>
     </section>
 
-    <!-- Search, filters and results share a wrapper so the sticky bar releases
-         once you are past the results rather than following you down the page. -->
-    <div>
-      <!-- Search + filters -->
-      <!-- The sticky backdrop spans the full width; only the contents are
-           constrained, so the bar lines up with the page grid at every size. -->
-      <section class="sticky top-16 z-30 border-b border-hairline/60 bg-canvas/95 backdrop-blur-sm">
-      <div class="container-pravaah py-6">
-        <div class="relative">
-          <Search
-            class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted"
-            aria-hidden="true"
-          />
-          <label for="destination-search" class="sr-only">Search destinations</label>
-          <input
-            id="destination-search"
-            v-model="query"
-            type="search"
-            placeholder="Search a place, a season or an experience"
-            class="w-full rounded-pill border border-hairline bg-surface py-3 pl-11 pr-4 text-[0.95rem] text-ink placeholder:text-ink-muted/70 transition-colors focus:border-link focus:outline-none focus:ring-1 focus:ring-link"
-          />
-        </div>
+    <!-- One block per region, anchored for the header dropdown -->
+    <section
+      v-for="(group, groupIndex) in regionGroups"
+      :id="group.region.slug"
+      :key="group.region.slug"
+      class="scroll-mt-24 py-16 lg:py-20"
+      :class="groupIndex % 2 === 0 ? 'section-dark' : ''"
+    >
+      <div class="container-pravaah">
+        <SectionHeading eyebrow="Destinations" :title="group.region.name" :intro="group.region.description" />
 
-        <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter destinations by type">
-          <button
-            type="button"
-            class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
-            :class="
-              activeCategory === 'All'
-                ? 'border-forest bg-forest text-ivory-bright'
-                : 'border-hairline text-ink-soft hover:border-ink/40'
-            "
-            :aria-pressed="activeCategory === 'All'"
-            @click="activeCategory = 'All'"
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+          <div
+            v-for="(destination, index) in group.destinations"
+            :key="destination.slug"
+            class="reveal h-80 min-w-0 sm:h-[22rem]"
+            :style="{ transitionDelay: `${index * 80}ms` }"
           >
-            All
-          </button>
-          <button
-            v-for="category in destinationCategories"
-            :key="category"
-            type="button"
-            class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
-            :class="
-              activeCategory === category
-                ? 'border-forest bg-forest text-ivory-bright'
-                : 'border-hairline text-ink-soft hover:border-ink/40'
-            "
-            :aria-pressed="activeCategory === category"
-            @click="activeCategory = category"
-          >
-            {{ category }}
-          </button>
+            <DestinationCard :destination="destination" />
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- Results -->
-    <section class="container-pravaah pb-20 pt-6 lg:pb-28">
-      <p class="mb-8 text-sm text-ink-muted" aria-live="polite">
-        {{ filtered.length }} {{ filtered.length === 1 ? 'destination' : 'destinations' }}
-        <template v-if="activeCategory !== 'All'"> for {{ activeCategory }}</template>
-      </p>
-
-      <div v-if="filtered.length" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-        <div v-for="destination in filtered" :key="destination.slug" class="h-80 min-w-0 sm:h-[22rem]">
-          <DestinationCard :destination="destination" />
-        </div>
-      </div>
-
-      <div v-else class="surface-card px-6 py-16 text-center">
-        <h2 class="font-display text-2xl">Nothing matched that.</h2>
-        <p class="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-ink-muted">
-          We are adding regions steadily. Tell us where you want to go and we will plan it whether or not it is
-          listed here.
-        </p>
-        <div class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <button type="button" class="btn-secondary" @click="clearFilters">
-            <X class="h-4 w-4" aria-hidden="true" />
-            Clear filters
-          </button>
-          <NuxtLink to="/plan-my-trip" class="btn-primary">Plan My Trip</NuxtLink>
-        </div>
-      </div>
-      </section>
-    </div>
 
     <!-- Seasonal recommendations -->
-    <section class="section-dark py-20 lg:py-28">
+    <section class="py-20 lg:py-28">
       <div class="container-pravaah">
         <SectionHeading
           eyebrow="When to go"
@@ -215,7 +164,8 @@ useJsonLd(
       title="Not sure which one?"
       body="Tell us the month you can travel and what you want the trip to feel like. We will suggest the region."
       image="photo-1470071459604-3b5ec3a7fe05"
-      secondary-label="See all journeys"
+      secondary-label="Explore expeditions"
+      secondary-to="/expeditions"
     />
   </div>
 </template>

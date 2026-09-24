@@ -16,7 +16,7 @@ const principles = [
   },
   {
     title: 'Fewer places, better planned',
-    body: 'Six regions is a deliberate limit. We only sell trips to places where we have walked the route and met the people running it.'
+    body: 'A short list of places is a deliberate limit. We only sell stays and trips where we have walked the route and met the people running it.'
   },
   {
     title: 'No pressure, ever',
@@ -27,7 +27,7 @@ const principles = [
 usePageSeo({
   title: 'About Pravaah — A Travel Studio Built Around India',
   description:
-    'Pravaah is a small travel studio planning custom journeys across six regions of India. How we work, what we believe, and who is behind the trips.',
+    'Pravaah is a small travel studio planning stays, experiences, expeditions and retreats across India. How we work, what we believe, and who is behind the trips.',
   path: '/about',
   image: HERO_IMAGE
 })

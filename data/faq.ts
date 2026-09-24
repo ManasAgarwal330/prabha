@@ -1,6 +1,6 @@
 import type { FaqItem } from '~/types'
 
-/** Site-wide FAQs. Destination and tour pages carry their own. */
+/** Site-wide FAQs. Destination pages carry their own. */
 export const generalFaqs: FaqItem[] = [
   {
     question: 'How does planning a trip with Pravaah work?',
@@ -13,9 +13,9 @@ export const generalFaqs: FaqItem[] = [
       'No. Every itinerary on this site is a starting point. We change the pace, swap stays, add or remove days and rebuild routes entirely — most of our trips end up looking quite different from where they started.'
   },
   {
-    question: 'What does the starting price include?',
+    question: 'Why are there no prices on the site?',
     answer:
-      'Prices shown are per person on twin sharing and cover accommodation, listed meals, private transport and the guided experiences named in the itinerary. Flights, monument entry fees and personal expenses are listed separately on each tour page.'
+      'Rates for stays, treks and festivals change with the season, group size and availability, so we quote each trip individually. Every quote spells out exactly what is included — stays, meals, transport, guides and permits — and what is not, before you pay anything.'
   },
   {
     question: 'How do I pay, and when?',
@@ -45,7 +45,7 @@ export const generalFaqs: FaqItem[] = [
   {
     question: 'Do you handle permits?',
     answer:
-      'Yes — Inner Line Permits for Arunachal Pradesh, protected area permits for foreign nationals and national park entries are all arranged as part of the booking.'
+      'Yes — Inner Line Permits for the Darma, Johar and Niti valleys and for Nagaland, trek and forest permits, and protected area permits for foreign nationals are all arranged as part of the booking.'
   },
   {
     question: 'Can you work to a specific budget?',

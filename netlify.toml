@@ -11,6 +11,32 @@
   # the build fully static and the output exactly where `publish` points.
   NITRO_PRESET = "static"
 
+# Old URLs from the previous site structure.
+[[redirects]]
+  from = "/tours"
+  to = "/expeditions"
+  status = 301
+
+[[redirects]]
+  from = "/tours/*"
+  to = "/expeditions"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/journals"
+  status = 301
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/journals/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/destinations/kerala"
+  to = "/destinations"
+  status = 301
+
 # Hashed build assets never change — cache them hard.
 [[headers]]
   for = "/_nuxt/*"

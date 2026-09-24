@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, Clock, Mail, MapPin, Phone } from 'lucide-vue-next'
+import { ArrowRight, Clock, Instagram, Mail, MapPin, Phone } from 'lucide-vue-next'
 import { site } from '~/data/site'
 import { generalFaqs } from '~/data/faq'
 
@@ -74,6 +74,19 @@ useJsonLd(
                 Fastest way to reach us. Send your dates and we will take it from there.
               </p>
               <WhatsAppButton variant="inline" />
+            </div>
+
+            <div class="reveal">
+              <h2 class="eyebrow mb-4">Follow along</h2>
+              <a
+                :href="site.social.instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-start gap-3 font-display text-xl transition-colors hover:text-accent"
+              >
+                <Instagram class="mt-1.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                {{ site.social.instagramHandle }}
+              </a>
             </div>
 
             <div class="reveal">

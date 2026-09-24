@@ -5,7 +5,7 @@ import type { ImageRef } from '~/types'
 export interface PageSeoInput {
   title: string
   description: string
-  /** Path only, e.g. `/tours/magical-kashmir`. Canonical + OG url are derived from it. */
+  /** Path only, e.g. `/stays/pi-palace-bhimtal`. Canonical + OG url are derived from it. */
   path: string
   image?: ImageRef
   type?: 'website' | 'article'
@@ -24,7 +24,7 @@ export const usePageSeo = (input: PageSeoInput) => {
 
   const image = input.image
     ? buildImageUrl(input.image, { width: 1200, ratio: 1.91, quality: 75 })
-    : `${base}/brand/pravaah-logo.svg`
+    : `${base}/brand/pravaah-logo-square.jpg`
 
   useHead({
     title: input.title,

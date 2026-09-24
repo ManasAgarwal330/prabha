@@ -24,11 +24,6 @@
        drops under 4.5:1 against the ivory canvas. */
     --c-highlight: 154 110 34;
     --c-link: 46 74 60;
-
-    /* Logo mark. Kept as plain colours rather than tokens so the brand clay and
-       forest stay exact on light surfaces, and only lift where they must. */
-    --logo-sun: #b45f3f;
-    --logo-range: #2e4a3c;
   }
 
   /* Deep pine, not neutral charcoal — the dark bands carry brand colour. */
@@ -44,8 +39,6 @@
     --c-accent: 217 140 99;
     --c-highlight: 231 180 92;
     --c-link: 156 199 174;
-    --logo-sun: #e7b45c;
-    --logo-range: #9cc7ae;
   }
 
   .section-forest {
@@ -59,8 +52,6 @@
     --c-accent: 240 220 180;
     --c-highlight: 240 220 180;
     --c-link: 240 220 180;
-    --logo-sun: #f0dcb4;
-    --logo-range: #faf7f1;
   }
 
   html {
@@ -153,6 +144,7 @@
 
   .btn-primary {
     @apply btn bg-forest text-ivory-bright hover:bg-forest-deep hover:-translate-y-[1px] active:translate-y-0;
+    box-shadow: 0 10px 24px -12px rgba(46, 74, 60, 0.55);
   }
 
   /* On a dark band the forest fill loses separation — go light instead. */
@@ -166,7 +158,8 @@
   }
 
   .btn-light {
-    @apply btn bg-ivory-bright text-charcoal hover:bg-white;
+    @apply btn bg-ivory-bright text-charcoal hover:bg-white hover:-translate-y-[1px];
+    box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.45);
   }
 
   .btn-ghost {
@@ -235,6 +228,20 @@
 @layer utilities {
   .text-shadow-hero {
     text-shadow: 0 1px 24px rgba(20, 18, 16, 0.35);
+  }
+
+  .glass-panel {
+    background: linear-gradient(135deg, rgba(250, 247, 241, 0.12), rgba(250, 247, 241, 0.04));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .card-lift {
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .card-lift:hover {
+    transform: translateY(-6px);
   }
 
   .grain {

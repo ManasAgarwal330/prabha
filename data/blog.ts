@@ -80,7 +80,7 @@ export const articles: Article[] = [
       }
     ],
     seo: {
-      title: "10 Places in Kashmir You Shouldn't Miss — Pravaah Travel Stories",
+      title: "10 Places in Kashmir You Shouldn't Miss — Pravaah Journals",
       description:
         'Ten places in Kashmir worth building an itinerary around, from dawn on Dal Lake to the saffron harvest at Pampore and the meadows at Yusmarg.'
     }
@@ -146,7 +146,7 @@ export const articles: Article[] = [
       }
     ],
     seo: {
-      title: "A First-Timer's Guide to Rajasthan — Pravaah Travel Stories",
+      title: "A First-Timer's Guide to Rajasthan — Pravaah Journals",
       description:
         'How to plan a first Rajasthan trip: which three cities to choose, when to visit the forts, where to stay and how to get between Jaipur, Jodhpur and Udaipur.'
     }
@@ -285,67 +285,6 @@ export const articles: Article[] = [
       title: 'Hidden Gems of Northeast India — Meghalaya, Assam & Arunachal',
       description:
         'Eight places worth travelling for in Northeast India: Nongriat root bridges, Dawki, Majuli, Ziro Valley, Kaziranga and the tea estates near Jorhat.'
-    }
-  },
-
-  {
-    slug: 'how-to-plan-a-slow-kerala-trip',
-    title: 'How to Plan a Slow Kerala Trip',
-    excerpt:
-      'Three bases, short drives and a deliberate lack of sightseeing — the case for doing less in Kerala than your itinerary suggests.',
-    category: 'Travel Tips',
-    coverImage: 'photo-1593693411515-c20261bcad6e',
-    author: 'Pravaah Travel Studio',
-    publishedAt: '2026-06-04',
-    readingTime: 5,
-    body: [
-      {
-        type: 'paragraph',
-        text: 'Kerala is the easiest state in India to over-plan. Distances are short enough that it always looks possible to add one more stop, and the result is a week spent watching the state through a car window.'
-      },
-      { type: 'heading', text: 'Three bases is the right number' },
-      {
-        type: 'paragraph',
-        text: 'Coast, backwater and hill. Fort Kochi, one night on a houseboat out of Alleppey, and two or three nights in Munnar or Wayanad. Each one changes the temperature and the pace, and nothing is more than four hours from the last thing.'
-      },
-      { type: 'heading', text: 'One night on the houseboat is enough' },
-      {
-        type: 'paragraph',
-        text: 'You board at midday, cruise through the afternoon, moor before sunset because the regulations require it, and disembark after breakfast. A second night mostly repeats the first. Spend the saved night in the hills instead.'
-      },
-      {
-        type: 'paragraph',
-        text: 'Book a smaller boat if you can. The large ones are restricted to the main channel and never enter the narrow canals that are the actual attraction.'
-      },
-      { type: 'heading', text: 'Plan around meals, not monuments' },
-      {
-        type: 'list',
-        items: [
-          'Appam and stew for breakfast, somewhere that makes it fresh.',
-          'A toddy shop lunch inland from Alleppey — ask your boat crew.',
-          'Fish grilled the hour it was landed, on the coast.',
-          'Syrian-Christian beef fry in Kottayam or Kochi.',
-          'Estate-grown tea in Munnar, at the estate.'
-        ]
-      },
-      { type: 'heading', text: 'Leave the afternoons empty' },
-      {
-        type: 'paragraph',
-        text: 'It is humid on the coast between one and four. Kerala has always known this. Plan mornings and evenings properly and let the middle of the day take care of itself.'
-      },
-      {
-        type: 'quote',
-        text: 'The best day of most Kerala trips is the one with nothing scheduled in it.'
-      },
-      {
-        type: 'paragraph',
-        text: 'September to March is the window. Fly into Kochi for the classic loop, or Trivandrum if you are heading for the southern beaches.'
-      }
-    ],
-    seo: {
-      title: 'How to Plan a Slow Kerala Trip — Pravaah Travel Stories',
-      description:
-        'A practical guide to planning an unhurried Kerala trip: three bases, one houseboat night, short drives and planning around meals rather than monuments.'
     }
   },
 

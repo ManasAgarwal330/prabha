@@ -7,9 +7,13 @@ import type { Step, ValueProp } from '~/types'
 export const site = {
   name: 'Pravaah',
   legalName: 'Pravaah Travel Studio',
-  tagline: 'Journeys worth remembering.',
+  tagline: "Pravaah doesn't sell the mountains. Pravaah curates how you experience them!",
+  /** Home page headline. */
+  heroHeadline: 'Journeys worth remembering.',
+  /** Short form for page titles, where the full tagline is too long. */
+  titleTagline: 'Curated stays, experiences & expeditions',
   description:
-    'Pravaah designs thoughtfully crafted journeys across India — built around places, people and the way you actually want to travel.',
+    "Pravaah doesn't sell the mountains — it curates how you experience them. Handpicked stays, experiences, expeditions and retreats across the Himalaya and beyond.",
   // Update after connecting your custom domain in Netlify.
   url: 'https://pravaah-travel.netlify.app',
   locale: 'en_IN',
@@ -34,31 +38,82 @@ export const site = {
   },
 
   social: {
-    instagram: 'https://instagram.com/',
-    facebook: 'https://facebook.com/',
-    youtube: 'https://youtube.com/'
+    instagram: 'https://www.instagram.com/thepravaah.in/',
+    instagramHandle: '@thepravaah.in'
   }
 } as const
 
-export const primaryNav = [
-  { label: 'Destinations', to: '/destinations' },
-  { label: 'Tours', to: '/tours' },
-  { label: 'Experiences', to: '/experiences' },
-  { label: 'Travel Stories', to: '/blog' },
-  { label: 'About', to: '/about' }
+export interface NavItem {
+  label: string
+  to: string
+  children?: { label: string; to: string }[]
+}
+
+/** The main tabs. Children are the sub-categories shown in each dropdown. */
+export const primaryNav: NavItem[] = [
+  {
+    label: 'Stays',
+    to: '/stays',
+    children: [
+      { label: 'Hotels & Resorts', to: '/stays#hotels-resorts' },
+      { label: 'Villas & Homestays', to: '/stays#villas-homestays' },
+      { label: 'Camps & Glamping', to: '/stays#camps-glamping' },
+      { label: 'Experiential Stays', to: '/stays#experiential-stays' }
+    ]
+  },
+  {
+    label: 'Experiences',
+    to: '/experiences',
+    children: [
+      { label: 'Adventure', to: '/experiences#adventure' },
+      { label: 'Culture & Heritage', to: '/experiences#culture-heritage' },
+      { label: 'Offbeat Experiences', to: '/experiences#offbeat' }
+    ]
+  },
+  {
+    label: 'Expeditions',
+    to: '/expeditions',
+    children: [
+      { label: 'Treks', to: '/expeditions#treks' },
+      { label: '4x4 / Off-Road', to: '/expeditions#off-road' },
+      { label: 'Multi-Day Expeditions', to: '/expeditions#multi-day' }
+    ]
+  },
+  {
+    label: 'Events',
+    to: '/events',
+    children: [{ label: 'Wellness Retreats', to: '/events#wellness-retreats' }]
+  },
+  {
+    label: 'Destinations',
+    to: '/destinations',
+    children: [
+      { label: 'India', to: '/destinations#india' },
+      { label: 'North India', to: '/destinations#north-india' },
+      { label: 'Northeast India', to: '/destinations#northeast-india' },
+      { label: 'West India', to: '/destinations#west-india' }
+    ]
+  },
+  {
+    label: 'Journals',
+    to: '/journals',
+    children: [{ label: 'Travel Stories', to: '/journals#travel-stories' }]
+  }
 ]
 
 export const footerNav = {
   company: [
     { label: 'About', to: '/about' },
     { label: 'Contact', to: '/contact' },
-    { label: 'Careers', to: '/about#careers' }
+    { label: 'Plan My Trip', to: '/plan-my-trip' }
   ],
   explore: [
-    { label: 'Destinations', to: '/destinations' },
-    { label: 'Tours', to: '/tours' },
+    { label: 'Stays', to: '/stays' },
     { label: 'Experiences', to: '/experiences' },
-    { label: 'Travel Stories', to: '/blog' }
+    { label: 'Expeditions', to: '/expeditions' },
+    { label: 'Events', to: '/events' },
+    { label: 'Destinations', to: '/destinations' },
+    { label: 'Journals', to: '/journals' }
   ],
   support: [
     { label: 'FAQ', to: '/faq' },
@@ -76,7 +131,7 @@ export const brandStory = {
     'We are a small studio of travellers, drivers, cooks, guides and hosts who have spent years on these roads. We plan the kind of trip we would want for ourselves: unhurried mornings, a route that makes sense, and people worth meeting at the other end.'
   ],
   stats: [
-    { value: '6', label: 'Regions across India' },
+    { value: '8', label: 'Handpicked stays' },
     { value: '40+', label: 'Local partners & guides' },
     { value: '100%', label: 'Custom-built itineraries' }
   ]
