@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, ArrowDown, ArrowUpRight, MapPin, Star, Compass } from 'lucide-vue-next'
+import { ArrowRight, ArrowDown, ArrowUpRight, MapPin, Star, Sparkles } from 'lucide-vue-next'
 import { destinations } from '~/data/destinations'
 import { sectionList } from '~/data/sections'
 import { featuredListings, listingsBySection } from '~/data/listings'
@@ -12,6 +12,32 @@ const STORY_IMAGE = 'photo-1501555088652-021faa106b9b'
 
 /** Split so each word can ride up from behind its own mask. */
 const headlineWords = site.heroHeadline.split(' ')
+
+/**
+ * The trip-brief box in the hero. Whatever is typed travels to Plan My Trip
+ * and pre-fills the enquiry, so the first message is already written.
+ */
+const brief = ref('')
+const briefSuggestions = [
+  'A slow week in the Kumaon hills with my parents…',
+  'Our first Himalayan trek, sometime in October…',
+  'Hornbill festival in December, with a village stay…',
+  'A quiet cottage near Jim Corbett for a long weekend…'
+]
+const suggestionIndex = ref(0)
+let suggestionTimer: ReturnType<typeof setInterval> | undefined
+
+onMounted(() => {
+  suggestionTimer = setInterval(() => {
+    suggestionIndex.value = (suggestionIndex.value + 1) % briefSuggestions.length
+  }, 3200)
+})
+onBeforeUnmount(() => clearInterval(suggestionTimer))
+
+const startPlanning = () => {
+  const text = brief.value.trim()
+  navigateTo({ path: '/plan-my-trip', query: text ? { brief: text } : {}, hash: '#enquiry' })
+}
 
 const gridDestinations = destinations.slice(0, 6)
 const featuredStays = featuredListings('stays').slice(0, 3)
@@ -54,76 +80,112 @@ usePageSeo({
         />
       </div>
       <div
-        class="absolute inset-0 bg-gradient-to-t from-pine-deep via-pine-deep/45 to-pine/30"
+        class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/55 to-navy/25"
         aria-hidden="true"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-r from-pine-deep/70 via-transparent to-transparent"
+        class="absolute inset-0 bg-gradient-to-r from-navy-deep/85 via-navy-deep/25 to-transparent"
+        aria-hidden="true"
+      />
+      <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div
+        class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[34rem] w-[34rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
+        aria-hidden="true"
+      />
+      <div
+        class="pointer-events-none absolute -right-32 top-0 h-[26rem] w-[26rem] animate-aurora rounded-full bg-brand-indigo/25 blur-[110px] [animation-delay:-7s]"
         aria-hidden="true"
       />
 
       <div class="container-pravaah relative w-full pb-14 pt-32 sm:pb-16 lg:pb-20">
-        <p class="hero-fade inline-flex items-center gap-2 rounded-pill border border-ivory-bright/25 bg-ivory-bright/10 px-4 py-2 text-xs font-medium tracking-wide text-ivory-bright backdrop-blur-md" style="animation-delay: 0.1s">
-          <span class="inline-flex h-2 w-2 rounded-full bg-saffron-light" aria-hidden="true" />
+        <p class="hero-fade inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/[0.08] px-3.5 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/90 backdrop-blur-md" style="animation-delay: 0.1s">
+          <span class="relative flex h-2 w-2" aria-hidden="true">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-cyan opacity-60" />
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-cyan" />
+          </span>
           Custom journeys across India
-          <span class="hidden items-center gap-1 text-ivory-bright/80 sm:inline-flex">
-            · <Star class="h-3 w-3 fill-saffron-light text-saffron-light" aria-hidden="true" /> Loved by slow travellers
+          <span class="hidden items-center gap-1 text-white/80 sm:inline-flex">
+            · <Star class="h-3 w-3 fill-brand-cyan text-brand-cyan" aria-hidden="true" /> Loved by slow travellers
           </span>
         </p>
 
-        <h1 class="mt-6 max-w-4xl text-display-xl tracking-[-0.025em] text-ivory-bright text-shadow-hero">
-          <span v-for="(word, index) in headlineWords" :key="`${word}-${index}`" class="hero-mask mr-[0.26em]">
-            <span class="hero-word" :style="{ animationDelay: `${0.25 + index * 0.09}s` }">{{ word }}</span>
+        <h1 class="mt-6 max-w-4xl text-display-xl text-white text-shadow-hero">
+          <span v-for="(word, index) in headlineWords" :key="`${word}-${index}`" class="hero-mask mr-[0.24em]">
+            <span class="hero-word" :style="{ animationDelay: `${0.25 + index * 0.09}s` }">
+              <!-- The last word carries the glow; its shadow would muddy gradient-clipped text. -->
+              <span
+                v-if="index === headlineWords.length - 1"
+                class="text-gradient-light [text-shadow:none]"
+              >{{ word }}</span>
+              <template v-else>{{ word }}</template>
+            </span>
           </span>
         </h1>
 
         <p
-          class="hero-fade mt-6 max-w-xl text-base leading-relaxed text-ivory-bright/85 sm:text-lg"
+          class="hero-fade mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg"
           style="animation-delay: 0.62s"
         >
           Handpicked stays, Himalayan treks, festivals and retreats — thoughtfully crafted journeys across India, designed around the way you want to travel.
         </p>
 
-        <div class="hero-fade mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style="animation-delay: 0.74s">
-          <NuxtLink to="/#about" class="btn-light group w-full px-8 py-4 sm:w-auto">
+        <!-- Trip brief: type the trip you have in mind, and it pre-fills Plan My Trip. -->
+        <form
+          class="hero-fade glass-panel group mt-9 flex max-w-2xl flex-col gap-2 rounded-[1.4rem] border border-white/15 p-2 shadow-glow-lg transition-colors focus-within:border-brand-light/60 sm:flex-row sm:items-center"
+          style="animation-delay: 0.74s"
+          role="search"
+          aria-label="Describe your trip"
+          @submit.prevent="startPlanning"
+        >
+          <label for="trip-brief" class="sr-only">Describe the trip you have in mind</label>
+          <span class="flex flex-1 items-center gap-3 pl-3">
+            <Sparkles class="h-5 w-5 shrink-0 text-brand-cyan" aria-hidden="true" />
+            <input
+              id="trip-brief"
+              v-model="brief"
+              type="text"
+              autocomplete="off"
+              :placeholder="briefSuggestions[suggestionIndex]"
+              class="w-full bg-transparent py-3 text-[0.95rem] text-white placeholder:text-white/50 focus:outline-none"
+            />
+          </span>
+          <button type="submit" class="btn-primary w-full px-6 py-3.5 sm:w-auto">
+            Plan My Trip
+            <ArrowRight class="h-4 w-4" aria-hidden="true" />
+          </button>
+        </form>
+
+        <div class="hero-fade mt-5 flex flex-wrap items-center gap-3" style="animation-delay: 0.8s">
+          <NuxtLink to="/#about" class="btn-light group px-6 py-3">
             About Pravaah
             <ArrowRight
               class="h-4 w-4 transition-transform duration-300 ease-editorial group-hover:translate-x-1"
               aria-hidden="true"
             />
           </NuxtLink>
-          <NuxtLink
-            to="/plan-my-trip"
-            class="btn glass-panel w-full border border-ivory-bright/30 text-ivory-bright hover:border-ivory-bright/70 hover:bg-ivory-bright/10 px-8 py-4 sm:w-auto"
-          >
-            <Compass class="h-4 w-4" aria-hidden="true" />
-            Plan My Trip
-          </NuxtLink>
-        </div>
 
-        <div class="hero-fade mt-8 flex flex-wrap items-center gap-2 text-xs text-ivory-bright/70" style="animation-delay: 0.8s">
-          <span class="mr-1 inline-flex items-center gap-1.5"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
-          <NuxtLink to="/destinations/uttarakhand" class="rounded-pill border border-ivory-bright/20 px-3 py-1.5 backdrop-blur-sm transition-colors hover:border-ivory-bright/60 hover:text-ivory-bright">Uttarakhand</NuxtLink>
-          <NuxtLink to="/experiences/hornbill-festival-nagaland" class="rounded-pill border border-ivory-bright/20 px-3 py-1.5 backdrop-blur-sm transition-colors hover:border-ivory-bright/60 hover:text-ivory-bright">Hornbill Festival</NuxtLink>
-          <NuxtLink to="/experiences/khaliya-top-trek" class="rounded-pill border border-ivory-bright/20 px-3 py-1.5 backdrop-blur-sm transition-colors hover:border-ivory-bright/60 hover:text-ivory-bright">Khaliya Top</NuxtLink>
+          <span class="ml-1 inline-flex items-center gap-1.5 text-xs text-white/70"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
+          <NuxtLink to="/destinations/uttarakhand" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Uttarakhand</NuxtLink>
+          <NuxtLink to="/experiences/hornbill-festival-nagaland" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Hornbill Festival</NuxtLink>
+          <NuxtLink to="/experiences/khaliya-top-trek" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Khaliya Top</NuxtLink>
         </div>
 
         <dl
           class="hero-fade mt-10 grid max-w-2xl grid-cols-3 gap-3 sm:gap-4"
           style="animation-delay: 0.86s"
         >
-          <div v-for="stat in brandStory.stats" :key="stat.label" class="glass-panel rounded-card border border-ivory-bright/15 px-4 py-4 sm:px-5">
+          <div v-for="stat in brandStory.stats" :key="stat.label" class="glass-panel rounded-2xl border border-white/10 px-3 py-4 sm:px-5">
             <dt class="sr-only">{{ stat.label }}</dt>
             <dd>
-              <span class="block font-display text-2xl text-ivory-bright sm:text-3xl">
+              <span class="text-gradient-light block font-display text-2xl font-semibold sm:text-3xl">
                 <CountUp :value="stat.value" />
               </span>
-              <span class="mt-1 block text-[0.7rem] leading-snug text-ivory-bright/70">{{ stat.label }}</span>
+              <span class="mt-1 block break-words font-mono text-[0.56rem] uppercase leading-snug tracking-[0.04em] text-white/60 sm:text-[0.62rem] sm:tracking-[0.1em]">{{ stat.label }}</span>
             </dd>
           </div>
         </dl>
 
-        <a href="#explore" class="hero-fade mt-10 hidden items-center gap-2 text-xs uppercase tracking-[0.18em] text-ivory-bright/60 transition-colors hover:text-ivory-bright sm:inline-flex" style="animation-delay: 0.95s">
+        <a href="#explore" class="hero-fade mt-10 hidden items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white sm:inline-flex" style="animation-delay: 0.95s">
           Scroll to explore
           <ArrowDown class="h-4 w-4 animate-bounce" aria-hidden="true" />
         </a>
@@ -131,7 +193,9 @@ usePageSeo({
     </section>
 
     <!-- What we offer -->
-    <section id="explore" class="container-pravaah scroll-mt-20 py-20 lg:py-28">
+    <section id="explore" class="relative scroll-mt-20 py-20 lg:py-28">
+      <div class="bg-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+      <div class="container-pravaah">
       <SectionHeading
         eyebrow="Explore Pravaah"
         title="Stay, explore — or simply slow down."
@@ -144,7 +208,7 @@ usePageSeo({
           :key="pillar.section.key"
           :to="pillar.section.path"
           v-tilt
-          class="reveal group relative block h-[26rem] overflow-hidden rounded-card"
+          class="reveal glow-card group relative block h-[26rem] overflow-hidden rounded-card shadow-soft"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
           <AppImage
@@ -155,20 +219,20 @@ usePageSeo({
             class="h-full w-full"
           />
           <div
-            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/45 to-charcoal/5"
+            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/45 to-navy/5"
             aria-hidden="true"
           />
-          <div class="absolute inset-x-0 bottom-0 p-6 text-ivory-bright">
-            <p class="text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ivory-bright/75">
+          <div class="absolute inset-x-0 bottom-0 p-6 text-white">
+            <p class="font-mono text-[0.68rem] font-medium uppercase tracking-[0.14em] text-brand-cyan">
               {{ pillar.count }} {{ pillar.count === 1 ? pillar.section.singular : `${pillar.section.singular}s` }}
             </p>
             <h3 class="mt-2 font-display text-3xl tracking-[-0.015em]">
               <span class="sweep">{{ pillar.section.name }}</span>
             </h3>
-            <ul class="mt-3 space-y-1 text-xs text-ivory-bright/80">
+            <ul class="mt-3 space-y-1 text-xs text-white/80">
               <li v-for="category in pillar.section.categories" :key="category.slug">{{ category.name }}</li>
             </ul>
-            <span class="mt-5 inline-flex items-center gap-1.5 border-t border-ivory-bright/20 pt-4 text-xs font-medium">
+            <span class="mt-5 inline-flex items-center gap-1.5 border-t border-white/20 pt-4 text-xs font-medium">
               Explore {{ pillar.section.name.toLowerCase() }}
               <ArrowUpRight
                 class="h-4 w-4 transition-transform duration-300 ease-editorial group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -177,6 +241,7 @@ usePageSeo({
             </span>
           </div>
         </NuxtLink>
+      </div>
       </div>
     </section>
 
@@ -306,13 +371,13 @@ usePageSeo({
         <div
           v-for="(value, index) in valueProps"
           :key="value.title"
-          class="reveal surface-card card-lift group p-7 shadow-soft hover:shadow-lift"
+          class="reveal surface-card card-lift glow-card group p-7 shadow-soft"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
-          <span class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-forest/10 text-forest">
+          <span class="icon-tile">
             <component :is="resolveIcon(value.icon)" class="h-5 w-5" aria-hidden="true" />
           </span>
-          <h3 class="mt-5 font-display text-xl tracking-[-0.01em]">{{ value.title }}</h3>
+          <h3 class="mt-6 font-display text-xl">{{ value.title }}</h3>
           <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ value.description }}</p>
         </div>
       </div>
@@ -322,7 +387,7 @@ usePageSeo({
     <section class="section-forest py-20 lg:py-28">
       <div class="container-pravaah">
         <div class="reveal max-w-3xl">
-          <p class="eyebrow mb-4">How it works</p>
+          <p class="chip mb-5"><span class="chip-dot" aria-hidden="true" />How it works</p>
           <h2 class="text-display-md">Three steps, and then you are travelling.</h2>
         </div>
 
@@ -333,7 +398,7 @@ usePageSeo({
             class="reveal border-t border-hairline pt-6"
             :style="{ transitionDelay: `${index * 90}ms` }"
           >
-            <span class="font-display text-sm tracking-[0.2em] text-accent">{{ step.number }}</span>
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/25 bg-white/10 font-mono text-sm text-white backdrop-blur-md">{{ step.number }}</span>
             <h3 class="mt-4 font-display text-2xl">{{ step.title }}</h3>
             <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-soft">{{ step.description }}</p>
           </li>

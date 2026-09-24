@@ -21,7 +21,7 @@ const experienceCount = computed(() => props.destination.experiences.length)
   <NuxtLink
     :to="`/destinations/${destination.slug}`"
     v-tilt
-    class="group relative block h-full overflow-hidden rounded-card"
+    class="glow-card group relative block h-full overflow-hidden rounded-card shadow-soft"
   >
     <AppImage
       :src="destination.image"
@@ -32,27 +32,27 @@ const experienceCount = computed(() => props.destination.experiences.length)
     />
 
     <div
-      class="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/50 to-charcoal/10"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/50 to-navy/10"
       aria-hidden="true"
     />
 
-    <div class="absolute inset-x-0 bottom-0 p-6 text-ivory-bright sm:p-7">
-      <p class="mb-3 inline-flex items-center rounded-pill border border-ivory-bright/30 bg-ivory-bright/10 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.14em] text-ivory-bright backdrop-blur-md">{{ destination.state }}</p>
+    <div class="absolute inset-x-0 bottom-0 p-6 text-white sm:p-7">
+      <p class="mb-3 inline-flex items-center rounded-pill border border-white/15 bg-white/10 px-3 py-1 font-mono text-[0.62rem] font-medium uppercase tracking-[0.12em] text-white backdrop-blur-md">{{ destination.state }}</p>
       <h3 class="font-display leading-tight tracking-[-0.015em]" :class="size === 'feature' ? 'text-display-sm' : 'text-2xl'">
         <span class="sweep">{{ destination.name }}</span>
       </h3>
       <p
-        class="mt-2 max-w-md text-sm leading-relaxed text-ivory-bright/90"
+        class="mt-2 max-w-md text-sm leading-relaxed text-white/90"
         :class="size === 'feature' ? '' : 'line-clamp-2'"
       >
         {{ destination.description }}
       </p>
 
-      <div class="mt-5 flex items-center justify-between gap-4 border-t border-ivory-bright/20 pt-4">
-        <span class="text-xs text-ivory-bright/75">
+      <div class="mt-5 flex items-center justify-between gap-4 border-t border-white/20 pt-4">
+        <span class="text-xs text-white/75">
           <template v-if="listingCount">{{ listingCount }} {{ listingCount === 1 ? 'stay or trip' : 'stays & trips' }} · </template>{{ experienceCount }} highlights
         </span>
-        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-ivory-bright">
+        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-white">
           Explore
           <ArrowUpRight
             class="h-4 w-4 transition-transform duration-300 ease-editorial group-hover:translate-x-0.5 group-hover:-translate-y-0.5"

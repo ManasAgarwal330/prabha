@@ -14,11 +14,13 @@ withDefaults(
 
 <template>
   <div class="reveal" :class="align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-3xl'">
-    <p v-if="eyebrow" class="eyebrow mb-4 flex items-center gap-3" :class="align === 'center' ? 'justify-center' : ''">
-      <span class="inline-block h-px w-8 bg-highlight/60" aria-hidden="true" />
-      {{ eyebrow }}
+    <p v-if="eyebrow" class="mb-5" :class="align === 'center' ? 'flex justify-center' : ''">
+      <span class="chip">
+        <span class="chip-dot" aria-hidden="true" />
+        {{ eyebrow }}
+      </span>
     </p>
-    <component :is="as" class="text-display-md tracking-[-0.02em]">
+    <component :is="as" class="text-display-md">
       {{ title }}
     </component>
     <p v-if="intro" class="mt-5 text-lg leading-relaxed text-ink-muted">

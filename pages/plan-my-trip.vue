@@ -7,6 +7,8 @@ const route = useRoute()
 
 /** Allows deep links like /plan-my-trip?destination=Uttarakhand from anywhere on the site. */
 const presetDestination = computed(() => String(route.query.destination || ''))
+/** Set by the trip-brief box on the home page. */
+const presetMessage = computed(() => String(route.query.brief || ''))
 
 const reassurances = [
   {
@@ -62,11 +64,11 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-pravaah pb-20 lg:pb-24">
+    <section id="enquiry" class="container-pravaah scroll-mt-24 pb-20 lg:pb-24">
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div class="reveal lg:col-span-7">
           <div class="surface-card bg-surface p-7 sm:p-10">
-            <ContactForm :preset-destination="presetDestination" source="plan-my-trip" />
+            <ContactForm :preset-destination="presetDestination" :preset-message="presetMessage" source="plan-my-trip" />
           </div>
         </div>
 

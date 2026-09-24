@@ -64,10 +64,10 @@ useJsonLd(breadcrumbLd(crumbs))
           v-for="group in regionGroups"
           :key="group.region.slug"
           :to="{ hash: `#${group.region.slug}` }"
-          class="rounded-pill border border-ivory-bright/25 bg-ivory-bright/10 px-4 py-2 text-xs font-medium text-ivory-bright backdrop-blur-md transition-colors hover:border-ivory-bright/60 hover:bg-ivory-bright/20"
+          class="rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-colors hover:border-white/60 hover:bg-white/20"
         >
           {{ group.region.name }}
-          <span class="ml-1 text-ivory-bright/60">{{ group.destinations.length }}</span>
+          <span class="ml-1 text-white/60">{{ group.destinations.length }}</span>
         </NuxtLink>
       </nav>
     </PageHero>

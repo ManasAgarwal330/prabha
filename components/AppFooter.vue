@@ -11,6 +11,7 @@ const socials = [
 
 <template>
   <footer class="section-dark">
+    <div class="h-px bg-gradient-to-r from-transparent via-brand-light/60 to-transparent" aria-hidden="true" />
     <div class="container-pravaah py-16 lg:py-20">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div class="lg:col-span-4">

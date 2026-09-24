@@ -6,18 +6,18 @@ defineProps<{ testimonial: Testimonial }>()
 </script>
 
 <template>
-  <figure class="flex h-full flex-col border-t border-hairline pt-7">
+  <figure class="surface-card glow-card flex h-full flex-col p-7">
     <div v-if="testimonial.rating" class="mb-4 flex gap-0.5" :aria-label="`${testimonial.rating} out of 5`">
       <Star
         v-for="index in testimonial.rating"
         :key="index"
-        class="h-3.5 w-3.5 fill-gold text-gold"
+        class="h-3.5 w-3.5 fill-brand-cyan text-brand-cyan"
         aria-hidden="true"
       />
     </div>
 
     <blockquote class="flex-1">
-      <p class="font-display text-lg leading-relaxed text-ink">“{{ testimonial.quote }}”</p>
+      <p class="text-[1.02rem] leading-relaxed text-ink-soft">“{{ testimonial.quote }}”</p>
     </blockquote>
 
     <figcaption class="mt-6 text-sm">

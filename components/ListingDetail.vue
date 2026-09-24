@@ -48,19 +48,24 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         :zoom="false"
         class="absolute inset-0 h-full w-full"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-charcoal/40" aria-hidden="true" />
+      <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy/40 to-navy/40" aria-hidden="true" />
+      <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div
+        class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[32rem] w-[32rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
+        aria-hidden="true"
+      />
 
       <div class="container-pravaah relative w-full pb-14 pt-32 lg:pb-20">
         <Breadcrumbs :items="crumbs" light />
-        <p class="eyebrow mt-7 text-ivory-bright/75">
+        <p class="eyebrow mt-7 text-white/80">
           {{ category?.name }} · {{ current.location }}
         </p>
-        <h1 class="mt-4 max-w-3xl text-display-lg text-ivory-bright text-shadow-hero">{{ current.title }}</h1>
-        <p class="mt-5 max-w-xl text-lg leading-relaxed text-ivory-bright/85">{{ current.tagline }}</p>
+        <h1 class="mt-4 max-w-3xl text-display-lg text-white text-shadow-hero">{{ current.title }}</h1>
+        <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/85">{{ current.tagline }}</p>
 
-        <dl class="mt-9 flex flex-wrap gap-x-10 gap-y-5 border-t border-ivory-bright/20 pt-6 text-ivory-bright">
+        <dl class="mt-9 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/20 pt-6 text-white">
           <div v-for="fact in current.facts.slice(0, 3)" :key="fact.label">
-            <dt class="text-[0.7rem] uppercase tracking-[0.14em] text-ivory-bright/60">{{ fact.label }}</dt>
+            <dt class="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-white/55">{{ fact.label }}</dt>
             <dd class="mt-1.5 font-display text-lg">{{ fact.value }}</dd>
           </div>
         </dl>
@@ -127,7 +132,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         <!-- Sticky enquiry card -->
         <aside class="lg:col-span-4 lg:col-start-9">
           <div class="lg:sticky lg:top-28">
-            <div class="surface-card bg-surface p-7">
+            <div class="surface-card glow-card bg-surface p-7 shadow-lift">
               <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">{{ category?.name }}</p>
               <p class="mt-1.5 font-display text-3xl leading-tight">{{ current.title }}</p>
 

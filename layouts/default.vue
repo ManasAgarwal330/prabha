@@ -10,7 +10,7 @@ useScrollReveal()
 
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-pill focus:bg-forest focus:px-5 focus:py-3 focus:text-sm focus:text-ivory-bright"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-pill focus:bg-brand focus:px-5 focus:py-3 focus:text-sm focus:text-white"
     >
       Skip to content
     </a>

@@ -3,8 +3,8 @@ import { site } from '~/data/site'
 
 /**
  * The Pravaah logo — mountain, pines, sun and river above the "thepravaah.in" wordmark.
- * `brand` is the forest-green original for light surfaces; `light` is the ivory
- * version for photographs and the dark pine bands.
+ * `brand` is the navy version for light surfaces (the forest-green original is
+ * kept as pravaah-logo.png); `light` is the white version for photographs and dark bands.
  */
 withDefaults(
   defineProps<{
@@ -23,7 +23,7 @@ const sizeMap = {
 
 <template>
   <img
-    :src="tone === 'light' ? '/brand/pravaah-logo-light.png' : '/brand/pravaah-logo.png'"
+    :src="tone === 'light' ? '/brand/pravaah-logo-light.png' : '/brand/pravaah-logo-navy.png'"
     :alt="site.name"
     width="907"
     height="424"

@@ -23,14 +23,28 @@ defineProps<{
     <div class="absolute inset-0 animate-kenburns will-change-transform">
       <AppImage :src="image" :alt="alt" :ratio="16 / 9" sizes="100vw" priority :zoom="false" class="h-full w-full" />
     </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-charcoal/45" aria-hidden="true" />
-    <div class="absolute inset-0 bg-gradient-to-r from-pine-deep/60 via-transparent to-transparent" aria-hidden="true" />
+    <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy/45 to-navy/40" aria-hidden="true" />
+    <div class="absolute inset-0 bg-gradient-to-r from-navy-deep/75 via-navy-deep/20 to-transparent" aria-hidden="true" />
+    <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
+    <div
+      class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[34rem] w-[34rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
+      aria-hidden="true"
+    />
+    <div
+      class="pointer-events-none absolute -right-32 top-0 h-[26rem] w-[26rem] animate-aurora rounded-full bg-brand-indigo/25 blur-[110px] [animation-delay:-7s]"
+      aria-hidden="true"
+    />
 
     <div class="container-pravaah relative w-full pb-14 pt-32 lg:pb-20">
       <Breadcrumbs :items="crumbs" light />
-      <p class="eyebrow mt-7 text-saffron-light">{{ eyebrow }}</p>
-      <h1 class="mt-4 max-w-3xl text-display-lg text-ivory-bright text-shadow-hero">{{ title }}</h1>
-      <p v-if="intro" class="mt-6 max-w-2xl text-lg leading-relaxed text-ivory-bright/85">{{ intro }}</p>
+      <p class="mt-7">
+        <span class="chip border-white/15 bg-white/[0.08] text-white/90">
+          <span class="chip-dot" aria-hidden="true" />
+          {{ eyebrow }}
+        </span>
+      </p>
+      <h1 class="text-gradient-light mt-5 max-w-3xl pb-1 text-display-lg">{{ title }}</h1>
+      <p v-if="intro" class="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">{{ intro }}</p>
       <slot />
     </div>
   </section>

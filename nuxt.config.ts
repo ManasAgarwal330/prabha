@@ -39,12 +39,12 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://images.unsplash.com' },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap'
+          href: 'https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap'
         }
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'theme-color', content: '#F5EFE4' },
+        { name: 'theme-color', content: '#F8FAFF' },
         { name: 'format-detection', content: 'telephone=no' }
       ],
       script: [

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, ChevronDown, Instagram, Menu, Phone, X } from 'lucide-vue-next'
+import { ArrowRight, ChevronDown, Instagram, Menu, Phone, Sparkles, X } from 'lucide-vue-next'
 import { primaryNav, site } from '~/data/site'
 
 const route = useRoute()
@@ -74,7 +74,7 @@ const onKeydown = (event: KeyboardEvent) => {
 <template>
   <header
     class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-editorial"
-    :class="transparent ? 'bg-transparent' : 'border-b border-hairline bg-canvas/90 backdrop-blur-md'"
+    :class="transparent ? 'bg-transparent' : 'border-b border-hairline/80 bg-white/75 shadow-header backdrop-blur-xl backdrop-saturate-150'"
     @keydown="onKeydown"
   >
     <div class="container-pravaah">
@@ -90,7 +90,7 @@ const onKeydown = (event: KeyboardEvent) => {
           <PravaahLogo :tone="transparent ? 'light' : 'brand'" :size="scrolled ? 'sm' : 'md'" />
         </NuxtLink>
 
-        <nav class="hidden items-center gap-5 lg:flex xl:gap-8" aria-label="Primary">
+        <nav class="hidden items-center gap-1 lg:flex xl:gap-2" aria-label="Primary">
           <div
             v-for="(item, index) in primaryNav"
             :key="item.to"
@@ -99,13 +99,19 @@ const onKeydown = (event: KeyboardEvent) => {
             @mouseleave="openDropdown = null"
             @focusout="closeDropdownOnFocusOut"
           >
-            <div class="flex items-center gap-1">
+            <div
+              class="flex items-center rounded-pill pl-3.5 pr-1.5 transition-colors"
+              :class="[
+                transparent ? 'hover:bg-white/10' : 'hover:bg-brand/[0.06]',
+                isActive(item.to) ? (transparent ? 'bg-white/10' : 'bg-brand/[0.08]') : ''
+              ]"
+            >
               <NuxtLink
                 :to="item.to"
-                class="link-underline text-sm font-medium transition-colors"
+                class="py-2 text-sm font-medium transition-colors"
                 :class="[
-                  transparent ? 'text-ivory-bright/90 hover:text-ivory-bright' : 'text-ink-soft hover:text-ink',
-                  isActive(item.to) && !transparent ? 'text-ink' : ''
+                  transparent ? 'text-white/90 hover:text-white' : 'text-ink-soft hover:text-ink',
+                  isActive(item.to) && !transparent ? 'text-accent' : ''
                 ]"
                 @focus="openDropdown = index"
               >
@@ -115,7 +121,7 @@ const onKeydown = (event: KeyboardEvent) => {
                 v-if="item.children?.length"
                 type="button"
                 class="inline-flex h-6 w-5 items-center justify-center rounded-sm transition-colors"
-                :class="transparent ? 'text-ivory-bright/70 hover:text-ivory-bright' : 'text-ink-muted hover:text-ink'"
+                :class="transparent ? 'text-white/70 hover:text-white' : 'text-ink-muted hover:text-ink'"
                 :aria-expanded="openDropdown === index"
                 :aria-controls="`nav-menu-${index}`"
                 :aria-label="`Show ${item.label} categories`"
@@ -141,11 +147,11 @@ const onKeydown = (event: KeyboardEvent) => {
                 :id="`nav-menu-${index}`"
                 class="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3"
               >
-                <ul class="min-w-[15rem] rounded-card border border-hairline bg-canvas p-2 shadow-lift">
+                <ul class="min-w-[15rem] rounded-2xl border border-hairline bg-white/90 p-2 shadow-lift backdrop-blur-xl">
                   <li v-for="child in item.children" :key="child.to">
                     <NuxtLink
                       :to="child.to"
-                      class="block rounded-lg px-4 py-2.5 text-sm text-ink-soft transition-colors hover:bg-ink/5 hover:text-ink"
+                      class="block rounded-xl px-4 py-2.5 text-sm text-ink-soft transition-colors hover:bg-brand/[0.06] hover:text-accent"
                       @click="openDropdown = null"
                     >
                       {{ child.label }}
@@ -154,7 +160,7 @@ const onKeydown = (event: KeyboardEvent) => {
                   <li class="mt-1 border-t border-hairline pt-1">
                     <NuxtLink
                       :to="item.to"
-                      class="flex items-center justify-between gap-3 rounded-lg px-4 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-ink/5"
+                      class="flex items-center justify-between gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-brand/[0.06]"
                       @click="openDropdown = null"
                     >
                       All {{ item.label.toLowerCase() }}
@@ -173,13 +179,14 @@ const onKeydown = (event: KeyboardEvent) => {
             class="hidden text-sm sm:inline-flex"
             :class="transparent ? 'btn btn-light' : 'btn-primary'"
           >
+            <Sparkles class="h-4 w-4" aria-hidden="true" />
             Plan My Trip
           </NuxtLink>
 
           <button
             type="button"
             class="inline-flex h-10 w-10 items-center justify-center rounded-pill transition-colors lg:hidden"
-            :class="transparent ? 'text-ivory-bright hover:bg-ivory-bright/15' : 'text-ink hover:bg-ink/5'"
+            :class="transparent ? 'text-white hover:bg-white/15' : 'text-ink hover:bg-ink/5'"
             :aria-expanded="menuOpen"
             aria-controls="mobile-menu"
             :aria-label="menuOpen ? 'Close menu' : 'Open menu'"
@@ -224,7 +231,7 @@ const onKeydown = (event: KeyboardEvent) => {
             <button
               ref="closeButton"
               type="button"
-              class="inline-flex h-10 w-10 items-center justify-center rounded-pill border border-ivory-bright/20 text-ivory-bright transition-colors hover:bg-ivory-bright/10"
+              class="inline-flex h-10 w-10 items-center justify-center rounded-pill border border-white/20 text-white transition-colors hover:bg-white/10"
               aria-label="Close menu"
               @click="menuOpen = false"
             >

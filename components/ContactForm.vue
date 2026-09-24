@@ -8,10 +8,12 @@ const props = withDefaults(
   defineProps<{
     /** Pre-selects the destination dropdown, e.g. from a tour page. */
     presetDestination?: string
+    /** Pre-fills "Tell us about the trip", e.g. from the home page trip brief. */
+    presetMessage?: string
     source?: string
     compact?: boolean
   }>(),
-  { presetDestination: '', source: 'contact', compact: false }
+  { presetDestination: '', presetMessage: '', source: 'contact', compact: false }
 )
 
 const form = reactive<EnquiryPayload>({
@@ -22,7 +24,7 @@ const form = reactive<EnquiryPayload>({
   travelDates: '',
   travellers: travellerCounts[1] as string,
   budget: budgetRanges[1] as string,
-  message: '',
+  message: props.presetMessage,
   source: props.source
 })
 
@@ -55,7 +57,7 @@ const reset = () => {
     travelDates: '',
     travellers: travellerCounts[1] as string,
     budget: budgetRanges[1] as string,
-    message: ''
+    message: props.presetMessage
   })
   errors.value = {}
   status.value = 'idle'
@@ -74,7 +76,7 @@ const fieldClass =
       role="status"
       aria-live="polite"
     >
-      <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-pill bg-forest/10 text-link">
+      <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-pill bg-brand/10 text-link">
         <Check class="h-6 w-6" aria-hidden="true" />
       </span>
       <h3 class="mt-6 text-display-sm">Thank you — we have your enquiry.</h3>

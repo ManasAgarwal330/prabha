@@ -52,13 +52,18 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
         :zoom="false"
         class="absolute inset-0 h-full w-full"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/30 to-charcoal/40" aria-hidden="true" />
+      <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy/40 to-navy/40" aria-hidden="true" />
+      <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div
+        class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[32rem] w-[32rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
+        aria-hidden="true"
+      />
 
       <div class="container-pravaah relative w-full pb-14 pt-32 lg:pb-20">
         <Breadcrumbs :items="crumbs" light />
-        <p class="eyebrow mt-7 text-ivory-bright/75">{{ current.state }}</p>
-        <h1 class="mt-4 max-w-3xl text-display-xl text-ivory-bright text-shadow-hero">{{ current.name }}</h1>
-        <p class="mt-5 max-w-xl text-lg text-ivory-bright/85">{{ current.tagline }}</p>
+        <p class="eyebrow mt-7 text-white/80">{{ current.state }}</p>
+        <h1 class="mt-4 max-w-3xl text-display-xl text-white text-shadow-hero">{{ current.name }}</h1>
+        <p class="mt-5 max-w-xl text-lg text-white/85">{{ current.tagline }}</p>
       </div>
     </section>
 
@@ -104,7 +109,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
             <h2 class="font-display text-xl">Things to do in {{ current.name }}</h2>
             <ul class="mt-5 space-y-3 text-sm leading-relaxed text-ink-soft">
               <li v-for="item in current.experiences" :key="item" class="flex gap-3">
-                <span class="mt-2 h-1 w-1 shrink-0 rounded-pill bg-clay" aria-hidden="true" />
+                <span class="mt-2 h-1 w-1 shrink-0 rounded-pill bg-brand" aria-hidden="true" />
                 {{ item }}
               </li>
             </ul>

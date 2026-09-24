@@ -20,19 +20,19 @@ const leadIcon = computed(() => (props.listing.section === 'stays' ? BedDouble :
 </script>
 
 <template>
-  <article class="group card-lift relative flex h-full flex-col overflow-hidden rounded-card border border-hairline bg-surface shadow-soft hover:shadow-lift">
+  <article class="glow-card group card-lift relative flex h-full flex-col overflow-hidden rounded-card border border-hairline bg-surface shadow-soft">
     <NuxtLink :to="to" class="relative block overflow-hidden" tabindex="-1" aria-hidden="true">
       <AppImage :src="listing.image" :alt="listing.title" :ratio="4 / 3" :sizes="sizes" />
       <span
         v-if="category"
-        class="absolute left-4 top-4 inline-flex items-center rounded-pill bg-pine-deep/80 px-3 py-1.5 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-ivory-bright backdrop-blur-md"
+        class="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-pill border border-white/15 bg-navy-deep/60 px-3 py-1.5 font-mono text-[0.62rem] font-medium uppercase tracking-[0.12em] text-white backdrop-blur-md"
       >
         {{ category.name }}
       </span>
     </NuxtLink>
 
     <div class="flex flex-1 flex-col p-6">
-      <p class="flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.14em] text-accent">
+      <p class="flex items-center gap-1.5 font-mono text-[0.66rem] font-medium uppercase tracking-[0.12em] text-accent">
         <MapPin class="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
         {{ listing.location }}
       </p>

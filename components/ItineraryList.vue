@@ -9,7 +9,7 @@ defineProps<{ days: ItineraryDay[] }>()
   <ol class="relative border-l border-hairline pl-8 sm:pl-10">
     <li v-for="day in days" :key="day.day" class="relative pb-10 last:pb-0">
       <span
-        class="absolute -left-[2.3rem] flex h-8 w-8 items-center justify-center rounded-pill border border-hairline bg-canvas text-[0.7rem] font-medium text-ink-muted sm:-left-[2.8rem]"
+        class="absolute -left-[2.3rem] flex h-8 w-8 items-center justify-center rounded-xl border border-accent/30 bg-surface font-mono text-[0.68rem] font-medium text-accent shadow-soft sm:-left-[2.8rem]"
         aria-hidden="true"
       >
         {{ String(day.day).padStart(2, '0') }}

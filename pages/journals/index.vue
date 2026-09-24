@@ -83,7 +83,7 @@ useJsonLd(breadcrumbLd(crumbs))
           class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
           :class="
             activeCategory === category
-              ? 'border-forest bg-forest text-ivory-bright'
+              ? 'border-brand bg-brand text-white'
               : 'border-hairline text-ink-soft hover:border-ink/40'
           "
           :aria-pressed="activeCategory === category"

@@ -12,46 +12,45 @@
   :root {
     --page-gutter: 1.25rem;
 
-    --c-canvas: 245 239 228;
-    --c-canvas-alt: 234 225 208;
-    --c-surface: 252 249 243;
-    --c-ink: 31 29 26;
-    --c-ink-soft: 58 54 49;
-    --c-ink-muted: 106 99 89;
-    --c-hairline: 221 210 190;
-    --c-accent: 180 95 63;
-    /* Ochre rather than bright saffron: eyebrows are 12px, and the lighter tone
-       drops under 4.5:1 against the ivory canvas. */
-    --c-highlight: 154 110 34;
-    --c-link: 46 74 60;
+    --c-canvas: 248 250 255;
+    --c-canvas-alt: 239 244 255;
+    --c-surface: 255 255 255;
+    --c-ink: 10 21 48;
+    --c-ink-soft: 45 58 90;
+    --c-ink-muted: 92 106 140;
+    --c-hairline: 223 230 245;
+    --c-accent: 37 99 235;
+    /* A shade deeper than the accent: eyebrows are 11px and need 4.5:1 on white. */
+    --c-highlight: 29 78 216;
+    --c-link: 29 78 216;
   }
 
-  /* Deep pine, not neutral charcoal — the dark bands carry brand colour. */
+  /* Night blue, lit from above by the aurora in `::before`. */
   .section-dark {
-    --c-canvas: 20 33 27;
-    --c-canvas-alt: 14 24 19;
-    --c-surface: 28 44 37;
-    --c-ink: 242 237 227;
-    --c-ink-soft: 214 209 194;
-    --c-ink-muted: 158 175 164;
-    --c-hairline: 44 64 54;
-    /* Clay and forest both need lifting to hold contrast against pine. */
-    --c-accent: 217 140 99;
-    --c-highlight: 231 180 92;
-    --c-link: 156 199 174;
+    --c-canvas: 6 12 30;
+    --c-canvas-alt: 4 8 20;
+    --c-surface: 14 24 52;
+    --c-ink: 236 242 255;
+    --c-ink-soft: 199 210 234;
+    --c-ink-muted: 139 156 196;
+    --c-hairline: 32 46 86;
+    --c-accent: 96 165 250;
+    --c-highlight: 125 211 252;
+    --c-link: 147 197 253;
   }
 
+  /* The electric band — a full blue → indigo gradient. */
   .section-forest {
-    --c-canvas: 51 84 68;
-    --c-canvas-alt: 36 61 49;
-    --c-surface: 36 61 49;
-    --c-ink: 250 247 241;
-    --c-ink-soft: 226 219 205;
-    --c-ink-muted: 180 194 183;
-    --c-hairline: 82 118 98;
-    --c-accent: 240 220 180;
-    --c-highlight: 240 220 180;
-    --c-link: 240 220 180;
+    --c-canvas: 17 40 115;
+    --c-canvas-alt: 12 30 90;
+    --c-surface: 30 60 150;
+    --c-ink: 255 255 255;
+    --c-ink-soft: 219 230 255;
+    --c-ink-muted: 186 204 245;
+    --c-hairline: 96 130 225;
+    --c-accent: 186 230 253;
+    --c-highlight: 165 243 252;
+    --c-link: 191 219 254;
   }
 
   html {
@@ -67,9 +66,9 @@
   }
 
   /* No colour here on purpose — headings inherit, so the same components read
-     correctly over ivory, over charcoal and over a dark image. */
+     correctly on white, on night blue and over a photograph. */
   h1, h2, h3, h4 {
-    @apply font-display font-normal;
+    @apply font-display font-medium;
     text-wrap: balance;
   }
 
@@ -78,11 +77,11 @@
   }
 
   ::selection {
-    @apply bg-clay-soft text-charcoal;
+    @apply bg-brand-soft text-navy;
   }
 
   :focus-visible {
-    @apply outline-none ring-2 ring-link ring-offset-2 ring-offset-canvas rounded-sm;
+    @apply outline-none ring-2 ring-brand-light ring-offset-2 ring-offset-canvas rounded-sm;
   }
 
   img {
@@ -91,28 +90,63 @@
 }
 
 @layer components {
-  /* Dark bands bleed to the page edge and carry their own background. */
+  /* Coloured bands bleed to the page edge and carry their own background.
+     `overflow: clip` keeps the drifting glows inside without creating a scroll
+     container, so sticky elements inside still work. */
   .section-dark,
   .section-forest {
     @apply relative isolate bg-canvas text-ink;
+    overflow: clip;
   }
 
-  /* A soft saffron bloom at the top of every dark band. Costs nothing and stops
-     the flat fill reading as a grey box. */
+  .section-forest {
+    background-image: linear-gradient(135deg, #0b1f5c 0%, #1d4ed8 55%, #4f46e5 100%);
+  }
+
+  /* Aurora: three soft light sources that drift slowly behind the content. */
   .section-dark::before,
   .section-forest::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(38% 42% at 18% 12%, rgba(37, 99, 235, 0.32), transparent 70%),
+      radial-gradient(34% 38% at 82% 18%, rgba(99, 102, 241, 0.26), transparent 70%),
+      radial-gradient(40% 40% at 60% 95%, rgba(34, 211, 238, 0.14), transparent 70%);
+    animation: aurora 18s ease-in-out infinite;
+  }
+
+  /* A faint technical grid that fades out towards the bottom of the band. */
+  .section-dark::after,
+  .section-forest::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background:
-      radial-gradient(70% 55% at 12% 0%, rgb(var(--c-highlight) / 0.13), transparent 62%),
-      radial-gradient(55% 45% at 88% 8%, rgb(var(--c-link) / 0.1), transparent 60%);
+    background-image:
+      linear-gradient(rgba(148, 170, 255, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 170, 255, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 75%);
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 75%);
   }
 
   .eyebrow {
-    @apply text-eyebrow font-sans font-medium uppercase tracking-[0.18em] text-highlight;
+    @apply font-mono text-eyebrow font-medium uppercase tracking-[0.14em] text-highlight;
+  }
+
+  /* Pill label with a glowing dot — the section eyebrow. */
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-pill border border-accent/20 bg-accent/[0.06] px-3 py-1.5
+           font-mono text-eyebrow font-medium uppercase tracking-[0.14em] text-highlight backdrop-blur-sm;
+  }
+
+  .chip-dot {
+    @apply relative inline-flex h-1.5 w-1.5 rounded-full bg-gradient-to-r from-brand to-brand-cyan;
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.8);
   }
 
   .container-pravaah {
@@ -125,59 +159,72 @@
            ease-editorial focus-visible:outline-none;
   }
 
-  /* Hover fills from the left instead of swapping background colour. */
+  /* A sheen that sweeps across on hover. */
   .btn::before {
     content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    background: currentColor;
-    opacity: 0.12;
+    transform: translateX(-110%);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.28) 50%, transparent 80%);
   }
 
   .btn:hover::before {
-    transform: scaleX(1);
+    transform: translateX(110%);
   }
 
   .btn-primary {
-    @apply btn bg-forest text-ivory-bright hover:bg-forest-deep hover:-translate-y-[1px] active:translate-y-0;
-    box-shadow: 0 10px 24px -12px rgba(46, 74, 60, 0.55);
+    @apply btn text-white hover:-translate-y-[1px] active:translate-y-0;
+    background-image: linear-gradient(135deg, #2563eb 0%, #4f46e5 60%, #6366f1 100%);
+    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.35), 0 10px 30px -10px rgba(37, 99, 235, 0.7);
   }
 
-  /* On a dark band the forest fill loses separation — go light instead. */
-  .section-dark .btn-primary,
+  .btn-primary:hover {
+    box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.55), 0 16px 40px -10px rgba(79, 70, 229, 0.8);
+  }
+
+  /* On the blue gradient band a blue button disappears — go white instead. */
   .section-forest .btn-primary {
-    @apply bg-ivory-bright text-charcoal hover:bg-white;
+    @apply bg-white text-navy;
+    background-image: none;
+    box-shadow: 0 12px 30px -12px rgba(5, 11, 26, 0.6);
   }
 
   .btn-secondary {
-    @apply btn border border-ink/25 bg-transparent text-ink hover:border-ink/60 hover:bg-ink/[0.04];
+    @apply btn border border-ink/15 bg-surface/60 text-ink backdrop-blur-sm hover:border-accent/60 hover:text-accent;
   }
 
   .btn-light {
-    @apply btn bg-ivory-bright text-charcoal hover:bg-white hover:-translate-y-[1px];
-    box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.45);
+    @apply btn bg-white text-navy hover:-translate-y-[1px];
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 14px 34px -12px rgba(37, 99, 235, 0.65);
   }
 
   .btn-ghost {
     @apply btn px-0 py-1 text-ink underline-offset-4 hover:text-accent;
   }
 
-  /* Text-only, so the fill sweep would just be a floating tint block. */
+  /* Text-only, so the sheen would just be a floating tint block. */
   .btn-ghost::before {
     content: none;
   }
 
+  /* inline-flex, not inline-block: paired with `.btn-ghost`, a block display
+     would override the button's flex row and push the arrow onto its own line. */
   .link-underline {
-    @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0
+    @apply relative inline-flex items-center after:absolute after:bottom-0 after:left-0 after:h-px after:w-0
            after:bg-current after:transition-[width] after:duration-300 after:ease-editorial hover:after:w-full;
   }
 
   .surface-card {
     @apply rounded-card border border-hairline bg-surface transition-shadow duration-300 ease-editorial;
+  }
+
+  /* Gradient icon tile — value props and feature lists. */
+  .icon-tile {
+    @apply inline-flex h-11 w-11 items-center justify-center rounded-2xl text-white;
+    background-image: linear-gradient(135deg, #2563eb, #6366f1 70%, #22d3ee);
+    box-shadow: 0 10px 24px -10px rgba(79, 70, 229, 0.7);
   }
 
   .media {
@@ -221,19 +268,59 @@
   }
 
   .prose-pravaah blockquote {
-    @apply my-8 border-l-2 border-accent pl-6 font-display text-xl italic text-ink;
+    @apply my-8 rounded-r-2xl border-l-2 border-accent bg-accent/[0.05] py-4 pl-6 pr-4 font-display text-xl text-ink;
   }
 }
 
 @layer utilities {
   .text-shadow-hero {
-    text-shadow: 0 1px 24px rgba(20, 18, 16, 0.35);
+    text-shadow: 0 2px 30px rgba(5, 11, 26, 0.45);
+  }
+
+  /* Animated blue → indigo → cyan text, for the one phrase per view that should glow. */
+  .text-gradient {
+    background-image: linear-gradient(90deg, #2563eb, #6366f1, #22d3ee, #2563eb);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientPan 8s ease infinite;
+  }
+
+  /* The same idea, lifted for photographs and night-blue bands. */
+  .text-gradient-light {
+    background-image: linear-gradient(90deg, #ffffff, #bfdbfe, #a5f3fc, #c7d2fe, #ffffff);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientPan 9s ease infinite;
   }
 
   .glass-panel {
-    background: linear-gradient(135deg, rgba(250, 247, 241, 0.12), rgba(250, 247, 241, 0.04));
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  /* Faint grid for light bands. */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 80%);
+  }
+
+  /* Grid over photographs — reads as a HUD, never competes with the image. */
+  .bg-grid-photo {
+    background-image:
+      linear-gradient(rgba(191, 219, 254, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(191, 219, 254, 0.09) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
   }
 
   .card-lift {
@@ -244,8 +331,38 @@
     transform: translateY(-6px);
   }
 
+  /* A 1px gradient border that lights up on hover or keyboard focus. */
+  .glow-card {
+    position: relative;
+  }
+
+  .glow-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.95), rgba(99, 102, 241, 0.7), rgba(34, 211, 238, 0.9));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+
+  .glow-card:hover::after,
+  .glow-card:focus-within::after {
+    opacity: 1;
+  }
+
+  .glow-card:hover {
+    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.25), 0 30px 60px -28px rgba(79, 70, 229, 0.55);
+  }
+
   .grain {
-    background-image: radial-gradient(rgba(31, 29, 26, 0.045) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(10, 21, 48, 0.05) 1px, transparent 1px);
     background-size: 3px 3px;
   }
 }
@@ -318,7 +435,8 @@
   height: 2px;
   transform: scaleX(0);
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, theme('colors.saffron.DEFAULT'), theme('colors.clay.DEFAULT'));
+  background: linear-gradient(90deg, #2563eb, #6366f1, #22d3ee);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
 }
 
 @supports (animation-timeline: scroll()) {
@@ -387,7 +505,11 @@
   }
 
   /* Motion that runs on its own stops entirely. */
-  .animate-kenburns {
+  .animate-kenburns,
+  .section-dark::before,
+  .section-forest::before,
+  .text-gradient,
+  .text-gradient-light {
     animation: none !important;
   }
 
