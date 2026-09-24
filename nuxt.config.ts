@@ -30,7 +30,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en-IN' },
       // Fallback for the client-rendered shells (404.html / 200.html).
-      title: 'Pravaah — Curated stays, experiences & expeditions',
+      title: 'Pravaah — Curated stays, experiences & retreats',
       link: [
         { rel: 'icon', type: 'image/png', sizes: '48x48', href: '/brand/favicon-48.png' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/brand/apple-touch-icon.png' },

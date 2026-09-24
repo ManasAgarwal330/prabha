@@ -53,7 +53,7 @@ export const destinations: Destination[] = [
     description:
       'Kumaon lakes and orchards, the high valleys of Darma, Johar and Niti, and the source of the Ganga — our home ground.',
     overview: [
-      'Uttarakhand is where most of what we do begins. The state splits into two old kingdoms: Garhwal in the west, with Rishikesh, the Char Dham shrines and the Niti valley, and Kumaon in the east, with the lake country around Bhimtal, orchard villages like Hartola, and the long road up to Munsiyari and the Panchachuli peaks.',
+      'Uttarakhand is where most of what we do begins. The state splits into two old kingdoms: Garhwal in the west, with Rishikesh, the Char Dham shrines and the Niti valley, and Kumaon in the east, with the lake country around Bhimtal, orchard villages like Hartola, the long road up to Munsiyari and the Panchachuli peaks, and down in the foothills the sal forests of Jim Corbett National Park.',
       'It rewards travellers who go beyond the hill stations. A few hours past the last big town you are in villages that still move with the seasons, on trails to base camps that see a handful of groups a year, and in valleys that sit a day away from the Tibetan border. We stay in small, locally run places and travel with guides who grew up in these valleys.'
     ],
     image: 'photo-1597074866923-dc0589150358',

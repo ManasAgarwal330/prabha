@@ -54,10 +54,59 @@ export const stays: Listing[] = [
   },
 
   {
-    slug: 'scenic-solitude-hartola',
+    slug: 'dharohar-retreat-satkhol',
+    section: 'stays',
+    category: 'hotels-resorts',
+    title: 'Dharohar Retreat, Satkhol',
+    location: 'Satkhol, near Mukteshwar',
+    destinationSlug: 'uttarakhand',
+    tagline: 'Kumaoni character above an oak and pine valley',
+    description:
+      'A hillside resort in Satkhol, built in the Kumaoni style, looking out over a wide valley of oak and pine towards the Himalaya.',
+    overview: [
+      'Satkhol is a small hamlet in the Nainital hills, a short drive from Mukteshwar, where the road runs along a ridge of oak and pine and the snow peaks of Kumaon and Garhwal fill the horizon on clear days.',
+      'Dharohar — "heritage" — is built in the traditional Kumaoni architectural style and makes the most of that view. Rooms range from comfortable superior rooms to family suites and a Kumaoni suite, with the premium rooms adding balconies, fireplaces and jacuzzis. Meals are served in the Dhara Kumaoni Cafe or out on the lawn, and every stay includes a guided nature walk. It is an easy, comfortable choice for families and couples who want the quiet of the hills with a full resort around them.'
+    ],
+    image: 'photo-1418065460487-3e41a6c84dc5',
+    gallery: [
+      'photo-1445019980597-93fa8acb246c',
+      'photo-1433086966358-54859d0ed716',
+      'photo-1506905925346-21bda4d32df4',
+      'photo-1496417263034-38ec4f0b665a'
+    ],
+    facts: [
+      { label: 'Setting', value: 'Oak and pine valley' },
+      { label: 'Best for', value: 'Families & couples' },
+      { label: 'Ideal stay', value: '2 – 3 nights' },
+      { label: 'Getting there', value: 'About 3 hrs from Kathgodam' }
+    ],
+    highlights: [
+      'Valley and Himalayan views across oak and pine forest',
+      'Traditional Kumaoni architecture, with suites that have fireplaces and jacuzzis',
+      'Breakfast included, and a complimentary guided nature walk',
+      'The Dhara Kumaoni Cafe, with indoor and lawn seating',
+      'A children\'s play area, and a sunset point about a kilometre away'
+    ],
+    goodToKnow: [
+      'Room categories include superior rooms, family rooms and suites, a Kumaoni suite and a presidential room — we match the room to your group.',
+      'The Dhokaney waterfall walk and Mukteshwar temple are both close by.',
+      'Winters are cold and can bring snow. Rooms with fireplaces book up first.',
+      'Rates and availability are confirmed with your quote.'
+    ],
+    bestTime: 'Year-round; October to February for the clearest views',
+    featured: true,
+    seo: {
+      title: 'Dharohar Retreat, Satkhol — Kumaoni Resort near Mukteshwar',
+      description:
+        'Stay at Dharohar Retreat in Satkhol, near Mukteshwar: Kumaoni-style rooms and suites, valley and Himalayan views, nature walks and the Dhara Kumaoni Cafe.'
+    }
+  },
+
+  {
+    slug: 'nirvaana-mansion-hartola',
     section: 'stays',
     category: 'villas-homestays',
-    title: 'Scenic Solitude, Hartola',
+    title: 'Nirvaana Mansion, Hartola',
     location: 'Hartola, near Mukteshwar',
     destinationSlug: 'uttarakhand',
     tagline: 'Orchards, silence and the Himalaya at the window',
@@ -65,7 +114,7 @@ export const stays: Listing[] = [
       'A quiet homestay in the orchard village of Hartola, with long views to the snow peaks and nothing on the schedule.',
     overview: [
       'Hartola sits on a ridge near Mukteshwar, surrounded by apple, plum and apricot orchards and oak forest. On a clear morning the whole snow range lines up across the horizon — Trishul, Nanda Devi and the peaks beyond.',
-      'Scenic Solitude is built for exactly what the name says. Home-cooked Kumaoni meals, a sunny verandah, forest walks to neighbouring villages, and evenings that end early because there is no reason for them not to. It is the stay we recommend when someone tells us they just need to switch off.'
+      'Nirvaana Mansion is built for exactly that kind of stillness. Home-cooked Kumaoni meals, a sunny verandah, forest walks to neighbouring villages, and evenings that end early because there is no reason for them not to. It is the stay we recommend when someone tells us they just need to switch off.'
     ],
     image: 'photo-1499696010180-025ef6e1a8f9',
     gallery: [
@@ -95,56 +144,58 @@ export const stays: Listing[] = [
     bestTime: 'Year-round; October to February for the clearest views',
     featured: true,
     seo: {
-      title: 'Scenic Solitude, Hartola — Orchard Homestay near Mukteshwar',
+      title: 'Nirvaana Mansion, Hartola — Orchard Stay near Mukteshwar',
       description:
-        'A quiet homestay in Hartola, near Mukteshwar, with Himalayan views, orchards and home-cooked Kumaoni food. Book with Pravaah.'
+        'Stay at Nirvaana Mansion in Hartola, near Mukteshwar, with Himalayan views, orchards and home-cooked Kumaoni food. Book with Pravaah.'
     }
   },
 
   {
-    slug: 'ethereal-hartola',
+    slug: 'hriday-bhoomi-jim-corbett',
     section: 'stays',
     category: 'villas-homestays',
-    title: 'Ethereal, Hartola',
-    location: 'Hartola, near Mukteshwar',
+    title: 'Hriday Bhoomi, Jim Corbett',
+    location: 'Dhela, Jim Corbett',
     destinationSlug: 'uttarakhand',
-    tagline: 'A cottage in the clouds',
+    tagline: 'Luxury cottages and a villa at the edge of the forest',
     description:
-      'A cosy cottage stay on the Hartola ridge — for misty mornings, clear starry nights and long unhurried days.',
+      'Private cottages and a five-bedroom villa in Dhela, minutes from the Corbett safari gates — with a pool, a farm and the jungle all around.',
     overview: [
-      'Some days in Hartola start inside a cloud. By mid-morning it lifts off the ridge and the oak forest, the orchards and, eventually, the high peaks come out one by one. Ethereal is a stay that is built around that daily reveal.',
-      'Expect warm, simple rooms, meals cooked in the house, and a host happy to point you towards the best walks and viewpoints. It works beautifully in winter, when the air is at its clearest and the night sky is at its darkest — bring a book and let the days take care of themselves.'
+      'Hriday Bhoomi — "land of the heart" — sits in the small village of Dhela, on the edge of Jim Corbett National Park, about 13 km from Ramnagar. The last stretch in is a five-kilometre drive through the forest, and the Dhela safari gate, for the Dhela and Jhirna zones, is only minutes away.',
+      'It blends the warmth of a homestay with the comforts of a resort: five independent cottages for couples and small families, and a five-bedroom private villa for larger families and groups. There is a swimming pool, an in-house restaurant and wide green lawns, and the property keeps a light footprint, with its own organic farm. Days go on jungle safaris and nature walks; evenings end with riverside dinners and a bonfire.'
     ],
-    image: 'photo-1510798831971-661eb04b3739',
+    image: 'photo-1566073771259-6a8506099945',
     gallery: [
-      'photo-1533240332313-0db49b459ad6',
-      'photo-1519681393784-d120267933ba',
-      'photo-1418065460487-3e41a6c84dc5',
-      'photo-1506905925346-21bda4d32df4'
+      'photo-1549366021-9f761d450615',
+      'photo-1441974231531-c6227db76b6e',
+      'photo-1478131143081-80f7f84ca84d',
+      'photo-1496417263034-38ec4f0b665a'
     ],
     facts: [
-      { label: 'Setting', value: 'Forested ridge, around 2,000 m' },
-      { label: 'Best for', value: 'Couples, writers, winter trips' },
-      { label: 'Ideal stay', value: '2 – 4 nights' },
-      { label: 'Getting there', value: 'About 3 hrs from Kathgodam' }
+      { label: 'Setting', value: 'Forest edge, Jim Corbett' },
+      { label: 'Best for', value: 'Families, groups & wildlife lovers' },
+      { label: 'Ideal stay', value: '2 – 3 nights' },
+      { label: 'Getting there', value: 'About 13 km from Ramnagar' }
     ],
     highlights: [
-      'Clear, dark skies — some of the best stargazing in Kumaon',
-      'Morning cloud rolling off the ridge and the peaks appearing behind it',
-      'Short forest walks to viewpoints and nearby villages',
-      'Warm rooms and house-cooked meals after a cold day outside'
+      'Minutes from the Dhela gate for safaris in the Dhela and Jhirna zones',
+      'Five independent cottages, plus a five-bedroom private villa for groups',
+      'Swimming pool, in-house restaurant and landscaped lawns',
+      'Guided nature walks, riverside dining and bonfire evenings',
+      'Organic farm and a low-density, light-footprint layout'
     ],
     goodToKnow: [
-      'December to February can bring snow. We will warn you if the road needs chains or a 4x4.',
-      'Combine it with Scenic Solitude or Glampinn Woods for a longer Kumaon circuit.',
-      'The nearest ATMs and pharmacies are in Mukteshwar or Bhowali — carry some cash.',
-      'Room details and meal plans are confirmed with your quote.'
+      'Safari permits are limited and sell out early — we book them alongside the stay.',
+      'Safari zones and timings are set by the park and change with the season. We confirm them for your dates.',
+      'Ramnagar has direct trains from Delhi, and Pantnagar is the nearest airport.',
+      'The villa suits large families and celebrations. Rates and availability are confirmed with your quote.'
     ],
-    bestTime: 'Year-round; winter for snow and stars',
+    bestTime: 'October to June',
+    featured: true,
     seo: {
-      title: 'Ethereal, Hartola — Cottage Stay in the Kumaon Hills',
+      title: 'Hriday Bhoomi, Jim Corbett — Luxury Cottages & Villa near Dhela',
       description:
-        'Stay at Ethereal in Hartola, near Mukteshwar: a cosy cottage with forest walks, Himalayan views and dark winter skies. Book with Pravaah.'
+        'Stay at Hriday Bhoomi in Dhela, Jim Corbett: luxury cottages and a five-bedroom villa with a pool, minutes from the Dhela and Jhirna safari zones.'
     }
   },
 

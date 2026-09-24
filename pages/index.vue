@@ -15,8 +15,7 @@ const headlineWords = site.heroHeadline.split(' ')
 
 const gridDestinations = destinations.slice(0, 6)
 const featuredStays = featuredListings('stays').slice(0, 3)
-/** A mix of the big trips: expeditions first, topped up with experiences. */
-const featuredJourneys = [...featuredListings('expeditions'), ...featuredListings('experiences')].slice(0, 3)
+const featuredJourneys = featuredListings('experiences').slice(0, 3)
 const stories = sortedArticles.slice(0, 3)
 
 /** The four offering tabs, shown as the first thing under the hero. */
@@ -82,7 +81,7 @@ usePageSeo({
           class="hero-fade mt-6 max-w-xl text-base leading-relaxed text-ivory-bright/85 sm:text-lg"
           style="animation-delay: 0.62s"
         >
-          Handpicked stays, Himalayan expeditions, festivals and retreats — thoughtfully crafted journeys across India, designed around the way you want to travel.
+          Handpicked stays, Himalayan treks, festivals and retreats — thoughtfully crafted journeys across India, designed around the way you want to travel.
         </p>
 
         <div class="hero-fade mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style="animation-delay: 0.74s">
@@ -106,7 +105,7 @@ usePageSeo({
           <span class="mr-1 inline-flex items-center gap-1.5"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
           <NuxtLink to="/destinations/uttarakhand" class="rounded-pill border border-ivory-bright/20 px-3 py-1.5 backdrop-blur-sm transition-colors hover:border-ivory-bright/60 hover:text-ivory-bright">Uttarakhand</NuxtLink>
           <NuxtLink to="/experiences/hornbill-festival-nagaland" class="rounded-pill border border-ivory-bright/20 px-3 py-1.5 backdrop-blur-sm transition-colors hover:border-ivory-bright/60 hover:text-ivory-bright">Hornbill Festival</NuxtLink>
-          <NuxtLink to="/expeditions/khaliya-top-trek" class="rounded-pill border border-ivory-bright/20 px-3 py-1.5 backdrop-blur-sm transition-colors hover:border-ivory-bright/60 hover:text-ivory-bright">Khaliya Top</NuxtLink>
+          <NuxtLink to="/experiences/khaliya-top-trek" class="rounded-pill border border-ivory-bright/20 px-3 py-1.5 backdrop-blur-sm transition-colors hover:border-ivory-bright/60 hover:text-ivory-bright">Khaliya Top</NuxtLink>
         </div>
 
         <dl
@@ -135,11 +134,11 @@ usePageSeo({
     <section id="explore" class="container-pravaah scroll-mt-20 py-20 lg:py-28">
       <SectionHeading
         eyebrow="Explore Pravaah"
-        title="Stay, explore, go further — or simply slow down."
-        intro="Four ways to travel with us. Every one of them is planned around the people and places we know best."
+        title="Stay, explore — or simply slow down."
+        intro="Three ways to travel with us. Every one of them is planned around the people and places we know best."
       />
 
-      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+      <div class="mt-12 grid gap-4 sm:grid-cols-3 lg:gap-5">
         <NuxtLink
           v-for="(pillar, index) in pillars"
           :key="pillar.section.key"
@@ -152,7 +151,7 @@ usePageSeo({
             :src="pillar.section.heroImage"
             :alt="pillar.section.name"
             :ratio="3 / 4"
-            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            sizes="(min-width: 640px) 33vw, 100vw"
             class="h-full w-full"
           />
           <div
@@ -267,17 +266,17 @@ usePageSeo({
       </div>
     </section>
 
-    <!-- Expeditions & experiences -->
+    <!-- Treks & experiences -->
     <section class="section-dark py-20 lg:py-28">
       <div class="container-pravaah">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
-            eyebrow="Expeditions & experiences"
+            eyebrow="Treks & experiences"
             title="Base camps, border valleys and the source of the Ganga."
             intro="Fully supported treks, 4x4 journeys and festivals — planned and led by people who know the ground."
           />
-          <NuxtLink to="/expeditions" class="btn-ghost link-underline reveal shrink-0">
-            All expeditions
+          <NuxtLink to="/experiences" class="btn-ghost link-underline reveal shrink-0">
+            All experiences
             <ArrowRight class="h-4 w-4" aria-hidden="true" />
           </NuxtLink>
         </div>

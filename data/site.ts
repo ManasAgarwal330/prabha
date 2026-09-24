@@ -11,9 +11,9 @@ export const site = {
   /** Home page headline. */
   heroHeadline: 'Journeys worth remembering.',
   /** Short form for page titles, where the full tagline is too long. */
-  titleTagline: 'Curated stays, experiences & expeditions',
+  titleTagline: 'Curated stays, experiences & retreats',
   description:
-    "Pravaah doesn't sell the mountains — it curates how you experience them. Handpicked stays, experiences, expeditions and retreats across the Himalaya and beyond.",
+    "Pravaah doesn't sell the mountains — it curates how you experience them. Handpicked stays, treks, experiences and retreats across the Himalaya and beyond.",
   // Update after connecting your custom domain in Netlify.
   url: 'https://pravaah-travel.netlify.app',
   locale: 'en_IN',
@@ -21,10 +21,9 @@ export const site = {
 
   contact: {
     email: 'hello@pravaah.travel',
-    phoneDisplay: '+91 90000 00000',
-    phoneHref: '+919000000000',
-    // Placeholder WhatsApp number — swap for the real business number.
-    whatsapp: '919000000000',
+    phoneDisplay: '+91 92057 47247',
+    phoneHref: '+919205747247',
+    whatsapp: '919205747247',
     whatsappMessage: "Hi Pravaah! I'd like to plan a trip.",
     address: {
       line1: 'Pravaah Travel Studio',
@@ -66,17 +65,10 @@ export const primaryNav: NavItem[] = [
     to: '/experiences',
     children: [
       { label: 'Adventure', to: '/experiences#adventure' },
+      { label: 'Treks', to: '/experiences#treks' },
+      { label: '4x4 / Off-Road', to: '/experiences#off-road' },
       { label: 'Culture & Heritage', to: '/experiences#culture-heritage' },
       { label: 'Offbeat Experiences', to: '/experiences#offbeat' }
-    ]
-  },
-  {
-    label: 'Expeditions',
-    to: '/expeditions',
-    children: [
-      { label: 'Treks', to: '/expeditions#treks' },
-      { label: '4x4 / Off-Road', to: '/expeditions#off-road' },
-      { label: 'Multi-Day Expeditions', to: '/expeditions#multi-day' }
     ]
   },
   {
@@ -110,7 +102,6 @@ export const footerNav = {
   explore: [
     { label: 'Stays', to: '/stays' },
     { label: 'Experiences', to: '/experiences' },
-    { label: 'Expeditions', to: '/expeditions' },
     { label: 'Events', to: '/events' },
     { label: 'Destinations', to: '/destinations' },
     { label: 'Journals', to: '/journals' }
@@ -131,7 +122,7 @@ export const brandStory = {
     'We are a small studio of travellers, drivers, cooks, guides and hosts who have spent years on these roads. We plan the kind of trip we would want for ourselves: unhurried mornings, a route that makes sense, and people worth meeting at the other end.'
   ],
   stats: [
-    { value: '8', label: 'Handpicked stays' },
+    { value: '9', label: 'Handpicked stays' },
     { value: '40+', label: 'Local partners & guides' },
     { value: '100%', label: 'Custom-built itineraries' }
   ]

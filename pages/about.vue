@@ -27,7 +27,7 @@ const principles = [
 usePageSeo({
   title: 'About Pravaah — A Travel Studio Built Around India',
   description:
-    'Pravaah is a small travel studio planning stays, experiences, expeditions and retreats across India. How we work, what we believe, and who is behind the trips.',
+    'Pravaah is a small travel studio planning stays, treks, experiences and retreats across India. How we work, what we believe, and who is behind the trips.',
   path: '/about',
   image: HERO_IMAGE
 })

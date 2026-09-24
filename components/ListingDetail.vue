@@ -5,7 +5,7 @@ import { getCategory, sections } from '~/data/sections'
 import { listingPath, listingsBySection } from '~/data/listings'
 import type { Listing } from '~/types'
 
-/** Detail page shared by every stay, experience, expedition and event. */
+/** Detail page shared by every stay, experience and event. */
 const props = defineProps<{ listing: Listing }>()
 
 const current = props.listing

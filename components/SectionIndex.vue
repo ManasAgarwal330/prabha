@@ -5,7 +5,7 @@ import { listingsInCategory } from '~/data/listings'
 import type { SectionKey } from '~/types'
 
 /**
- * Landing page for one offering tab (Stays, Experiences, Expeditions, Events).
+ * Landing page for one offering tab (Stays, Experiences, Events).
  * Each category gets its own anchored block so the header dropdown can deep-link to it.
  */
 const props = defineProps<{ sectionKey: SectionKey }>()

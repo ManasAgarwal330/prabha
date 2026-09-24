@@ -14,12 +14,33 @@
 # Old URLs from the previous site structure.
 [[redirects]]
   from = "/tours"
-  to = "/expeditions"
+  to = "/experiences"
   status = 301
 
 [[redirects]]
   from = "/tours/*"
-  to = "/expeditions"
+  to = "/experiences"
+  status = 301
+
+# Expeditions were folded into Experiences; the listing slugs did not change.
+[[redirects]]
+  from = "/expeditions"
+  to = "/experiences"
+  status = 301
+
+[[redirects]]
+  from = "/expeditions/*"
+  to = "/experiences/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/stays/scenic-solitude-hartola"
+  to = "/stays/nirvaana-mansion-hartola"
+  status = 301
+
+[[redirects]]
+  from = "/stays/ethereal-hartola"
+  to = "/stays"
   status = 301
 
 [[redirects]]

@@ -163,7 +163,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
       <ImageGallery :images="current.gallery" :label="current.name" />
     </section>
 
-    <!-- Stays, experiences and expeditions here -->
+    <!-- Stays and experiences here -->
     <section class="section-dark py-20 lg:py-24">
       <div class="container-pravaah">
         <SectionHeading

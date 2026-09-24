@@ -1,9 +1,9 @@
 import type { Section, SectionKey } from '~/types'
 
 /**
- * The four offering tabs. Each one owns a set of categories; every listing in
- * `data/stays.ts`, `data/experiences.ts`, `data/expeditions.ts` and
- * `data/events.ts` points at one of these category slugs.
+ * The three offering tabs. Each one owns a set of categories; every listing in
+ * `data/stays.ts`, `data/experiences.ts` and `data/events.ts` points at one of
+ * these category slugs.
  */
 export const sections: Record<SectionKey, Section> = {
   stays: {
@@ -40,9 +40,9 @@ export const sections: Record<SectionKey, Section> = {
       }
     ],
     seo: {
-      title: 'Stays — Hotels, Homestays, Glamping & Farm Stays in the Himalaya',
+      title: 'Stays — Resorts, Villas, Homestays, Glamping & Farm Stays',
       description:
-        'Handpicked stays with Pravaah: hotels in Bhimtal, homestays in Hartola, Munsiyari and Rishikesh, glamping in Sonapani and experiential stays in Kosi and Chakulwa.'
+        'Handpicked stays with Pravaah: resorts in Bhimtal and Satkhol, villas and homestays in Hartola, Jim Corbett, Munsiyari and Rishikesh, glamping in Sonapani and experiential stays in Kosi and Chakulwa.'
     }
   },
 
@@ -53,7 +53,7 @@ export const sections: Record<SectionKey, Section> = {
     path: '/experiences',
     title: 'Start with what you want to feel, not where you want to go.',
     intro:
-      'A night at a Himalayan base camp, a festival in the hills of Nagaland, Holi in the lanes of Pushkar, or a week in a border valley few travellers reach. These are the experiences we build journeys around.',
+      'A night at a Himalayan base camp, a trek to the foot of Panchachuli, a 4x4 route into the border valleys, a festival in the hills of Nagaland or a journey down the Ganga. These are the experiences we build journeys around.',
     heroImage: 'photo-1510312305653-8ed496efae75',
     categories: [
       {
@@ -62,9 +62,20 @@ export const sections: Record<SectionKey, Section> = {
         description: 'Camps, trails and big mountain days — for people who want to come home with tired legs.'
       },
       {
+        slug: 'treks',
+        name: 'Treks',
+        description: 'Guided walks to base camps and high meadows, with camps, cooks and porters arranged.'
+      },
+      {
+        slug: 'off-road',
+        name: '4x4 / Off-Road',
+        description: 'Driver-led 4x4 journeys into valleys where the road is still part of the adventure.'
+      },
+      {
         slug: 'culture-heritage',
         name: 'Culture & Heritage',
-        description: 'Festivals, pilgrimages and living traditions, planned so you are part of the day rather than watching it.'
+        description:
+          'Festivals, pilgrimages, living traditions and the journey down the Ganga — planned so you are part of the day rather than watching it.'
       },
       {
         slug: 'offbeat',
@@ -73,42 +84,9 @@ export const sections: Record<SectionKey, Section> = {
       }
     ],
     seo: {
-      title: 'Experiences — Adventure, Culture & Offbeat Travel in India',
+      title: 'Experiences — Treks, 4x4 Journeys, Culture & Offbeat Travel in India',
       description:
-        'Pravaah experiences: Bankatiya base camp, Nanda Ashtami in Munsiyari, the Char Dham yatra, Hornbill festival, Shillong cherry blossoms, Holi in Pushkar and the Darma, Johar and Niti valleys.'
-    }
-  },
-
-  expeditions: {
-    key: 'expeditions',
-    name: 'Expeditions',
-    singular: 'expedition',
-    path: '/expeditions',
-    title: 'Longer, higher and further — journeys that take some doing.',
-    intro:
-      'Base camp treks in the Kumaon Himalaya, 4x4 routes into the border valleys, and a river journey that follows the Ganga from the mountains to the plains. Fully supported, carefully paced, and led by people who know the ground.',
-    heroImage: 'photo-1533130061792-64b345e4a833',
-    categories: [
-      {
-        slug: 'treks',
-        name: 'Treks',
-        description: 'Guided walks to base camps and high meadows, with camps, cooks and porters arranged.'
-      },
-      {
-        slug: 'off-road',
-        name: '4x4 / Off-Road',
-        description: 'Driver-led 4x4 expeditions into valleys where the road is still part of the adventure.'
-      },
-      {
-        slug: 'multi-day',
-        name: 'Multi-Day Expeditions',
-        description: 'Long, linked journeys that combine road, trail and river over a week or more.'
-      }
-    ],
-    seo: {
-      title: 'Expeditions — Himalayan Treks, 4x4 Journeys & River Expeditions',
-      description:
-        'Pravaah expeditions: Bankatiya and Panchachuli base camp treks, Khaliya Top, 4x4 expeditions to the Johar, Darma and Niti valleys, and Flow with the Ganga.'
+        'Pravaah experiences: Bankatiya, Panchachuli and Khaliya Top treks, 4x4 journeys to the Johar, Darma and Niti valleys, the Char Dham, Flow with the Ganga, Hornbill, Shillong cherry blossoms and Holi in Pushkar.'
     }
   },
 
