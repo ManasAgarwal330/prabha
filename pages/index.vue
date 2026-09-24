@@ -85,8 +85,8 @@ usePageSeo({
         </p>
 
         <div class="hero-fade mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style="animation-delay: 0.74s">
-          <NuxtLink to="/experiences" class="btn-light group w-full px-8 py-4 sm:w-auto">
-            Explore Experiences
+          <NuxtLink to="/#about" class="btn-light group w-full px-8 py-4 sm:w-auto">
+            About Pravaah
             <ArrowRight
               class="h-4 w-4 transition-transform duration-300 ease-editorial group-hover:translate-x-1"
               aria-hidden="true"
@@ -187,7 +187,7 @@ usePageSeo({
           <SectionHeading
             eyebrow="Handpicked stays"
             title="Places worth the journey on their own."
-            intro="Lakeside hotels, orchard homestays, glamping in the woods and farm stays — every one run by people we know."
+            intro="Lakeside hotels, orchard homestays, camping in the woods and farm stays — every one run by people we know."
           />
           <NuxtLink to="/stays" class="btn-ghost link-underline reveal shrink-0">
             All stays
@@ -241,8 +241,8 @@ usePageSeo({
       </div>
     </section>
 
-    <!-- Brand story -->
-    <section class="border-y border-hairline bg-canvas-alt py-20 lg:py-28">
+    <!-- Brand story — the "About Pravaah" buttons land here -->
+    <section id="about" class="scroll-mt-20 border-y border-hairline bg-canvas-alt py-20 lg:py-28">
       <div class="container-pravaah grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div class="reveal-media order-2 overflow-hidden rounded-card lg:order-1">
           <AppImage

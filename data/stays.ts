@@ -297,13 +297,13 @@ export const stays: Listing[] = [
   {
     slug: 'glampinn-woods-sonapani',
     section: 'stays',
-    category: 'camps-glamping',
+    category: 'camps-camping',
     title: 'Glampinn Woods, Sonapani',
     location: 'Sonapani, near Mukteshwar',
     destinationSlug: 'uttarakhand',
     tagline: 'Proper beds, a forest and a campfire',
     description:
-      'Glamping in the woods near Mukteshwar — comfortable tents, campfire evenings and Himalayan views through the trees.',
+      'Camping in the woods near Mukteshwar — comfortable tents, campfire evenings and Himalayan views through the trees.',
     overview: [
       'Sonapani is a small settlement tucked into the forested ridges near Satkhol and Mukteshwar, with oak and pine all around and the snow range visible on clear days.',
       'Glampinn Woods is the easiest way to sleep outdoors without giving anything up. The tents have real beds and attached comforts, dinner is cooked over the fire, and the only sounds at night are the forest ones. Days go on birding walks, village trails and doing very little in a hammock. It is a favourite for couples, friends and families with children who have never camped before.'
@@ -336,9 +336,9 @@ export const stays: Listing[] = [
     bestTime: 'March to June and September to December',
     featured: true,
     seo: {
-      title: 'Glampinn Woods, Sonapani — Glamping near Mukteshwar',
+      title: 'Glampinn Woods, Sonapani — Camping near Mukteshwar',
       description:
-        'Glamping at Glampinn Woods in Sonapani, near Mukteshwar: furnished tents, campfire evenings, forest walks and Himalayan views. Book with Pravaah.'
+        'Camping at Glampinn Woods in Sonapani, near Mukteshwar: furnished tents, campfire evenings, forest walks and Himalayan views. Book with Pravaah.'
     }
   },
 

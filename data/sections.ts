@@ -13,7 +13,7 @@ export const sections: Record<SectionKey, Section> = {
     path: '/stays',
     title: 'Places to stay that are worth the journey on their own.',
     intro:
-      'Lakeside hotels, orchard homestays, glamping in the woods and farm stays in the Kumaon hills. Every one of them is run by people we know, and every one of them is somewhere we would happily spend a slow week.',
+      'Lakeside hotels, orchard homestays, camping in the woods and farm stays in the Kumaon hills. Every one of them is run by people we know, and every one of them is somewhere we would happily spend a slow week.',
     heroImage: 'photo-1445019980597-93fa8acb246c',
     categories: [
       {
@@ -28,8 +28,8 @@ export const sections: Record<SectionKey, Section> = {
           'Private cottages and family-run homes with a view, a kitchen that cooks local, and hosts who know the valley.'
       },
       {
-        slug: 'camps-glamping',
-        name: 'Camps & Glamping',
+        slug: 'camps-camping',
+        name: 'Camps & Camping',
         description: 'Tents with proper beds, a campfire and a forest around you. Outdoors, without roughing it.'
       },
       {
@@ -40,9 +40,9 @@ export const sections: Record<SectionKey, Section> = {
       }
     ],
     seo: {
-      title: 'Stays — Resorts, Villas, Homestays, Glamping & Farm Stays',
+      title: 'Stays — Resorts, Villas, Homestays, Camping & Farm Stays',
       description:
-        'Handpicked stays with Pravaah: resorts in Bhimtal and Satkhol, villas and homestays in Hartola, Jim Corbett, Munsiyari and Rishikesh, glamping in Sonapani and experiential stays in Kosi and Chakulwa.'
+        'Handpicked stays with Pravaah: resorts in Bhimtal and Satkhol, villas and homestays in Hartola, Jim Corbett, Munsiyari and Rishikesh, camping in Sonapani and experiential stays in Kosi and Chakulwa.'
     }
   },
 

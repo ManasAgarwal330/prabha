@@ -15,8 +15,8 @@ withDefaults(
     image: 'photo-1493246507139-91e8fad9978e',
     primaryLabel: 'Plan My Trip',
     primaryTo: '/plan-my-trip',
-    secondaryLabel: 'Explore experiences',
-    secondaryTo: '/experiences'
+    secondaryLabel: 'About Pravaah',
+    secondaryTo: '/#about'
   }
 )
 </script>

@@ -112,7 +112,7 @@ export const destinations: Destination[] = [
       {
         title: 'Stays with a sense of place',
         description:
-          'Orchard homestays, organic farms, glamping in the woods and lakeside hotels — chosen for the hosts as much as the rooms.'
+          'Orchard homestays, organic farms, camping in the woods and lakeside hotels — chosen for the hosts as much as the rooms.'
       }
     ],
     experiences: [

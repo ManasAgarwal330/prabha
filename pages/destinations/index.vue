@@ -164,8 +164,8 @@ useJsonLd(breadcrumbLd(crumbs))
       title="Not sure which one?"
       body="Tell us the month you can travel and what you want the trip to feel like. We will suggest the region."
       image="photo-1470071459604-3b5ec3a7fe05"
-      secondary-label="Explore experiences"
-      secondary-to="/experiences"
+      secondary-label="About Pravaah"
+      secondary-to="/#about"
     />
   </div>
 </template>

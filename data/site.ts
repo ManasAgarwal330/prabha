@@ -56,7 +56,7 @@ export const primaryNav: NavItem[] = [
     children: [
       { label: 'Hotels & Resorts', to: '/stays#hotels-resorts' },
       { label: 'Villas & Homestays', to: '/stays#villas-homestays' },
-      { label: 'Camps & Glamping', to: '/stays#camps-glamping' },
+      { label: 'Camps & Camping', to: '/stays#camps-camping' },
       { label: 'Experiential Stays', to: '/stays#experiential-stays' }
     ]
   },
