@@ -51,13 +51,13 @@ useJsonLd(
       />
 
       <div class="mt-8 max-w-4xl">
-        <p class="eyebrow mb-4">About {{ site.name }}</p>
+        <p class="chip mb-6"><span class="chip-dot" aria-hidden="true" />About {{ site.name }}</p>
         <h1 class="text-display-lg">{{ brandStory.title }}</h1>
       </div>
     </section>
 
     <section class="container-pravaah">
-      <div class="reveal-media overflow-hidden rounded-card">
+      <div class="reveal-media overflow-hidden rounded-card shadow-lift">
         <AppImage
           :src="HERO_IMAGE"
           alt="A misty valley at first light in the Indian hills"
@@ -72,7 +72,13 @@ useJsonLd(
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-7">
           <div class="reveal prose-pravaah">
-            <p v-for="paragraph in brandStory.body" :key="paragraph">{{ paragraph }}</p>
+            <p
+              v-for="(paragraph, index) in brandStory.body"
+              :key="paragraph"
+              :class="index === 0 ? 'border-l-2 border-accent pl-5 text-xl leading-relaxed text-ink' : ''"
+            >
+              {{ paragraph }}
+            </p>
             <p>
               Pravaah means flow — the movement of a river, the way a current finds its own line through a
               valley. It seemed like the right name for a company built around journeys that carry you along
@@ -87,10 +93,10 @@ useJsonLd(
         </div>
 
         <aside class="reveal lg:col-span-4 lg:col-start-9">
-          <dl class="space-y-8">
-            <div v-for="stat in brandStory.stats" :key="stat.label" class="border-t border-hairline pt-5">
-              <dt class="text-sm text-ink-muted">{{ stat.label }}</dt>
-              <dd class="mt-1 font-display text-4xl">{{ stat.value }}</dd>
+          <dl class="space-y-3">
+            <div v-for="stat in brandStory.stats" :key="stat.label" class="surface-card glow-card flex flex-col-reverse p-6 shadow-soft">
+              <dt class="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-ink-muted">{{ stat.label }}</dt>
+              <dd class="text-gradient font-display text-5xl font-semibold">{{ stat.value }}</dd>
             </div>
           </dl>
         </aside>
@@ -102,14 +108,15 @@ useJsonLd(
       <div class="container-pravaah">
         <SectionHeading eyebrow="What we believe" title="Four things we will not trade away." />
 
-        <div class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2">
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
           <div
             v-for="(principle, index) in principles"
             :key="principle.title"
-            class="reveal border-t border-hairline pt-6"
+            class="reveal surface-card glow-card p-7"
             :style="{ transitionDelay: `${index * 70}ms` }"
           >
-            <h3 class="font-display text-xl leading-snug">{{ principle.title }}</h3>
+            <span class="icon-tile h-10 w-10 rounded-xl font-mono text-[0.72rem] font-medium">{{ String(index + 1).padStart(2, '0') }}</span>
+            <h3 class="mt-5 font-display text-xl leading-snug">{{ principle.title }}</h3>
             <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ principle.body }}</p>
           </div>
         </div>
@@ -120,14 +127,14 @@ useJsonLd(
     <section class="container-pravaah py-20 lg:py-24">
       <SectionHeading eyebrow="How we work" title="From first message to the last mile home." />
 
-      <ol class="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
+      <ol class="mt-12 grid gap-4 sm:grid-cols-3 lg:gap-5">
         <li
           v-for="(step, index) in howItWorks"
           :key="step.number"
-          class="reveal border-t border-hairline pt-6"
+          class="reveal surface-card glow-card p-7 shadow-soft"
           :style="{ transitionDelay: `${index * 80}ms` }"
         >
-          <span class="font-display text-sm tracking-[0.2em] text-accent">{{ step.number }}</span>
+          <span class="icon-tile h-10 w-10 rounded-xl font-mono text-[0.72rem] font-medium">{{ step.number }}</span>
           <h3 class="mt-4 font-display text-2xl">{{ step.title }}</h3>
           <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ step.description }}</p>
         </li>
@@ -140,7 +147,7 @@ useJsonLd(
           class="reveal"
           :style="{ transitionDelay: `${index * 60}ms` }"
         >
-          <component :is="resolveIcon(value.icon)" class="h-6 w-6 text-accent" aria-hidden="true" />
+          <span class="icon-tile"><component :is="resolveIcon(value.icon)" class="h-5 w-5" aria-hidden="true" /></span>
           <h3 class="mt-5 font-display text-xl">{{ value.title }}</h3>
           <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ value.description }}</p>
         </div>
@@ -200,7 +207,7 @@ useJsonLd(
             Contact us
             <ArrowRight class="h-4 w-4" aria-hidden="true" />
           </NuxtLink>
-          <NuxtLink to="/plan-my-trip" class="btn border border-ink/40 text-ink hover:border-ink hover:bg-ink/10">
+          <NuxtLink to="/plan-my-trip" class="btn border border-white/40 text-white backdrop-blur-sm hover:border-white hover:bg-white/10">
             Plan My Trip
           </NuxtLink>
         </div>

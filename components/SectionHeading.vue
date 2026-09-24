@@ -1,5 +1,5 @@
 <script setup lang="ts">
-withDefaults(
+const props = withDefaults(
   defineProps<{
     eyebrow?: string
     title: string
@@ -10,6 +10,13 @@ withDefaults(
   }>(),
   { align: 'left', as: 'h2' }
 )
+
+/** The closing words of every heading carry the brand gradient — two words, or one on short titles. */
+const titleParts = computed(() => {
+  const words = props.title.trim().split(/\s+/)
+  const tail = words.length >= 4 ? 2 : 1
+  return { head: words.slice(0, -tail).join(' '), tail: words.slice(-tail).join(' ') }
+})
 </script>
 
 <template>
@@ -21,7 +28,8 @@ withDefaults(
       </span>
     </p>
     <component :is="as" class="text-display-md">
-      {{ title }}
+      <template v-if="titleParts.head">{{ `${titleParts.head} ` }}</template>
+      <span class="text-gradient">{{ titleParts.tail }}</span>
     </component>
     <p v-if="intro" class="mt-5 text-lg leading-relaxed text-ink-muted">
       {{ intro }}

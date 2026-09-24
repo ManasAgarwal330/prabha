@@ -1,5 +1,20 @@
 <script setup lang="ts">
-import { ArrowRight, CalendarDays, Check, Info } from 'lucide-vue-next'
+import {
+  ArrowRight,
+  CalendarDays,
+  Check,
+  Clock,
+  Flag,
+  Gauge,
+  Info,
+  LayoutGrid,
+  Lightbulb,
+  MapPinned,
+  Moon,
+  Navigation,
+  Users
+} from 'lucide-vue-next'
+import type { Component } from 'vue'
 import { getDestination } from '~/data/destinations'
 import { getCategory, sections } from '~/data/sections'
 import { listingPath, listingsBySection } from '~/data/listings'
@@ -7,6 +22,26 @@ import type { Listing } from '~/types'
 
 /** Detail page shared by every stay, experience and event. */
 const props = defineProps<{ listing: Listing }>()
+
+/** An icon for each kind of key fact; anything unrecognised falls back to Info. */
+const factIcons: Record<string, Component> = {
+  Setting: MapPinned,
+  'Best for': Users,
+  'Ideal stay': Moon,
+  'Getting there': Navigation,
+  Duration: Clock,
+  Level: Gauge,
+  Difficulty: Gauge,
+  'Starts from': Flag,
+  'Start point': Flag,
+  Season: CalendarDays,
+  When: CalendarDays,
+  Format: LayoutGrid,
+  'Group size': Users
+}
+const factIcon = (label: string) => factIcons[label] ?? Info
+
+const pad = (n: number) => String(n).padStart(2, '0')
 
 const current = props.listing
 const section = sections[current.section]
@@ -63,10 +98,17 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         <h1 class="mt-4 max-w-3xl text-display-lg text-white text-shadow-hero">{{ current.title }}</h1>
         <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/85">{{ current.tagline }}</p>
 
-        <dl class="mt-9 flex flex-wrap gap-x-10 gap-y-5 border-t border-white/20 pt-6 text-white">
-          <div v-for="fact in current.facts.slice(0, 3)" :key="fact.label">
-            <dt class="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-white/55">{{ fact.label }}</dt>
-            <dd class="mt-1.5 font-display text-lg">{{ fact.value }}</dd>
+        <dl class="mt-9 grid max-w-3xl gap-3 text-white sm:grid-cols-3">
+          <div
+            v-for="fact in current.facts.slice(0, 3)"
+            :key="fact.label"
+            class="glass-panel flex items-start gap-3 rounded-2xl border border-white/10 px-4 py-3.5"
+          >
+            <component :is="factIcon(fact.label)" class="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" aria-hidden="true" />
+            <div>
+              <dt class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white/55">{{ fact.label }}</dt>
+              <dd class="mt-1 font-display text-[0.95rem] leading-snug">{{ fact.value }}</dd>
+            </div>
           </div>
         </dl>
       </div>
@@ -77,55 +119,86 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         <!-- Main column -->
         <div class="lg:col-span-7">
           <section>
-            <h2 class="reveal text-display-sm">About this {{ section.singular }}</h2>
-            <div class="reveal prose-pravaah mt-6">
-              <p v-for="paragraph in current.overview" :key="paragraph">{{ paragraph }}</p>
+            <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />01 · Overview</p>
+            <h2 class="reveal mt-5 text-display-sm">About this <span class="text-gradient">{{ section.singular }}</span></h2>
+            <div class="reveal mt-6 space-y-5">
+              <p
+                v-for="(paragraph, index) in current.overview"
+                :key="paragraph"
+                :class="
+                  index === 0
+                    ? 'border-l-2 border-accent pl-5 text-lg leading-relaxed text-ink sm:text-xl'
+                    : 'text-[1.0625rem] leading-[1.8] text-ink-soft'
+                "
+              >
+                {{ paragraph }}
+              </p>
             </div>
           </section>
 
-          <section class="mt-16">
-            <h2 class="reveal text-display-sm">Highlights</h2>
-            <ul class="reveal mt-6 space-y-3.5">
+          <section class="mt-20">
+            <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />02 · Highlights</p>
+            <h2 class="reveal mt-5 text-display-sm"><span class="text-gradient">Highlights</span></h2>
+            <ul class="mt-8 grid gap-4 sm:grid-cols-2">
               <li
-                v-for="highlight in current.highlights"
+                v-for="(highlight, index) in current.highlights"
                 :key="highlight"
-                class="flex gap-3.5 text-[0.975rem] leading-relaxed text-ink-soft"
+                class="reveal surface-card glow-card flex items-start gap-4 p-5 shadow-soft"
+                :class="index === current.highlights.length - 1 && current.highlights.length % 2 === 1 ? 'sm:col-span-2' : ''"
+                :style="{ transitionDelay: `${Math.min(index, 5) * 60}ms` }"
               >
-                <Check class="mt-1 h-4 w-4 shrink-0 text-link" aria-hidden="true" />
-                {{ highlight }}
+                <span class="icon-tile h-9 w-9 shrink-0 rounded-xl font-mono text-[0.7rem] font-medium">{{ pad(index + 1) }}</span>
+                <span class="text-[0.95rem] leading-relaxed text-ink-soft">{{ highlight }}</span>
               </li>
             </ul>
           </section>
 
-          <section v-if="current.itinerary?.length" class="mt-16">
-            <h2 class="reveal text-display-sm">Day by day</h2>
+          <section v-if="current.itinerary?.length" class="mt-20">
+            <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />03 · Itinerary</p>
+            <h2 class="reveal mt-5 text-display-sm">Day by <span class="text-gradient">day</span></h2>
             <div class="reveal mt-8">
               <ItineraryList :days="current.itinerary" />
             </div>
           </section>
 
-          <section v-if="current.inclusions?.length" class="mt-16">
-            <h2 class="reveal font-display text-2xl">What is included</h2>
-            <ul class="reveal mt-5 grid gap-3 text-sm leading-relaxed text-ink-soft sm:grid-cols-2">
-              <li v-for="item in current.inclusions" :key="item" class="flex gap-3">
-                <Check class="mt-0.5 h-4 w-4 shrink-0 text-link" aria-hidden="true" />
+          <section v-if="current.inclusions?.length" class="mt-20">
+            <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Included</p>
+            <h2 class="reveal mt-5 text-display-sm">What is <span class="text-gradient">included</span></h2>
+            <ul class="reveal mt-7 flex flex-wrap gap-2.5">
+              <li
+                v-for="item in current.inclusions"
+                :key="item"
+                class="inline-flex items-center gap-2.5 rounded-pill border border-accent/20 bg-accent/[0.05] py-2 pl-2 pr-4 text-sm text-ink-soft"
+              >
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-indigo text-white">
+                  <Check class="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
                 {{ item }}
               </li>
             </ul>
           </section>
 
-          <section class="mt-16">
-            <h2 class="reveal text-display-sm">Good to know</h2>
-            <ol class="reveal mt-6 space-y-5">
-              <li
-                v-for="(item, index) in current.goodToKnow"
-                :key="item"
-                class="flex gap-5 border-t border-hairline pt-5"
-              >
-                <span class="font-display text-sm text-accent">{{ String(index + 1).padStart(2, '0') }}</span>
-                <p class="text-[0.95rem] leading-relaxed text-ink-soft">{{ item }}</p>
-              </li>
-            </ol>
+          <section class="mt-20">
+            <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Before you go</p>
+            <h2 class="reveal mt-5 text-display-sm">Good to <span class="text-gradient">know</span></h2>
+            <div
+              class="reveal relative mt-8 overflow-hidden rounded-card border border-accent/20 bg-gradient-to-br from-brand/[0.07] via-surface to-brand-cyan/[0.06] p-6 shadow-soft sm:p-8"
+            >
+              <Lightbulb
+                class="pointer-events-none absolute -right-4 -top-4 h-28 w-28 text-accent/[0.07]"
+                aria-hidden="true"
+              />
+              <ol class="relative grid gap-6 sm:grid-cols-2">
+                <li v-for="(item, index) in current.goodToKnow" :key="item" class="flex gap-4">
+                  <span
+                    class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-surface font-mono text-[0.7rem] font-medium text-accent shadow-soft ring-1 ring-accent/15"
+                  >
+                    {{ pad(index + 1) }}
+                  </span>
+                  <p class="text-[0.95rem] leading-relaxed text-ink-soft">{{ item }}</p>
+                </li>
+              </ol>
+            </div>
           </section>
         </div>
 
@@ -133,12 +206,12 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         <aside class="lg:col-span-4 lg:col-start-9">
           <div class="lg:sticky lg:top-28">
             <div class="surface-card glow-card bg-surface p-7 shadow-lift">
-              <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">{{ category?.name }}</p>
-              <p class="mt-1.5 font-display text-3xl leading-tight">{{ current.title }}</p>
+              <p class="chip"><span class="chip-dot" aria-hidden="true" />{{ category?.name }}</p>
+              <p class="mt-4 font-display text-2xl leading-tight">{{ current.title }}</p>
 
               <dl class="mt-7 space-y-4 border-t border-hairline pt-6 text-sm">
                 <div v-for="fact in current.facts" :key="fact.label" class="flex items-start gap-3">
-                  <Info class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  <component :is="factIcon(fact.label)" class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
                   <div>
                     <dt class="text-ink-muted">{{ fact.label }}</dt>
                     <dd class="text-ink">{{ fact.value }}</dd>

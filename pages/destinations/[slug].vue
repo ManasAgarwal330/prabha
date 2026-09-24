@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, CalendarDays, Clock, MapPin } from 'lucide-vue-next'
+import { ArrowRight, CalendarDays, Check, Clock, MapPin } from 'lucide-vue-next'
 import { destinations, getDestination } from '~/data/destinations'
 import { listingsByDestination } from '~/data/listings'
 
@@ -68,27 +68,27 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     </section>
 
     <!-- Quick facts -->
-    <section class="border-b border-hairline bg-canvas-alt">
-      <div class="container-pravaah grid gap-6 py-7 sm:grid-cols-3">
-        <div class="flex items-start gap-3">
-          <CalendarDays class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+    <section class="relative z-10 -mt-10">
+      <div class="container-pravaah grid gap-3 sm:grid-cols-3 sm:gap-4">
+        <div class="surface-card glow-card flex items-start gap-4 p-5 shadow-lift">
+          <span class="icon-tile h-10 w-10 shrink-0 rounded-xl"><CalendarDays class="h-4 w-4" aria-hidden="true" /></span>
           <div>
-            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">Best time to visit</p>
-            <p class="mt-1 text-sm text-ink">{{ current.bestTimeToVisit }}</p>
+            <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-muted">Best time to visit</p>
+            <p class="mt-1 text-sm font-medium text-ink">{{ current.bestTimeToVisit }}</p>
           </div>
         </div>
-        <div class="flex items-start gap-3">
-          <Clock class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+        <div class="surface-card glow-card flex items-start gap-4 p-5 shadow-lift">
+          <span class="icon-tile h-10 w-10 shrink-0 rounded-xl"><Clock class="h-4 w-4" aria-hidden="true" /></span>
           <div>
-            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">Ideal duration</p>
-            <p class="mt-1 text-sm text-ink">{{ current.idealDuration }}</p>
+            <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-muted">Ideal duration</p>
+            <p class="mt-1 text-sm font-medium text-ink">{{ current.idealDuration }}</p>
           </div>
         </div>
-        <div class="flex items-start gap-3">
-          <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+        <div class="surface-card glow-card flex items-start gap-4 p-5 shadow-lift">
+          <span class="icon-tile h-10 w-10 shrink-0 rounded-xl"><MapPin class="h-4 w-4" aria-hidden="true" /></span>
           <div>
-            <p class="text-[0.7rem] uppercase tracking-[0.14em] text-ink-muted">Good for</p>
-            <p class="mt-1 text-sm text-ink">{{ current.categories.join(' · ') }}</p>
+            <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-muted">Good for</p>
+            <p class="mt-1 text-sm font-medium text-ink">{{ current.categories.join(' · ') }}</p>
           </div>
         </div>
       </div>
@@ -98,18 +98,32 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
     <section class="container-pravaah py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-7">
-          <h2 class="reveal text-display-sm">Overview</h2>
-          <div class="reveal prose-pravaah mt-6">
-            <p v-for="paragraph in current.overview" :key="paragraph">{{ paragraph }}</p>
+          <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Overview</p>
+          <h2 class="reveal mt-5 text-display-sm">{{ current.tagline }}</h2>
+          <div class="reveal mt-6 space-y-5">
+            <p
+              v-for="(paragraph, index) in current.overview"
+              :key="paragraph"
+              :class="
+                index === 0
+                  ? 'border-l-2 border-accent pl-5 text-lg leading-relaxed text-ink sm:text-xl'
+                  : 'text-[1.0625rem] leading-[1.8] text-ink-soft'
+              "
+            >
+              {{ paragraph }}
+            </p>
           </div>
         </div>
 
         <aside class="reveal lg:col-span-4 lg:col-start-9">
-          <div class="surface-card p-7">
-            <h2 class="font-display text-xl">Things to do in {{ current.name }}</h2>
-            <ul class="mt-5 space-y-3 text-sm leading-relaxed text-ink-soft">
+          <div class="surface-card glow-card p-7 shadow-lift">
+            <p class="chip"><span class="chip-dot" aria-hidden="true" />Things to do</p>
+            <h2 class="mt-4 font-display text-xl">Things to do in {{ current.name }}</h2>
+            <ul class="mt-5 space-y-3.5 text-sm leading-relaxed text-ink-soft">
               <li v-for="item in current.experiences" :key="item" class="flex gap-3">
-                <span class="mt-2 h-1 w-1 shrink-0 rounded-pill bg-brand" aria-hidden="true" />
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-indigo text-white">
+                  <Check class="h-3 w-3" aria-hidden="true" />
+                </span>
                 {{ item }}
               </li>
             </ul>
@@ -126,14 +140,15 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
       <div class="container-pravaah">
         <SectionHeading eyebrow="Why visit" :title="`What makes ${current.name} worth the journey.`" />
 
-        <div class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2">
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
           <div
             v-for="(item, index) in current.whyVisit"
             :key="item.title"
-            class="reveal border-t border-hairline pt-6"
+            class="reveal surface-card glow-card p-7"
             :style="{ transitionDelay: `${index * 70}ms` }"
           >
-            <h3 class="font-display text-xl leading-snug">{{ item.title }}</h3>
+            <span class="icon-tile h-10 w-10 rounded-xl font-mono text-[0.72rem] font-medium">{{ String(index + 1).padStart(2, '0') }}</span>
+            <h3 class="mt-5 font-display text-xl leading-snug">{{ item.title }}</h3>
             <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ item.description }}</p>
           </div>
         </div>
@@ -148,13 +163,14 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
         :intro="`In short: ${current.bestTimeToVisit}.`"
       />
 
-      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div
           v-for="(season, index) in current.seasons"
           :key="season.window"
-          class="reveal border-t border-hairline pt-6"
+          class="reveal surface-card glow-card relative overflow-hidden p-6 shadow-soft"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
+          <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand via-brand-indigo to-brand-cyan" aria-hidden="true" />
           <p class="eyebrow text-accent">{{ season.window }}</p>
           <h3 class="mt-3 font-display text-lg">{{ season.label }}</h3>
           <p class="mt-2.5 text-sm leading-relaxed text-ink-muted">{{ season.description }}</p>
@@ -212,14 +228,14 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
         <div class="lg:col-span-5">
           <SectionHeading eyebrow="Travel tips" :title="`Practical notes for ${current.name}.`" />
         </div>
-        <ol class="reveal space-y-6 lg:col-span-6 lg:col-start-7">
+        <ol class="reveal space-y-3 lg:col-span-7 lg:col-start-6">
           <li
             v-for="(tip, index) in current.travelTips"
             :key="tip"
-            class="flex gap-5 border-t border-hairline pt-6"
+            class="surface-card glow-card flex items-start gap-4 p-5 shadow-soft"
           >
-            <span class="font-display text-sm text-accent">{{ String(index + 1).padStart(2, '0') }}</span>
-            <p class="text-[0.95rem] leading-relaxed text-ink-soft">{{ tip }}</p>
+            <span class="icon-tile h-9 w-9 shrink-0 rounded-xl font-mono text-[0.7rem] font-medium">{{ String(index + 1).padStart(2, '0') }}</span>
+            <p class="pt-1.5 text-[0.95rem] leading-relaxed text-ink-soft">{{ tip }}</p>
           </li>
         </ol>
       </div>

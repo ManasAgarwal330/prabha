@@ -309,13 +309,22 @@ usePageSeo({
     <!-- Brand story — the "About Pravaah" buttons land here -->
     <section id="about" class="scroll-mt-20 border-y border-hairline bg-canvas-alt py-20 lg:py-28">
       <div class="container-pravaah grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-        <div class="reveal-media order-2 overflow-hidden rounded-card lg:order-1">
-          <AppImage
-            :src="STORY_IMAGE"
-            alt="A traveller looking out across a green valley in the Indian Himalaya"
-            :ratio="4 / 5"
-            sizes="(min-width: 1024px) 45vw, 100vw"
-          />
+        <div class="relative order-2 lg:order-1">
+          <div class="reveal-media overflow-hidden rounded-card shadow-lift">
+            <AppImage
+              :src="STORY_IMAGE"
+              alt="A traveller looking out across a green valley in the Indian Himalaya"
+              :ratio="4 / 5"
+              sizes="(min-width: 1024px) 45vw, 100vw"
+            />
+          </div>
+          <!-- Floating glass stat card over the photograph. -->
+          <div class="glass-panel absolute -bottom-6 left-4 right-4 grid grid-cols-3 gap-2 rounded-2xl border border-white/40 bg-white/70 p-4 shadow-lift sm:left-auto sm:right-6 sm:w-[22rem]">
+            <div v-for="stat in brandStory.stats" :key="stat.label" class="text-center">
+              <p class="text-gradient font-display text-2xl font-semibold">{{ stat.value }}</p>
+              <p class="mt-0.5 font-mono text-[0.55rem] uppercase leading-tight tracking-[0.06em] text-ink-muted">{{ stat.label }}</p>
+            </div>
+          </div>
         </div>
 
         <div class="order-1 lg:order-2">
