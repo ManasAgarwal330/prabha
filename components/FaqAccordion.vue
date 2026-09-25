@@ -21,7 +21,7 @@ defineProps<{ items: FaqItem[] }>()
       >
         <h3 class="font-display text-base leading-snug sm:text-lg">{{ item.question }}</h3>
         <span
-          class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-hairline text-ink-muted transition-all duration-300 ease-editorial group-open:rotate-45 group-open:border-transparent group-open:bg-gradient-to-br group-open:from-brand group-open:to-brand-indigo group-open:text-white"
+          class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-hairline text-ink-muted transition-all duration-300 ease-editorial group-open:rotate-45 group-open:border-transparent group-open:bg-gradient-to-br group-open:from-brand group-open:to-brand-teal group-open:text-white"
           aria-hidden="true"
         >
           <Plus class="h-4 w-4" />

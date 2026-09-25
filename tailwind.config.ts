@@ -1,8 +1,8 @@
 import type { Config } from 'tailwindcss'
 
 /**
- * Pravaah design tokens — "blue hour": white and ice-blue surfaces, deep navy
- * bands, and an electric blue → indigo → cyan gradient used for light, glow and emphasis.
+ * Pravaah design tokens — "valley green": white and mint surfaces, deep pine
+ * bands, and an emerald → teal → lime gradient used for light, glow and emphasis.
  * Colours, type scale, radii and shadows live here only — never inline in components.
  */
 export default <Partial<Config>>{
@@ -42,20 +42,20 @@ export default <Partial<Config>>{
         highlight: 'rgb(var(--c-highlight) / <alpha-value>)',
         link: 'rgb(var(--c-link) / <alpha-value>)',
 
-        /** Deep night blue — dark bands, photo overlays and text on white. */
-        navy: {
-          DEFAULT: '#0A1530',
-          deep: '#050B1A',
-          raised: '#111F42'
+        /** Deep pine green — dark bands, photo overlays and text on white. */
+        pine: {
+          DEFAULT: '#0B2E22',
+          deep: '#061C14',
+          raised: '#123F2E'
         },
-        /** Electric blue — buttons, links, focus and glow. */
+        /** Emerald — buttons, links, focus and glow. */
         brand: {
-          DEFAULT: '#2563EB',
-          deep: '#1D4ED8',
-          light: '#60A5FA',
-          soft: '#DBEAFE',
-          indigo: '#6366F1',
-          cyan: '#22D3EE'
+          DEFAULT: '#059669',
+          deep: '#047857',
+          light: '#34D399',
+          soft: '#D1FAE5',
+          teal: '#0D9488',
+          lime: '#A3E635'
         }
       },
       fontFamily: {
@@ -75,11 +75,11 @@ export default <Partial<Config>>{
         pill: '999px'
       },
       boxShadow: {
-        soft: '0 1px 2px rgba(10,21,48,0.04), 0 10px 30px -14px rgba(37,99,235,0.18)',
-        lift: '0 2px 6px rgba(10,21,48,0.05), 0 28px 60px -24px rgba(37,99,235,0.38)',
-        glow: '0 0 0 1px rgba(96,165,250,0.35), 0 12px 40px -8px rgba(37,99,235,0.55)',
-        'glow-lg': '0 0 0 1px rgba(96,165,250,0.4), 0 20px 70px -10px rgba(99,102,241,0.6)',
-        header: '0 1px 0 rgba(203,213,235,0.7), 0 10px 30px -20px rgba(10,21,48,0.25)'
+        soft: '0 1px 2px rgba(11,46,34,0.04), 0 10px 30px -14px rgba(5,150,105,0.2)',
+        lift: '0 2px 6px rgba(11,46,34,0.05), 0 28px 60px -24px rgba(5,150,105,0.38)',
+        glow: '0 0 0 1px rgba(52,211,153,0.35), 0 12px 40px -8px rgba(5,150,105,0.55)',
+        'glow-lg': '0 0 0 1px rgba(52,211,153,0.4), 0 20px 70px -10px rgba(13,148,136,0.6)',
+        header: '0 1px 0 rgba(205,228,214,0.7), 0 10px 30px -20px rgba(11,46,34,0.25)'
       },
       maxWidth: {
         prose: '68ch'

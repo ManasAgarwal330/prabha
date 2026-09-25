@@ -83,7 +83,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         :zoom="false"
         class="absolute inset-0 h-full w-full"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy/40 to-navy/40" aria-hidden="true" />
+      <div class="absolute inset-0 bg-gradient-to-t from-pine-deep/95 via-pine/40 to-pine/40" aria-hidden="true" />
       <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
         class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[32rem] w-[32rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
@@ -104,7 +104,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
             :key="fact.label"
             class="glass-panel flex items-start gap-3 rounded-2xl border border-white/10 px-4 py-3.5"
           >
-            <component :is="factIcon(fact.label)" class="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" aria-hidden="true" />
+            <component :is="factIcon(fact.label)" class="mt-0.5 h-4 w-4 shrink-0 text-brand-lime" aria-hidden="true" />
             <div>
               <dt class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white/55">{{ fact.label }}</dt>
               <dd class="mt-1 font-display text-[0.95rem] leading-snug">{{ fact.value }}</dd>
@@ -170,7 +170,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
                 :key="item"
                 class="inline-flex items-center gap-2.5 rounded-pill border border-accent/20 bg-accent/[0.05] py-2 pl-2 pr-4 text-sm text-ink-soft"
               >
-                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-indigo text-white">
+                <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-teal text-white">
                   <Check class="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
                 {{ item }}
@@ -182,7 +182,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
             <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Before you go</p>
             <h2 class="reveal mt-5 text-display-sm">Good to <span class="text-gradient">know</span></h2>
             <div
-              class="reveal relative mt-8 overflow-hidden rounded-card border border-accent/20 bg-gradient-to-br from-brand/[0.07] via-surface to-brand-cyan/[0.06] p-6 shadow-soft sm:p-8"
+              class="reveal relative mt-8 overflow-hidden rounded-card border border-accent/20 bg-gradient-to-br from-brand/[0.07] via-surface to-brand-lime/[0.06] p-6 shadow-soft sm:p-8"
             >
               <Lightbulb
                 class="pointer-events-none absolute -right-4 -top-4 h-28 w-28 text-accent/[0.07]"

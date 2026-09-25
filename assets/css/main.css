@@ -12,45 +12,45 @@
   :root {
     --page-gutter: 1.25rem;
 
-    --c-canvas: 248 250 255;
-    --c-canvas-alt: 239 244 255;
+    --c-canvas: 250 253 251;
+    --c-canvas-alt: 237 247 241;
     --c-surface: 255 255 255;
-    --c-ink: 10 21 48;
-    --c-ink-soft: 45 58 90;
-    --c-ink-muted: 92 106 140;
-    --c-hairline: 223 230 245;
-    --c-accent: 37 99 235;
+    --c-ink: 11 38 29;
+    --c-ink-soft: 44 72 60;
+    --c-ink-muted: 84 108 96;
+    --c-hairline: 218 234 224;
+    --c-accent: 5 150 105;
     /* A shade deeper than the accent: eyebrows are 11px and need 4.5:1 on white. */
-    --c-highlight: 29 78 216;
-    --c-link: 29 78 216;
+    --c-highlight: 4 120 87;
+    --c-link: 4 120 87;
   }
 
-  /* Night blue, lit from above by the aurora in `::before`. */
+  /* Deep pine, lit from above by the aurora in `::before`. */
   .section-dark {
-    --c-canvas: 6 12 30;
-    --c-canvas-alt: 4 8 20;
-    --c-surface: 14 24 52;
-    --c-ink: 236 242 255;
-    --c-ink-soft: 199 210 234;
-    --c-ink-muted: 139 156 196;
-    --c-hairline: 32 46 86;
-    --c-accent: 96 165 250;
-    --c-highlight: 125 211 252;
-    --c-link: 147 197 253;
+    --c-canvas: 6 28 20;
+    --c-canvas-alt: 4 20 14;
+    --c-surface: 13 44 32;
+    --c-ink: 236 248 241;
+    --c-ink-soft: 198 224 210;
+    --c-ink-muted: 140 172 156;
+    --c-hairline: 30 64 49;
+    --c-accent: 52 211 153;
+    --c-highlight: 190 242 100;
+    --c-link: 134 239 172;
   }
 
-  /* The electric band — a full blue → indigo gradient. */
+  /* The valley band — a full emerald → teal gradient. */
   .section-forest {
-    --c-canvas: 17 40 115;
-    --c-canvas-alt: 12 30 90;
-    --c-surface: 30 60 150;
+    --c-canvas: 6 78 59;
+    --c-canvas-alt: 4 60 45;
+    --c-surface: 10 100 76;
     --c-ink: 255 255 255;
-    --c-ink-soft: 219 230 255;
-    --c-ink-muted: 186 204 245;
-    --c-hairline: 96 130 225;
-    --c-accent: 186 230 253;
-    --c-highlight: 165 243 252;
-    --c-link: 191 219 254;
+    --c-ink-soft: 220 246 233;
+    --c-ink-muted: 184 226 205;
+    --c-hairline: 72 156 122;
+    --c-accent: 209 250 229;
+    --c-highlight: 217 249 157;
+    --c-link: 187 247 208;
   }
 
   html {
@@ -66,7 +66,7 @@
   }
 
   /* No colour here on purpose — headings inherit, so the same components read
-     correctly on white, on night blue and over a photograph. */
+     correctly on white, on deep pine and over a photograph. */
   h1, h2, h3, h4 {
     @apply font-display font-medium;
     text-wrap: balance;
@@ -77,7 +77,7 @@
   }
 
   ::selection {
-    @apply bg-brand-soft text-navy;
+    @apply bg-brand-soft text-pine;
   }
 
   :focus-visible {
@@ -100,7 +100,7 @@
   }
 
   .section-forest {
-    background-image: linear-gradient(135deg, #0b1f5c 0%, #1d4ed8 55%, #4f46e5 100%);
+    background-image: linear-gradient(135deg, #064e3b 0%, #047857 55%, #0d9488 100%);
   }
 
   /* Aurora: three soft light sources that drift slowly behind the content. */
@@ -112,9 +112,9 @@
     z-index: -2;
     pointer-events: none;
     background:
-      radial-gradient(38% 42% at 18% 12%, rgba(37, 99, 235, 0.32), transparent 70%),
-      radial-gradient(34% 38% at 82% 18%, rgba(99, 102, 241, 0.26), transparent 70%),
-      radial-gradient(40% 40% at 60% 95%, rgba(34, 211, 238, 0.14), transparent 70%);
+      radial-gradient(38% 42% at 18% 12%, rgba(5, 150, 105, 0.32), transparent 70%),
+      radial-gradient(34% 38% at 82% 18%, rgba(13, 148, 136, 0.26), transparent 70%),
+      radial-gradient(40% 40% at 60% 95%, rgba(163, 230, 53, 0.12), transparent 70%);
     animation: aurora 18s ease-in-out infinite;
   }
 
@@ -127,8 +127,8 @@
     z-index: -1;
     pointer-events: none;
     background-image:
-      linear-gradient(rgba(148, 170, 255, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(148, 170, 255, 0.07) 1px, transparent 1px);
+      linear-gradient(rgba(134, 239, 172, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(134, 239, 172, 0.07) 1px, transparent 1px);
     background-size: 56px 56px;
     -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 75%);
     mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 75%);
@@ -145,8 +145,8 @@
   }
 
   .chip-dot {
-    @apply relative inline-flex h-1.5 w-1.5 rounded-full bg-gradient-to-r from-brand to-brand-cyan;
-    box-shadow: 0 0 10px rgba(34, 211, 238, 0.8);
+    @apply relative inline-flex h-1.5 w-1.5 rounded-full bg-gradient-to-r from-brand to-brand-lime;
+    box-shadow: 0 0 10px rgba(163, 230, 53, 0.8);
   }
 
   .container-pravaah {
@@ -176,19 +176,19 @@
 
   .btn-primary {
     @apply btn text-white hover:-translate-y-[1px] active:translate-y-0;
-    background-image: linear-gradient(135deg, #2563eb 0%, #4f46e5 60%, #6366f1 100%);
-    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.35), 0 10px 30px -10px rgba(37, 99, 235, 0.7);
+    background-image: linear-gradient(135deg, #059669 0%, #047857 55%, #0f766e 100%);
+    box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.35), 0 10px 30px -10px rgba(5, 150, 105, 0.7);
   }
 
   .btn-primary:hover {
-    box-shadow: 0 0 0 1px rgba(125, 211, 252, 0.55), 0 16px 40px -10px rgba(79, 70, 229, 0.8);
+    box-shadow: 0 0 0 1px rgba(110, 231, 183, 0.55), 0 16px 40px -10px rgba(4, 120, 87, 0.8);
   }
 
-  /* On the blue gradient band a blue button disappears — go white instead. */
+  /* On the green gradient band a green button disappears — go white instead. */
   .section-forest .btn-primary {
-    @apply bg-white text-navy;
+    @apply bg-white text-pine;
     background-image: none;
-    box-shadow: 0 12px 30px -12px rgba(5, 11, 26, 0.6);
+    box-shadow: 0 12px 30px -12px rgba(6, 28, 20, 0.6);
   }
 
   .btn-secondary {
@@ -196,8 +196,8 @@
   }
 
   .btn-light {
-    @apply btn bg-white text-navy hover:-translate-y-[1px];
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 14px 34px -12px rgba(37, 99, 235, 0.65);
+    @apply btn bg-white text-pine hover:-translate-y-[1px];
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6), 0 14px 34px -12px rgba(5, 150, 105, 0.65);
   }
 
   .btn-ghost {
@@ -223,8 +223,8 @@
   /* Gradient icon tile — value props and feature lists. */
   .icon-tile {
     @apply inline-flex h-11 w-11 items-center justify-center rounded-2xl text-white;
-    background-image: linear-gradient(135deg, #2563eb, #6366f1 70%, #22d3ee);
-    box-shadow: 0 10px 24px -10px rgba(79, 70, 229, 0.7);
+    background-image: linear-gradient(135deg, #047857, #059669 60%, #34d399);
+    box-shadow: 0 10px 24px -10px rgba(4, 120, 87, 0.7);
   }
 
   .media {
@@ -274,12 +274,12 @@
 
 @layer utilities {
   .text-shadow-hero {
-    text-shadow: 0 2px 30px rgba(5, 11, 26, 0.45);
+    text-shadow: 0 2px 30px rgba(6, 28, 20, 0.45);
   }
 
-  /* Animated blue → indigo → cyan text, for the one phrase per view that should glow. */
+  /* Animated emerald → teal → lime text, for the one phrase per view that should glow. */
   .text-gradient {
-    background-image: linear-gradient(90deg, #2563eb, #6366f1, #22d3ee, #2563eb);
+    background-image: linear-gradient(90deg, #047857, #0d9488, #65a30d, #047857);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -287,15 +287,15 @@
     animation: gradientPan 8s ease infinite;
   }
 
-  /* On the dark and electric bands the deep blue would sink — lift it. */
+  /* On the pine and valley bands the deep green would sink — lift it. */
   .section-dark .text-gradient,
   .section-forest .text-gradient {
-    background-image: linear-gradient(90deg, #93c5fd, #a5b4fc, #67e8f9, #93c5fd);
+    background-image: linear-gradient(90deg, #6ee7b7, #5eead4, #bef264, #6ee7b7);
   }
 
-  /* The same idea, lifted for photographs and night-blue bands. */
+  /* The same idea, lifted for photographs and pine bands. */
   .text-gradient-light {
-    background-image: linear-gradient(90deg, #ffffff, #bfdbfe, #a5f3fc, #c7d2fe, #ffffff);
+    background-image: linear-gradient(90deg, #ffffff, #d1fae5, #d9f99d, #a7f3d0, #ffffff);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -312,8 +312,8 @@
   /* Faint grid for light bands. */
   .bg-grid {
     background-image:
-      linear-gradient(rgba(37, 99, 235, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+      linear-gradient(rgba(5, 150, 105, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(5, 150, 105, 0.06) 1px, transparent 1px);
     background-size: 56px 56px;
     -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 80%);
     mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 80%);
@@ -322,8 +322,8 @@
   /* Grid over photographs — reads as a HUD, never competes with the image. */
   .bg-grid-photo {
     background-image:
-      linear-gradient(rgba(191, 219, 254, 0.09) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(191, 219, 254, 0.09) 1px, transparent 1px);
+      linear-gradient(rgba(209, 250, 229, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(209, 250, 229, 0.09) 1px, transparent 1px);
     background-size: 64px 64px;
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
@@ -349,7 +349,7 @@
     z-index: 2;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(96, 165, 250, 0.95), rgba(99, 102, 241, 0.7), rgba(34, 211, 238, 0.9));
+    background: linear-gradient(135deg, rgba(52, 211, 153, 0.95), rgba(13, 148, 136, 0.7), rgba(163, 230, 53, 0.9));
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -364,11 +364,11 @@
   }
 
   .glow-card:hover {
-    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.25), 0 30px 60px -28px rgba(79, 70, 229, 0.55);
+    box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.25), 0 30px 60px -28px rgba(4, 120, 87, 0.55);
   }
 
   .grain {
-    background-image: radial-gradient(rgba(10, 21, 48, 0.05) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(11, 38, 29, 0.05) 1px, transparent 1px);
     background-size: 3px 3px;
   }
 }
@@ -441,8 +441,8 @@
   height: 2px;
   transform: scaleX(0);
   transform-origin: 0 50%;
-  background: linear-gradient(90deg, #2563eb, #6366f1, #22d3ee);
-  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+  background: linear-gradient(90deg, #059669, #0d9488, #a3e635);
+  box-shadow: 0 0 12px rgba(163, 230, 53, 0.6);
 }
 
 @supports (animation-timeline: scroll()) {

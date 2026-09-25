@@ -32,7 +32,7 @@ const experienceCount = computed(() => props.destination.experiences.length)
     />
 
     <div
-      class="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/50 to-navy/10"
+      class="pointer-events-none absolute inset-0 bg-gradient-to-t from-pine/90 via-pine/50 to-pine/10"
       aria-hidden="true"
     />
 

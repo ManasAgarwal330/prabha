@@ -23,15 +23,15 @@ defineProps<{
     <div class="absolute inset-0 animate-kenburns will-change-transform">
       <AppImage :src="image" :alt="alt" :ratio="16 / 9" sizes="100vw" priority :zoom="false" class="h-full w-full" />
     </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy/45 to-navy/40" aria-hidden="true" />
-    <div class="absolute inset-0 bg-gradient-to-r from-navy-deep/75 via-navy-deep/20 to-transparent" aria-hidden="true" />
+    <div class="absolute inset-0 bg-gradient-to-t from-pine-deep/95 via-pine/45 to-pine/40" aria-hidden="true" />
+    <div class="absolute inset-0 bg-gradient-to-r from-pine-deep/75 via-pine-deep/20 to-transparent" aria-hidden="true" />
     <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
     <div
       class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[34rem] w-[34rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
       aria-hidden="true"
     />
     <div
-      class="pointer-events-none absolute -right-32 top-0 h-[26rem] w-[26rem] animate-aurora rounded-full bg-brand-indigo/25 blur-[110px] [animation-delay:-7s]"
+      class="pointer-events-none absolute -right-32 top-0 h-[26rem] w-[26rem] animate-aurora rounded-full bg-brand-teal/25 blur-[110px] [animation-delay:-7s]"
       aria-hidden="true"
     />
 

@@ -52,7 +52,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
         :zoom="false"
         class="absolute inset-0 h-full w-full"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy/40 to-navy/40" aria-hidden="true" />
+      <div class="absolute inset-0 bg-gradient-to-t from-pine-deep/95 via-pine/40 to-pine/40" aria-hidden="true" />
       <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
         class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[32rem] w-[32rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
@@ -121,7 +121,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
             <h2 class="mt-4 font-display text-xl">Things to do in {{ current.name }}</h2>
             <ul class="mt-5 space-y-3.5 text-sm leading-relaxed text-ink-soft">
               <li v-for="item in current.experiences" :key="item" class="flex gap-3">
-                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-indigo text-white">
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-teal text-white">
                   <Check class="h-3 w-3" aria-hidden="true" />
                 </span>
                 {{ item }}
@@ -170,7 +170,7 @@ useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
           class="reveal surface-card glow-card relative overflow-hidden p-6 shadow-soft"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
-          <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand via-brand-indigo to-brand-cyan" aria-hidden="true" />
+          <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand via-brand-teal to-brand-lime" aria-hidden="true" />
           <p class="eyebrow text-accent">{{ season.window }}</p>
           <h3 class="mt-3 font-display text-lg">{{ season.label }}</h3>
           <p class="mt-2.5 text-sm leading-relaxed text-ink-muted">{{ season.description }}</p>

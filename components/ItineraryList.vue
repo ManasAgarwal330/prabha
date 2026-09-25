@@ -9,7 +9,7 @@ defineProps<{ days: ItineraryDay[] }>()
 <template>
   <ol class="relative space-y-4">
     <span
-      class="absolute bottom-6 left-[1.1rem] top-6 w-px bg-gradient-to-b from-brand via-brand-indigo to-brand-cyan/10"
+      class="absolute bottom-6 left-[1.1rem] top-6 w-px bg-gradient-to-b from-brand via-brand-teal to-brand-lime/10"
       aria-hidden="true"
     />
     <li v-for="day in days" :key="day.day" class="relative pl-14">

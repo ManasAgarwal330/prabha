@@ -80,11 +80,11 @@ usePageSeo({
         />
       </div>
       <div
-        class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/55 to-navy/25"
+        class="absolute inset-0 bg-gradient-to-t from-pine-deep via-pine-deep/55 to-pine/25"
         aria-hidden="true"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-r from-navy-deep/85 via-navy-deep/25 to-transparent"
+        class="absolute inset-0 bg-gradient-to-r from-pine-deep/85 via-pine-deep/25 to-transparent"
         aria-hidden="true"
       />
       <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -93,19 +93,19 @@ usePageSeo({
         aria-hidden="true"
       />
       <div
-        class="pointer-events-none absolute -right-32 top-0 h-[26rem] w-[26rem] animate-aurora rounded-full bg-brand-indigo/25 blur-[110px] [animation-delay:-7s]"
+        class="pointer-events-none absolute -right-32 top-0 h-[26rem] w-[26rem] animate-aurora rounded-full bg-brand-teal/25 blur-[110px] [animation-delay:-7s]"
         aria-hidden="true"
       />
 
       <div class="container-pravaah relative w-full pb-14 pt-32 sm:pb-16 lg:pb-20">
         <p class="hero-fade inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/[0.08] px-3.5 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/90 backdrop-blur-md" style="animation-delay: 0.1s">
           <span class="relative flex h-2 w-2" aria-hidden="true">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-cyan opacity-60" />
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-cyan" />
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-lime opacity-60" />
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-lime" />
           </span>
           Custom journeys across India
           <span class="hidden items-center gap-1 text-white/80 sm:inline-flex">
-            · <Star class="h-3 w-3 fill-brand-cyan text-brand-cyan" aria-hidden="true" /> Loved by slow travellers
+            · <Star class="h-3 w-3 fill-brand-lime text-brand-lime" aria-hidden="true" /> Loved by slow travellers
           </span>
         </p>
 
@@ -129,9 +129,13 @@ usePageSeo({
           Handpicked stays, Himalayan treks, festivals and retreats — thoughtfully crafted journeys across India, designed around the way you want to travel.
         </p>
 
+        <!-- On phones "About Pravaah" leads, then the trip brief, then the popular
+             picks. From `sm` up the brief comes first and the link row sits under it;
+             the row is `contents` below `sm` so its two halves can be ordered apart. -->
+        <div class="mt-9 flex flex-col gap-5">
         <!-- Trip brief: type the trip you have in mind, and it pre-fills Plan My Trip. -->
         <form
-          class="hero-fade glass-panel group mt-9 flex max-w-2xl flex-col gap-2 rounded-[1.4rem] border border-white/15 p-2 shadow-glow-lg transition-colors focus-within:border-brand-light/60 sm:flex-row sm:items-center"
+          class="hero-fade glass-panel group order-2 flex max-w-2xl flex-col gap-2 rounded-[1.4rem] border border-white/15 p-2 shadow-glow-lg transition-colors focus-within:border-brand-light/60 sm:order-1 sm:flex-row sm:items-center"
           style="animation-delay: 0.74s"
           role="search"
           aria-label="Describe your trip"
@@ -139,7 +143,7 @@ usePageSeo({
         >
           <label for="trip-brief" class="sr-only">Describe the trip you have in mind</label>
           <span class="flex flex-1 items-center gap-3 pl-3">
-            <Sparkles class="h-5 w-5 shrink-0 text-brand-cyan" aria-hidden="true" />
+            <Sparkles class="h-5 w-5 shrink-0 text-brand-lime" aria-hidden="true" />
             <input
               id="trip-brief"
               v-model="brief"
@@ -155,8 +159,12 @@ usePageSeo({
           </button>
         </form>
 
-        <div class="hero-fade mt-5 flex flex-wrap items-center gap-3" style="animation-delay: 0.8s">
-          <NuxtLink to="/#about" class="btn-light group px-6 py-3">
+        <div class="contents sm:order-2 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
+          <NuxtLink
+            to="/#about"
+            class="btn-light hero-fade group order-1 self-start px-6 py-3 sm:order-none"
+            style="animation-delay: 0.68s"
+          >
             About Pravaah
             <ArrowRight
               class="h-4 w-4 transition-transform duration-300 ease-editorial group-hover:translate-x-1"
@@ -164,10 +172,13 @@ usePageSeo({
             />
           </NuxtLink>
 
-          <span class="ml-1 inline-flex items-center gap-1.5 text-xs text-white/70"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
-          <NuxtLink to="/destinations/uttarakhand" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Uttarakhand</NuxtLink>
-          <NuxtLink to="/experiences/hornbill-festival-nagaland" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Hornbill Festival</NuxtLink>
-          <NuxtLink to="/experiences/khaliya-top-trek" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Khaliya Top</NuxtLink>
+          <div class="hero-fade order-3 flex flex-wrap items-center gap-3 sm:order-none" style="animation-delay: 0.8s">
+            <span class="ml-1 inline-flex items-center gap-1.5 text-xs text-white/70"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
+            <NuxtLink to="/destinations/uttarakhand" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Uttarakhand</NuxtLink>
+            <NuxtLink to="/experiences/hornbill-festival-nagaland" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Hornbill Festival</NuxtLink>
+            <NuxtLink to="/experiences/khaliya-top-trek" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Khaliya Top</NuxtLink>
+          </div>
+        </div>
         </div>
 
         <dl
@@ -219,11 +230,11 @@ usePageSeo({
             class="h-full w-full"
           />
           <div
-            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/45 to-navy/5"
+            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-pine/90 via-pine/45 to-pine/5"
             aria-hidden="true"
           />
           <div class="absolute inset-x-0 bottom-0 p-6 text-white">
-            <p class="font-mono text-[0.68rem] font-medium uppercase tracking-[0.14em] text-brand-cyan">
+            <p class="font-mono text-[0.68rem] font-medium uppercase tracking-[0.14em] text-brand-lime">
               {{ pillar.count }} {{ pillar.count === 1 ? pillar.section.singular : `${pillar.section.singular}s` }}
             </p>
             <h3 class="mt-2 font-display text-3xl tracking-[-0.015em]">

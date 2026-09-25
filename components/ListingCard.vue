@@ -25,7 +25,7 @@ const leadIcon = computed(() => (props.listing.section === 'stays' ? BedDouble :
       <AppImage :src="listing.image" :alt="listing.title" :ratio="4 / 3" :sizes="sizes" />
       <span
         v-if="category"
-        class="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-pill border border-white/15 bg-navy-deep/60 px-3 py-1.5 font-mono text-[0.62rem] font-medium uppercase tracking-[0.12em] text-white backdrop-blur-md"
+        class="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-pill border border-white/15 bg-pine-deep/60 px-3 py-1.5 font-mono text-[0.62rem] font-medium uppercase tracking-[0.12em] text-white backdrop-blur-md"
       >
         {{ category.name }}
       </span>

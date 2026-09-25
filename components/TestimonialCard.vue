@@ -11,7 +11,7 @@ defineProps<{ testimonial: Testimonial }>()
       <Star
         v-for="index in testimonial.rating"
         :key="index"
-        class="h-3.5 w-3.5 fill-brand-cyan text-brand-cyan"
+        class="h-3.5 w-3.5 fill-brand-lime text-brand-lime"
         aria-hidden="true"
       />
     </div>

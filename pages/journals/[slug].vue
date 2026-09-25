@@ -73,7 +73,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
       <div class="mx-auto max-w-prose">
         <template v-for="(block, index) in current.body" :key="index">
           <h2 v-if="block.type === 'heading'" class="mt-14 flex items-start gap-3 text-display-sm first:mt-0">
-            <span class="mt-2 h-6 w-1 shrink-0 rounded-full bg-gradient-to-b from-brand to-brand-cyan" aria-hidden="true" />
+            <span class="mt-2 h-6 w-1 shrink-0 rounded-full bg-gradient-to-b from-brand to-brand-lime" aria-hidden="true" />
             {{ block.text }}
           </h2>
 
@@ -94,7 +94,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
               :key="item"
               class="flex gap-3 text-[1.0125rem] leading-[1.7] text-ink-soft"
             >
-              <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-indigo text-white">
+              <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand to-brand-teal text-white">
                 <Check class="h-3 w-3" aria-hidden="true" />
               </span>
               {{ item }}
@@ -103,7 +103,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
 
           <blockquote
             v-else-if="block.type === 'quote'"
-            class="relative my-12 overflow-hidden rounded-card border border-accent/20 bg-gradient-to-br from-brand/[0.08] via-surface to-brand-cyan/[0.08] px-7 py-8 shadow-soft sm:px-10"
+            class="relative my-12 overflow-hidden rounded-card border border-accent/20 bg-gradient-to-br from-brand/[0.08] via-surface to-brand-lime/[0.08] px-7 py-8 shadow-soft sm:px-10"
           >
             <Quote class="absolute right-6 top-5 h-14 w-14 text-accent/15" aria-hidden="true" />
             <p class="text-gradient relative font-display text-2xl font-medium leading-snug">{{ block.text }}</p>

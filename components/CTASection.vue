@@ -32,10 +32,10 @@ withDefaults(
         :zoom="false"
         class="absolute inset-0 h-full w-full"
       />
-      <div class="absolute inset-0 bg-gradient-to-br from-navy-deep/95 via-brand-deep/75 to-brand-indigo/70" aria-hidden="true" />
+      <div class="absolute inset-0 bg-gradient-to-br from-pine-deep/95 via-brand-deep/75 to-brand-teal/70" aria-hidden="true" />
       <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
-        class="pointer-events-none absolute -left-24 -top-24 h-80 w-80 animate-aurora rounded-full bg-brand-cyan/25 blur-[100px]"
+        class="pointer-events-none absolute -left-24 -top-24 h-80 w-80 animate-aurora rounded-full bg-brand-lime/25 blur-[100px]"
         aria-hidden="true"
       />
       <div class="absolute inset-0 grain opacity-40" aria-hidden="true" />
