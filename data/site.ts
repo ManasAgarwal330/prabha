@@ -20,7 +20,7 @@ export const site = {
   founded: '2025',
 
   contact: {
-    email: 'hello@pravaah.travel',
+    email: 'thepravaahofficial@gmail.com',
     phoneDisplay: '+91 92057 47247',
     phoneHref: '+919205747247',
     whatsapp: '919205747247',
