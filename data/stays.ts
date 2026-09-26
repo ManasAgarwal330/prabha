@@ -19,12 +19,14 @@ export const stays: Listing[] = [
       'Bhimtal is the lake town people pass through on the way to Nainital and wish they had stayed in instead. The lake is larger, the promenade is calmer, and the hills around it are a patchwork of forest, orchards and old stone houses.',
       'Pi Palace gives you a comfortable, full-service base for exploring it. Spend the mornings on the water, drive out to Sattal, Naukuchiatal and Nainital for the day, and come back to a room you do not have to think about. It is the stay we suggest for families, for first visits to the mountains, and for anyone who wants the hills without the effort.'
     ],
-    image: 'photo-1508672019048-805c876b67e2',
+    image: '/images/stays/pi-palace-bhimtal/cover',
     gallery: [
-      'photo-1445019980597-93fa8acb246c',
-      'photo-1566073771259-6a8506099945',
-      'photo-1496417263034-38ec4f0b665a',
-      'photo-1597074866923-dc0589150358'
+      '/images/stays/pi-palace-bhimtal/gallery-03',
+      '/images/stays/pi-palace-bhimtal/gallery-02',
+      '/images/stays/pi-palace-bhimtal/gallery-01',
+      '/images/stays/pi-palace-bhimtal/gallery-06',
+      '/images/stays/pi-palace-bhimtal/gallery-04',
+      '/images/stays/pi-palace-bhimtal/gallery-05'
     ],
     facts: [
       { label: 'Setting', value: 'Lakeside hill town' },
@@ -118,12 +120,13 @@ export const stays: Listing[] = [
       'Hartola sits on a ridge near Mukteshwar, surrounded by apple, plum and apricot orchards and oak forest. On a clear morning the whole snow range lines up across the horizon — Trishul, Nanda Devi and the peaks beyond.',
       'Nirvaana Mansion is built for exactly that kind of stillness. Home-cooked Kumaoni meals, a sunny verandah, forest walks to neighbouring villages, and evenings that end early because there is no reason for them not to. It is the stay we recommend when someone tells us they just need to switch off.'
     ],
-    image: 'photo-1499696010180-025ef6e1a8f9',
+    image: '/images/stays/nirvaana-mansion-hartola/cover',
     gallery: [
-      'photo-1418065460487-3e41a6c84dc5',
-      'photo-1506905925346-21bda4d32df4',
-      'photo-1464207687429-7505649dae38',
-      'photo-1519681393784-d120267933ba'
+      '/images/stays/nirvaana-mansion-hartola/gallery-05',
+      '/images/stays/nirvaana-mansion-hartola/gallery-01',
+      '/images/stays/nirvaana-mansion-hartola/gallery-03',
+      '/images/stays/nirvaana-mansion-hartola/gallery-02',
+      '/images/stays/nirvaana-mansion-hartola/gallery-04'
     ],
     facts: [
       { label: 'Setting', value: 'Orchard village, around 2,000 m' },
@@ -166,12 +169,14 @@ export const stays: Listing[] = [
       'Hriday Bhoomi — "land of the heart" — sits in the small village of Dhela, on the edge of Jim Corbett National Park, about 13 km from Ramnagar. The last stretch in is a five-kilometre drive through the forest, and the Dhela safari gate, for the Dhela and Jhirna zones, is only minutes away.',
       'It blends the warmth of a homestay with the comforts of a resort: five independent cottages for couples and small families, and a five-bedroom private villa for larger families and groups. There is a swimming pool, an in-house restaurant and wide green lawns, and the property keeps a light footprint, with its own organic farm. Days go on jungle safaris and nature walks; evenings end with riverside dinners and a bonfire.'
     ],
-    image: 'photo-1566073771259-6a8506099945',
+    image: '/images/stays/hriday-bhoomi-jim-corbett/cover',
     gallery: [
-      'photo-1549366021-9f761d450615',
-      'photo-1441974231531-c6227db76b6e',
-      'photo-1478131143081-80f7f84ca84d',
-      'photo-1496417263034-38ec4f0b665a'
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-02',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-01',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-04',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-06',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-03',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-05'
     ],
     facts: [
       { label: 'Setting', value: 'Forest edge, Jim Corbett' },
@@ -215,12 +220,12 @@ export const stays: Listing[] = [
       'Munsiyari sits at around 2,200 m at the head of the road into the Johar valley, and it has one of the great views in the Indian Himalaya: the five summits of Panchachuli filling the skyline across the Gori Ganga gorge.',
       'Panchachuli Earth puts you right in front of it. Wake up to the peaks turning pink, walk down to the Nanda Devi temple and the tribal heritage museum, visit the weavers in Darkot, and use the stay as your base for Khaliya Top and the high valleys beyond. The hosts are local, and the food is too.'
     ],
-    image: 'photo-1622308644420-b20142dc993c',
+    image: '/images/stays/panchachuli-earth-munsiyari/cover',
     gallery: [
-      'photo-1486911278844-a81c5267e227',
-      'photo-1506905925346-21bda4d32df4',
-      'photo-1501555088652-021faa106b9b',
-      'photo-1626621341517-bbf3d9990a23'
+      '/images/stays/panchachuli-earth-munsiyari/gallery-01',
+      '/images/stays/panchachuli-earth-munsiyari/gallery-05',
+      '/images/stays/panchachuli-earth-munsiyari/gallery-02',
+      '/images/stays/panchachuli-earth-munsiyari/gallery-03'
     ],
     facts: [
       { label: 'Setting', value: 'Mountain town, around 2,200 m' },
@@ -358,12 +363,13 @@ export const stays: Listing[] = [
       'Guldaar is the Kumaoni word for leopard, and the forests of the Kosi valley are very much their territory. The river runs clear over stones below pine-covered slopes, and the villages along it still farm terraces the way they always have.',
       'Guldaar Valley is a stay built around the landscape. Walk the river with a local naturalist, look for birds and tracks on the forest trails, visit the ancient Katarmal Sun Temple on the hill above, and eat what the valley grows. It is a place for people who want to learn a little about where they are, not just look at it.'
     ],
-    image: 'photo-1469474968028-56623f02e42e',
+    image: '/images/stays/guldaar-valley-kosi/cover',
     gallery: [
-      'photo-1447752875215-b2761acb3c5d',
-      'photo-1609920658906-8223bd289001',
-      'photo-1478131143081-80f7f84ca84d',
-      'photo-1441974231531-c6227db76b6e'
+      '/images/stays/guldaar-valley-kosi/gallery-02',
+      '/images/stays/guldaar-valley-kosi/gallery-06',
+      '/images/stays/guldaar-valley-kosi/gallery-05',
+      '/images/stays/guldaar-valley-kosi/gallery-04',
+      '/images/stays/guldaar-valley-kosi/gallery-03'
     ],
     facts: [
       { label: 'Setting', value: 'River valley and forest' },
@@ -405,12 +411,16 @@ export const stays: Listing[] = [
       'Ekaant means solitude, and it is an honest name. The farm sits in the foothills of Kumaon, away from the main roads, with fields, fruit trees and a kitchen garden that decides what is for dinner.',
       'Guests are welcome to join in as much or as little as they like — harvesting, milking, making bread or ghee, or cooking a Kumaoni meal with the family. The rest of the time is for walks, a book and long evenings outdoors. It is a wonderful stay for families with children, and for anyone who wants to reconnect with where food actually comes from.'
     ],
-    image: 'photo-1500382017468-9049fed747ef',
+    image: '/images/stays/ekaant-organic-farm-stay-chakulwa/cover',
     gallery: [
-      'photo-1589136777351-fdc9c9cab193',
-      'photo-1464207687429-7505649dae38',
-      'photo-1631452180519-c014fe946bc7',
-      'photo-1469474968028-56623f02e42e'
+      '/images/stays/ekaant-organic-farm-stay-chakulwa/gallery-09',
+      '/images/stays/ekaant-organic-farm-stay-chakulwa/gallery-02',
+      '/images/stays/ekaant-organic-farm-stay-chakulwa/gallery-01',
+      '/images/stays/ekaant-organic-farm-stay-chakulwa/gallery-06',
+      '/images/stays/ekaant-organic-farm-stay-chakulwa/gallery-08',
+      '/images/stays/ekaant-organic-farm-stay-chakulwa/gallery-04',
+      '/images/stays/ekaant-organic-farm-stay-chakulwa/gallery-07',
+      '/images/stays/ekaant-organic-farm-stay-chakulwa/gallery-05'
     ],
     facts: [
       { label: 'Setting', value: 'Working organic farm' },
