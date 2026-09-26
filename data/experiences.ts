@@ -11,21 +11,21 @@ export const experiences: Listing[] = [
     section: 'experiences',
     category: 'adventure',
     title: 'Bankatiya Base Camp',
-    location: 'Kumaon Himalaya, beyond Munsiyari',
+    location: 'Johar valley, beyond Munsiyari',
     destinationSlug: 'uttarakhand',
-    tagline: 'A night among the high peaks',
+    tagline: 'Nights among the high peaks',
     description:
       'Walk into a Himalayan base camp, sleep under the glaciers and wake up surrounded by snow peaks — fully guided and supported.',
     overview: [
       'Bankatiya is a high camp in the Kumaon Himalaya, reached on foot through forest, meadow and moraine from the roadhead beyond Munsiyari. There are no buildings and no signal — just tents, a kitchen, and a ring of snow peaks that turn gold at sunset.',
       'This is our base camp experience for people who want the feeling of being high in the mountains without committing to a full expedition. We keep the walking days manageable, handle the camp, the food and the logistics, and give you time at the top to actually take it in. If it gets under your skin, the full Bankatiya Base Camp Trek is waiting.'
     ],
-    image: 'photo-1510312305653-8ed496efae75',
+    image: 'photo-1683700914015-92be0e442390',
     gallery: [
-      'photo-1626621341517-bbf3d9990a23',
-      'photo-1486911278844-a81c5267e227',
-      'photo-1519681393784-d120267933ba',
-      'photo-1504280390367-361c6d9f38f4'
+      'photo-1683700914859-27447d1b9b66',
+      'photo-1608942025318-1191eeade556',
+      'photo-1685776999606-59a94b948ef2',
+      'photo-1683700912945-1cc17effa0bb'
     ],
     facts: [
       { label: 'Duration', value: '5 – 6 days ex Munsiyari' },
@@ -34,7 +34,7 @@ export const experiences: Listing[] = [
       { label: 'Season', value: 'May – June, Sep – Oct' }
     ],
     highlights: [
-      'A night at a high Himalayan camp with snow peaks all around',
+      'Nights at a high Himalayan camp with snow peaks all around',
       'Forest, meadow and glacier landscapes in a single walk',
       'Experienced local guides, cooks and support staff',
       'Stargazing far from any light',
@@ -81,6 +81,7 @@ export const experiences: Listing[] = [
       'Local trek leader and support staff',
       'Tents, sleeping bags and mats',
       'All meals on the trail',
+      'Homestay nights in Munsiyari before and after the trek',
       'Permits and forest fees where applicable',
       'Transfers between Munsiyari and the roadhead'
     ],
@@ -113,12 +114,12 @@ export const experiences: Listing[] = [
       'Nanda Devi is the presiding goddess of Kumaon and Garhwal, and the mountain that carries her name watches over the whole region. Each year around Nanda Ashtami, in late summer, villages across the hills celebrate her with fairs, processions and music.',
       'In Munsiyari the festival centres on the Nanda Devi temple on the ridge above town. We plan the days so you are there for the rituals and the gatherings, with a local host to explain what is happening and why — and time around it for the tribal heritage museum, the weavers of Darkot and the view of Panchachuli.'
     ],
-    image: 'photo-1589136777351-fdc9c9cab193',
+    image: 'photo-1683700916507-93d49889bacc',
     gallery: [
-      'photo-1622308644420-b20142dc993c',
-      'photo-1506905925346-21bda4d32df4',
-      'photo-1464822759023-fed622ff2c3b',
-      'photo-1486911278844-a81c5267e227'
+      'photo-1683700915265-83e12dac8024',
+      'photo-1683700912111-7f5b392d54d4',
+      'photo-1683700912945-1cc17effa0bb',
+      'photo-1683700916029-5fb9b2197a2e'
     ],
     facts: [
       { label: 'Duration', value: '4 – 5 days ex Munsiyari' },
@@ -196,12 +197,12 @@ export const experiences: Listing[] = [
       'The Char Dham are the four shrines at the sources of the Himalayan rivers: Yamunotri, Gangotri, Kedarnath and Badrinath. For many families it is the journey of a lifetime, and it deserves to be planned like one.',
       'We take care of the parts that make it hard — registrations, realistic driving days, the right stays near each shrine, ponies or palkis where needed, and helicopter options for Kedarnath if you want them. You focus on the darshan, the rivers and the mountains around you.'
     ],
-    image: 'photo-1464822759023-fed622ff2c3b',
+    image: 'photo-1759262988017-199c93bacb6d',
     gallery: [
-      'photo-1609920658906-8223bd289001',
-      'photo-1561361058-c24cecae35ca',
-      'photo-1626621341517-bbf3d9990a23',
-      'photo-1533240332313-0db49b459ad6'
+      'photo-1729915190998-bf7fdfea8bef',
+      'photo-1630307357687-8222c5ac88dd',
+      'photo-1735817984411-af719b6836c0',
+      'photo-1687511741630-18fe16e8ed7e'
     ],
     facts: [
       { label: 'Duration', value: '10 – 11 days ex Haridwar' },
@@ -213,7 +214,7 @@ export const experiences: Listing[] = [
       'Darshan at all four shrines in the traditional order',
       'The walk (or pony ride) to Kedarnath, with helicopter options',
       'Mana, the last village before the Tibetan border, near Badrinath',
-      'The confluences of the Alaknanda and Bhagirathi on the way home',
+      'Devprayag, where the Alaknanda and Bhagirathi meet to become the Ganga, on the way home',
       'Registrations, stays and drivers handled end to end'
     ],
     itinerary: [
@@ -255,7 +256,7 @@ export const experiences: Listing[] = [
       {
         day: 6,
         title: 'Up to Kedarnath',
-        description: 'From Gaurikund, walk, ride or fly up to Kedarnath. Evening aarti at the temple.',
+        description: 'Walk or ride up from Gaurikund, or fly in from the Phata, Sersi or Guptkashi helipads. Evening aarti at the temple.',
         stay: 'Kedarnath',
         meals: 'Breakfast, dinner'
       },
@@ -296,7 +297,7 @@ export const experiences: Listing[] = [
     ],
     goodToKnow: [
       'Registration for the yatra is mandatory. Share ID details for every traveller when you book.',
-      'Opening and closing dates are announced each year, usually around late April and Diwali.',
+      'Opening and closing dates are announced each year — the shrines usually open in late April or early May and close around Diwali, with Badrinath closing a few weeks later in November.',
       'Kedarnath is a long walk at altitude. A medical check-up is sensible for older travellers.',
       'We avoid the peak weeks where we can and keep a buffer day for weather.'
     ],
@@ -323,12 +324,12 @@ export const experiences: Listing[] = [
       'Every year from 1 to 10 December, the Naga Heritage Village at Kisama, just outside Kohima, hosts the Hornbill Festival. Each tribe has its own morung, and the days fill with traditional dances, songs, games, food and craft from across Nagaland.',
       'We plan the festival days so you see the best of the programme without the crush, and add the places around it that make the trip: Khonoma, the green village that turned its hunting grounds into a sanctuary; Kohima\'s history and markets; and, for the energetic, the walk into the Dzükou valley.'
     ],
-    image: 'photo-1622308644420-b20142dc993c',
+    image: 'photo-1700040186780-18adbcc909b0',
     gallery: [
-      'photo-1470071459604-3b5ec3a7fe05',
-      'photo-1459749411175-04bf5292ceea',
-      'photo-1469474968028-56623f02e42e',
-      'photo-1441974231531-c6227db76b6e'
+      'photo-1700040224625-e502a5fbe7d6',
+      'photo-1602702131391-9136a92f525e',
+      'photo-1635998973091-30df63f081a3',
+      'photo-1712055196088-9bc6da4ffbce'
     ],
     facts: [
       { label: 'Duration', value: '5 – 6 days ex Dimapur' },
@@ -387,7 +388,7 @@ export const experiences: Listing[] = [
       'Inner Line Permit assistance'
     ],
     goodToKnow: [
-      'Indian travellers need an Inner Line Permit for Nagaland. We arrange it — carry ID.',
+      'Indian travellers need an Inner Line Permit for Nagaland. We arrange it — carry ID. Foreign nationals need a Protected Area Permit, which takes longer — tell us early.',
       'Stays around Kohima book out months ahead for the festival. Plan early.',
       'December evenings are cold in the hills. Pack warm layers.',
       'Always ask before photographing people, especially outside the festival grounds.'
@@ -414,12 +415,12 @@ export const experiences: Listing[] = [
       'Every November, the Himalayan cherry trees around Shillong come into bloom and turn the hills pink. The city — long called the rock capital of India — celebrates with the Cherry Blossom Festival: concerts, food, local craft and a weekend when everyone seems to be outdoors.',
       'We build the trip around the festival days and add the Meghalaya everyone should see once: the gorges and waterfalls of Sohra, a living root bridge, the clear water at Dawki, and a village stay in the Khasi hills.'
     ],
-    image: 'photo-1522383225653-ed111181a951',
+    image: 'photo-1763101233894-9d21f1be70b7',
     gallery: [
-      'photo-1459749411175-04bf5292ceea',
-      'photo-1470229722913-7c0e2dbbafd3',
-      'photo-1433086966358-54859d0ed716',
-      'photo-1470071459604-3b5ec3a7fe05'
+      'photo-1665248919075-246d0ac9a912',
+      'photo-1609276804051-8c5e906cc430',
+      'photo-1625654325562-762dcec9e6f2',
+      'photo-1552978534-9d01e1f91517'
     ],
     facts: [
       { label: 'Duration', value: '5 days ex Guwahati' },
@@ -444,29 +445,29 @@ export const experiences: Listing[] = [
       },
       {
         day: 2,
-        title: 'Festival day',
+        title: 'Festival day one',
         description: 'The cherry blossoms around town and the festival programme through the evening.',
         stay: 'Shillong',
         meals: 'Breakfast'
       },
       {
         day: 3,
-        title: 'Sohra',
+        title: 'Festival day two',
+        description: 'The second day of concerts, with time for the blossoms around Ward\'s Lake.',
+        stay: 'Shillong',
+        meals: 'Breakfast'
+      },
+      {
+        day: 4,
+        title: 'Sohra (Cherrapunji)',
         description: 'Waterfalls, gorges and the walk down to a living root bridge.',
         stay: 'Sohra',
         meals: 'Breakfast, dinner'
       },
       {
-        day: 4,
-        title: 'Dawki and back to Shillong',
-        description: 'A morning on the Umngot river and Mawlynnong village, then festival night two.',
-        stay: 'Shillong',
-        meals: 'Breakfast'
-      },
-      {
         day: 5,
-        title: 'Shillong to Guwahati',
-        description: 'Back down to Guwahati for your onward journey.',
+        title: 'Dawki, Mawlynnong and Guwahati',
+        description: 'The clear water of the Umngot river at Dawki and the village of Mawlynnong, then the drive down to Guwahati. A long day — an extra night in Shillong makes it easier.',
         meals: 'Breakfast'
       }
     ],
@@ -474,7 +475,7 @@ export const experiences: Listing[] = [
       'Stays in Shillong and Sohra',
       'Private vehicle and driver',
       'Local guide for Sohra and Dawki',
-      'Daily breakfast'
+      'Daily breakfast, and dinner in Sohra'
     ],
     goodToKnow: [
       'Festival tickets and line-ups are announced each year — we will confirm what is included in your quote.',
@@ -494,7 +495,7 @@ export const experiences: Listing[] = [
     slug: 'holi-pushkar',
     section: 'experiences',
     category: 'culture-heritage',
-    title: 'Holi @ Pushkar',
+    title: 'Holi in Pushkar',
     location: 'Pushkar, Rajasthan',
     destinationSlug: 'rajasthan',
     tagline: 'The festival of colours in a holy lake town',
@@ -504,12 +505,12 @@ export const experiences: Listing[] = [
       'Pushkar is one of the oldest towns in India, built around a sacred lake ringed with ghats and temples. For most of the year it is calm and devotional. On Holi, it becomes one of the most colourful places in the country.',
       'We plan Holi here with care: a stay close enough to the action, a local host who knows where to be and when, time to step out of the crowd when you want to, and the quieter side of Pushkar around it — sunrise at the Savitri temple, the Brahma temple and evenings at the ghats.'
     ],
-    image: 'photo-1603262110263-fb0112e7cc33',
+    image: 'photo-1663154048558-2510385fee89',
     gallery: [
-      'photo-1551972873-b7e8754e8e26',
-      'photo-1599661046289-e31897846e41',
-      'photo-1477587458883-47145ed94245',
-      'photo-1524492412937-b28074a5d7da'
+      'photo-1591661585188-04fce214708d',
+      'photo-1668236305915-09785d2e73de',
+      'photo-1654004924301-90c23a3b7279',
+      'photo-1583261429112-e0e7fe037a49'
     ],
     facts: [
       { label: 'Duration', value: '3 – 4 days ex Jaipur' },
@@ -588,12 +589,12 @@ export const experiences: Listing[] = [
       'The Darma valley runs north from Dharchula towards the Tibetan border, following the Dhauliganga river past a string of stone-and-timber villages. It is home to the Rung community, who have lived and traded here for centuries, moving up in summer and down in winter.',
       'This journey is about the villages and the people. We stay in homestays in Dugtu and Dantu, walk up towards the Panchachuli glaciers, share meals with our hosts and learn a little about a way of life that is changing fast. It is remote, simple and unforgettable.'
     ],
-    image: 'photo-1486911278844-a81c5267e227',
+    image: 'photo-1668005143681-f1283afaa6b1',
     gallery: [
-      'photo-1589136777351-fdc9c9cab193',
-      'photo-1501555088652-021faa106b9b',
-      'photo-1519681393784-d120267933ba',
-      'photo-1544084944-15269ec7b5a0'
+      'photo-1668005163654-0f8b38a75030',
+      'photo-1668005151025-1f3f7eeb8131',
+      'photo-1668005146935-2ee772a652f7',
+      'photo-1668005183835-d902fde910e1'
     ],
     facts: [
       { label: 'Duration', value: '6 – 7 days ex Dharchula' },
@@ -660,7 +661,7 @@ export const experiences: Listing[] = [
       'Local transfers in suitable vehicles'
     ],
     goodToKnow: [
-      'Darma is an inner-line area. We need ID documents in advance to arrange permits.',
+      'Darma is a border area: ITBP checkposts register every visitor, and we arrange any permit needed from the SDM office in Dharchula — share ID documents early.',
       'Homestays are simple — shared bathrooms and bucket hot water are common.',
       'There is little or no mobile network in the upper valley.',
       'Roads here are affected by landslides. We keep buffer time in the plan.'
@@ -687,12 +688,12 @@ export const experiences: Listing[] = [
       'For centuries the Johar valley was a highway. Johari traders walked their goats and yaks up the Gori Ganga gorge from Munsiyari to the high villages of Martoli and Milam, and over the passes into Tibet to trade salt, wool and grain.',
       'That trade ended in 1962, and many of the high villages now stand empty for most of the year. This journey follows the old route with local guides whose families come from the valley: gorges and waterfalls, deserted stone villages full of stories, and the Milam glacier at the top.'
     ],
-    image: 'photo-1501555088652-021faa106b9b',
+    image: 'photo-1683700914015-92be0e442390',
     gallery: [
-      'photo-1464822759023-fed622ff2c3b',
-      'photo-1626621341517-bbf3d9990a23',
-      'photo-1533240332313-0db49b459ad6',
-      'photo-1504280390367-361c6d9f38f4'
+      'photo-1683700915164-65ab1f89dd1a',
+      'photo-1608942025318-1191eeade556',
+      'photo-1683700912111-7f5b392d54d4',
+      'photo-1621269759351-0f3f95239966'
     ],
     facts: [
       { label: 'Duration', value: '7 – 9 days ex Munsiyari' },
@@ -715,7 +716,7 @@ export const experiences: Listing[] = [
       'Porter or mule support for luggage'
     ],
     goodToKnow: [
-      'Johar is an inner-line area. We need ID documents in advance for permits.',
+      'Johar is a border area with ITBP checkposts — carry government photo ID. Permit rules change often, so we confirm the current requirements before you travel.',
       'Road construction is changing how far you can drive each season — we plan with the latest conditions.',
       'Expect long walking days and simple camps in the upper valley.',
       'A detailed day-by-day plan is shared once we know your dates and fitness.'
@@ -737,17 +738,17 @@ export const experiences: Listing[] = [
     destinationSlug: 'uttarakhand',
     tagline: 'The last villages before Tibet',
     description:
-      'A high, dry valley beyond Joshimath with Bhotia villages, the Dhauliganga, and the ice cave of Timmersain Mahadev.',
+      'A high, dry valley beyond Joshimath with Bhotia villages, the Dhauliganga, and the cave shrine of Timmersain Mahadev.',
     overview: [
       'Beyond Joshimath, the road follows the Dhauliganga river into the Niti valley, climbing from pine forest into a stark, high landscape that feels closer to Ladakh than to the rest of Garhwal. Niti, the last village, sits just short of the Tibetan border.',
-      'The valley is home to the Bhotia communities of Malari, Gamshali and Niti, who still migrate with the seasons. We stay with local families, walk to the cave of Timmersain Mahadev with its natural ice lingam, and spend time in villages that very few travellers ever see.'
+      'The valley is home to the Bhotia communities of Malari, Gamshali and Niti, who still migrate with the seasons. We stay with local families, walk to the cave shrine of Timmersain Mahadev, where an ice lingam forms in winter and early spring, and spend time in villages that very few travellers ever see.'
     ],
-    image: 'photo-1455156218388-5e61b526818b',
+    image: 'photo-1579095220823-a2833d440ee1',
     gallery: [
-      'photo-1544084944-15269ec7b5a0',
-      'photo-1464822759023-fed622ff2c3b',
-      'photo-1519681393784-d120267933ba',
-      'photo-1533240332313-0db49b459ad6'
+      'photo-1713446016389-ebafd8870601',
+      'photo-1607271308378-7ea0b9a84da6',
+      'photo-1707307471824-cc78806de52e',
+      'photo-1626401313580-122d6c192c82'
     ],
     facts: [
       { label: 'Duration', value: '5 – 6 days ex Joshimath' },
@@ -758,7 +759,7 @@ export const experiences: Listing[] = [
     highlights: [
       'The stark, high landscape of the upper Dhauliganga',
       'Homestays in the Bhotia villages of the valley',
-      'The walk to Timmersain Mahadev and its ice lingam',
+      'The walk to the Timmersain Mahadev cave shrine (the ice lingam is usually seen only until May)',
       'Malari and its traditional stone houses',
       'Inner Line Permits arranged'
     ],
@@ -779,7 +780,7 @@ export const experiences: Listing[] = [
     seo: {
       title: 'Niti Valley — Offbeat Journey beyond Joshimath, Uttarakhand',
       description:
-        'Explore the Niti valley with Pravaah: Bhotia village homestays in Malari and Niti, the Dhauliganga, and the ice cave of Timmersain Mahadev.'
+        'Explore the Niti valley with Pravaah: Bhotia village homestays in Malari and Niti, the Dhauliganga, and the cave shrine of Timmersain Mahadev.'
     }
   },
 
@@ -788,21 +789,21 @@ export const experiences: Listing[] = [
     section: 'experiences',
     category: 'treks',
     title: 'Bankatiya Base Camp Trek',
-    location: 'Kumaon Himalaya, beyond Munsiyari',
+    location: 'Johar valley, beyond Munsiyari',
     destinationSlug: 'uttarakhand',
     tagline: 'A full base camp trek in the Kumaon high country',
     description:
       'A complete, well-paced trek to Bankatiya base camp — forest, meadow and moraine, with time to acclimatise and explore the glaciers.',
     overview: [
       'The Bankatiya trek takes you from the last villages beyond Munsiyari up into the high country of the Kumaon Himalaya — through rhododendron and birch forest, across open meadows and finally onto the moraine below the snow peaks.',
-      'Unlike our shorter base camp experience, this is a full expedition: more days on the trail, proper acclimatisation, and time at the top to explore towards the glaciers with your guide. Camps, cooks, porters and permits are all taken care of; you bring the legs and the curiosity.'
+      'Unlike our shorter base camp experience, this is a longer, fuller trek: more days on the trail, proper acclimatisation, and time at the top to explore towards the glaciers with your guide. Camps, cooks, porters and permits are all taken care of; you bring the legs and the curiosity.'
     ],
-    image: 'photo-1551632811-561732d1e306',
+    image: 'photo-1768383565166-0c17033a91df',
     gallery: [
-      'photo-1510312305653-8ed496efae75',
-      'photo-1626621341517-bbf3d9990a23',
-      'photo-1486911278844-a81c5267e227',
-      'photo-1519681393784-d120267933ba'
+      'photo-1683700914015-92be0e442390',
+      'photo-1653732109859-cb688124de55',
+      'photo-1608942025318-1191eeade556',
+      'photo-1683700912945-1cc17effa0bb'
     ],
     facts: [
       { label: 'Duration', value: '8 – 9 days ex Munsiyari' },
@@ -879,6 +880,7 @@ export const experiences: Listing[] = [
       'Certified trek leader and local support staff',
       'All camping equipment — tents, sleeping bags, mats, kitchen and toilet tents',
       'All meals on the trek',
+      'Homestay nights in Munsiyari before and after the trek',
       'Permits and forest fees',
       'First-aid kit and oxygen cylinder',
       'Transfers between Munsiyari and the roadhead'
@@ -911,12 +913,12 @@ export const experiences: Listing[] = [
       'The five summits of Panchachuli are the defining view of eastern Kumaon. Most people see them from Munsiyari, across the valley. This trek takes you round to the other side, up the Darma valley, to stand right at their feet.',
       'The route begins in the Rung villages of Dugtu and Dantu, where we stay with local families, before heading up through birch forest and meadow to the Panchachuli glacier. It is one of the most rewarding treks in Uttarakhand for the effort involved — and it comes with the bonus of time in one of its most interesting valleys.'
     ],
-    image: 'photo-1533130061792-64b345e4a833',
+    image: 'photo-1668005172181-9367f851109e',
     gallery: [
-      'photo-1486911278844-a81c5267e227',
-      'photo-1551632811-561732d1e306',
-      'photo-1504280390367-361c6d9f38f4',
-      'photo-1589136777351-fdc9c9cab193'
+      'photo-1668005157353-c0790383ef7b',
+      'photo-1668005118547-fe338e94e731',
+      'photo-1668005146935-2ee772a652f7',
+      'photo-1608497582272-627e105265ab'
     ],
     facts: [
       { label: 'Duration', value: '7 – 8 days ex Dharchula' },
@@ -991,7 +993,7 @@ export const experiences: Listing[] = [
       'Local transfers in the valley'
     ],
     goodToKnow: [
-      'Darma is an inner-line area. Share ID documents early so permits can be arranged.',
+      'Darma is a border area: ITBP checkposts register every visitor, and we arrange any permit needed from the SDM office in Dharchula — share ID documents early.',
       'Roads into the valley are prone to landslides — we keep a buffer day.',
       'Homestays are simple and warm. Camps are fully supported.',
       'Exact camp locations are confirmed in your pre-departure briefing.'
@@ -1019,12 +1021,12 @@ export const experiences: Listing[] = [
       'Khaliya Top is a high alpine meadow above Munsiyari, at roughly 3,500 m, and one of the finest viewpoints in the Kumaon Himalaya. From the top, Panchachuli, Rajrambha, Nanda Devi and a long line of snow peaks spread out across the horizon.',
       'The trail climbs through rhododendron and oak forest before breaking out onto open grassland. It is short enough for a first trek and beautiful enough that experienced walkers come back to it. We camp near the top so you are there for both sunset and sunrise.'
     ],
-    image: 'photo-1626621341517-bbf3d9990a23',
+    image: 'photo-1786339881390-96fba8883ff6',
     gallery: [
-      'photo-1506905925346-21bda4d32df4',
-      'photo-1501555088652-021faa106b9b',
-      'photo-1519681393784-d120267933ba',
-      'photo-1504280390367-361c6d9f38f4'
+      'photo-1788004263255-9fc137e0cc41',
+      'photo-1683700914859-27447d1b9b66',
+      'photo-1683700912111-7f5b392d54d4',
+      'photo-1683700912945-1cc17effa0bb'
     ],
     facts: [
       { label: 'Duration', value: '2 days, 1 night ex Munsiyari' },
@@ -1037,7 +1039,7 @@ export const experiences: Listing[] = [
       'Rhododendron forest in bloom in spring',
       'Sunset and sunrise from a high meadow camp',
       'A perfect first Himalayan trek',
-      'Snow on the meadow in winter'
+      'Often snow on the meadow in early winter'
     ],
     itinerary: [
       {
@@ -1089,12 +1091,12 @@ export const experiences: Listing[] = [
       'The road into the Johar valley is one of the newest in the Himalaya, pushed up the Gori Ganga gorge towards Milam along a route traders once walked for weeks. Driving it is an adventure in itself — cliffs, waterfalls, river crossings and constantly changing surfaces.',
       'We run this expedition in capable 4x4s with drivers who know the valley, stopping at the old Johari villages, walking where the road ends, and camping or staying in homestays along the way. It is for travellers who want to reach the high valley without trekking all the way in.'
     ],
-    image: 'photo-1464822759023-fed622ff2c3b',
+    image: 'photo-1621269759351-0f3f95239966',
     gallery: [
-      'photo-1516426122078-c23e76319801',
-      'photo-1501555088652-021faa106b9b',
-      'photo-1609920658906-8223bd289001',
-      'photo-1533240332313-0db49b459ad6'
+      'photo-1683700916507-93d49889bacc',
+      'photo-1683700914859-27447d1b9b66',
+      'photo-1683700912945-1cc17effa0bb',
+      'photo-1608942025318-1191eeade556'
     ],
     facts: [
       { label: 'Duration', value: '6 – 7 days ex Munsiyari' },
@@ -1119,7 +1121,7 @@ export const experiences: Listing[] = [
     goodToKnow: [
       'Road conditions change every season. We confirm the plan against the latest reports.',
       'Expect long, bumpy days — not suitable for travellers with back problems.',
-      'Johar is an inner-line area. Share ID documents early.',
+      'Johar is a border area with ITBP checkposts — carry government photo ID. We confirm the current permit rules before you travel.',
       'A day-by-day plan is shared once we confirm your dates.'
     ],
     bestTime: 'June and September to October',
@@ -1144,12 +1146,12 @@ export const experiences: Listing[] = [
       'The Darma valley road climbs from the Kali river at Dharchula up the Dhauliganga, past Dugtu and Dantu with their views of Panchachuli, and on towards the highest villages near the Tibetan border.',
       'Our expedition covers the whole valley in capable 4x4s, with stops for village walks, the Panchachuli viewpoints and the high meadows at the top. We stay in local homestays and camps and travel with a guide from the Rung community.'
     ],
-    image: 'photo-1544084944-15269ec7b5a0',
+    image: 'photo-1772082177577-54f617aee8f3',
     gallery: [
-      'photo-1516426122078-c23e76319801',
-      'photo-1486911278844-a81c5267e227',
-      'photo-1589136777351-fdc9c9cab193',
-      'photo-1519681393784-d120267933ba'
+      'photo-1668005146935-2ee772a652f7',
+      'photo-1668005163654-0f8b38a75030',
+      'photo-1668005172181-9367f851109e',
+      'photo-1668005151025-1f3f7eeb8131'
     ],
     facts: [
       { label: 'Duration', value: '5 – 6 days ex Dharchula' },
@@ -1197,14 +1199,14 @@ export const experiences: Listing[] = [
       'Drive from Joshimath up the Dhauliganga into the stark high valley of Niti, near the Tibetan border.',
     overview: [
       'The road from Joshimath to Niti is one of the most dramatic in Garhwal. It follows the Dhauliganga through narrow gorges, past Tapovan and Malari, and out into a high, dry valley that looks more like Ladakh than the green hills below.',
-      'Our 4x4 expedition takes the road slowly, with stops in the Bhotia villages, a walk to the ice cave of Timmersain Mahadev, and nights in local homestays. It can be combined with Badrinath and Mana for a longer Garhwal journey.'
+      'Our 4x4 expedition takes the road slowly, with stops in the Bhotia villages, a walk to the cave shrine of Timmersain Mahadev, and nights in local homestays. It can be combined with Badrinath and Mana for a longer Garhwal journey.'
     ],
-    image: 'photo-1455156218388-5e61b526818b',
+    image: 'photo-1714224287885-efff750e5919',
     gallery: [
-      'photo-1516426122078-c23e76319801',
-      'photo-1544084944-15269ec7b5a0',
-      'photo-1464822759023-fed622ff2c3b',
-      'photo-1519681393784-d120267933ba'
+      'photo-1607271258380-16d84d1f967f',
+      'photo-1579095220823-a2833d440ee1',
+      'photo-1713446016389-ebafd8870601',
+      'photo-1702127047573-36a11c318774'
     ],
     facts: [
       { label: 'Duration', value: '4 – 5 days ex Joshimath' },
@@ -1215,7 +1217,7 @@ export const experiences: Listing[] = [
     highlights: [
       'The Dhauliganga gorge and the road to the border',
       'Malari, Gamshali and Niti villages',
-      'Timmersain Mahadev ice cave',
+      'The Timmersain Mahadev cave shrine',
       'Homestays with Bhotia families',
       'Easy to combine with Badrinath and Mana'
     ],
@@ -1254,12 +1256,12 @@ export const experiences: Listing[] = [
       'Pravaah means flow, and this is the journey that gave us our name. It follows the Ganga from the glaciers above Gangotri, where the Bhagirathi begins, all the way down to the plains at Haridwar.',
       'Along the way you walk to Gaumukh, the snout of the Gangotri glacier; stay in the river towns of Harsil and Uttarkashi; stand at Devprayag, where the Bhagirathi and Alaknanda meet and the river finally becomes the Ganga; raft the rapids above Rishikesh; and end at the evening aarti in Haridwar. It is part pilgrimage, part adventure, and all river.'
     ],
-    image: 'photo-1609920658906-8223bd289001',
+    image: 'photo-1709623868300-e3b78cad10e1',
     gallery: [
-      'photo-1561361058-c24cecae35ca',
-      'photo-1571536802807-30451e3955d8',
-      'photo-1506126613408-eca07ce68773',
-      'photo-1626621341517-bbf3d9990a23'
+      'photo-1572963912807-a3609ed653c3',
+      'photo-1720819029162-8500607ae232',
+      'photo-1718383537411-6f9e727ae0bb',
+      'photo-1724432799555-6414c4a669b9'
     ],
     facts: [
       { label: 'Duration', value: '9 – 10 days ex Dehradun' },
