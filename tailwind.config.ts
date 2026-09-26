@@ -18,6 +18,16 @@ export default <Partial<Config>>{
   ],
   theme: {
     extend: {
+      screens: {
+        /** Monitors wider than 1920 CSS px, where left-aligned heroes drift off-centre. */
+        '3xl': '2000px',
+        /**
+         * Desktop windows proportionally shorter than the 1920×900 design. An aspect
+         * ratio rather than a height, because the rem scale follows the width: a 125%
+         * laptop (1536×730) has the same proportions as 1920×910 and should look identical.
+         */
+        short: { raw: '(min-width: 1024px) and (min-aspect-ratio: 32/15)' }
+      },
       colors: {
         /**
          * Semantic tokens. These resolve to CSS variables, which `.section-dark`
@@ -64,7 +74,8 @@ export default <Partial<Config>>{
         mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace']
       },
       fontSize: {
-        'display-xl': ['clamp(2.75rem, 7vw, 5.75rem)', { lineHeight: '1', letterSpacing: '-0.045em' }],
+        // Capped by height too, so the hero still fits a short, display-scaled laptop screen.
+        'display-xl': ['clamp(2.75rem, min(7vw, 11vh), 5.75rem)', { lineHeight: '1', letterSpacing: '-0.045em' }],
         'display-lg': ['clamp(2.25rem, 5vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.04em' }],
         'display-md': ['clamp(1.875rem, 3.4vw, 2.875rem)', { lineHeight: '1.1', letterSpacing: '-0.035em' }],
         'display-sm': ['clamp(1.5rem, 2.4vw, 2rem)', { lineHeight: '1.15', letterSpacing: '-0.03em' }],

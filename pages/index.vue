@@ -66,7 +66,7 @@ usePageSeo({
     <!-- Full small-viewport height: at scroll 0 the image fills the screen with
          no strip of the next section showing. `svh` (not `vh`) so mobile browser
          chrome cannot leave a gap when the toolbar collapses. -->
-    <section class="relative isolate flex min-h-[100svh] items-end overflow-hidden">
+    <section class="relative isolate flex min-h-[100svh] items-end overflow-hidden 3xl:items-center">
       <!-- The slow push-in sits on a wrapper so it never fights the image's own transforms. -->
       <div class="absolute inset-0 animate-kenburns will-change-transform">
         <AppImage
@@ -84,7 +84,7 @@ usePageSeo({
         aria-hidden="true"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-r from-pine-deep/85 via-pine-deep/25 to-transparent"
+        class="absolute inset-0 bg-gradient-to-r from-pine-deep/85 via-pine-deep/25 to-transparent 3xl:bg-[radial-gradient(ellipse_55%_65%_at_50%_55%,rgba(6,28,20,0.75),transparent)]"
         aria-hidden="true"
       />
       <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -97,7 +97,9 @@ usePageSeo({
         aria-hidden="true"
       />
 
-      <div class="container-pravaah relative w-full pb-14 pt-32 sm:pb-16 lg:pb-20">
+      <!-- Left-aligned up to 1920px wide; on wider monitors the whole block centres,
+           otherwise it sits well left of the middle. -->
+      <div class="container-pravaah relative w-full pb-14 pt-32 sm:pb-16 lg:pb-20 short:pb-10 short:pt-28 3xl:text-center">
         <p class="hero-fade inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/[0.08] px-3.5 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/90 backdrop-blur-md" style="animation-delay: 0.1s">
           <span class="relative flex h-2 w-2" aria-hidden="true">
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-lime opacity-60" />
@@ -109,8 +111,8 @@ usePageSeo({
           </span>
         </p>
 
-        <h1 class="mt-6 max-w-4xl text-display-xl text-white text-shadow-hero">
-          <span v-for="(word, index) in headlineWords" :key="`${word}-${index}`" class="hero-mask mr-[0.24em]">
+        <h1 class="mt-6 max-w-4xl text-display-xl text-white text-shadow-hero short:mt-4 3xl:mx-auto">
+          <span v-for="(word, index) in headlineWords" :key="`${word}-${index}`" class="hero-mask mr-[0.24em] last:mr-0">
             <span class="hero-word" :style="{ animationDelay: `${0.25 + index * 0.09}s` }">
               <!-- The last word carries the glow; its shadow would muddy gradient-clipped text. -->
               <span
@@ -123,7 +125,7 @@ usePageSeo({
         </h1>
 
         <p
-          class="hero-fade mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg"
+          class="hero-fade mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg short:mt-4 short:max-w-2xl 3xl:mx-auto"
           style="animation-delay: 0.62s"
         >
           Handpicked stays, Himalayan treks, festivals and retreats — thoughtfully crafted journeys across India, designed around the way you want to travel.
@@ -132,10 +134,10 @@ usePageSeo({
         <!-- On phones "About Pravaah" leads, then the trip brief, then the popular
              picks. From `sm` up the brief comes first and the link row sits under it;
              the row is `contents` below `sm` so its two halves can be ordered apart. -->
-        <div class="mt-9 flex flex-col gap-5">
+        <div class="mt-9 flex flex-col gap-5 short:mt-6 short:gap-4 3xl:items-center">
         <!-- Trip brief: type the trip you have in mind, and it pre-fills Plan My Trip. -->
         <form
-          class="hero-fade glass-panel group order-2 flex max-w-2xl flex-col gap-2 rounded-[1.4rem] border border-white/15 p-2 shadow-glow-lg transition-colors focus-within:border-brand-light/60 sm:order-1 sm:flex-row sm:items-center"
+          class="hero-fade glass-panel group order-2 flex max-w-2xl flex-col gap-2 rounded-[1.4rem] border border-white/15 p-2 shadow-glow-lg transition-colors focus-within:border-brand-light/60 sm:order-1 sm:flex-row sm:items-center 3xl:w-full 3xl:text-left"
           style="animation-delay: 0.74s"
           role="search"
           aria-label="Describe your trip"
@@ -159,7 +161,7 @@ usePageSeo({
           </button>
         </form>
 
-        <div class="contents sm:order-2 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
+        <div class="contents sm:order-2 sm:flex sm:flex-wrap sm:items-center sm:gap-3 3xl:justify-center">
           <NuxtLink
             to="/#about"
             class="btn-light hero-fade group order-1 self-start px-6 py-3 sm:order-none"
@@ -182,10 +184,10 @@ usePageSeo({
         </div>
 
         <dl
-          class="hero-fade mt-10 grid max-w-2xl grid-cols-3 gap-3 sm:gap-4"
+          class="hero-fade mt-10 grid max-w-2xl grid-cols-3 gap-3 sm:gap-4 short:mt-6 3xl:mx-auto"
           style="animation-delay: 0.86s"
         >
-          <div v-for="stat in brandStory.stats" :key="stat.label" class="glass-panel rounded-2xl border border-white/10 px-3 py-4 sm:px-5">
+          <div v-for="stat in brandStory.stats" :key="stat.label" class="glass-panel rounded-2xl border border-white/10 px-3 py-4 sm:px-5 short:py-3">
             <dt class="sr-only">{{ stat.label }}</dt>
             <dd>
               <span class="text-gradient-light block font-display text-2xl font-semibold sm:text-3xl">
@@ -196,7 +198,7 @@ usePageSeo({
           </div>
         </dl>
 
-        <a href="#explore" class="hero-fade mt-10 hidden items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white sm:inline-flex" style="animation-delay: 0.95s">
+        <a href="#explore" class="hero-fade mt-10 hidden items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-white/60 transition-colors hover:text-white sm:inline-flex short:hidden" style="animation-delay: 0.95s">
           Scroll to explore
           <ArrowDown class="h-4 w-4 animate-bounce" aria-hidden="true" />
         </a>
