@@ -24,8 +24,10 @@ const cellClass = (index: number) => {
   // Phones: two columns, so an odd count leaves the last photograph alone.
   const phone = count % 2 === 1 && fromEnd === 0 ? 'col-span-2' : ''
   const desktop =
+    // A lone last photograph spans the full width; two rows tall keeps it a
+    // panorama rather than a thin strip that crops away most of the picture.
     remainder === 1 && fromEnd === 0
-      ? 'lg:col-span-4'
+      ? 'lg:col-span-4 lg:row-span-2'
       : (remainder === 2 && fromEnd < 2) || (remainder === 3 && fromEnd === 0)
         ? 'lg:col-span-2'
         : ''

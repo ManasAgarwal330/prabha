@@ -268,12 +268,14 @@ export const stays: Listing[] = [
       'Rishikesh is where the Ganga leaves the mountains, and it pulls in yoga students, pilgrims, rafters and people who just want to sit by the river for a few days. It can also be loud and busy, which is why where you sleep matters.',
       'The Cozy BnB is a small, friendly place to come back to. Mornings start with breakfast and a plan for the day — a yoga class, the ghats, a walk across the bridges or a rafting run from Shivpuri — and end with the evening aarti on the river. It is also the natural start or finish for Flow with the Ganga and the Char Dham yatra.'
     ],
-    image: 'photo-1609920658906-8223bd289001',
+    image: '/images/stays/the-cozy-bnb-rishikesh/cover',
     gallery: [
-      'photo-1506126613408-eca07ce68773',
-      'photo-1545389336-cf090694435e',
-      'photo-1496417263034-38ec4f0b665a',
-      'photo-1571536802807-30451e3955d8'
+      '/images/stays/the-cozy-bnb-rishikesh/gallery-06',
+      '/images/stays/the-cozy-bnb-rishikesh/gallery-02',
+      '/images/stays/the-cozy-bnb-rishikesh/gallery-03',
+      '/images/stays/the-cozy-bnb-rishikesh/gallery-01',
+      '/images/stays/the-cozy-bnb-rishikesh/gallery-04',
+      '/images/stays/the-cozy-bnb-rishikesh/gallery-05'
     ],
     facts: [
       { label: 'Setting', value: 'River town' },
@@ -315,12 +317,13 @@ export const stays: Listing[] = [
       'Sonapani is a small settlement tucked into the forested ridges near Satkhol and Mukteshwar, with oak and pine all around and the snow range visible on clear days.',
       'Glampinn Woods is the easiest way to sleep outdoors without giving anything up. The tents have real beds and attached comforts, dinner is cooked over the fire, and the only sounds at night are the forest ones. Days go on birding walks, village trails and doing very little in a hammock. It is a favourite for couples, friends and families with children who have never camped before.'
     ],
-    image: 'photo-1487730116645-74489c95b41b',
+    image: '/images/stays/glampinn-woods-sonapani/cover',
     gallery: [
-      'photo-1504280390367-361c6d9f38f4',
-      'photo-1478131143081-80f7f84ca84d',
-      'photo-1519681393784-d120267933ba',
-      'photo-1441974231531-c6227db76b6e'
+      '/images/stays/glampinn-woods-sonapani/gallery-03',
+      '/images/stays/glampinn-woods-sonapani/gallery-02',
+      '/images/stays/glampinn-woods-sonapani/gallery-01',
+      '/images/stays/glampinn-woods-sonapani/gallery-05',
+      '/images/stays/glampinn-woods-sonapani/gallery-04'
     ],
     facts: [
       { label: 'Setting', value: 'Oak and pine forest' },
