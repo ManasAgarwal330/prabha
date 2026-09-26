@@ -67,12 +67,14 @@ export const stays: Listing[] = [
       'Satkhol is a small hamlet in the Nainital hills, a short drive from Mukteshwar, where the road runs along a ridge of oak and pine and the snow peaks of Kumaon and Garhwal fill the horizon on clear days.',
       'Dharohar — "heritage" — is built in the traditional Kumaoni architectural style and makes the most of that view. Rooms range from comfortable superior rooms to family suites and a Kumaoni suite, with the premium rooms adding balconies, fireplaces and jacuzzis. Meals are served in the Dhara Kumaoni Cafe or out on the lawn, and every stay includes a guided nature walk. It is an easy, comfortable choice for families and couples who want the quiet of the hills with a full resort around them.'
     ],
-    image: 'photo-1418065460487-3e41a6c84dc5',
+    image: '/images/stays/dharohar-retreat-satkhol/cover',
     gallery: [
-      'photo-1445019980597-93fa8acb246c',
-      'photo-1433086966358-54859d0ed716',
-      'photo-1506905925346-21bda4d32df4',
-      'photo-1496417263034-38ec4f0b665a'
+      '/images/stays/dharohar-retreat-satkhol/gallery-05',
+      '/images/stays/dharohar-retreat-satkhol/gallery-06',
+      '/images/stays/dharohar-retreat-satkhol/gallery-01',
+      '/images/stays/dharohar-retreat-satkhol/gallery-02',
+      '/images/stays/dharohar-retreat-satkhol/gallery-04',
+      '/images/stays/dharohar-retreat-satkhol/gallery-03'
     ],
     facts: [
       { label: 'Setting', value: 'Oak and pine valley' },

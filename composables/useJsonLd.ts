@@ -1,6 +1,6 @@
 import { site } from '~/data/site'
 import { buildImageUrl } from '~/composables/useImageSource'
-import type { Article, Destination, FaqItem, Listing } from '~/types'
+import type { Article, Destination, FaqItem, ImageRef, Listing } from '~/types'
 
 type Json = Record<string, unknown>
 
@@ -23,6 +23,9 @@ const baseUrl = () => {
   const config = useRuntimeConfig()
   return (config.public.siteUrl as string) || site.url
 }
+
+/** Absolute, because structured data is read off-site; self-hosted images resolve to a path. */
+const imageUrl = (ref: ImageRef) => new URL(buildImageUrl(ref, { width: 1600, ratio: 1.6 }), baseUrl()).href
 
 export const organizationLd = (): Json => {
   const base = baseUrl()
@@ -102,7 +105,7 @@ export const destinationLd = (destination: Destination): Json => {
     name: destination.name,
     description: destination.description,
     url: `${base}/destinations/${destination.slug}`,
-    image: buildImageUrl(destination.heroImage, { width: 1600, ratio: 1.6 }),
+    image: imageUrl(destination.heroImage),
     touristType: destination.categories,
     includesAttraction: destination.whyVisit.map((item) => ({
       '@type': 'TouristAttraction',
@@ -125,7 +128,7 @@ export const destinationLd = (destination: Destination): Json => {
 export const listingLd = (listing: Listing): Json => {
   const base = baseUrl()
   const url = `${base}/${listing.section}/${listing.slug}`
-  const image = buildImageUrl(listing.image, { width: 1600, ratio: 1.6 })
+  const image = imageUrl(listing.image)
 
   if (listing.section === 'stays') {
     return {
@@ -171,7 +174,7 @@ export const articleLd = (article: Article): Json => {
     headline: article.title,
     description: article.excerpt,
     url: `${base}/journals/${article.slug}`,
-    image: buildImageUrl(article.coverImage, { width: 1600, ratio: 1.6 }),
+    image: imageUrl(article.coverImage),
     datePublished: article.publishedAt,
     dateModified: article.publishedAt,
     articleSection: article.category,

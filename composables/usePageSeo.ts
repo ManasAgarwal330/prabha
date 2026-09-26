@@ -22,8 +22,9 @@ export const usePageSeo = (input: PageSeoInput) => {
   const base = (config.public.siteUrl as string) || site.url
   const url = `${base}${input.path === '/' ? '' : input.path}`
 
+  // Social cards need an absolute URL; self-hosted images resolve to a path.
   const image = input.image
-    ? buildImageUrl(input.image, { width: 1200, ratio: 1.91, quality: 75 })
+    ? new URL(buildImageUrl(input.image, { width: 1200, ratio: 1.91, quality: 75 }), base).href
     : `${base}/brand/pravaah-logo-square.jpg`
 
   useHead({

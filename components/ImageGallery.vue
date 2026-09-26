@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ImageRef } from '~/types'
 
-defineProps<{
+const props = defineProps<{
   images: ImageRef[]
   label: string
 }>()
@@ -9,12 +9,32 @@ defineProps<{
 /**
  * Mosaic: a large lead photograph, a wide one beside it, then the rest in the
  * remaining cells. Row heights are fixed, so each image fills its cell.
+ * The first four fill two full rows; photographs past that run in rows of four
+ * (two on phones), and the last row stretches so no cell is left empty.
  */
-const cellClass = (index: number) =>
-  index === 0 ? 'col-span-2 row-span-2' : index === 1 ? 'col-span-2' : ''
+const cellClass = (index: number) => {
+  if (index === 0) return 'col-span-2 row-span-2'
+  if (index === 1) return 'col-span-2'
+
+  const count = props.images.length
+  const remainder = (count - 4) % 4
+  if (index < 4 || remainder === 0) return ''
+
+  const fromEnd = count - 1 - index
+  // Phones: two columns, so an odd count leaves the last photograph alone.
+  const phone = count % 2 === 1 && fromEnd === 0 ? 'col-span-2' : ''
+  const desktop =
+    remainder === 1 && fromEnd === 0
+      ? 'lg:col-span-4'
+      : (remainder === 2 && fromEnd < 2) || (remainder === 3 && fromEnd === 0)
+        ? 'lg:col-span-2'
+        : ''
+  return `${phone} ${desktop}`
+}
 
 /** Crop each photograph close to its cell's shape. */
-const cellRatio = (index: number) => (index === 0 ? 1.1 : index === 1 ? 2.2 : 1)
+const cellRatio = (index: number) =>
+  index === 0 ? 1.1 : index === 1 || cellClass(index).includes('col-span') ? 2.2 : 1
 </script>
 
 <template>
