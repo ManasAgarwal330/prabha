@@ -319,11 +319,10 @@ export const stays: Listing[] = [
     ],
     image: '/images/stays/glampinn-woods-sonapani/cover',
     gallery: [
-      '/images/stays/glampinn-woods-sonapani/gallery-03',
       '/images/stays/glampinn-woods-sonapani/gallery-02',
+      '/images/stays/glampinn-woods-sonapani/gallery-04',
       '/images/stays/glampinn-woods-sonapani/gallery-01',
-      '/images/stays/glampinn-woods-sonapani/gallery-05',
-      '/images/stays/glampinn-woods-sonapani/gallery-04'
+      '/images/stays/glampinn-woods-sonapani/gallery-05'
     ],
     facts: [
       { label: 'Setting', value: 'Oak and pine forest' },

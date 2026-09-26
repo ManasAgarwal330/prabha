@@ -1,7 +1,8 @@
 /**
- * Turns a folder of full-size photographs into web-ready images for one listing.
+ * Turns full-size photographs into web-ready images for one listing.
  *
  *   npm run images -- "<source folder>" stays/dharohar-retreat-satkhol
+ *   npm run images -- "<cover image>"   stays/dharohar-retreat-satkhol
  *
  * The source folder holds a `Cover Photo/` folder (one image — the hero and the
  * listing tile) and a `Gallery/` folder. Each photo is written to
@@ -9,9 +10,12 @@
  * blur-up placeholder. The printed refs go straight into `image` and `gallery`
  * in the data file; `composables/useImageSource.ts` expands them into a srcset.
  *
+ * Given a single image instead of a folder, only the cover is replaced and the
+ * gallery is left as it is.
+ *
  * Originals stay out of the repo — only the resized copies are committed.
  */
-import { existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import sharp from 'sharp'
 
@@ -23,7 +27,7 @@ const PHOTO = /\.(jpe?g|png|webp|avif|tiff?)$/i
 
 const [source, target] = process.argv.slice(2)
 if (!source || !target || !/^[a-z-]+\/[a-z0-9-]+$/.test(target)) {
-  console.error('Usage: npm run images -- "<source folder>" <section>/<slug>')
+  console.error('Usage: npm run images -- "<source folder or cover image>" <section>/<slug>')
   process.exit(1)
 }
 
@@ -35,17 +39,30 @@ const photosIn = (dir) =>
         .map((name) => join(dir, name))
     : []
 
-const covers = photosIn(join(source, 'Cover Photo'))
-const gallery = photosIn(join(source, 'Gallery'))
+const coverOnly = existsSync(source) && statSync(source).isFile()
+if (coverOnly && !PHOTO.test(source)) {
+  console.error(`"${source}" is not a photograph.`)
+  process.exit(1)
+}
+
+const covers = coverOnly ? [source] : photosIn(join(source, 'Cover Photo'))
+const gallery = coverOnly ? [] : photosIn(join(source, 'Gallery'))
 if (covers.length !== 1) {
   console.error(`Expected exactly one image in "${join(source, 'Cover Photo')}", found ${covers.length}.`)
   process.exit(1)
 }
 
 const outDir = resolve('public/images', target)
-// Re-running replaces the set, so removed photos do not linger.
-rmSync(outDir, { recursive: true, force: true })
-mkdirSync(outDir, { recursive: true })
+if (coverOnly) {
+  if (!existsSync(outDir)) {
+    console.error(`No photos yet in public/images/${target} — run it on a full folder first.`)
+    process.exit(1)
+  }
+} else {
+  // Re-running on a folder replaces the set, so removed photos do not linger.
+  rmSync(outDir, { recursive: true, force: true })
+  mkdirSync(outDir, { recursive: true })
+}
 
 const write = async (file, name) => {
   // `rotate()` applies the camera's EXIF orientation before metadata is dropped.
@@ -69,6 +86,9 @@ for (const [index, file] of gallery.entries()) {
 
 console.log(`\nWrote ${1 + gallery.length} photos to public/images/${target}\n`)
 console.log(`    image: '${coverRef}',`)
-console.log('    gallery: [')
-console.log(galleryRefs.map((ref) => `      '${ref}'`).join(',\n'))
-console.log('    ],\n')
+if (!coverOnly) {
+  console.log('    gallery: [')
+  console.log(galleryRefs.map((ref) => `      '${ref}'`).join(',\n'))
+  console.log('    ],')
+}
+console.log('')
