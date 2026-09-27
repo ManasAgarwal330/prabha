@@ -37,7 +37,6 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
 <template>
   <article>
     <header class="relative pb-10 pt-16 lg:pt-20">
-      <div class="bg-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
       <div class="container-pravaah">
       <Breadcrumbs :items="crumbs" />
 

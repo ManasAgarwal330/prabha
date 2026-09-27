@@ -99,6 +99,33 @@
     @apply bg-brand-soft text-pine;
   }
 
+  /* Emerald scrollbar on a mint track. Chromium/Safari get a rounded pill via
+     ::-webkit-scrollbar; Firefox only supports the standard colour properties,
+     which Chromium would otherwise let override the pill styling. */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-canvas-alt;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-brand;
+    border: 3px solid rgb(var(--c-canvas-alt));
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-deep;
+  }
+
+  @supports (-moz-appearance: none) {
+    html {
+      scrollbar-color: theme('colors.brand.DEFAULT') rgb(var(--c-canvas-alt));
+    }
+  }
+
   :focus-visible {
     @apply outline-none ring-2 ring-brand-light ring-offset-2 ring-offset-canvas rounded-sm;
   }
@@ -135,22 +162,6 @@
       radial-gradient(34% 38% at 82% 18%, rgba(13, 148, 136, 0.26), transparent 70%),
       radial-gradient(40% 40% at 60% 95%, rgba(163, 230, 53, 0.12), transparent 70%);
     animation: aurora 18s ease-in-out infinite;
-  }
-
-  /* A faint technical grid that fades out towards the bottom of the band. */
-  .section-dark::after,
-  .section-forest::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image:
-      linear-gradient(rgba(134, 239, 172, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(134, 239, 172, 0.07) 1px, transparent 1px);
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 75%);
-    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 75%);
   }
 
   .eyebrow {
@@ -327,26 +338,6 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
     backdrop-filter: blur(16px) saturate(140%);
     -webkit-backdrop-filter: blur(16px) saturate(140%);
-  }
-
-  /* Faint grid for light bands. */
-  .bg-grid {
-    background-image:
-      linear-gradient(rgba(5, 150, 105, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(5, 150, 105, 0.06) 1px, transparent 1px);
-    background-size: 56px 56px;
-    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 80%);
-    mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 30%, transparent 80%);
-  }
-
-  /* Grid over photographs — reads as a HUD, never competes with the image. */
-  .bg-grid-photo {
-    background-image:
-      linear-gradient(rgba(209, 250, 229, 0.09) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(209, 250, 229, 0.09) 1px, transparent 1px);
-    background-size: 64px 64px;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
-    mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
   }
 
   .card-lift {

@@ -93,13 +93,7 @@ useJsonLd(
               <h2 class="eyebrow mb-4">Find us</h2>
               <address class="flex items-start gap-3 text-sm not-italic leading-relaxed text-ink-soft">
                 <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-                <span>
-                  {{ site.contact.address.line1 }}<br />
-                  {{ site.contact.address.line2 }}<br />
-                  {{ site.contact.address.city }}, {{ site.contact.address.state }}
-                  {{ site.contact.address.postalCode }}<br />
-                  {{ site.contact.address.country }}
-                </span>
+                <span>{{ site.contact.location.region }}, {{ site.contact.location.country }}</span>
               </address>
               <p class="mt-3 text-xs text-ink-muted">
                 Visits by appointment — most of our planning happens over a call.

@@ -84,7 +84,6 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         class="absolute inset-0 h-full w-full"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-pine-deep/95 via-pine/40 to-pine/40" aria-hidden="true" />
-      <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
         class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[32rem] w-[32rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
         aria-hidden="true"

@@ -44,10 +44,7 @@ export const organizationLd = (): Json => {
     telephone: site.contact.phoneDisplay,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: site.contact.address.line2,
-      addressLocality: site.contact.address.city,
-      addressRegion: site.contact.address.state,
-      postalCode: site.contact.address.postalCode,
+      addressRegion: site.contact.location.region,
       addressCountry: 'IN'
     },
     areaServed: { '@type': 'Country', name: 'India' },

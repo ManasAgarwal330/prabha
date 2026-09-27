@@ -14,7 +14,7 @@ export const sections: Record<SectionKey, Section> = {
     title: 'Places to stay that are worth the journey on their own.',
     intro:
       'Lakeside hotels, orchard homestays, camping in the woods and farm stays in the Kumaon hills. Every one of them is run by people we know, and every one of them is somewhere we would happily spend a slow week.',
-    heroImage: 'photo-1445019980597-93fa8acb246c',
+    heroImage: '/images/sections/stays/cover',
     categories: [
       {
         slug: 'hotels-resorts',

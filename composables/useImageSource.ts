@@ -4,7 +4,9 @@ import type { ImageRef } from '~/types'
  * Central image resolver. Three kinds of ref:
  *
  * - `photo-…` — an Unsplash photo id, resized on their CDN with `auto=format`
- *   so browsers get AVIF/WebP automatically.
+ *   so browsers get AVIF/WebP automatically. Append `@x,y` (0–1 fractions,
+ *   e.g. `photo-…@0.78,0.4`) to keep that point in frame when a crop is
+ *   narrower than the photo — the subject no longer has to sit dead centre.
  * - `/images/<section>/<slug>/<name>` (no extension) — our own photographs,
  *   pre-resized by `npm run images` into `<name>-640.webp`, `-1280`, `-1920`
  *   and a `-placeholder.webp`. Cropping to a ratio is left to `object-cover`.
@@ -38,6 +40,7 @@ export const buildImageUrl = (ref: ImageRef, options: ImageOptions = {}): string
   if (!isRemote(ref)) return ref
 
   const { width = 1200, ratio, quality = 72 } = options
+  const [id, focus] = ref.split('@')
   const params = new URLSearchParams({
     auto: 'format',
     fit: 'crop',
@@ -47,7 +50,14 @@ export const buildImageUrl = (ref: ImageRef, options: ImageOptions = {}): string
 
   if (ratio) params.set('h', String(Math.round(width / ratio)))
 
-  return `${UNSPLASH_BASE}${ref}?${params.toString()}`
+  if (focus) {
+    const [x, y] = focus.split(',')
+    params.set('crop', 'focalpoint')
+    params.set('fp-x', x)
+    params.set('fp-y', y)
+  }
+
+  return `${UNSPLASH_BASE}${id}?${params.toString()}`
 }
 
 export const buildSrcSet = (ref: ImageRef, options: ImageOptions = {}): string | undefined => {

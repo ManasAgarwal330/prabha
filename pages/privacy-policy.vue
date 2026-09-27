@@ -85,8 +85,7 @@ usePageSeo({
       <h2>Contact</h2>
       <p>
         {{ site.legalName }}<br />
-        {{ site.contact.address.line2 }}, {{ site.contact.address.city }},
-        {{ site.contact.address.state }} {{ site.contact.address.postalCode }}, India<br />
+        {{ site.contact.location.region }}, {{ site.contact.location.country }}<br />
         <a :href="`mailto:${site.contact.email}`">{{ site.contact.email }}</a>
       </p>
     </div>

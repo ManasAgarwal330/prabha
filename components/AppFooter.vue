@@ -99,7 +99,7 @@ const socials = [
         <p class="flex flex-wrap items-center gap-x-5 gap-y-2">
           <NuxtLink to="/privacy-policy" class="transition-colors hover:text-accent">Privacy Policy</NuxtLink>
           <NuxtLink to="/terms" class="transition-colors hover:text-accent">Terms</NuxtLink>
-          <span>{{ site.contact.address.city }}, {{ site.contact.address.country }}</span>
+          <span>{{ site.contact.location.region }}, {{ site.contact.location.country }}</span>
         </p>
       </div>
     </div>

@@ -6,7 +6,7 @@ import type { Step, ValueProp } from '~/types'
  */
 export const site = {
   name: 'Pravaah',
-  legalName: 'Pravaah Travel Studio',
+  legalName: 'ThePravaah',
   tagline: "Pravaah doesn't sell the mountains. Pravaah curates how you experience them!",
   /** Home page headline. */
   heroHeadline: 'Journeys worth remembering.',
@@ -25,12 +25,9 @@ export const site = {
     phoneHref: '+919205747247',
     whatsapp: '919205747247',
     whatsappMessage: "Hi Pravaah! I'd like to plan a trip.",
-    address: {
-      line1: 'Pravaah Travel Studio',
-      line2: '2nd Floor, Lake View Road',
-      city: 'Bengaluru',
-      state: 'Karnataka',
-      postalCode: '560001',
+    /** Location only — no street address is published. */
+    location: {
+      region: 'Uttarakhand',
       country: 'India'
     },
     hours: 'Mon – Sat, 9:30am – 7:00pm IST'

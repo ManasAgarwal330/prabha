@@ -87,7 +87,6 @@ usePageSeo({
         class="absolute inset-0 bg-gradient-to-r from-pine-deep/85 via-pine-deep/25 to-transparent 3xl:bg-[radial-gradient(ellipse_55%_65%_at_50%_55%,rgba(6,28,20,0.75),transparent)]"
         aria-hidden="true"
       />
-      <div class="bg-grid-photo pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
         class="pointer-events-none absolute -left-40 bottom-[-8rem] h-[34rem] w-[34rem] animate-aurora rounded-full bg-brand/30 blur-[110px]"
         aria-hidden="true"
@@ -207,7 +206,6 @@ usePageSeo({
 
     <!-- What we offer -->
     <section id="explore" class="relative scroll-mt-20 py-20 lg:py-28">
-      <div class="bg-grid pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
       <div class="container-pravaah">
       <SectionHeading
         eyebrow="Explore Pravaah"
@@ -476,7 +474,5 @@ usePageSeo({
         </div>
       </div>
     </section>
-
-    <CTASection />
   </div>
 </template>

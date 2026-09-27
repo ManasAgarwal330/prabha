@@ -54,7 +54,6 @@ export const stays: Listing[] = [
         'Stay at Pi Palace in Bhimtal with Pravaah: a comfortable hotel base by the lake for exploring Sattal, Naukuchiatal and Nainital.'
     }
   },
-
   {
     slug: 'dharohar-retreat-satkhol',
     section: 'stays',
@@ -368,10 +367,10 @@ export const stays: Listing[] = [
     image: '/images/stays/guldaar-valley-kosi/cover',
     gallery: [
       '/images/stays/guldaar-valley-kosi/gallery-02',
-      '/images/stays/guldaar-valley-kosi/gallery-06',
       '/images/stays/guldaar-valley-kosi/gallery-05',
+      '/images/stays/guldaar-valley-kosi/gallery-03',
       '/images/stays/guldaar-valley-kosi/gallery-04',
-      '/images/stays/guldaar-valley-kosi/gallery-03'
+      '/images/stays/guldaar-valley-kosi/gallery-06'
     ],
     facts: [
       { label: 'Setting', value: 'River valley and forest' },
@@ -403,7 +402,7 @@ export const stays: Listing[] = [
     slug: 'ekaant-organic-farm-stay-chakulwa',
     section: 'stays',
     category: 'experiential-stays',
-    title: 'Ekaant — The Organic Farm Stay, Chakulwa',
+    title: 'Ekaant — The Organic Farm Stay, Near Jim Corbett',
     location: 'Chakulwa, Kumaon foothills',
     destinationSlug: 'uttarakhand',
     tagline: 'Solitude, soil and slow food',
