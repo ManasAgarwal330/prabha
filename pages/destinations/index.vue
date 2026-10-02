@@ -1,12 +1,26 @@
 <script setup lang="ts">
 import { ArrowRight } from 'lucide-vue-next'
 import { destinations, destinationsByRegion, regions } from '~/data/destinations'
+import { destinationPlaces, inSelectedPlaces, placeOptions } from '~/data/places'
 
-/** `india` is the page itself; every other region gets an anchored block below. */
-const regionGroups = regions
-  .filter((region) => region.slug !== 'india')
-  .map((region) => ({ region, destinations: destinationsByRegion(region.slug) }))
-  .filter((group) => group.destinations.length > 0)
+const places = placeOptions(destinations, destinationPlaces)
+const selectedPlaces = ref<string[]>([])
+
+/**
+ * `india` is the page itself; every other region gets an anchored block below.
+ * The location search narrows the regions to destinations in the chosen places.
+ */
+const regionGroups = computed(() =>
+  regions
+    .filter((region) => region.slug !== 'india')
+    .map((region) => ({
+      region,
+      destinations: destinationsByRegion(region.slug).filter((destination) =>
+        inSelectedPlaces(destinationPlaces(destination), selectedPlaces.value)
+      )
+    }))
+    .filter((group) => group.destinations.length > 0)
+)
 
 const india = regions.find((region) => region.slug === 'india')!
 
@@ -71,6 +85,12 @@ useJsonLd(breadcrumbLd(crumbs))
         </NuxtLink>
       </nav>
     </PageHero>
+
+    <div class="container-pravaah relative z-20 -mt-10">
+      <div class="surface-card p-5 shadow-lift sm:p-6">
+        <LocationSearch v-model="selectedPlaces" :options="places" :noun="['destination', 'destinations']" />
+      </div>
+    </div>
 
     <section id="india" class="container-pravaah scroll-mt-24 py-16 lg:py-20">
       <SectionHeading :eyebrow="india.name" title="Where we travel." />

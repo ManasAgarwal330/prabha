@@ -115,6 +115,11 @@ export interface Listing {
   title: string
   location: string
   destinationSlug?: string
+  /**
+   * Towns, regions and states the location search should find this under.
+   * Optional — when omitted they are read from `location`, which covers most listings.
+   */
+  places?: string[]
   tagline: string
   /** One-line summary used on cards. */
   description: string

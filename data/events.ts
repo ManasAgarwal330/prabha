@@ -175,6 +175,7 @@ export const events: Listing[] = [
     category: 'festive-escape',
     title: 'Holi in Vrindavan & Barsana',
     location: 'Braj, Mathura district',
+    places: ['Vrindavan', 'Barsana', 'Uttar Pradesh'],
     tagline: 'A week of colour in the land of Krishna',
     description:
       'Lathmar Holi in Barsana and Nandgaon, flowers and colour at the temples of Vrindavan, and Holi day in Mathura — the festival where it began.',

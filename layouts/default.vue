@@ -23,5 +23,6 @@ useScrollReveal()
 
     <AppFooter />
     <WhatsAppButton />
+    <EnquiryPopup />
   </div>
 </template>

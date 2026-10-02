@@ -84,6 +84,7 @@ export const experiences: Listing[] = [
     category: 'safari',
     title: 'Jim Corbett Safari',
     location: 'Jim Corbett National Park, Ramnagar',
+    places: ['Jim Corbett', 'Ramnagar'],
     destinationSlug: 'uttarakhand',
     tagline: 'Tiger country at the foot of the Himalaya',
     description:

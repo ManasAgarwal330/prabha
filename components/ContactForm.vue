@@ -14,16 +14,25 @@ const props = withDefaults(
     presetTripType?: string
     source?: string
     compact?: boolean
+    /** 3 lays the fields out three across on large screens, so the form fits the popup without scrolling. */
+    columns?: 2 | 3
   }>(),
-  { presetDestination: '', presetMessage: '', presetTripType: '', source: 'contact', compact: false }
+  { presetDestination: '', presetMessage: '', presetTripType: '', source: 'contact', compact: false, columns: 2 }
 )
+
+const emit = defineEmits<{ submitted: [] }>()
+
+/** Keeps field ids unique when two forms share a page, e.g. the enquiry popup over Plan My Trip. */
+const uid = useId()
+const formEl = ref<HTMLFormElement | null>(null)
 
 const form = reactive<EnquiryPayload>({
   name: '',
   email: '',
   phone: '',
   destination: props.presetDestination,
-  travelDates: '',
+  travelFrom: '',
+  travelTo: '',
   travellers: travellerCounts[1] as string,
   tripType: props.presetTripType,
   budget: budgetRanges[1] as string,
@@ -31,14 +40,68 @@ const form = reactive<EnquiryPayload>({
   source: props.source
 })
 
+/** Earliest date the calendar offers. Set after mount so server and browser render the same markup. */
+const today = ref('')
+onMounted(() => {
+  today.value = todayIso()
+})
+
 const errors = ref<EnquiryErrors>({})
 const status = ref<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
+/**
+ * Email and phone are checked as soon as you leave the field, then re-checked
+ * on every keystroke while an error is showing, so it clears the moment it is fixed.
+ */
+const fieldValidators = { email: validateEmail, phone: validatePhone }
+type LiveField = keyof typeof fieldValidators
+
+const checkField = (field: LiveField) => {
+  const { [field]: _previous, ...rest } = errors.value
+  const message = fieldValidators[field](form[field])
+  errors.value = message ? { ...rest, [field]: message } : rest
+}
+
+const recheckIfInvalid = (field: LiveField) => {
+  if (errors.value[field]) checkField(field)
+}
+
+/** Re-checks both dates together, since each one's rule depends on the other. */
+const checkDates = () => {
+  const { travelFrom: _from, travelTo: _to, ...rest } = errors.value
+  errors.value = { ...rest, ...validateTravelDates(form.travelFrom, form.travelTo) }
+}
+
+/** A start date after the chosen end date clears the end date, so it is picked again. */
+const onFromChange = () => {
+  if (form.travelTo && form.travelTo < form.travelFrom) form.travelTo = ''
+  if (form.travelTo || errors.value.travelFrom || errors.value.travelTo) checkDates()
+}
+
+/** Opens the calendar on any click in the field, not just on its small calendar icon. */
+const openPicker = (event: MouseEvent) => {
+  try {
+    ;(event.currentTarget as HTMLInputElement).showPicker?.()
+  } catch {
+    // Older browsers, or a picker that is already open — the field still works by typing.
+  }
+}
+
+// Letters and symbols never belong in a phone number — drop them as they are typed or pasted.
+watch(
+  () => form.phone,
+  (value) => {
+    const clean = value.replace(PHONE_CHARS_RE, '')
+    if (clean !== value) form.phone = clean
+  }
+)
 
 const onSubmit = async () => {
   errors.value = validateEnquiry(form)
   if (Object.keys(errors.value).length > 0) {
-    const first = document.querySelector<HTMLElement>('[data-invalid="true"]')
-    first?.focus()
+    // Wait for the error state to render, then focus the first bad field in this form.
+    await nextTick()
+    formEl.value?.querySelector<HTMLElement>('[data-invalid="true"]')?.focus()
     return
   }
 
@@ -46,6 +109,7 @@ const onSubmit = async () => {
   try {
     await submitEnquiry({ ...form })
     status.value = 'success'
+    emit('submitted')
   } catch {
     status.value = 'error'
   }
@@ -57,7 +121,8 @@ const reset = () => {
     email: '',
     phone: '',
     destination: props.presetDestination,
-    travelDates: '',
+    travelFrom: '',
+    travelTo: '',
     travellers: travellerCounts[1] as string,
     tripType: props.presetTripType,
     budget: budgetRanges[1] as string,
@@ -69,6 +134,9 @@ const reset = () => {
 
 const fieldClass =
   'w-full rounded-lg border bg-surface px-4 py-3 text-[0.95rem] text-ink placeholder:text-ink-muted/60 transition-colors focus:border-link focus:outline-none focus:ring-1 focus:ring-link'
+
+/** Date inputs keep the same height as the text fields and show a pointer, since a click opens the calendar. */
+const dateClass = 'min-h-[3.125rem] cursor-pointer'
 </script>
 
 <template>
@@ -98,12 +166,12 @@ const fieldClass =
     </div>
 
     <!-- Form -->
-    <form v-else class="space-y-5" novalidate @submit.prevent="onSubmit">
-      <div class="grid gap-5 sm:grid-cols-2">
+    <form v-else ref="formEl" class="space-y-5" novalidate @submit.prevent="onSubmit">
+      <div class="grid gap-5 sm:grid-cols-2" :class="columns === 3 ? 'lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4' : ''">
         <div>
-          <label for="enq-name" class="mb-2 block text-sm font-medium text-ink">Name</label>
+          <label :for="`${uid}-name`" class="mb-2 block text-sm font-medium text-ink">Name</label>
           <input
-            id="enq-name"
+            :id="`${uid}-name`"
             v-model="form.name"
             type="text"
             name="name"
@@ -112,55 +180,68 @@ const fieldClass =
             :class="[fieldClass, errors.name ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.name)"
             :data-invalid="Boolean(errors.name)"
-            :aria-describedby="errors.name ? 'enq-name-error' : undefined"
+            :aria-describedby="errors.name ? `${uid}-name-error` : undefined"
           />
-          <p v-if="errors.name" id="enq-name-error" class="mt-1.5 text-xs text-accent">{{ errors.name }}</p>
+          <p v-if="errors.name" :id="`${uid}-name-error`" class="mt-1.5 text-xs text-accent">{{ errors.name }}</p>
         </div>
 
         <div>
-          <label for="enq-email" class="mb-2 block text-sm font-medium text-ink">Email</label>
+          <label :for="`${uid}-email`" class="mb-2 block text-sm font-medium text-ink">Email</label>
           <input
-            id="enq-email"
+            :id="`${uid}-email`"
             v-model="form.email"
             type="email"
             name="email"
             autocomplete="email"
+            inputmode="email"
+            autocapitalize="off"
+            spellcheck="false"
+            maxlength="254"
             placeholder="you@example.com"
             :class="[fieldClass, errors.email ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.email)"
             :data-invalid="Boolean(errors.email)"
-            :aria-describedby="errors.email ? 'enq-email-error' : undefined"
+            :aria-describedby="errors.email ? `${uid}-email-error` : undefined"
+            @blur="checkField('email')"
+            @input="recheckIfInvalid('email')"
           />
-          <p v-if="errors.email" id="enq-email-error" class="mt-1.5 text-xs text-accent">{{ errors.email }}</p>
+          <p v-if="errors.email" :id="`${uid}-email-error`" class="mt-1.5 text-xs text-accent">{{ errors.email }}</p>
         </div>
 
         <div>
-          <label for="enq-phone" class="mb-2 block text-sm font-medium text-ink">Phone</label>
+          <label :for="`${uid}-phone`" class="mb-2 block text-sm font-medium text-ink">Phone</label>
           <input
-            id="enq-phone"
+            :id="`${uid}-phone`"
             v-model="form.phone"
             type="tel"
             name="phone"
             autocomplete="tel"
+            inputmode="tel"
+            maxlength="20"
             placeholder="+91 90000 00000"
             :class="[fieldClass, errors.phone ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.phone)"
             :data-invalid="Boolean(errors.phone)"
-            :aria-describedby="errors.phone ? 'enq-phone-error' : undefined"
+            :aria-describedby="errors.phone ? `${uid}-phone-error` : `${uid}-phone-hint`"
+            @blur="checkField('phone')"
+            @input="recheckIfInvalid('phone')"
           />
-          <p v-if="errors.phone" id="enq-phone-error" class="mt-1.5 text-xs text-accent">{{ errors.phone }}</p>
+          <p v-if="errors.phone" :id="`${uid}-phone-error`" class="mt-1.5 text-xs text-accent">{{ errors.phone }}</p>
+          <p v-else :id="`${uid}-phone-hint`" class="mt-1.5 text-xs text-ink-muted">
+            Outside India? Start with your country code, e.g. +44.
+          </p>
         </div>
 
         <div>
-          <label for="enq-destination" class="mb-2 block text-sm font-medium text-ink">Destination</label>
+          <label :for="`${uid}-destination`" class="mb-2 block text-sm font-medium text-ink">Destination</label>
           <select
-            id="enq-destination"
+            :id="`${uid}-destination`"
             v-model="form.destination"
             name="destination"
             :class="[fieldClass, errors.destination ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.destination)"
             :data-invalid="Boolean(errors.destination)"
-            :aria-describedby="errors.destination ? 'enq-destination-error' : undefined"
+            :aria-describedby="errors.destination ? `${uid}-destination-error` : undefined"
           >
             <option value="">Select a destination</option>
             <option v-for="destination in destinations" :key="destination.slug" :value="destination.name">
@@ -169,30 +250,55 @@ const fieldClass =
             <option value="Somewhere else in India">Somewhere else in India</option>
             <option value="Not decided yet">Not decided yet</option>
           </select>
-          <p v-if="errors.destination" id="enq-destination-error" class="mt-1.5 text-xs text-accent">
+          <p v-if="errors.destination" :id="`${uid}-destination-error`" class="mt-1.5 text-xs text-accent">
             {{ errors.destination }}
           </p>
         </div>
 
         <div>
-          <label for="enq-dates" class="mb-2 block text-sm font-medium text-ink">
-            Preferred travel dates
-            <span class="font-normal text-ink-muted">(optional)</span>
-          </label>
+          <label :for="`${uid}-travel-from`" class="mb-2 block text-sm font-medium text-ink">Travel from</label>
           <input
-            id="enq-dates"
-            v-model="form.travelDates"
-            type="text"
-            name="travelDates"
-            placeholder="e.g. mid-March, or 12–19 Oct"
-            :class="[fieldClass, 'border-hairline']"
+            :id="`${uid}-travel-from`"
+            v-model="form.travelFrom"
+            type="date"
+            name="travelFrom"
+            :min="today || undefined"
+            :class="[fieldClass, dateClass, errors.travelFrom ? 'border-accent' : 'border-hairline']"
+            :aria-invalid="Boolean(errors.travelFrom)"
+            :data-invalid="Boolean(errors.travelFrom)"
+            :aria-describedby="errors.travelFrom ? `${uid}-travel-from-error` : undefined"
+            @click="openPicker"
+            @change="onFromChange"
           />
+          <p v-if="errors.travelFrom" :id="`${uid}-travel-from-error`" class="mt-1.5 text-xs text-accent">
+            {{ errors.travelFrom }}
+          </p>
         </div>
 
         <div>
-          <label for="enq-travellers" class="mb-2 block text-sm font-medium text-ink">Travellers</label>
+          <label :for="`${uid}-travel-to`" class="mb-2 block text-sm font-medium text-ink">Travel to</label>
+          <input
+            :id="`${uid}-travel-to`"
+            v-model="form.travelTo"
+            type="date"
+            name="travelTo"
+            :min="form.travelFrom || today || undefined"
+            :class="[fieldClass, dateClass, errors.travelTo ? 'border-accent' : 'border-hairline']"
+            :aria-invalid="Boolean(errors.travelTo)"
+            :data-invalid="Boolean(errors.travelTo)"
+            :aria-describedby="errors.travelTo ? `${uid}-travel-to-error` : undefined"
+            @click="openPicker"
+            @change="checkDates"
+          />
+          <p v-if="errors.travelTo" :id="`${uid}-travel-to-error`" class="mt-1.5 text-xs text-accent">
+            {{ errors.travelTo }}
+          </p>
+        </div>
+
+        <div>
+          <label :for="`${uid}-travellers`" class="mb-2 block text-sm font-medium text-ink">Travellers</label>
           <select
-            id="enq-travellers"
+            :id="`${uid}-travellers`"
             v-model="form.travellers"
             name="travellers"
             :class="[fieldClass, 'border-hairline']"
@@ -202,40 +308,38 @@ const fieldClass =
         </div>
 
         <div>
-          <label for="enq-trip-type" class="mb-2 block text-sm font-medium text-ink">
+          <label :for="`${uid}-trip-type`" class="mb-2 block text-sm font-medium text-ink">
             Type of trip
             <span class="font-normal text-ink-muted">(optional)</span>
           </label>
-          <select id="enq-trip-type" v-model="form.tripType" name="tripType" :class="[fieldClass, 'border-hairline']">
+          <select :id="`${uid}-trip-type`" v-model="form.tripType" name="tripType" :class="[fieldClass, 'border-hairline']">
             <option value="">Not sure yet</option>
             <option v-for="type in tripTypes" :key="type.slug" :value="type.label">{{ type.label }}</option>
           </select>
         </div>
 
-        <div>
-          <label for="enq-budget" class="mb-2 block text-sm font-medium text-ink">Budget range</label>
-          <select id="enq-budget" v-model="form.budget" name="budget" :class="[fieldClass, 'border-hairline']">
+        <!-- Nine fields: in two columns the last one takes the full row. -->
+        <div :class="columns === 3 ? 'sm:col-span-2 lg:col-span-1' : 'sm:col-span-2'">
+          <label :for="`${uid}-budget`" class="mb-2 block text-sm font-medium text-ink">Budget range</label>
+          <select :id="`${uid}-budget`" v-model="form.budget" name="budget" :class="[fieldClass, 'border-hairline']">
             <option v-for="range in budgetRanges" :key="range" :value="range">{{ range }}</option>
           </select>
         </div>
       </div>
 
       <div>
-        <label for="enq-message" class="mb-2 block text-sm font-medium text-ink">
+        <label :for="`${uid}-message`" class="mb-2 block text-sm font-medium text-ink">
           Tell us about the trip
+          <span class="font-normal text-ink-muted">(optional)</span>
         </label>
         <textarea
-          id="enq-message"
+          :id="`${uid}-message`"
           v-model="form.message"
           name="message"
-          :rows="compact ? 4 : 5"
+          :rows="columns === 3 ? 2 : compact ? 4 : 5"
           placeholder="Who is travelling, what you would like to see, how fast or slow you want to move."
-          :class="[fieldClass, 'resize-y', errors.message ? 'border-accent' : 'border-hairline']"
-          :aria-invalid="Boolean(errors.message)"
-          :data-invalid="Boolean(errors.message)"
-          :aria-describedby="errors.message ? 'enq-message-error' : undefined"
+          :class="[fieldClass, 'resize-y border-hairline']"
         />
-        <p v-if="errors.message" id="enq-message-error" class="mt-1.5 text-xs text-accent">{{ errors.message }}</p>
       </div>
 
       <p v-if="status === 'error'" class="text-sm text-accent" role="alert">

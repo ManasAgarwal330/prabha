@@ -11,6 +11,7 @@ export const stays: Listing[] = [
     category: 'hotels-resorts',
     title: 'Dharohar Retreat, Mukteshwar',
     location: 'Satkhol, near Mukteshwar',
+    places: ['Mukteshwar', 'Satkhol'],
     destinationSlug: 'uttarakhand',
     tagline: 'Kumaoni character above an oak and pine valley',
     description:
@@ -255,6 +256,7 @@ export const stays: Listing[] = [
     category: 'hotels-resorts',
     title: 'Alka The Lake Side Hotel, Nainital',
     location: 'Mall Road, Nainital',
+    places: ['Nainital'],
     destinationSlug: 'uttarakhand',
     tagline: 'Wake up to Naini lake outside the window',
     description:
@@ -544,6 +546,7 @@ export const stays: Listing[] = [
     category: 'experiential-stays',
     title: 'Ekaant — The Organic Farm Stay, Near Jim Corbett',
     location: 'Chakulwa, Kumaon foothills',
+    places: ['Chakulwa', 'Jim Corbett'],
     destinationSlug: 'uttarakhand',
     tagline: 'Solitude, soil and slow food',
     description:
