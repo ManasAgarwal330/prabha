@@ -62,9 +62,11 @@ const pillars = sections.map((section) => ({
 
 definePageMeta({ hero: true })
 
+// Brand first, then what it offers; the other brand names (ThePravaah, Pravaah India…)
+// are carried by the structured data in useJsonLd.
 usePageSeo({
-  title: `${site.name} — ${site.titleTagline}`,
-  description: site.description,
+  title: `${site.name} | Curated Mountain Travel Experiences`,
+  description: `${site.name} curates unique mountain travel experiences, stays and journeys across the Himalayas, designed for travellers who want to experience the mountains differently.`,
   path: '/',
   image: HERO_IMAGE
 })
@@ -114,7 +116,8 @@ usePageSeo({
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-lime opacity-60" />
             <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-lime" />
           </span>
-          Custom journeys across India
+          <!-- "Custom" drops on phones so the pill stays on one line. -->
+          <span>{{ site.name }} · <span class="hidden sm:inline">Custom</span> journeys across India</span>
           <span class="hidden items-center gap-1 text-white/80 sm:inline-flex">
             · <Star class="h-3 w-3 fill-brand-lime text-brand-lime" aria-hidden="true" /> Loved by slow travellers
           </span>

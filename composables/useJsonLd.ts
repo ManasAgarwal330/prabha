@@ -24,29 +24,118 @@ const baseUrl = () => String(useRuntimeConfig().public.siteUrl)
 const imageUrl = (ref: ImageRef) =>
   new URL(buildImageUrl(ref, { width: 1600, ratio: 1.6, base: useRuntimeConfig().public.imageBaseUrl }), baseUrl()).href
 
+/**
+ * Every name people might search the brand by. Google uses `alternateName` on the
+ * WebSite and Organization to match these searches to this site and to choose the
+ * site name shown in results.
+ */
+const brandNames = (site: ReturnType<typeof useSettings>, base: string) => {
+  const domain = new URL(base).host
+  return [
+    ...new Set([
+      site.legalName,
+      'The Pravaah',
+      `${site.name} India`,
+      `${site.name} Travel`,
+      `${site.name} Travels`,
+      `${site.name} Tours and Travels`,
+      `${site.name} Tours & Travels`,
+      `${site.name} Tours`,
+      `${site.name} Holidays`,
+      domain
+    ])
+  ]
+}
+
 export const organizationLd = (): Json => {
   const base = baseUrl()
   const site = useSettings()
+  const { sections, destinations } = useSiteBundle()
   return {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
     '@id': `${base}/#organization`,
     name: site.name,
     legalName: site.legalName,
+    alternateName: brandNames(site, base),
     description: site.description,
-    url: base,
-    logo: `${base}/brand/pravaah-logo.png`,
-    image: `${base}/brand/pravaah-logo-square.jpg`,
     slogan: site.tagline,
+    url: `${base}/`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${base}/brand/pravaah-logo.png`,
+      caption: site.name
+    },
+    image: `${base}/brand/pravaah-logo-square.jpg`,
+    foundingDate: site.founded,
     email: site.contact.email,
-    telephone: site.contact.phoneDisplay,
+    telephone: site.contact.phoneHref,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      telephone: site.contact.phoneHref,
+      email: site.contact.email,
+      areaServed: 'IN',
+      availableLanguage: ['English', 'Hindi']
+    },
     address: {
       '@type': 'PostalAddress',
       addressRegion: site.contact.location.region,
       addressCountry: 'IN'
     },
     areaServed: { '@type': 'Country', name: 'India' },
+    knowsAbout: [
+      'Tours and travels',
+      'Tour packages',
+      'Homestay booking',
+      'Hotel and resort booking',
+      'Himalayan treks',
+      'Uttarakhand travel',
+      'Kumaon homestays',
+      'Festival trips in India',
+      ...destinations.map((d) => `${d.name} travel`)
+    ],
+    // What the business offers, from the live tabs and categories — helps match
+    // searches like "homestay booking" or "trek packages" to the brand.
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${site.name} travel services`,
+      itemListElement: sections.map((section) => ({
+        '@type': 'OfferCatalog',
+        name: section.name,
+        itemListElement: section.categories
+          .filter((category) => category.listingCount > 0)
+          .map((category) => ({
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: category.name,
+              description: category.description,
+              url: `${base}${section.path}#${category.slug}`,
+              provider: { '@id': `${base}/#organization` },
+              areaServed: { '@type': 'Country', name: 'India' }
+            }
+          }))
+      }))
+    },
     sameAs: [site.social.instagram]
+  }
+}
+
+/** A list of pages, e.g. the stays on the Stays tab, so search engines see them as one collection. */
+export const itemListLd = (name: string, items: { name: string; path: string }[]): Json => {
+  const base = baseUrl()
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: `${base}${item.path}`
+    }))
   }
 }
 
@@ -58,7 +147,9 @@ export const websiteLd = (): Json => {
     '@type': 'WebSite',
     '@id': `${base}/#website`,
     name: site.name,
-    url: base,
+    alternateName: brandNames(site, base),
+    url: `${base}/`,
+    description: site.description,
     publisher: { '@id': `${base}/#organization` },
     inLanguage: 'en-IN'
   }
@@ -78,7 +169,7 @@ export const breadcrumbLd = (crumbs: Crumb[]): Json => {
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,
-      item: `${base}${crumb.path === '/' ? '' : crumb.path}`
+      item: `${base}${crumb.path}`
     }))
   }
 }

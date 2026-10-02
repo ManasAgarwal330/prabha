@@ -7,6 +7,21 @@ const year = new Date().getFullYear()
 const socials = [
   { label: 'Instagram', handle: site.social.instagramHandle, href: site.social.instagram, icon: Instagram }
 ]
+
+/**
+ * Descriptive links to every destination and every category with something in it,
+ * on every page. They help visitors jump straight in and tell search engines what
+ * each page is about; built from the content, so they never point at an empty page.
+ */
+const { destinations, sections } = useSiteBundle()
+const popular = [
+  ...destinations.map((d) => ({ label: `${d.name} tours & stays`, to: `/destinations/${d.slug}` })),
+  ...sections.flatMap((section) =>
+    section.categories
+      .filter((category) => category.listingCount > 0)
+      .map((category) => ({ label: category.name, to: `${section.path}#${category.slug}` }))
+  )
+]
 </script>
 
 <template>
@@ -92,8 +107,22 @@ const socials = [
         </div>
       </div>
 
+      <nav class="mt-14 border-t border-hairline pt-8" aria-label="Popular with travellers">
+        <h2 class="eyebrow mb-4">Popular with travellers</h2>
+        <ul class="flex flex-wrap gap-x-5 gap-y-2.5 text-sm">
+          <li v-for="item in popular" :key="item.to">
+            <NuxtLink :to="item.to" class="text-ink-soft transition-colors hover:text-accent">{{ item.label }}</NuxtLink>
+          </li>
+        </ul>
+        <p class="mt-6 max-w-4xl text-xs leading-relaxed text-ink-muted">
+          {{ site.name }} ({{ site.legalName }}) is a tours and travels studio from {{ site.contact.location.region }}:
+          homestay, villa and hotel bookings, Himalayan treks and expeditions, tour packages, festival trips and
+          custom journeys across {{ site.contact.location.region }} and India.
+        </p>
+      </nav>
+
       <div
-        class="mt-14 flex flex-col gap-4 border-t border-hairline pt-8 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between"
+        class="mt-8 flex flex-col gap-4 border-t border-hairline pt-8 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between"
       >
         <p>© {{ year }} {{ site.legalName }}. All rights reserved.</p>
         <p class="flex flex-wrap items-center gap-x-5 gap-y-2">

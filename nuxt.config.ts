@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { redirects } from './config/redirects'
 
-const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://pravaah-travel.netlify.app'
+/**
+ * The one public address of the site. Canonical tags, sitemap, robots.txt and structured
+ * data are all built from it, so it must be the live domain — a wrong value tells search
+ * engines to index a different (or dead) address instead of this one.
+ */
+const siteUrl = (process.env.NUXT_PUBLIC_SITE_URL || 'https://thepravaah.in').replace(/\/$/, '')
 /** Public address of the Azure Blob Storage container holding the images (see composables/useImageSource.ts). */
 const imageBaseUrl = (process.env.NUXT_PUBLIC_IMAGE_BASE_URL || '').replace(/\/$/, '')
 
@@ -37,7 +42,11 @@ export default defineNuxtConfig({
     public: {
       siteUrl,
       /** NUXT_PUBLIC_IMAGE_BASE_URL, e.g. https://<account>.blob.core.windows.net/images */
-      imageBaseUrl
+      imageBaseUrl,
+      /** NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION — the content of Search Console's HTML-tag verification. */
+      googleSiteVerification: '',
+      /** NUXT_PUBLIC_BING_SITE_VERIFICATION — the content of Bing Webmaster Tools' meta-tag verification. */
+      bingSiteVerification: ''
     }
   },
 
@@ -48,6 +57,7 @@ export default defineNuxtConfig({
       // Fallback for the client-rendered shells (404.html / 200.html).
       title: 'Pravaah — Curated stays, experiences & retreats',
       link: [
+        // Google shows this icon beside the site in results; it needs a multiple of 48px.
         { rel: 'icon', type: 'image/png', sizes: '48x48', href: '/brand/favicon-48.png' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/brand/apple-touch-icon.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -62,6 +72,9 @@ export default defineNuxtConfig({
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        // The brand name search engines and browsers should show for the site.
+        { name: 'application-name', content: 'Pravaah' },
+        { name: 'apple-mobile-web-app-title', content: 'Pravaah' },
         { name: 'theme-color', content: '#FAFDFB' },
         { name: 'format-detection', content: 'telephone=no' }
       ],
@@ -93,6 +106,8 @@ export default defineNuxtConfig({
         }
       },
       ...redirects,
+      // Browsers and some crawlers ask for /favicon.ico regardless of the <link> tags.
+      '/favicon.ico': { redirect: { to: '/brand/favicon-48.png', statusCode: 301 } },
       // The API is never cached by browsers or the CDN — content freshness is handled
       // by the backend's own short cache (contentCacheSeconds).
       '/api/**': { headers: { 'cache-control': 'no-store' } }

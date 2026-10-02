@@ -170,3 +170,32 @@ point-in-time restore after a bad edit.
 
 `npm run dev` needs a `.env` with the Cosmos connection string and the image base URL. It
 uses the same database as production unless you point `NUXT_COSMOS_DATABASE` at a copy.
+
+## SEO
+
+Built into the code:
+- **Domain:** one address per page. Canonical tags, `og:url`, the sitemap, `robots.txt` and
+  structured data all use `NUXT_PUBLIC_SITE_URL` (`https://thepravaah.in`). Netlify's own
+  `*.netlify.app` address and `www.` redirect permanently to it (`server/middleware/canonical-host.ts`).
+- **`/sitemap.xml`:** built from the live content on each request, with each page's photos
+  included as image entries.
+- **`/robots.txt`:** allows every page, keeps `/api/` out of results, and points to the sitemap.
+- **Brand schema:** WebSite and TravelAgency schema list every name the brand is searched by
+  (`alternateName`: ThePravaah, The Pravaah, Pravaah Travel…), plus the logo, contact details
+  and Instagram. Google uses these for the site name and brand matching.
+- **Per-page tags:** title, description, OpenGraph and Twitter cards on every page, plus
+  structured data for stays (LodgingBusiness), trips (TouristTrip), destinations,
+  stories (Article), FAQs and breadcrumbs.
+
+Outside the code (needed for Google to list the site):
+1. Set `NUXT_PUBLIC_SITE_URL=https://thepravaah.in` in Netlify, then redeploy.
+2. **Google Search Console:** add `thepravaah.in` as a *Domain* property and verify it with
+   the DNS TXT record, or set `NUXT_PUBLIC_GOOGLE_SITE_VERIFICATION` for the HTML-tag method.
+   Submit `https://thepravaah.in/sitemap.xml`, then use URL Inspection → *Request indexing*
+   on the home page and the main tabs.
+3. **Bing Webmaster Tools:** import the site from Search Console. Bing also feeds DuckDuckGo and Yahoo.
+4. **Google Business Profile** for "Pravaah" (travel agency), with the website, phone and photos.
+   This is the strongest signal for brand searches and the map/knowledge panel.
+5. **Links pointing to the site:** the Instagram bio, partner properties' websites, and
+   listings on travel directories, all using the same name and phone number.
+

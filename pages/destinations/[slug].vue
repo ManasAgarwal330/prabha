@@ -42,7 +42,15 @@ usePageSeo({
   image: current.heroImage
 })
 
-useJsonLd(destinationLd(current), breadcrumbLd(crumbs), faqLd(current.faqs))
+useJsonLd(
+  destinationLd(current),
+  breadcrumbLd(crumbs),
+  faqLd(current.faqs),
+  itemListLd(
+    `Stays, trips and experiences in ${current.name}`,
+    relatedListings.map((listing) => ({ name: listing.title, path: listingPath(listing) }))
+  )
+)
 </script>
 
 <template>

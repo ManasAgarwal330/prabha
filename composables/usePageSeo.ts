@@ -20,7 +20,8 @@ export const usePageSeo = (input: PageSeoInput) => {
   const config = useRuntimeConfig()
   const site = useSettings()
   const base = String(config.public.siteUrl)
-  const url = `${base}${input.path === '/' ? '' : input.path}`
+  // The home page is "https://domain/" — the form servers and crawlers settle on.
+  const url = `${base}${input.path === '/' ? '/' : input.path}`
 
   // Social cards need an absolute URL; self-hosted images resolve to a path.
   const image = input.image
@@ -31,7 +32,12 @@ export const usePageSeo = (input: PageSeoInput) => {
     title: input.title,
     titleTemplate: (chunk?: string) =>
       chunk && !chunk.includes(site.name) ? `${chunk} | ${site.name}` : chunk || site.name,
-    link: [{ rel: 'canonical', href: url }],
+    link: [
+      { rel: 'canonical', href: url },
+      // One English edition, for India; x-default tells search engines it serves everyone else too.
+      { rel: 'alternate', hreflang: 'en-IN', href: url },
+      { rel: 'alternate', hreflang: 'x-default', href: url }
+    ],
     meta: input.noindex ? [{ name: 'robots', content: 'noindex, follow' }] : []
   })
 

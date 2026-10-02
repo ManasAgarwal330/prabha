@@ -56,7 +56,13 @@ usePageSeo({
   image: section.heroImage
 })
 
-useJsonLd(breadcrumbLd(crumbs))
+useJsonLd(
+  breadcrumbLd(crumbs),
+  itemListLd(
+    section.name,
+    (listings.value ?? []).map((listing) => ({ name: listing.title, path: listingPath(listing) }))
+  )
+)
 </script>
 
 <template>
