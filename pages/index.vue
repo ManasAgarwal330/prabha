@@ -10,9 +10,9 @@ const { brandStory, howItWorks, valueProps } = site
 const { sections, destinations } = useSiteBundle()
 
 const [{ data: featured }, { data: articles }, { data: testimonialData }] = await Promise.all([
-  useFetch<ListingSummary[]>('/api/listings', { key: 'listings:featured', query: { featured: 'true' } }),
-  useFetch<ArticleSummary[]>('/api/articles', { key: 'articles' }),
-  useFetch<Testimonial[]>('/api/testimonials', { key: 'testimonials' })
+  useFetch<ListingSummary[]>('/api/listings', { key: 'listings:featured', query: { featured: 'true' }, getCachedData: cachedForVisit }),
+  useFetch<ArticleSummary[]>('/api/articles', { key: 'articles', getCachedData: cachedForVisit }),
+  useFetch<Testimonial[]>('/api/testimonials', { key: 'testimonials', getCachedData: cachedForVisit })
 ])
 
 /** Split so each word can ride up from behind its own mask. */

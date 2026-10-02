@@ -5,7 +5,10 @@ definePageMeta({ hero: true })
 
 const route = useRoute()
 const slug = String(route.params.slug)
-const { data: page, error } = await useFetch<ListingPage>(`/api/listings/stays/${slug}`, { key: `listing:stays:${slug}` })
+const { data: page, error } = await useFetch<ListingPage>(`/api/listings/stays/${slug}`, {
+  key: `listing:stays:${slug}`,
+  getCachedData: cachedForVisit
+})
 
 if (error.value || !page.value) {
   throw createError({

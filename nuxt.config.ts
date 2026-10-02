@@ -100,6 +100,9 @@ export default defineNuxtConfig({
   },
 
   experimental: {
+    // Keep fetched page data for the whole visit, so returning to a page does not
+    // call the API again (see cachedForVisit in composables/useSite.ts).
+    purgeCachedData: false,
     payloadExtraction: true,
     inlineRouteRules: true
   },

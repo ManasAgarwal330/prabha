@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FaqContent } from '~/types'
 
-const { data: faqs } = await useFetch<FaqContent>('/api/faqs')
+const { data: faqs } = await useFetch<FaqContent>('/api/faqs', { key: 'faqs', getCachedData: cachedForVisit })
 const generalFaqs = computed(() => faqs.value?.general ?? [])
 const destinations = computed(() => faqs.value?.destinations ?? [])
 

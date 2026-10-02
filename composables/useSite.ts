@@ -110,3 +110,18 @@ export const useEnquiryContext = () =>
 
 export const formatDate = (iso: string) =>
   new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })
+
+/**
+ * `getCachedData` for page fetches: once a page's data has been loaded, going back
+ * to it in the same visit reuses it instead of calling the API (and Cosmos) again.
+ * A full page refresh starts with empty memory, so it always loads fresh data.
+ * Needs `experimental.purgeCachedData: false` (nuxt.config) so data survives navigation.
+ *
+ *   useFetch('/api/faqs', { key: 'faqs', getCachedData: cachedForVisit })
+ */
+export const cachedForVisit = <T>(
+  key: string,
+  nuxtApp: { payload: { data: Record<string, unknown> }; static: { data: Record<string, unknown> } },
+  context: { cause: string }
+): T | undefined =>
+  context.cause === 'refresh:manual' ? undefined : ((nuxtApp.payload.data[key] ?? nuxtApp.static.data[key]) as T | undefined)

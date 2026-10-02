@@ -14,7 +14,8 @@ const section = useSection(props.sectionKey)
 
 const { data: listings, error } = await useFetch<ListingSummary[]>('/api/listings', {
   key: `listings:${section.key}`,
-  query: { section: section.key }
+  query: { section: section.key },
+  getCachedData: cachedForVisit
 })
 if (error.value) {
   throw createError({ statusCode: 500, statusMessage: `Could not load ${section.name.toLowerCase()}`, fatal: true })

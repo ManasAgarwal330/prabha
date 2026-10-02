@@ -3,7 +3,7 @@ import { ArrowRight, Clock, Instagram, Mail, MapPin, Phone } from 'lucide-vue-ne
 import type { FaqContent } from '~/types'
 
 const site = useSettings()
-const { data: faqs } = await useFetch<FaqContent>('/api/faqs')
+const { data: faqs } = await useFetch<FaqContent>('/api/faqs', { key: 'faqs', getCachedData: cachedForVisit })
 const generalFaqs = computed(() => faqs.value?.general ?? [])
 
 usePageSeo({

@@ -4,7 +4,7 @@ import type { Testimonial } from '~/types'
 
 const site = useSettings()
 const { brandStory, howItWorks, valueProps } = site
-const { data: testimonialData } = await useFetch<Testimonial[]>('/api/testimonials')
+const { data: testimonialData } = await useFetch<Testimonial[]>('/api/testimonials', { key: 'testimonials', getCachedData: cachedForVisit })
 const testimonials = computed(() => testimonialData.value ?? [])
 
 const HERO_IMAGE = 'photo-1469474968028-56623f02e42e'

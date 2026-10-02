@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ArticleSummary } from '~/types'
 
-const { data: articles } = await useFetch<ArticleSummary[]>('/api/articles', { key: 'articles' })
+const { data: articles } = await useFetch<ArticleSummary[]>('/api/articles', { key: 'articles', getCachedData: cachedForVisit })
 if (!articles.value) {
   throw createError({ statusCode: 503, statusMessage: 'Stories could not be loaded.', fatal: true })
 }

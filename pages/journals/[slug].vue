@@ -6,7 +6,8 @@ const route = useRoute()
 const slug = computed(() => String(route.params.slug))
 
 const { data, error } = await useFetch<ArticlePage>(() => `/api/articles/${slug.value}`, {
-  key: `article:${slug.value}`
+  key: `article:${slug.value}`,
+  getCachedData: cachedForVisit
 })
 
 if (error.value || !data.value) {

@@ -8,7 +8,8 @@ const route = useRoute()
 const slug = computed(() => String(route.params.slug))
 
 const { data, error } = await useFetch<DestinationPage>(() => `/api/destinations/${slug.value}`, {
-  key: `destination:${slug.value}`
+  key: `destination:${slug.value}`,
+  getCachedData: cachedForVisit
 })
 
 if (error.value || !data.value) {
