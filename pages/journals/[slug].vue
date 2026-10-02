@@ -1,20 +1,26 @@
 <script setup lang="ts">
 import { Check, Quote, Sparkles } from 'lucide-vue-next'
-import { formatDate, getArticle, sortedArticles } from '~/data/blog'
+import type { ArticlePage } from '~/types'
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug))
 
-const article = computed(() => getArticle(slug.value))
+const { data, error } = await useFetch<ArticlePage>(() => `/api/articles/${slug.value}`, {
+  key: `article:${slug.value}`
+})
 
-if (!article.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Story not found', fatal: true })
+if (error.value || !data.value) {
+  throw createError(
+    error.value?.statusCode === 404
+      ? { statusCode: 404, statusMessage: 'Story not found', fatal: true }
+      : { statusCode: 503, statusMessage: 'This story could not be loaded.', fatal: true }
+  )
 }
 
-const current = article.value!
+const current = data.value.article
 /** The opening paragraph is set as a larger lead. */
 const leadIndex = current.body.findIndex((block) => block.type === 'paragraph')
-const related = sortedArticles.filter((a) => a.slug !== current.slug).slice(0, 3)
+const related = data.value.related
 
 const crumbs = [
   { name: 'Home', path: '/' },

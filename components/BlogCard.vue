@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { formatDate } from '~/data/blog'
-import type { Article } from '~/types'
+import type { ArticleSummary } from '~/types'
 
 withDefaults(
   defineProps<{
-    article: Article
+    article: ArticleSummary
     sizes?: string
     featured?: boolean
   }>(),

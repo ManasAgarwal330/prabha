@@ -7,13 +7,15 @@
  * The source folder holds a `Cover Photo/` folder (one image — the hero and the
  * listing tile) and a `Gallery/` folder. Each photo is written to
  * `public/images/<section>/<slug>/` as WebP at the widths in `WIDTHS`, plus a tiny
- * blur-up placeholder. The printed refs go straight into `image` and `gallery`
- * in the data file; `composables/useImageSource.ts` expands them into a srcset.
+ * blur-up placeholder. Then `npm run images:upload` copies them to Azure Blob
+ * Storage, and the printed refs go into the listing's `image` and `gallery` in
+ * Cosmos DB; `composables/useImageSource.ts` expands them into a srcset.
  *
  * Given a single image instead of a folder, only the cover is replaced and the
  * gallery is left as it is.
  *
- * Originals stay out of the repo — only the resized copies are committed.
+ * Neither originals nor resized copies are committed: public/images/ is git-ignored and
+ * only a staging folder for the upload. The images themselves live in Azure Blob Storage.
  */
 import { existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'node:fs'
 import { join, resolve } from 'node:path'
@@ -54,10 +56,8 @@ if (covers.length !== 1) {
 
 const outDir = resolve('public/images', target)
 if (coverOnly) {
-  if (!existsSync(outDir)) {
-    console.error(`No photos yet in public/images/${target} — run it on a full folder first.`)
-    process.exit(1)
-  }
+  // The rest of the listing's photos are already in Storage; only the new cover is staged here.
+  mkdirSync(outDir, { recursive: true })
 } else {
   // Re-running on a folder replaces the set, so removed photos do not linger.
   rmSync(outDir, { recursive: true, force: true })
@@ -75,7 +75,7 @@ const write = async (file, name) => {
       .toFile(join(outDir, `${name}-${width}.webp`))
   }
   await image.clone().resize({ width: PLACEHOLDER_WIDTH }).webp({ quality: 40 }).toFile(join(outDir, `${name}-placeholder.webp`))
-  return `/images/${target}/${name}`
+  return `${target}/${name}`
 }
 
 const coverRef = await write(covers[0], 'cover')
@@ -84,7 +84,8 @@ for (const [index, file] of gallery.entries()) {
   galleryRefs.push(await write(file, `gallery-${String(index + 1).padStart(2, '0')}`))
 }
 
-console.log(`\nWrote ${1 + gallery.length} photos to public/images/${target}\n`)
+console.log(`\nWrote ${1 + gallery.length} photos to public/images/${target}`)
+console.log('Next: `npm run images:upload`, then put these refs on the listing in Cosmos DB:\n')
 console.log(`    image: '${coverRef}',`)
 if (!coverOnly) {
   console.log('    gallery: [')

@@ -15,13 +15,10 @@ import {
   Users
 } from 'lucide-vue-next'
 import type { Component } from 'vue'
-import { getDestination } from '~/data/destinations'
-import { getCategory, sections } from '~/data/sections'
-import { listingPath, listingsBySection } from '~/data/listings'
-import type { Listing } from '~/types'
+import type { ListingPage } from '~/types'
 
 /** Detail page shared by every stay, experience, expedition and event. */
-const props = defineProps<{ listing: Listing }>()
+const props = defineProps<{ page: ListingPage }>()
 
 /** An icon for each kind of key fact; anything unrecognised falls back to Info. */
 const factIcons: Record<string, Component> = {
@@ -43,16 +40,16 @@ const factIcon = (label: string) => factIcons[label] ?? Info
 
 const pad = (n: number) => String(n).padStart(2, '0')
 
-const current = props.listing
-const section = sections[current.section]
-const category = getCategory(current.section, current.category)
-const destination = current.destinationSlug ? getDestination(current.destinationSlug) : undefined
+const current = props.page.listing
+const section = useSection(current.section)
+const category = section.categories.find((c) => c.slug === current.category)
+const destination = props.page.destination
+/** Same-category listings first, then the rest of the section — ordered by the API. */
+const related = props.page.related
 
-/** Same-category listings first, then the rest of the section. */
-const related = listingsBySection[current.section]
-  .filter((listing) => listing.slug !== current.slug)
-  .sort((a, b) => Number(b.category === current.category) - Number(a.category === current.category))
-  .slice(0, 3)
+// Lets the enquiry popup preselect this listing's destination.
+const route = useRoute()
+useEnquiryContext().value = { path: route.path, destination: destination?.name ?? '' }
 
 const crumbs = [
   { name: 'Home', path: '/' },

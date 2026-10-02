@@ -1,158 +1,22 @@
-# Static deploy: `nuxt generate` prerenders every route to plain HTML,
-# so this runs entirely on Netlify's free tier with no serverless functions.
+# Server-rendered Nuxt: pages and the /api backend run as one Netlify Function,
+# static assets are served from the CDN. Content comes from Azure Cosmos DB and
+# images from Azure Blob Storage — set these in Netlify → Site configuration →
+# Environment variables (see .env.example for what each one is):
+#   NUXT_COSMOS_CONNECTION_STRING   (secret — never prefix with NUXT_PUBLIC_)
+#   NUXT_COSMOS_DATABASE            (default: pravaah)
+#   NUXT_CONTENT_CACHE_SECONDS      (default: 60)
+#   NUXT_PUBLIC_IMAGE_BASE_URL      (https://<account>.blob.core.windows.net/images)
+#   NUXT_PUBLIC_SITE_URL
 [build]
-  command = "npm run generate"
-  publish = ".output/public"
+  command = "npm run build"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
-  # Netlify detects Nuxt and injects NITRO_PRESET=netlify, which redirects the
-  # static output to dist/ and adds a server function. Pinning the preset keeps
-  # the build fully static and the output exactly where `publish` points.
-  NITRO_PRESET = "static"
+  NITRO_PRESET = "netlify"
 
-# Old URLs from the previous site structure.
-[[redirects]]
-  from = "/tours"
-  to = "/experiences"
-  status = 301
-
-[[redirects]]
-  from = "/tours/*"
-  to = "/experiences"
-  status = 301
-
-# Treks, 4x4 and multi-day journeys moved back to Expeditions; the slugs did not change.
-[[redirects]]
-  from = "/experiences/bankatiya-base-camp-trek"
-  to = "/expeditions/bankatiya-base-camp-trek"
-  status = 301
-
-[[redirects]]
-  from = "/experiences/panchachuli-base-camp-trek"
-  to = "/expeditions/panchachuli-base-camp-trek"
-  status = 301
-
-[[redirects]]
-  from = "/experiences/khaliya-top-trek"
-  to = "/expeditions/khaliya-top-trek"
-  status = 301
-
-[[redirects]]
-  from = "/experiences/johar-valley-expedition"
-  to = "/expeditions/johar-valley-expedition"
-  status = 301
-
-[[redirects]]
-  from = "/experiences/darma-valley-expedition"
-  to = "/expeditions/darma-valley-expedition"
-  status = 301
-
-[[redirects]]
-  from = "/experiences/niti-valley-expedition"
-  to = "/expeditions/niti-valley-expedition"
-  status = 301
-
-[[redirects]]
-  from = "/experiences/flow-with-the-ganga"
-  to = "/expeditions/flow-with-the-ganga"
-  status = 301
-
-# Festivals moved from Experiences to Events; the slugs did not change.
-[[redirects]]
-  from = "/experiences/nanda-ashtami-yatra-munsiyari"
-  to = "/events/nanda-ashtami-yatra-munsiyari"
-  status = 301
-
-# Hornbill and Cherry Blossom were retired; Holi moved from Pushkar to Vrindavan & Barsana.
-[[redirects]]
-  from = "/experiences/hornbill-festival-nagaland"
-  to = "/events"
-  status = 301
-
-[[redirects]]
-  from = "/events/hornbill-festival-nagaland"
-  to = "/events"
-  status = 301
-
-[[redirects]]
-  from = "/experiences/cherry-blossom-music-festival-shillong"
-  to = "/events"
-  status = 301
-
-[[redirects]]
-  from = "/events/cherry-blossom-music-festival-shillong"
-  to = "/events"
-  status = 301
-
-[[redirects]]
-  from = "/experiences/holi-pushkar"
-  to = "/events/holi-vrindavan-barsana"
-  status = 301
-
-[[redirects]]
-  from = "/events/holi-pushkar"
-  to = "/events/holi-vrindavan-barsana"
-  status = 301
-
-# The shorter Bankatiya experience was folded into the Bankatiya Base Camp Trek.
-[[redirects]]
-  from = "/experiences/bankatiya-base-camp"
-  to = "/expeditions/bankatiya-base-camp-trek"
-  status = 301
-
-# Offbeat Experiences are hidden for now; send visitors to the 4x4 expedition for the same valley.
-[[redirects]]
-  from = "/experiences/darma-valley"
-  to = "/expeditions/darma-valley-expedition"
-  status = 302
-
-[[redirects]]
-  from = "/experiences/johar-valley"
-  to = "/expeditions/johar-valley-expedition"
-  status = 302
-
-[[redirects]]
-  from = "/experiences/niti-valley"
-  to = "/expeditions/niti-valley-expedition"
-  status = 302
-
-# Stays no longer offered.
-[[redirects]]
-  from = "/stays/pi-palace-bhimtal"
-  to = "/stays"
-  status = 301
-
-[[redirects]]
-  from = "/stays/ethereal-hartola"
-  to = "/stays"
-  status = 301
-
-# Destinations no longer covered.
-[[redirects]]
-  from = "/destinations/himachal-pradesh"
-  to = "/destinations"
-  status = 301
-
-[[redirects]]
-  from = "/destinations/northeast-india"
-  to = "/destinations"
-  status = 301
-
-[[redirects]]
-  from = "/stays/scenic-solitude-hartola"
-  to = "/stays/nirvaana-mansion-hartola"
-  status = 301
-
-[[redirects]]
-  from = "/blog"
-  to = "/journals"
-  status = 301
-
-[[redirects]]
-  from = "/blog/*"
-  to = "/journals/:splat"
-  status = 301
+# Redirects for old URLs live in config/redirects.ts (Nuxt route rules) — with
+# server rendering, rules here would sit behind the server catch-all and never run.
 
 # Hashed build assets never change — cache them hard.
 [[headers]]

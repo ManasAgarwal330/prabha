@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { Check, Loader2 } from 'lucide-vue-next'
-import { destinations } from '~/data/destinations'
-import { budgetRanges, site, travellerCounts, tripTypes } from '~/data/site'
 import type { EnquiryErrors, EnquiryPayload } from '~/composables/useEnquiry'
 
 const props = withDefaults(
@@ -21,6 +19,13 @@ const props = withDefaults(
 )
 
 const emit = defineEmits<{ submitted: [] }>()
+
+const { destinations } = useSiteBundle()
+const site = useSettings()
+const { budgetRanges, travellerCounts, tripTypes } = site
+
+/** Honeypot: hidden from people, but bots fill it in — the backend then quietly drops the enquiry. */
+const honeypot = ref('')
 
 /** Keeps field ids unique when two forms share a page, e.g. the enquiry popup over Plan My Trip. */
 const uid = useId()
@@ -96,21 +101,43 @@ watch(
   }
 )
 
+/** Waits for the error state to render, then focuses the first bad field in this form. */
+const focusFirstError = async () => {
+  await nextTick()
+  formEl.value?.querySelector<HTMLElement>('[data-invalid="true"]')?.focus()
+}
+
+/**
+ * Field errors from a 422 response. h3 puts createError's `data` under `data` in the
+ * response body, so the errors sit at body.data.errors; body.errors is accepted too.
+ */
+const serverFieldErrors = (error: unknown): EnquiryErrors | undefined => {
+  const fetchError = error as { statusCode?: number; data?: { errors?: EnquiryErrors; data?: { errors?: EnquiryErrors } } }
+  if (fetchError?.statusCode !== 422) return undefined
+  const fieldErrors = fetchError.data?.data?.errors ?? fetchError.data?.errors
+  return fieldErrors && Object.keys(fieldErrors).length ? fieldErrors : undefined
+}
+
 const onSubmit = async () => {
   errors.value = validateEnquiry(form)
   if (Object.keys(errors.value).length > 0) {
-    // Wait for the error state to render, then focus the first bad field in this form.
-    await nextTick()
-    formEl.value?.querySelector<HTMLElement>('[data-invalid="true"]')?.focus()
+    await focusFirstError()
     return
   }
 
   status.value = 'submitting'
   try {
-    await submitEnquiry({ ...form })
+    await submitEnquiry({ ...form }, honeypot.value)
     status.value = 'success'
     emit('submitted')
-  } catch {
+  } catch (error) {
+    const fieldErrors = serverFieldErrors(error)
+    if (fieldErrors) {
+      errors.value = fieldErrors
+      status.value = 'idle'
+      await focusFirstError()
+      return
+    }
     status.value = 'error'
   }
 }
@@ -167,6 +194,11 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
 
     <!-- Form -->
     <form v-else ref="formEl" class="space-y-5" novalidate @submit.prevent="onSubmit">
+      <!-- Honeypot: visually hidden and out of the tab order; only bots fill it in. -->
+      <div class="sr-only" aria-hidden="true">
+        <label :for="`${uid}-website`">Website</label>
+        <input :id="`${uid}-website`" v-model="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
+      </div>
       <div class="grid gap-5 sm:grid-cols-2" :class="columns === 3 ? 'lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4' : ''">
         <div>
           <label :for="`${uid}-name`" class="mb-2 block text-sm font-medium text-ink">Name</label>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Check, MapPin, Search, X } from 'lucide-vue-next'
-import type { PlaceOption } from '~/data/places'
+import type { PlaceOption } from '~/shared/places'
 
 /**
  * Type-ahead search for a state or place. Picking one or more options narrows

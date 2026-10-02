@@ -1,8 +1,3 @@
-import { destinations } from '~/data/destinations'
-import { allListings, listingPath } from '~/data/listings'
-import { articles } from '~/data/blog'
-import { site } from '~/data/site'
-
 interface Entry {
   path: string
   changefreq: 'daily' | 'weekly' | 'monthly' | 'yearly'
@@ -25,23 +20,25 @@ const staticEntries: Entry[] = [
   { path: '/terms', changefreq: 'yearly', priority: '0.3' }
 ]
 
-export default defineEventHandler((event) => {
-  const base = (useRuntimeConfig().public.siteUrl as string) || site.url
+/** Built from the live content, so new listings, destinations and stories appear automatically. */
+export default defineEventHandler(async (event) => {
+  const base = String(useRuntimeConfig().public.siteUrl)
+  const snapshot = await loadContent()
   const today = new Date().toISOString().slice(0, 10)
 
   const entries: Entry[] = [
     ...staticEntries,
-    ...destinations.map((destination) => ({
+    ...snapshot.destinations.map((destination) => ({
       path: `/destinations/${destination.slug}`,
       changefreq: 'monthly' as const,
       priority: '0.8'
     })),
-    ...allListings.map((listing) => ({
-      path: listingPath(listing),
+    ...visibleListings(snapshot).map((listing) => ({
+      path: `/${listing.section}/${listing.slug}`,
       changefreq: 'monthly' as const,
       priority: '0.8'
     })),
-    ...articles.map((article) => ({
+    ...snapshot.articles.map((article) => ({
       path: `/journals/${article.slug}`,
       changefreq: 'yearly' as const,
       priority: '0.6',

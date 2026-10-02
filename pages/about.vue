@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { ArrowRight, Mail } from 'lucide-vue-next'
-import { brandStory, howItWorks, site, valueProps } from '~/data/site'
-import { testimonials } from '~/data/testimonials'
+import type { Testimonial } from '~/types'
+
+const site = useSettings()
+const { brandStory, howItWorks, valueProps } = site
+const { data: testimonialData } = await useFetch<Testimonial[]>('/api/testimonials')
+const testimonials = computed(() => testimonialData.value ?? [])
 
 const HERO_IMAGE = 'photo-1469474968028-56623f02e42e'
 

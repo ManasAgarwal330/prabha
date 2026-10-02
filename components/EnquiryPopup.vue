@@ -1,24 +1,21 @@
 <script setup lang="ts">
 import { X } from 'lucide-vue-next'
-import { getDestination } from '~/data/destinations'
-import { getListing } from '~/data/listings'
-import type { SectionKey } from '~/types'
-import { ENQUIRED_KEY } from '~/composables/useEnquiry'
 
 /**
- * The enquiry form as a popup, offered once a visit after 20 seconds on the site.
+ * The enquiry form as a popup, offered on every full page load (open or refresh)
+ * after 15 seconds on the site. Moving between pages inside the site does not
+ * restart the count, so it comes up at most once per load.
  *
- * - Only time with the tab in view counts towards the 20 seconds.
+ * - Only time with the tab in view counts towards the 15 seconds.
  * - It never opens over Plan My Trip or Contact, which already show the form;
  *   if the time runs out there, it waits until the visitor moves on.
- * - Closing it means "not now": it stays away for the rest of the visit.
- *   Once any enquiry has been sent, it stays away for good.
  */
-const DELAY_SECONDS = 20
-const SHOWN_KEY = 'pravaah:enquiry-popup-shown'
+const DELAY_SECONDS = 15
 const PAGES_WITH_FORM = ['/plan-my-trip', '/contact']
 
 const route = useRoute()
+const { destinations } = useSiteBundle()
+const enquiryContext = useEnquiryContext()
 const open = ref(false)
 const due = ref(false)
 const dialog = ref<HTMLElement | null>(null)
@@ -26,38 +23,23 @@ const closeButton = ref<HTMLButtonElement | null>(null)
 let returnFocusTo: HTMLElement | null = null
 let timer: ReturnType<typeof setInterval> | undefined
 
-const readStorage = (storage: () => Storage, key: string) => {
-  try {
-    return storage().getItem(key)
-  } catch {
-    return null
-  }
-}
-
-const writeSession = (key: string) => {
-  try {
-    sessionStorage.setItem(key, '1')
-  } catch {
-    // Without storage it can only be shown once per page load, which is fine.
-  }
-}
-
 const hasFormOnPage = computed(() => PAGES_WITH_FORM.includes(route.path))
 
-/** Pre-selects the destination when the visitor is on a destination or listing page. */
+/**
+ * Pre-selects the destination when the visitor is on a destination or listing page.
+ * Listing pages say which destination they belong to through useEnquiryContext().
+ */
 const presetDestination = computed(() => {
+  if (enquiryContext.value?.path === route.path) return enquiryContext.value.destination
   const [section, slug] = route.path.split('/').filter(Boolean)
-  if (!slug) return ''
-  if (section === 'destinations') return getDestination(slug)?.name ?? ''
-  const listing = getListing(section as SectionKey, slug)
-  return listing?.destinationSlug ? (getDestination(listing.destinationSlug)?.name ?? '') : ''
+  if (section !== 'destinations' || !slug) return ''
+  return destinations.find((d) => d.slug === slug)?.name ?? ''
 })
 
 const show = () => {
   if (open.value || hasFormOnPage.value) return
   returnFocusTo = document.activeElement as HTMLElement | null
   open.value = true
-  writeSession(SHOWN_KEY)
 }
 
 const close = () => {
@@ -66,16 +48,12 @@ const close = () => {
 }
 
 onMounted(() => {
-  if (readStorage(() => localStorage, ENQUIRED_KEY) || readStorage(() => sessionStorage, SHOWN_KEY)) return
-
   let seconds = 0
   timer = setInterval(() => {
     if (document.visibilityState !== 'visible') return
     seconds++
     if (seconds < DELAY_SECONDS) return
     clearInterval(timer)
-    // Someone may have sent an enquiry from a page form in the meantime.
-    if (readStorage(() => localStorage, ENQUIRED_KEY)) return
     due.value = true
     show()
   }, 1000)
@@ -83,7 +61,7 @@ onMounted(() => {
 
 // The time ran out on a page that already had the form: offer it on the next page instead.
 watch(hasFormOnPage, (onFormPage) => {
-  if (!onFormPage && due.value && !open.value && !readStorage(() => localStorage, ENQUIRED_KEY)) show()
+  if (!onFormPage && due.value && !open.value) show()
 })
 
 watch(open, async (isOpen) => {

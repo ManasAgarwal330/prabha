@@ -1,5 +1,14 @@
 <script setup lang="ts">
-import { formatDate, journalCategoriesWithArticles, sortedArticles } from '~/data/blog'
+import type { ArticleSummary } from '~/types'
+
+const { data: articles } = await useFetch<ArticleSummary[]>('/api/articles', { key: 'articles' })
+if (!articles.value) {
+  throw createError({ statusCode: 503, statusMessage: 'Stories could not be loaded.', fatal: true })
+}
+
+/** Newest first, as the backend returns them. */
+const sortedArticles = articles.value
+const journalCategoriesWithArticles = useSiteBundle().journalCategories.filter((category) => category.articleCount > 0)
 
 const categories = ['All', ...journalCategoriesWithArticles.map((category) => category.name)]
 const activeCategory = ref('All')

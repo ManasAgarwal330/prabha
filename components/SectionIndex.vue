@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ArrowRight } from 'lucide-vue-next'
-import { sections } from '~/data/sections'
-import { listingsBySection, listingsInCategory } from '~/data/listings'
-import { inSelectedPlaces, listingPlaces, placeOptions } from '~/data/places'
-import type { SectionKey } from '~/types'
+import { inSelectedPlaces, placeOptions } from '~/shared/places'
+import type { ListingSummary, SectionKey } from '~/types'
 
 /**
  * Landing page for one offering tab (Stays, Experiences, Expeditions, Events).
@@ -12,17 +10,26 @@ import type { SectionKey } from '~/types'
  */
 const props = defineProps<{ sectionKey: SectionKey }>()
 
-const section = sections[props.sectionKey]
+const section = useSection(props.sectionKey)
 
-const places = placeOptions(listingsBySection[section.key], listingPlaces)
+const { data: listings, error } = await useFetch<ListingSummary[]>('/api/listings', {
+  key: `listings:${section.key}`,
+  query: { section: section.key }
+})
+if (error.value) {
+  throw createError({ statusCode: 500, statusMessage: `Could not load ${section.name.toLowerCase()}`, fatal: true })
+}
+const all = computed(() => listings.value ?? [])
+
+const places = computed(() => placeOptions(all.value))
 const selectedPlaces = ref<string[]>([])
 
 const groups = computed(() =>
   section.categories
     .map((category) => ({
       category,
-      listings: listingsInCategory(section.key, category.slug).filter((listing) =>
-        inSelectedPlaces(listingPlaces(listing), selectedPlaces.value)
+      listings: all.value.filter(
+        (listing) => listing.category === category.slug && inSelectedPlaces(listing.places, selectedPlaces.value)
       )
     }))
     .filter((group) => group.listings.length > 0)

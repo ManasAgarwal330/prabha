@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Clock, MessageCircle, ShieldCheck } from 'lucide-vue-next'
-import { site, tripTypes } from '~/data/site'
-import { howItWorks } from '~/data/site'
 
 const route = useRoute()
+const site = useSettings()
+const { tripTypes, howItWorks } = site
 
 /** Allows deep links like /plan-my-trip?destination=Uttarakhand from anywhere on the site. */
 const presetDestination = computed(() => String(route.query.destination || ''))

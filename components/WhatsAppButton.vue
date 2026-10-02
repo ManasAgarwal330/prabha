@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { MessageCircle } from 'lucide-vue-next'
-import { site } from '~/data/site'
 
 withDefaults(defineProps<{ variant?: 'floating' | 'inline' }>(), { variant: 'floating' })
 
-/** Placeholder number lives in data/site.ts — swap it there. */
+/** The number and message come from the site settings in the database. */
+const site = useSettings()
 const href = computed(
   () => `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(site.contact.whatsappMessage)}`
 )

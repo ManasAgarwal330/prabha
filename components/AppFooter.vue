@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Instagram, Mail, Phone } from 'lucide-vue-next'
-import { footerNav, site } from '~/data/site'
 
+const site = useSettings()
 const year = new Date().getFullYear()
 
 const socials = [

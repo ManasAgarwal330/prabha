@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { destinations } from '~/data/destinations'
-import { generalFaqs } from '~/data/faq'
+import type { FaqContent } from '~/types'
+
+const { data: faqs } = await useFetch<FaqContent>('/api/faqs')
+const generalFaqs = computed(() => faqs.value?.general ?? [])
+const destinations = computed(() => faqs.value?.destinations ?? [])
 
 usePageSeo({
   title: 'Frequently Asked Questions — Planning a Trip with Pravaah',
@@ -15,7 +18,7 @@ useJsonLd(
     { name: 'Home', path: '/' },
     { name: 'FAQ', path: '/faq' }
   ]),
-  faqLd(generalFaqs)
+  faqLd(generalFaqs.value)
 )
 </script>
 

@@ -1,4 +1,3 @@
-import { site } from '~/data/site'
 import { buildImageUrl } from '~/composables/useImageSource'
 import type { Article, Destination, FaqItem, ImageRef, Listing } from '~/types'
 
@@ -19,16 +18,15 @@ export const useJsonLd = (...blocks: Json[]) => {
   })
 }
 
-const baseUrl = () => {
-  const config = useRuntimeConfig()
-  return (config.public.siteUrl as string) || site.url
-}
+const baseUrl = () => String(useRuntimeConfig().public.siteUrl)
 
 /** Absolute, because structured data is read off-site; self-hosted images resolve to a path. */
-const imageUrl = (ref: ImageRef) => new URL(buildImageUrl(ref, { width: 1600, ratio: 1.6 }), baseUrl()).href
+const imageUrl = (ref: ImageRef) =>
+  new URL(buildImageUrl(ref, { width: 1600, ratio: 1.6, base: useRuntimeConfig().public.imageBaseUrl }), baseUrl()).href
 
 export const organizationLd = (): Json => {
   const base = baseUrl()
+  const site = useSettings()
   return {
     '@context': 'https://schema.org',
     '@type': 'TravelAgency',
@@ -54,6 +52,7 @@ export const organizationLd = (): Json => {
 
 export const websiteLd = (): Json => {
   const base = baseUrl()
+  const site = useSettings()
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',

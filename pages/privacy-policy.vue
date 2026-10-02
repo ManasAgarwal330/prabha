@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { site } from '~/data/site'
+const site = useSettings()
 
 const updated = '1 September 2026'
 

@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { site } from '~/data/site'
+// Site-wide content (settings, tabs, destinations) from the backend. Awaited so every
+// component below can read it synchronously with useSiteBundle().
+const { error } = await loadSiteBundle()
+if (error.value) {
+  throw createError({ statusCode: 503, statusMessage: 'The site is temporarily unavailable.', fatal: true })
+}
+
+const site = useSettings()
 
 useHead({
   titleTemplate: (chunk?: string) =>

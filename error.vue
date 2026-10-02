@@ -5,12 +5,15 @@ const props = defineProps<{ error: NuxtError }>()
 
 const isNotFound = computed(() => props.error?.statusCode === 404)
 
+/** The header and footer need site content; if that is what failed, show the page without them. */
+const hasSite = computed(() => Boolean(useNuxtData(SITE_KEY).data.value))
+
 useHead({ title: isNotFound.value ? 'Page not found' : 'Something went wrong' })
 </script>
 
 <template>
   <div class="flex min-h-screen flex-col bg-canvas">
-    <AppHeader />
+    <AppHeader v-if="hasSite" />
 
     <main class="flex flex-1 items-center pt-20">
       <div class="container-pravaah py-24 text-center">
@@ -32,6 +35,6 @@ useHead({ title: isNotFound.value ? 'Page not found' : 'Something went wrong' })
       </div>
     </main>
 
-    <AppFooter />
+    <AppFooter v-if="hasSite" />
   </div>
 </template>

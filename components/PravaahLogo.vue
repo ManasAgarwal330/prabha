@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { site } from '~/data/site'
-
 /**
  * The Pravaah logo — mountain, pines, sun and river above the "thepravaah.in" wordmark.
  * `brand` is the forest-green version for light surfaces; `light` is the white
@@ -13,6 +11,8 @@ withDefaults(
   }>(),
   { tone: 'brand', size: 'md' }
 )
+
+const site = useSettings()
 
 const sizeMap = {
   sm: 'h-11',

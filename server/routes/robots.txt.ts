@@ -1,7 +1,5 @@
-import { site } from '~/data/site'
-
 export default defineEventHandler((event) => {
-  const base = (useRuntimeConfig().public.siteUrl as string) || site.url
+  const base = String(useRuntimeConfig().public.siteUrl)
 
   setHeader(event, 'content-type', 'text/plain; charset=utf-8')
 

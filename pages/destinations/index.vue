@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ArrowRight } from 'lucide-vue-next'
-import { destinations, destinationsByRegion, regions } from '~/data/destinations'
-import { destinationPlaces, inSelectedPlaces, placeOptions } from '~/data/places'
+import { inSelectedPlaces, placeOptions } from '~/shared/places'
 
-const places = placeOptions(destinations, destinationPlaces)
+const { destinations, regions } = useSiteBundle()
+
+const places = placeOptions(destinations)
 const selectedPlaces = ref<string[]>([])
 
 /**
@@ -15,8 +16,8 @@ const regionGroups = computed(() =>
     .filter((region) => region.slug !== 'india')
     .map((region) => ({
       region,
-      destinations: destinationsByRegion(region.slug).filter((destination) =>
-        inSelectedPlaces(destinationPlaces(destination), selectedPlaces.value)
+      destinations: destinations.filter(
+        (destination) => destination.region === region.slug && inSelectedPlaces(destination.places, selectedPlaces.value)
       )
     }))
     .filter((group) => group.destinations.length > 0)

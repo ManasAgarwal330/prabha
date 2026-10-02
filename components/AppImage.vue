@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { buildImageUrl, buildSrcSet, buildPlaceholder } from '~/composables/useImageSource'
+import { buildImageUrl, buildObjectPosition, buildPlaceholder, buildSrcSet } from '~/composables/useImageSource'
 import type { ImageRef } from '~/types'
 
 /**
@@ -38,11 +38,16 @@ const attrs = useAttrs()
 const width = computed(() => (props.priority ? 1800 : 1200))
 const height = computed(() => Math.round(width.value / props.ratio))
 
+/** Azure Blob Storage container URL; empty until images are uploaded (see useImageSource). */
+const base = useRuntimeConfig().public.imageBaseUrl
+
 const src = computed(() =>
-  buildImageUrl(props.src, { width: width.value, ratio: props.ratio, quality: props.quality })
+  buildImageUrl(props.src, { width: width.value, ratio: props.ratio, quality: props.quality, base })
 )
-const srcset = computed(() => buildSrcSet(props.src, { ratio: props.ratio, quality: props.quality }))
-const placeholder = computed(() => buildPlaceholder(props.src))
+const srcset = computed(() => buildSrcSet(props.src, { ratio: props.ratio, quality: props.quality, base }))
+const placeholder = computed(() => buildPlaceholder(props.src, base))
+/** Keeps the ref's `@x,y` point in frame when the image is cropped to fit. */
+const objectPosition = computed(() => buildObjectPosition(props.src, base))
 
 const imgEl = ref<HTMLImageElement | null>(null)
 const loaded = ref(props.priority)
@@ -79,6 +84,7 @@ onMounted(() => {
       :loading="priority ? 'eager' : 'lazy'"
       :fetchpriority="priority ? 'high' : 'auto'"
       decoding="async"
+      :style="objectPosition ? { objectPosition } : undefined"
       class="transition-opacity duration-700 ease-editorial"
       :class="loaded ? 'opacity-100' : 'opacity-0'"
       @load="onLoad"

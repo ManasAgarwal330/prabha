@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { ArrowRight, ChevronDown, Instagram, Menu, Phone, Sparkles, X } from 'lucide-vue-next'
-import { primaryNav, site } from '~/data/site'
 
 const route = useRoute()
+const site = useSettings()
+const primaryNav = usePrimaryNav()
 const overlay = useHeaderOverlayState()
 
 const scrolled = ref(false)

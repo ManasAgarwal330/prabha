@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ArrowRight, Clock, Instagram, Mail, MapPin, Phone } from 'lucide-vue-next'
-import { site } from '~/data/site'
-import { generalFaqs } from '~/data/faq'
+import type { FaqContent } from '~/types'
+
+const site = useSettings()
+const { data: faqs } = await useFetch<FaqContent>('/api/faqs')
+const generalFaqs = computed(() => faqs.value?.general ?? [])
 
 usePageSeo({
   title: 'Contact Pravaah — Talk to a Trip Designer',

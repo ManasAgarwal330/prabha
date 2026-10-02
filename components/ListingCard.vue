@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { ArrowUpRight, BedDouble, Clock, MapPin } from 'lucide-vue-next'
-import { getCategory } from '~/data/sections'
-import { listingPath } from '~/data/listings'
-import type { Listing } from '~/types'
+import type { ListingSummary } from '~/types'
 
 const props = withDefaults(
   defineProps<{
-    listing: Listing
+    listing: ListingSummary
     sizes?: string
   }>(),
   { sizes: '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw' }
 )
 
 const to = computed(() => listingPath(props.listing))
-const category = computed(() => getCategory(props.listing.section, props.listing.category))
+const category = computed(() =>
+  useSection(props.listing.section).categories.find((c) => c.slug === props.listing.category)
+)
 /** Stays lead with the setting; everything else leads with its duration. */
 const leadFact = computed(() => props.listing.facts[0])
 const leadIcon = computed(() => (props.listing.section === 'stays' ? BedDouble : Clock))

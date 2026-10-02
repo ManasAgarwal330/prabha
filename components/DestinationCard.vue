@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ArrowUpRight } from 'lucide-vue-next'
-import { listingsByDestination } from '~/data/listings'
-import type { Destination } from '~/types'
+import type { DestinationSummary } from '~/types'
 
 const props = withDefaults(
   defineProps<{
-    destination: Destination
+    destination: DestinationSummary
     /** `feature` is the large editorial tile; `compact` is the stacked grid tile. */
     size?: 'feature' | 'compact'
     sizes?: string
@@ -13,8 +12,8 @@ const props = withDefaults(
   { size: 'compact', sizes: '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw' }
 )
 
-const listingCount = computed(() => listingsByDestination(props.destination.slug).length)
-const experienceCount = computed(() => props.destination.experiences.length)
+const listingCount = computed(() => props.destination.listingCount)
+const experienceCount = computed(() => props.destination.experienceCount)
 </script>
 
 <template>

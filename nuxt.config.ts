@@ -1,5 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { redirects } from './config/redirects'
+
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://pravaah-travel.netlify.app'
+/** Public address of the Azure Blob Storage container holding the images (see composables/useImageSource.ts). */
+const imageBaseUrl = (process.env.NUXT_PUBLIC_IMAGE_BASE_URL || '').replace(/\/$/, '')
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
@@ -19,9 +23,21 @@ export default defineNuxtConfig({
     }
   },
 
+  /**
+   * Server-only values stay on the backend; only `public` reaches the browser.
+   * Each can be set per environment with the env var named alongside it.
+   */
   runtimeConfig: {
+    /** NUXT_COSMOS_CONNECTION_STRING — from the Cosmos account's "Keys" page. */
+    cosmosConnectionString: '',
+    /** NUXT_COSMOS_DATABASE */
+    cosmosDatabase: 'pravaah',
+    /** NUXT_CONTENT_CACHE_SECONDS — how long content stays in memory between database reads. 0 = every request. */
+    contentCacheSeconds: 60,
     public: {
-      siteUrl
+      siteUrl,
+      /** NUXT_PUBLIC_IMAGE_BASE_URL, e.g. https://<account>.blob.core.windows.net/images */
+      imageBaseUrl
     }
   },
 
@@ -36,7 +52,9 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/brand/apple-touch-icon.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'preconnect', href: 'https://images.unsplash.com' },
+        imageBaseUrl
+          ? { rel: 'preconnect', href: new URL(imageBaseUrl).origin }
+          : { rel: 'preconnect', href: 'https://images.unsplash.com' },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap'
@@ -57,14 +75,28 @@ export default defineNuxtConfig({
     }
   },
 
-  // Fully static output — deploys to Netlify free tier as plain files.
+  // Server-rendered on every request from live database content. On Netlify the
+  // pages and the /api backend run together as one Netlify Function (NITRO_PRESET=netlify).
   ssr: true,
+
   nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/', '/sitemap.xml', '/robots.txt'],
-      failOnError: false
-    }
+    // Set under `nitro` (same effect as top-level routeRules): the hoisted @nuxt/schema 4.x
+    // that @nuxt/cli pulls in does not type the top-level key for Nuxt 3.
+    routeRules: {
+      // netlify.toml [[headers]] only reach static files, so server-rendered pages get theirs here.
+      '/**': {
+        headers: {
+          'x-content-type-options': 'nosniff',
+          'x-frame-options': 'SAMEORIGIN',
+          'referrer-policy': 'strict-origin-when-cross-origin',
+          'permissions-policy': 'geolocation=(), camera=(), microphone=()'
+        }
+      },
+      ...redirects,
+      // The API is never cached by browsers or the CDN — content freshness is handled
+      // by the backend's own short cache (contentCacheSeconds).
+      '/api/**': { headers: { 'cache-control': 'no-store' } }
+    },
   },
 
   experimental: {

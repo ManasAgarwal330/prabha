@@ -1,27 +1,32 @@
 <script setup lang="ts">
 import { ArrowRight, CalendarDays, Check, Clock, MapPin } from 'lucide-vue-next'
-import { destinations, getDestination } from '~/data/destinations'
-import { listingsByDestination } from '~/data/listings'
+import type { DestinationPage } from '~/types'
 
 definePageMeta({ hero: true })
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug))
 
-const destination = computed(() => getDestination(slug.value))
+const { data, error } = await useFetch<DestinationPage>(() => `/api/destinations/${slug.value}`, {
+  key: `destination:${slug.value}`
+})
 
-if (!destination.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Destination not found', fatal: true })
+if (error.value || !data.value) {
+  throw createError(
+    error.value?.statusCode === 404
+      ? { statusCode: 404, statusMessage: 'Destination not found', fatal: true }
+      : { statusCode: 503, statusMessage: 'This destination could not be loaded.', fatal: true }
+  )
 }
 
-const current = destination.value!
-const relatedListings = listingsByDestination(current.slug)
+const current = data.value.destination
+const relatedListings = data.value.listings
 const featuredHere = [...relatedListings].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured))).slice(0, 6)
-/** Neighbours in the same region first, then the rest of India. */
-const otherDestinations = destinations
-  .filter((d) => d.slug !== current.slug)
-  .sort((a, b) => Number(b.region === current.region) - Number(a.region === current.region))
-  .slice(0, 3)
+/** Neighbours in the same region first, then the rest of India (ordered by the backend). */
+const otherDestinations = data.value.others
+
+// Lets the enquiry popup pre-select this destination.
+useEnquiryContext().value = { path: route.path, destination: current.name }
 
 const crumbs = [
   { name: 'Home', path: '/' },
