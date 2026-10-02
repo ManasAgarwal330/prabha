@@ -167,8 +167,8 @@ export const sections: Record<SectionKey, Section> = {
         description: 'Trips for friends and larger groups, with the stays, transport and plans taken care of.'
       },
       {
-        slug: 'time-specific-events',
-        name: 'Time-Specific Events',
+        slug: 'festive-escape',
+        name: 'Festive Escape',
         description:
           'Festivals and yatras that happen on fixed dates — worth planning a trip around, and planned so you are part of the day rather than watching it.'
       },

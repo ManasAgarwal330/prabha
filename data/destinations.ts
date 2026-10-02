@@ -61,7 +61,7 @@ export const destinations: Destination[] = [
       'Uttarakhand is where most of what we do begins. The state splits into two old kingdoms: Garhwal in the west, with Rishikesh, the Char Dham shrines and the Niti valley, and Kumaon in the east, with the lake country around Bhimtal, orchard villages like Hartola, the long road up to Munsiyari and the Panchachuli peaks, and down in the foothills the sal forests of Jim Corbett National Park.',
       'It rewards travellers who go beyond the hill stations. A few hours past the last big town you are in villages that still move with the seasons, on trails to base camps that see a handful of groups a year, and in valleys that sit a day away from the Tibetan border. We stay in small, locally run places and travel with guides who grew up in these valleys.'
     ],
-    image: 'photo-1522506209496-4536d9020ec4',
+    image: 'photo-1610715936287-6c2ad208cdbf',
     heroImage: 'photo-1689736771471-5e46e579e1cb',
     gallery: [
       'photo-1609920658906-8223bd289001',
@@ -388,12 +388,12 @@ export const destinations: Destination[] = [
       'A classic loop runs Jaipur to Jodhpur to Udaipur, with Jaisalmer added if you want the desert. Each city has a distinct character — Jaipur is busy and commercial, Jodhpur is blue and vertical, Udaipur is soft and built around water.'
     ],
     image: 'photo-1477587458883-47145ed94245',
-    heroImage: 'photo-1599661046289-e31897846e41',
+    heroImage: 'photo-1615836245337-f5b9b2303f10',
     gallery: [
-      'photo-1548013146-72479768bada',
-      'photo-1524492412937-b28074a5d7da',
-      'photo-1477587458883-47145ed94245',
-      'photo-1566073771259-6a8506099945'
+      'photo-1633702738734-443da2c18f3c',
+      'photo-1599661046289-e31897846e41',
+      'photo-1686825780583-8be7c349a4b4',
+      'photo-1709620220232-12ecd7ca33a8'
     ],
     categories: ['Heritage', 'Family', 'Honeymoon', 'Wildlife'],
     bestTimeToVisit: 'October to March',
@@ -493,13 +493,13 @@ export const destinations: Destination[] = [
       'Goa is really three destinations. The north is social and late-night, the south is long, empty and slow, and the hinterland — Chandor, Quepem, the spice villages — is where the old houses and churches still stand.',
       'The trick is deciding which one you came for, then picking a base rather than trying to cover the whole coast from one hotel.'
     ],
-    image: 'photo-1512343879784-a960bf40e7f2',
+    image: 'photo-1614082242765-7c98ca0f3df3',
     heroImage: 'photo-1512343879784-a960bf40e7f2',
     gallery: [
-      'photo-1507525428034-b723cf961d3e',
-      'photo-1519046904884-53103b34b206',
-      'photo-1505118380757-91f5f5632de0',
-      'photo-1502680390469-be75c86b636f'
+      'photo-1718275520594-8bb2d4fae9f0',
+      'photo-1653928359063-13eb336a4196',
+      'photo-1515307638821-8c2ece10bf6a',
+      'photo-1652820330085-82a0c2b88d78'
     ],
     categories: ['Beaches', 'Weekend', 'Honeymoon', 'Family'],
     bestTimeToVisit: 'November to February',
@@ -599,13 +599,13 @@ export const destinations: Destination[] = [
       'Kashmir is the kind of place that rearranges your sense of scale. Snow lines sit above pine forests, saffron fields run flat to the horizon, and the whole valley seems to slow down around the Jhelum.',
       'A week here moves between three moods: the water and gardens of Srinagar, the meadows of Gulmarg and Pahalgam, and the high road to Sonamarg where the glaciers begin. It rewards travellers who leave room in the schedule for a long lunch and an unplanned detour.'
     ],
-    image: 'photo-1598091383021-15ddea10925d',
-    heroImage: 'photo-1598091383021-15ddea10925d',
+    image: 'photo-1715457573748-8e8a70b2c1be',
+    heroImage: 'photo-1595815771614-ade9d652a65d',
     gallery: [
-      'photo-1501785888041-af3ef285b470',
-      'photo-1476514525535-07fb3b4ae5f1',
-      'photo-1626621341517-bbf3d9990a23',
-      'photo-1544735716-392fe2489ffa'
+      'photo-1680701529091-de2a12a7e4b3',
+      'photo-1666545380922-1296a4ac9521',
+      'photo-1642781087094-0430c9390ca3',
+      'photo-1531520140596-076b6929bc69'
     ],
     categories: ['Mountains', 'Honeymoon', 'Adventure', 'Family'],
     bestTimeToVisit: 'March to October, and December to February for snow',

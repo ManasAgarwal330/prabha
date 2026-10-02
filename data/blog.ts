@@ -24,7 +24,7 @@ export const articles: Article[] = [
     excerpt:
       'Beyond the standard Srinagar–Gulmarg–Pahalgam loop: the meadows, workshops and roads that make a week in the valley feel like a month.',
     category: 'Destination Guides',
-    coverImage: 'photo-1476514525535-07fb3b4ae5f1',
+    coverImage: 'photo-1564329494258-3f72215ba175',
     author: 'Pravaah Travel Studio',
     publishedAt: '2026-08-28',
     readingTime: 7,

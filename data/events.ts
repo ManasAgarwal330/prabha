@@ -89,7 +89,7 @@ export const events: Listing[] = [
   {
     slug: 'nanda-ashtami-yatra-munsiyari',
     section: 'events',
-    category: 'time-specific-events',
+    category: 'festive-escape',
     title: 'Nanda Ashtami Yatra',
     location: 'Munsiyari, Pithoragarh district',
     destinationSlug: 'uttarakhand',
@@ -172,7 +172,7 @@ export const events: Listing[] = [
   {
     slug: 'holi-vrindavan-barsana',
     section: 'events',
-    category: 'time-specific-events',
+    category: 'festive-escape',
     title: 'Holi in Vrindavan & Barsana',
     location: 'Braj, Mathura district',
     tagline: 'A week of colour in the land of Krishna',
@@ -256,7 +256,7 @@ export const events: Listing[] = [
   {
     slug: 'butter-festival-dayara-bugyal',
     section: 'events',
-    category: 'time-specific-events',
+    category: 'festive-escape',
     title: 'Butter Festival at Dayara Bugyal',
     location: 'Dayara Bugyal, Uttarkashi district',
     destinationSlug: 'uttarakhand',
@@ -340,7 +340,7 @@ export const events: Listing[] = [
   {
     slug: 'dev-deepawali-varanasi',
     section: 'events',
-    category: 'time-specific-events',
+    category: 'festive-escape',
     title: 'Dev Deepawali in Varanasi',
     location: 'Varanasi, Uttar Pradesh',
     tagline: 'The night the gods come down to the Ganga',
