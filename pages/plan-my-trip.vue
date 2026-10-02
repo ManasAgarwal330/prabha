@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Clock, MessageCircle, ShieldCheck } from 'lucide-vue-next'
-import { site } from '~/data/site'
+import { site, tripTypes } from '~/data/site'
 import { howItWorks } from '~/data/site'
 
 const route = useRoute()
@@ -9,6 +9,8 @@ const route = useRoute()
 const presetDestination = computed(() => String(route.query.destination || ''))
 /** Set by the trip-brief box on the home page. */
 const presetMessage = computed(() => String(route.query.brief || ''))
+/** Set by the Plan Your Journey menu, e.g. /plan-my-trip?trip=family. */
+const presetTripType = computed(() => tripTypes.find((type) => type.slug === route.query.trip)?.label ?? '')
 
 const reassurances = [
   {
@@ -68,7 +70,13 @@ useJsonLd(
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div class="reveal lg:col-span-7">
           <div class="surface-card bg-surface p-7 sm:p-10">
-            <ContactForm :preset-destination="presetDestination" :preset-message="presetMessage" source="plan-my-trip" />
+            <ContactForm
+              :key="presetTripType"
+              :preset-destination="presetDestination"
+              :preset-message="presetMessage"
+              :preset-trip-type="presetTripType"
+              source="plan-my-trip"
+            />
           </div>
         </div>
 

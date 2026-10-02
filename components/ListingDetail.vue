@@ -20,7 +20,7 @@ import { getCategory, sections } from '~/data/sections'
 import { listingPath, listingsBySection } from '~/data/listings'
 import type { Listing } from '~/types'
 
-/** Detail page shared by every stay, experience and event. */
+/** Detail page shared by every stay, experience, expedition and event. */
 const props = defineProps<{ listing: Listing }>()
 
 /** An icon for each kind of key fact; anything unrecognised falls back to Info. */

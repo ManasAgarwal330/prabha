@@ -68,7 +68,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-pravaah py-20 lg:py-24">
+    <section id="our-story" class="container-pravaah scroll-mt-24 py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-7">
           <div class="reveal prose-pravaah">
@@ -103,10 +103,10 @@ useJsonLd(
       </div>
     </section>
 
-    <!-- What we believe -->
-    <section class="section-dark py-20 lg:py-24">
+    <!-- Our philosophy -->
+    <section id="our-philosophy" class="section-dark scroll-mt-24 py-20 lg:py-24">
       <div class="container-pravaah">
-        <SectionHeading eyebrow="What we believe" title="Four things we will not trade away." />
+        <SectionHeading eyebrow="Our philosophy" title="Four things we will not trade away." />
 
         <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
           <div
@@ -123,9 +123,9 @@ useJsonLd(
       </div>
     </section>
 
-    <!-- How we work -->
-    <section class="container-pravaah py-20 lg:py-24">
-      <SectionHeading eyebrow="How we work" title="From first message to the last mile home." />
+    <!-- How we curate -->
+    <section id="how-we-curate" class="container-pravaah scroll-mt-24 py-20 lg:py-24">
+      <SectionHeading eyebrow="How we curate" title="From first message to the last mile home." />
 
       <ol class="mt-12 grid gap-4 sm:grid-cols-3 lg:gap-5">
         <li

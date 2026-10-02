@@ -9,24 +9,29 @@ export const regions: Region[] = [
     slug: 'india',
     name: 'India',
     description:
-      'Every region we plan for, from the Kumaon Himalaya to the Rajasthan desert and the hills of the northeast.'
+      'Every region we plan for, from the Kumaon Himalaya to the Rajasthan desert, the Kerala backwaters and the Andaman Islands.'
   },
   {
     slug: 'north-india',
     name: 'North India',
     description:
-      'The Himalayan states — Uttarakhand, Himachal and Kashmir. High valleys, base camps, river towns and the Char Dham circuit.'
-  },
-  {
-    slug: 'northeast-india',
-    name: 'Northeast India',
-    description:
-      'Meghalaya, Assam and Nagaland. Living root bridges, tea country and two of the best festivals in the country.'
+      'The Himalaya of Uttarakhand and Kashmir. High valleys, base camps, river towns and the Char Dham circuit.'
   },
   {
     slug: 'west-india',
     name: 'West India',
-    description: 'Rajasthan and Goa. Desert forts, Holi in Pushkar and a coastline that slows everything down.'
+    description: 'Rajasthan and Goa. Desert forts, camel safaris and a coastline that slows everything down.'
+  },
+  {
+    slug: 'south-india',
+    name: 'South India',
+    description: 'Kerala. Backwaters, tea country in the Western Ghats and a coast that stays green all year.'
+  },
+  {
+    slug: 'islands',
+    name: 'Islands',
+    description:
+      'The Andaman & Nicobar Islands. White-sand beaches, coral reefs and some of the clearest water in India.'
   }
 ]
 
@@ -56,8 +61,8 @@ export const destinations: Destination[] = [
       'Uttarakhand is where most of what we do begins. The state splits into two old kingdoms: Garhwal in the west, with Rishikesh, the Char Dham shrines and the Niti valley, and Kumaon in the east, with the lake country around Bhimtal, orchard villages like Hartola, the long road up to Munsiyari and the Panchachuli peaks, and down in the foothills the sal forests of Jim Corbett National Park.',
       'It rewards travellers who go beyond the hill stations. A few hours past the last big town you are in villages that still move with the seasons, on trails to base camps that see a handful of groups a year, and in valleys that sit a day away from the Tibetan border. We stay in small, locally run places and travel with guides who grew up in these valleys.'
     ],
-    image: 'photo-1597074866923-dc0589150358',
-    heroImage: 'photo-1486911278844-a81c5267e227',
+    image: 'photo-1522506209496-4536d9020ec4',
+    heroImage: 'photo-1689736771471-5e46e579e1cb',
     gallery: [
       'photo-1609920658906-8223bd289001',
       'photo-1622308644420-b20142dc993c',
@@ -159,215 +164,214 @@ export const destinations: Destination[] = [
   },
 
   {
-    slug: 'kashmir',
-    name: 'Kashmir',
-    state: 'Jammu & Kashmir',
-    region: 'north-india',
-    tagline: 'Meadows, water and light',
+    slug: 'kerala',
+    name: 'Kerala',
+    state: 'Kerala',
+    region: 'south-india',
+    tagline: 'Backwaters, hills and long lunches',
     description:
-      'Alpine meadows, houseboats on still water and a valley that changes colour with every month of the year.',
+      'Houseboats on the backwaters, tea country in the Western Ghats and a coastline that runs green all the way down.',
     overview: [
-      'Kashmir is the kind of place that rearranges your sense of scale. Snow lines sit above pine forests, saffron fields run flat to the horizon, and the whole valley seems to slow down around the Jhelum.',
-      'A week here moves between three moods: the water and gardens of Srinagar, the meadows of Gulmarg and Pahalgam, and the high road to Sonamarg where the glaciers begin. It rewards travellers who leave room in the schedule for a long lunch and an unplanned detour.'
+      'Kerala is the easiest state in India to travel slowly. Distances are short, the roads are good, and almost every drive passes water.',
+      'The standard arc goes coast to backwaters to hills — Kochi, Alleppey and then up to Munnar or Thekkady. It works because each stop changes the temperature and the pace, and because nothing is more than four hours from the last thing.'
     ],
-    image: 'photo-1598091383021-15ddea10925d',
-    heroImage: 'photo-1598091383021-15ddea10925d',
+    image: 'photo-1602216056096-3b40cc0c9944',
+    heroImage: 'photo-1602216056096-3b40cc0c9944',
     gallery: [
-      'photo-1501785888041-af3ef285b470',
-      'photo-1476514525535-07fb3b4ae5f1',
-      'photo-1626621341517-bbf3d9990a23',
-      'photo-1544735716-392fe2489ffa'
+      'photo-1593693411515-c20261bcad6e',
+      'photo-1544084944-15269ec7b5a0',
+      'photo-1454391304352-2bf4678b1a7a',
+      'photo-1433086966358-54859d0ed716'
     ],
-    categories: ['Mountains', 'Honeymoon', 'Adventure', 'Family'],
-    bestTimeToVisit: 'March to October, and December to February for snow',
+    categories: ['Beaches', 'Honeymoon', 'Family', 'Wildlife', 'Weekend'],
+    bestTimeToVisit: 'September to March',
     idealDuration: '6 – 8 days',
     seasons: [
       {
-        window: 'March – May',
-        label: 'Blossom season',
-        description: 'Almond and tulip blooms in Srinagar, mild days and cold mornings. The valley at its greenest.'
-      },
-      {
-        window: 'June – August',
-        label: 'High meadows',
-        description: 'Sonamarg and Gulmarg fully open, ideal for treks, pony rides and long drives to Aru and Betaab.'
-      },
-      {
-        window: 'September – October',
-        label: 'Chinar autumn',
-        description: 'Golden chinar leaves, saffron harvest in Pampore, and the clearest mountain views of the year.'
+        window: 'September – November',
+        label: 'After the rain',
+        description: 'Everything is green, the backwaters are full and the crowds have not arrived yet.'
       },
       {
         window: 'December – February',
-        label: 'Snow',
-        description: 'Gulmarg turns into a ski destination. Expect road closures and pack for real winter.'
+        label: 'Peak season',
+        description: 'Dry, warm and reliable. Book houseboats and hill stays well ahead over the holidays.'
+      },
+      {
+        window: 'March – May',
+        label: 'Warm',
+        description: 'Humid on the coast but comfortable in Munnar and Wayanad, and far quieter everywhere.'
+      },
+      {
+        window: 'June – August',
+        label: 'Monsoon',
+        description: 'Dramatic rain and the traditional season for Ayurvedic treatment. Beaches are largely off-limits.'
       }
     ],
     whyVisit: [
       {
-        title: 'Mornings on Dal Lake',
-        description:
-          'A shikara ride before the mist lifts, past floating vegetable gardens and kitchens working on the water.'
+        title: 'A night on the backwaters',
+        description: 'A houseboat from Alleppey through the paddy-fed canals, with lunch cooked on board.'
       },
       {
-        title: 'Meadows above the treeline',
-        description: 'Gulmarg, Yusmarg and Doodhpathri are walkable, wide-open and quiet outside of peak hours.'
+        title: 'Tea country',
+        description: 'The plantations around Munnar, where the hills are cut into green terraces to the skyline.'
       },
       {
-        title: 'Mughal garden architecture',
-        description: 'Shalimar, Nishat and Chashme Shahi — terraced gardens built around sightlines and running water.'
+        title: 'Fort Kochi',
+        description: 'Colonial streets, Chinese fishing nets, a working spice market and the best café culture in the south.'
       },
       {
-        title: 'Kashmiri kitchens',
-        description: 'Wazwan, harissa on a cold morning, and nun chai poured from a samovar in a shopfront in Srinagar.'
+        title: 'Food worth planning around',
+        description: 'Appam and stew, Syrian-Christian beef fry, Malabar biryani and fish grilled the hour it was landed.'
       }
     ],
     experiences: [
-      'Shikara ride and a night on a cedar houseboat',
-      'Gondola to Apharwat Peak in Gulmarg',
-      'Day walk to Aru and Betaab valleys from Pahalgam',
-      'Saffron fields and spice tasting in Pampore',
-      'Papier-mâché and walnut wood workshops in the old city'
+      'Overnight houseboat through the Alleppey backwaters',
+      'Tea estate walk and tasting near Munnar',
+      'Kathakali performance and a spice-market walk in Kochi',
+      'Periyar boat safari and a bamboo raft morning',
+      'Ayurvedic treatment at a certified centre'
     ],
     travelTips: [
-      'Carry a government photo ID — it is checked at several points along the highway.',
-      'Mobile data can be patchy outside Srinagar; download offline maps before you travel.',
-      'Layers work better than one heavy jacket. Evenings are cold even in summer.',
-      'Fix shikara and pony rates before you start, and keep small cash for the markets.'
+      'Book a smaller houseboat — the large ones stay on the main channel and miss the narrow canals.',
+      'Munnar is cold at night year round. Pack one warm layer even in April.',
+      'Kochi is the most convenient arrival airport for the classic loop; Trivandrum suits a southern beach trip.',
+      'Most Ayurvedic packages need a minimum of seven days to do anything meaningful.'
     ],
     faqs: [
       {
-        question: 'Is Kashmir safe for travellers right now?',
+        question: 'Is one night enough on a houseboat?',
         answer:
-          'The main tourist circuit — Srinagar, Gulmarg, Pahalgam and Sonamarg — sees visitors through the year and is routinely travelled. We track local advisories before every departure and will tell you plainly if a route needs to change.'
+          'For most travellers, yes. You board at midday, cruise through the afternoon, moor overnight and disembark after breakfast — a second night mostly repeats the first.'
       },
       {
-        question: 'How many days do I need in Kashmir?',
+        question: 'Munnar or Wayanad?',
         answer:
-          'Six to eight days lets you spend two nights in Srinagar and two each in Gulmarg and Pahalgam without spending your holiday in the car. Five days works if you drop one of the valleys.'
+          'Munnar for tea landscapes and easy access from Kochi. Wayanad for forest, wildlife and a quieter, less built-up feel.'
       },
       {
-        question: 'When does it snow in Gulmarg?',
+        question: 'Does Kerala work during the monsoon?',
         answer:
-          'Reliable snow usually arrives by late December and lasts into March. January and February are the strongest months for skiing.'
+          'It can be wonderful if you go for the rain, the greenery and Ayurveda rather than for beaches. We adjust the route to avoid the most flood-prone stretches.'
       },
       {
-        question: 'Can we travel to Kashmir with young children or elderly parents?',
+        question: 'Is Kerala a good destination with small children?',
         answer:
-          'Yes. We keep driving days short, book stays with lifts or ground-floor rooms where needed, and swap pony rides for gentler alternatives.'
+          'One of the best. Short drives, calm water, good hospitals within reach and food that is easy to adapt.'
       }
     ],
-    featured: true,
+    featured: false,
     seo: {
-      title: 'Kashmir Travel Guide — Tours, Best Time to Visit & Itineraries',
+      title: 'Kerala Travel Guide — Backwaters, Munnar & Best Time to Visit',
       description:
-        'Plan a Kashmir trip with Pravaah: Dal Lake houseboats, Gulmarg meadows, Pahalgam valleys and Sonamarg glaciers, with the best time to visit and custom itineraries.'
+        'Plan a Kerala trip with Pravaah: Alleppey houseboats, Munnar tea country, Fort Kochi and Periyar, with seasons, tips and custom itineraries.'
     }
   },
 
   {
-    slug: 'himachal-pradesh',
-    name: 'Himachal Pradesh',
-    state: 'Himachal Pradesh',
-    region: 'north-india',
-    tagline: 'River valleys and quiet ridges',
+    slug: 'andaman-nicobar-islands',
+    name: 'Andaman & Nicobar Islands',
+    state: 'Andaman & Nicobar Islands',
+    region: 'islands',
+    tagline: 'Clear water, white sand and coral reefs',
     description:
-      'Deodar forests, glacial rivers and hill towns that reward slow travel — from the Parvati valley to the edge of Spiti.',
+      'White-sand beaches on Havelock and Neil, some of the clearest water in India and coral reefs you can reach from the shore.',
     overview: [
-      'Himachal is the easiest doorway into the Indian Himalaya. Within a day of Delhi you are in cedar forest, listening to a river that has not slowed down since the glacier.',
-      'The state splits neatly into two trips. The green side — Shimla, Kullu, Manali, Tirthan and Parvati — is soft, forested and comfortable in almost any season. The high side — Spiti, Kinnaur and Lahaul — is cold desert, monasteries and altitude, and needs planning around the road openings.'
+      'The Andamans sit far out in the Bay of Bengal, closer to Myanmar than to mainland India — a chain of forested islands ringed by coral reef, with beaches that still empty out by late afternoon.',
+      'Most trips start in Sri Vijaya Puram (Port Blair) for the history of the Cellular Jail, then take the ferry to Swaraj Dweep (Havelock) for Radhanagar beach and the dive sites, and on to quiet Shaheed Dweep (Neil). We plan the ferries, the stays and the time in the water so the islands feel unhurried rather than like a ticket counter.'
     ],
-    image: 'photo-1609920658906-8223bd289001',
-    heroImage: 'photo-1609920658906-8223bd289001',
+    image: 'photo-1559128010-7c1ad6e1b6a5',
+    heroImage: 'photo-1586861635167-e5223aadc9fe',
     gallery: [
-      'photo-1418065460487-3e41a6c84dc5',
-      'photo-1506905925346-21bda4d32df4',
-      'photo-1533240332313-0db49b459ad6',
-      'photo-1504280390367-361c6d9f38f4'
+      'photo-1544551763-46a013bb70d5',
+      'photo-1540541338287-41700207dee6',
+      'photo-1507525428034-b723cf961d3e',
+      'photo-1519046904884-53103b34b206'
     ],
-    categories: ['Mountains', 'Adventure', 'Weekend', 'Honeymoon', 'Family'],
-    bestTimeToVisit: 'March to June, and September to November',
-    idealDuration: '5 – 9 days',
+    categories: ['Beaches', 'Honeymoon', 'Adventure', 'Family'],
+    bestTimeToVisit: 'October to May',
+    idealDuration: '6 – 7 days',
     seasons: [
       {
-        window: 'March – June',
-        label: 'Clear and green',
-        description: 'Best all-round window. Rhododendron in the lower hills, snow still visible on the high passes.'
+        window: 'October – December',
+        label: 'Seas settling',
+        description: 'The monsoon has passed, the islands are green and visibility underwater keeps improving.'
       },
       {
-        window: 'July – August',
+        window: 'January – March',
+        label: 'Peak season',
+        description: 'Calm seas, dry days and the best diving conditions. Book ferries and beach stays well ahead.'
+      },
+      {
+        window: 'April – May',
+        label: 'Warm and clear',
+        description: 'Hot and humid, but the water is at its clearest and the crowds thin out.'
+      },
+      {
+        window: 'June – September',
         label: 'Monsoon',
-        description: 'Lush and empty, but landslides are common. Good for Spiti, which sits in the rain shadow.'
-      },
-      {
-        window: 'September – November',
-        label: 'Post-monsoon',
-        description: 'The clearest skies of the year and comfortable trekking weather before the cold sets in.'
-      },
-      {
-        window: 'December – February',
-        label: 'Winter',
-        description: 'Snow in Manali, Narkanda and Kufri. Many high roads including Spiti via Kunzum stay closed.'
+        description: 'Heavy rain and rough seas. Ferries are often cancelled and water sports are largely suspended.'
       }
     ],
     whyVisit: [
       {
-        title: 'The Tirthan and Parvati valleys',
-        description: 'Riverside stays, trout streams and village walks that most itineraries drive straight past.'
+        title: 'Radhanagar beach',
+        description: 'The long, white curve of sand on Havelock, backed by tall forest and famous for its sunsets.'
       },
       {
-        title: 'Old Manali and the Solang road',
-        description: 'Apple orchards, cafés in wooden houses, and the climb towards Rohtang when the pass is open.'
+        title: 'Coral reefs from the shore',
+        description: 'Snorkelling and beginner scuba dives off Elephant beach and around Havelock, with reef fish in waist-deep water.'
       },
       {
-        title: 'Monasteries at altitude',
-        description: 'Key, Dhankar and Tabo in Spiti — some of the oldest continuously used monasteries in the Himalaya.'
+        title: 'The Cellular Jail',
+        description: 'The colonial prison in Sri Vijaya Puram where freedom fighters were held, and its evening light-and-sound show.'
       },
       {
-        title: 'Walkable trails for every level',
-        description: 'From a two-hour forest walk in Shoja to the multi-day Hampta Pass crossing.'
+        title: 'Baratang',
+        description: 'Mangrove creeks by boat and a short forest walk to the limestone caves, on a long day out from Sri Vijaya Puram.'
       }
     ],
     experiences: [
-      'Riverside stay in the Tirthan valley',
-      'Great Himalayan National Park guided day trek',
-      'Sunrise at Jalori Pass and the walk to Serolsar Lake',
-      'Spiti circuit via Kinnaur with monastery stays',
-      'Paragliding at Bir Billing'
+      'Sunset on Radhanagar beach, Swaraj Dweep (Havelock)',
+      'A first scuba dive or snorkelling session at Elephant beach',
+      'The Cellular Jail and its light-and-sound show',
+      'Mangrove creeks and the limestone caves of Baratang',
+      'Natural rock formations and quiet beaches on Shaheed Dweep (Neil)'
     ],
     travelTips: [
-      'Night buses and taxis from Delhi save a day, but book a seat on the left for the valley views.',
-      'For Spiti, build in two nights at moderate altitude before you cross 4,000m.',
-      'Mountain roads run on daylight. We plan driving days to finish before dark.',
-      'Cash still matters in smaller villages — ATMs thin out past Kaza and Sangla.'
+      'Book private ferries such as Makruzz or ITT Majestic early in peak season — they sell out and set the shape of the trip.',
+      'Foreign nationals need a Restricted Area Permit for some islands; it is issued on arrival at Sri Vijaya Puram for the main tourist islands.',
+      'Mobile signal and card payments are patchy on Havelock and Neil. Carry cash.',
+      'Use reef-safe sunscreen and do not touch or stand on coral — it is protected by law.'
     ],
     faqs: [
       {
-        question: 'Shimla, Manali or somewhere quieter?',
+        question: 'How do we get to the Andamans?',
         answer:
-          'If it is your first trip, Manali gives you the best mix of access and scenery. If you want quiet, we would point you to Tirthan, Shoja or Jibhi instead — same forest, a fraction of the traffic.'
+          'Fly into Sri Vijaya Puram (Port Blair), with direct flights from Chennai, Kolkata, Delhi and Bengaluru. Havelock and Neil are reached by ferry from there.'
       },
       {
-        question: 'When is Rohtang Pass open?',
+        question: 'Can non-swimmers try scuba diving?',
         answer:
-          'Usually May to early November, subject to weather and a daily permit quota. The Atal Tunnel keeps Lahaul accessible for much of the year even when the pass is shut.'
+          'Yes. Introductory dives are done in shallow water with an instructor holding on to you throughout — no swimming or prior experience needed.'
       },
       {
-        question: 'Is Spiti suitable for first-time high-altitude travellers?',
+        question: 'How many days do we need?',
         answer:
-          'Yes, with a paced itinerary. We route via Kinnaur so you gain altitude gradually, and we keep oxygen in the vehicle throughout.'
+          'Six to seven days covers Sri Vijaya Puram, three nights on Havelock and a night or two on Neil without rushing the ferries.'
       },
       {
-        question: 'Can Himachal be done as a long weekend?',
+        question: 'Is it a good honeymoon destination?',
         answer:
-          'Shimla, Bir, Kasol and Tirthan all work as three- to four-day trips from Delhi or Chandigarh. Spiti does not — plan nine days or more.'
+          'One of the best in India — quiet beaches, beach-front stays and sunsets, with enough to do in the water that the days never drag.'
       }
     ],
     featured: true,
     seo: {
-      title: 'Himachal Pradesh Travel Guide — Tours, Best Time to Visit & Trips',
+      title: 'Andaman & Nicobar Islands Travel Guide — Havelock, Neil & Best Time to Visit',
       description:
-        'Plan a Himachal Pradesh trip with Pravaah: Manali, Tirthan, Parvati valley and the Spiti circuit, with seasons, trek options and custom itineraries.'
+        'Plan an Andaman trip with Pravaah: Radhanagar beach on Havelock, Neil island, scuba and snorkelling at Elephant beach, the Cellular Jail and Baratang caves.'
     }
   },
 
@@ -584,108 +588,109 @@ export const destinations: Destination[] = [
   },
 
   {
-    slug: 'northeast-india',
-    name: 'Northeast India',
-    state: 'Meghalaya, Assam & Nagaland',
-    region: 'northeast-india',
-    tagline: 'Living roots and river islands',
+    slug: 'kashmir',
+    name: 'Kashmir',
+    state: 'Jammu & Kashmir',
+    region: 'north-india',
+    tagline: 'Meadows, water and light',
     description:
-      'Waterfall country in Meghalaya, tea estates along the Brahmaputra and some of the least-travelled roads in India.',
+      'Alpine meadows, houseboats on still water and a valley that changes colour with every month of the year.',
     overview: [
-      'The northeast is where India gets genuinely remote. Meghalaya alone holds the wettest places on earth, root bridges grown across rivers, and limestone caves that go on for kilometres.',
-      'Most first trips combine Meghalaya with Assam: Shillong and Cherrapunji for the gorges and waterfalls, then Kaziranga for rhino country and a tea estate on the way back. Roads are slow, distances deceptive, and the payoff is that you will barely see another itinerary like yours.'
+      'Kashmir is the kind of place that rearranges your sense of scale. Snow lines sit above pine forests, saffron fields run flat to the horizon, and the whole valley seems to slow down around the Jhelum.',
+      'A week here moves between three moods: the water and gardens of Srinagar, the meadows of Gulmarg and Pahalgam, and the high road to Sonamarg where the glaciers begin. It rewards travellers who leave room in the schedule for a long lunch and an unplanned detour.'
     ],
-    image: 'photo-1470071459604-3b5ec3a7fe05',
-    heroImage: 'photo-1470071459604-3b5ec3a7fe05',
+    image: 'photo-1598091383021-15ddea10925d',
+    heroImage: 'photo-1598091383021-15ddea10925d',
     gallery: [
-      'photo-1433086966358-54859d0ed716',
-      'photo-1469474968028-56623f02e42e',
-      'photo-1447752875215-b2761acb3c5d',
-      'photo-1441974231531-c6227db76b6e'
+      'photo-1501785888041-af3ef285b470',
+      'photo-1476514525535-07fb3b4ae5f1',
+      'photo-1626621341517-bbf3d9990a23',
+      'photo-1544735716-392fe2489ffa'
     ],
-    categories: ['Adventure', 'Wildlife', 'Mountains', 'Family'],
-    bestTimeToVisit: 'October to April',
-    idealDuration: '7 – 10 days',
+    categories: ['Mountains', 'Honeymoon', 'Adventure', 'Family'],
+    bestTimeToVisit: 'March to October, and December to February for snow',
+    idealDuration: '6 – 8 days',
     seasons: [
       {
-        window: 'October – November',
-        label: 'Clearest months',
-        description: 'Rain has stopped, waterfalls are still full and visibility across the gorges is at its best.'
+        window: 'March – May',
+        label: 'Blossom season',
+        description: 'Almond and tulip blooms in Srinagar, mild days and cold mornings. The valley at its greenest.'
+      },
+      {
+        window: 'June – August',
+        label: 'High meadows',
+        description: 'Sonamarg and Gulmarg fully open, ideal for treks, pony rides and long drives to Aru and Betaab.'
+      },
+      {
+        window: 'September – October',
+        label: 'Chinar autumn',
+        description: 'Golden chinar leaves, saffron harvest in Pampore, and the clearest mountain views of the year.'
       },
       {
         window: 'December – February',
-        label: 'Cool and dry',
-        description: 'Comfortable days, cold nights and the best window for Kaziranga safaris.'
-      },
-      {
-        window: 'March – April',
-        label: 'Spring',
-        description: 'Orchids in bloom, warm afternoons and thinner crowds before the rains return.'
-      },
-      {
-        window: 'May – September',
-        label: 'Monsoon',
-        description: 'Extraordinary rainfall in Cherrapunji. Landslides are frequent and many treks are unsafe.'
+        label: 'Snow',
+        description: 'Gulmarg turns into a ski destination. Expect road closures and pack for real winter.'
       }
     ],
     whyVisit: [
       {
-        title: 'Living root bridges',
-        description: 'Ficus roots trained across streams over decades — the double-decker at Nongriat is a full day of walking.'
+        title: 'Mornings on Dal Lake',
+        description:
+          'A shikara ride before the mist lifts, past floating vegetable gardens and kitchens working on the water.'
       },
       {
-        title: 'Kaziranga',
-        description: 'Grassland and one of the densest populations of one-horned rhino anywhere, best seen at first light.'
+        title: 'Meadows above the treeline',
+        description: 'Gulmarg, Yusmarg and Doodhpathri are walkable, wide-open and quiet outside of peak hours.'
       },
       {
-        title: 'Mawlynnong and the clean villages',
-        description: 'Khasi villages built around bamboo waste systems, communal gardens and genuine local hospitality.'
+        title: 'Mughal garden architecture',
+        description: 'Shalimar, Nishat and Chashme Shahi — terraced gardens built around sightlines and running water.'
       },
       {
-        title: 'Majuli',
-        description: 'The river island on the Brahmaputra, with satras, mask-makers and almost no traffic.'
+        title: 'Kashmiri kitchens',
+        description: 'Wazwan, harissa on a cold morning, and nun chai poured from a samovar in a shopfront in Srinagar.'
       }
     ],
     experiences: [
-      'Trek to the double-decker living root bridge at Nongriat',
-      'Dawn jeep safari in Kaziranga National Park',
-      'Kayak or boat on the turquoise Umngot river at Dawki',
-      'Tea estate stay and factory walk near Jorhat',
-      'Mask-making workshop on Majuli island'
+      'Shikara ride and a night on a cedar houseboat',
+      'Gondola to Apharwat Peak in Gulmarg',
+      'Day walk to Aru and Betaab valleys from Pahalgam',
+      'Saffron fields and spice tasting in Pampore',
+      'Papier-mâché and walnut wood workshops in the old city'
     ],
     travelTips: [
-      'Inner Line Permits are required for Arunachal Pradesh — we arrange these in advance.',
-      'Roads are slow. Assume an average of 35–40 km/h when planning a day.',
-      'The Nongriat descent is roughly 3,000 steps each way. Good shoes are not optional.',
-      'Carry cash. Card acceptance drops off quickly outside Shillong and Guwahati.'
+      'Carry a government photo ID — it is checked at several points along the highway.',
+      'Mobile data can be patchy outside Srinagar; download offline maps before you travel.',
+      'Layers work better than one heavy jacket. Evenings are cold even in summer.',
+      'Fix shikara and pony rates before you start, and keep small cash for the markets.'
     ],
     faqs: [
       {
-        question: 'How do we get to the northeast?',
+        question: 'Is Kashmir safe for travellers right now?',
         answer:
-          'Guwahati is the main gateway, with direct flights from Delhi, Kolkata, Mumbai and Bengaluru. Shillong is a three-hour drive from the airport.'
+          'The main tourist circuit — Srinagar, Gulmarg, Pahalgam and Sonamarg — sees visitors through the year and is routinely travelled. We track local advisories before every departure and will tell you plainly if a route needs to change.'
       },
       {
-        question: 'Is the root bridge trek difficult?',
+        question: 'How many days do I need in Kashmir?',
         answer:
-          'It is a steep stepped descent and climb, around five to six hours round trip. Manageable at a steady pace if you are reasonably fit, but not suitable for weak knees.'
+          'Six to eight days lets you spend two nights in Srinagar and two each in Gulmarg and Pahalgam without spending your holiday in the car. Five days works if you drop one of the valleys.'
       },
       {
-        question: 'Which permits do we need?',
+        question: 'When does it snow in Gulmarg?',
         answer:
-          'Meghalaya and Assam need none for Indian citizens. Arunachal Pradesh requires an Inner Line Permit, and foreign nationals need a Protected Area Permit — both handled by us.'
+          'Reliable snow usually arrives by late December and lasts into March. January and February are the strongest months for skiing.'
       },
       {
-        question: 'Can Kaziranga and Meghalaya be combined?',
+        question: 'Can we travel to Kashmir with young children or elderly parents?',
         answer:
-          'Yes, and it is the trip we recommend most. Seven days covers Shillong, Cherrapunji, Dawki and two nights at Kaziranga comfortably.'
+          'Yes. We keep driving days short, book stays with lifts or ground-floor rooms where needed, and swap pony rides for gentler alternatives.'
       }
     ],
     featured: true,
     seo: {
-      title: 'Northeast India Travel Guide — Meghalaya, Assam & Best Time to Visit',
+      title: 'Kashmir Travel Guide — Tours, Best Time to Visit & Itineraries',
       description:
-        'Plan a Northeast India trip with Pravaah: living root bridges, Cherrapunji waterfalls, Dawki, Kaziranga safaris and Majuli island.'
+        'Plan a Kashmir trip with Pravaah: Dal Lake houseboats, Gulmarg meadows, Pahalgam valleys and Sonamarg glaciers, with the best time to visit and custom itineraries.'
     }
   }
 ]

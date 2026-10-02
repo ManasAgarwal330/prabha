@@ -1,8 +1,21 @@
 <script setup lang="ts">
-import { articles, formatDate, sortedArticles } from '~/data/blog'
+import { formatDate, journalCategoriesWithArticles, sortedArticles } from '~/data/blog'
 
-const categories = ['All', ...Array.from(new Set(articles.map((article) => article.category)))]
+const categories = ['All', ...journalCategoriesWithArticles.map((category) => category.name)]
 const activeCategory = ref('All')
+
+/** Header links open the page on one category, e.g. /journals?category=destination-guides. */
+const route = useRoute()
+const categoryFromQuery = () =>
+  journalCategoriesWithArticles.find((category) => category.slug === route.query.category)?.name ?? 'All'
+
+// Applied after mount so the prerendered HTML (always "All") hydrates cleanly.
+onMounted(() => {
+  activeCategory.value = categoryFromQuery()
+})
+watch(() => route.query.category, () => {
+  activeCategory.value = categoryFromQuery()
+})
 
 const [lead, ...rest] = sortedArticles
 
@@ -72,9 +85,9 @@ useJsonLd(breadcrumbLd(crumbs))
       </div>
     </section>
 
-    <!-- Travel stories -->
-    <section id="travel-stories" class="container-pravaah scroll-mt-24 pb-14 pt-16 lg:pb-16">
-      <h2 class="sr-only">Travel stories</h2>
+    <!-- All stories -->
+    <section id="stories" class="container-pravaah scroll-mt-24 pb-14 pt-16 lg:pb-16">
+      <h2 class="sr-only">All stories</h2>
       <div class="flex flex-wrap gap-2 border-y border-hairline py-5" role="group" aria-label="Filter stories by category">
         <button
           v-for="category in categories"

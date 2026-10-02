@@ -5,9 +5,10 @@ export interface EnquiryPayload {
   destination: string
   travelDates: string
   travellers: string
+  tripType: string
   budget: string
   message: string
-  /** Where the enquiry came from, e.g. `stays:pi-palace-bhimtal`. */
+  /** Where the enquiry came from, e.g. `stays:naini-retreat-nainital`. */
   source: string
 }
 

@@ -5,7 +5,7 @@ import type { ImageRef } from '~/types'
 export interface PageSeoInput {
   title: string
   description: string
-  /** Path only, e.g. `/stays/pi-palace-bhimtal`. Canonical + OG url are derived from it. */
+  /** Path only, e.g. `/stays/naini-retreat-nainital`. Canonical + OG url are derived from it. */
   path: string
   image?: ImageRef
   type?: 'website' | 'article'

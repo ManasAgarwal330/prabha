@@ -38,7 +38,7 @@ export interface SeasonNote {
   description: string
 }
 
-export type RegionSlug = 'india' | 'north-india' | 'northeast-india' | 'west-india'
+export type RegionSlug = 'india' | 'north-india' | 'west-india' | 'south-india' | 'islands'
 
 export interface Region {
   slug: RegionSlug
@@ -79,7 +79,7 @@ export interface ItineraryDay {
   meals?: string
 }
 
-export type SectionKey = 'stays' | 'experiences' | 'events'
+export type SectionKey = 'stays' | 'experiences' | 'expeditions' | 'events'
 
 export interface ListingCategory {
   slug: string
@@ -87,7 +87,7 @@ export interface ListingCategory {
   description: string
 }
 
-/** A top-level offering tab — Stays, Experiences or Events. */
+/** A top-level offering tab — Stays, Experiences, Expeditions or Events. */
 export interface Section {
   key: SectionKey
   name: string
@@ -106,7 +106,7 @@ export interface KeyFact {
   value: string
 }
 
-/** A single stay, experience or event with its own detail page. */
+/** A single stay, experience, expedition or event with its own detail page. */
 export interface Listing {
   slug: string
   section: SectionKey

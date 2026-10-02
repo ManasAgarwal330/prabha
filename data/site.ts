@@ -1,4 +1,7 @@
-import type { Step, ValueProp } from '~/types'
+import type { SectionKey, Step, ValueProp } from '~/types'
+import { sections } from '~/data/sections'
+import { categoriesWithListings } from '~/data/listings'
+import { journalCategoriesWithArticles } from '~/data/blog'
 
 /**
  * Single source of truth for brand, contact and navigation.
@@ -43,62 +46,80 @@ export interface NavItem {
   label: string
   to: string
   children?: { label: string; to: string }[]
+  /** Last link in the dropdown, back to the tab's own page. Defaults to "All <label>". */
+  allLabel?: string
+  /** Shown last on desktop, styled as the header's call-to-action button. */
+  highlight?: boolean
 }
+
+/** The kinds of trip under Plan Your Journey; also the "Type of trip" options in the enquiry form. */
+export const tripTypes = [
+  { slug: 'custom', label: 'Custom Journeys' },
+  { slug: 'family', label: 'Family Travel' },
+  { slug: 'couple-honeymoon', label: 'Couple / Honeymoon' },
+  { slug: 'group', label: 'Group Travel' },
+  { slug: 'corporate', label: 'Corporate Travel' }
+]
+
+/** A listing tab. Its dropdown shows only the categories that have something in them. */
+const sectionNav = (key: SectionKey): NavItem => ({
+  label: sections[key].name,
+  to: sections[key].path,
+  children: categoriesWithListings(key).map((category) => ({
+    label: category.name,
+    to: `${sections[key].path}#${category.slug}`
+  }))
+})
 
 /** The main tabs. Children are the sub-categories shown in each dropdown. */
 export const primaryNav: NavItem[] = [
-  {
-    label: 'Stays',
-    to: '/stays',
-    children: [
-      { label: 'Hotels & Resorts', to: '/stays#hotels-resorts' },
-      { label: 'Villas & Homestays', to: '/stays#villas-homestays' },
-      { label: 'Camps & Camping', to: '/stays#camps-camping' },
-      { label: 'Experiential Stays', to: '/stays#experiential-stays' }
-    ]
-  },
-  {
-    label: 'Experiences',
-    to: '/experiences',
-    children: [
-      { label: 'Adventure', to: '/experiences#adventure' },
-      { label: 'Treks', to: '/experiences#treks' },
-      { label: '4x4 / Off-Road', to: '/experiences#off-road' },
-      { label: 'Culture & Heritage', to: '/experiences#culture-heritage' },
-      { label: 'Offbeat Experiences', to: '/experiences#offbeat' }
-    ]
-  },
-  {
-    label: 'Events',
-    to: '/events',
-    children: [{ label: 'Wellness Retreats', to: '/events#wellness-retreats' }]
-  },
+  sectionNav('stays'),
+  sectionNav('experiences'),
+  sectionNav('expeditions'),
+  sectionNav('events'),
   {
     label: 'Destinations',
     to: '/destinations',
     children: [
-      { label: 'India', to: '/destinations#india' },
-      { label: 'North India', to: '/destinations#north-india' },
-      { label: 'Northeast India', to: '/destinations#northeast-india' },
-      { label: 'West India', to: '/destinations#west-india' }
+      { label: 'Uttarakhand', to: '/destinations/uttarakhand' },
+      { label: 'Kerala', to: '/destinations/kerala' },
+      { label: 'Andaman & Nicobar Islands', to: '/destinations/andaman-nicobar-islands' },
+      { label: 'Rajasthan', to: '/destinations/rajasthan' },
+      { label: 'Goa', to: '/destinations/goa' },
+      { label: 'Kashmir', to: '/destinations/kashmir' }
     ]
   },
   {
     label: 'Journals',
     to: '/journals',
-    children: [{ label: 'Travel Stories', to: '/journals#travel-stories' }]
-  }
+    children: journalCategoriesWithArticles.map((category) => ({
+      label: category.name,
+      to: `/journals?category=${category.slug}#stories`
+    }))
+  },
+  {
+    label: 'Plan Your Journey',
+    to: '/plan-my-trip',
+    allLabel: 'Start planning',
+    highlight: true,
+    children: [
+      ...tripTypes.map((type) => ({ label: type.label, to: `/plan-my-trip?trip=${type.slug}#enquiry` })),
+      { label: 'Talk to a Travel Designer', to: '/contact' }
+    ]
+  },
+  // About is out of scope for now: /about still exists but nothing links to it.
+  { label: 'Contact', to: '/contact' }
 ]
 
 export const footerNav = {
   company: [
-    { label: 'About', to: '/about' },
     { label: 'Contact', to: '/contact' },
     { label: 'Plan My Trip', to: '/plan-my-trip' }
   ],
   explore: [
     { label: 'Stays', to: '/stays' },
     { label: 'Experiences', to: '/experiences' },
+    { label: 'Expeditions', to: '/expeditions' },
     { label: 'Events', to: '/events' },
     { label: 'Destinations', to: '/destinations' },
     { label: 'Journals', to: '/journals' }
@@ -119,7 +140,7 @@ export const brandStory = {
     'We are a small studio of travellers, drivers, cooks, guides and hosts who have spent years on these roads. We plan the kind of trip we would want for ourselves: unhurried mornings, a route that makes sense, and people worth meeting at the other end.'
   ],
   stats: [
-    { value: '9', label: 'Handpicked stays' },
+    { value: '12', label: 'Handpicked stays' },
     { value: '40+', label: 'Local partners & guides' },
     { value: '100%', label: 'Custom-built itineraries' }
   ]

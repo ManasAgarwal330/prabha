@@ -13,6 +13,9 @@ const openDropdown = ref<number | null>(null)
 const mobileExpanded = ref<number | null>(null)
 const closeButton = ref<HTMLButtonElement | null>(null)
 
+/** Desktop keeps the highlighted tab (Plan Your Journey) last, where it stands in for the call-to-action button. */
+const desktopNav = [...primaryNav.filter((item) => !item.highlight), ...primaryNav.filter((item) => item.highlight)]
+
 /** Full-bleed photo that sits faintly behind the mobile menu. */
 const MENU_IMAGE = 'photo-1506905925346-21bda4d32df4'
 
@@ -90,9 +93,9 @@ const onKeydown = (event: KeyboardEvent) => {
           <PravaahLogo :tone="transparent ? 'light' : 'brand'" :size="scrolled ? 'sm' : 'md'" />
         </NuxtLink>
 
-        <nav class="hidden items-center gap-1 lg:flex xl:gap-2" aria-label="Primary">
+        <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
           <div
-            v-for="(item, index) in primaryNav"
+            v-for="(item, index) in desktopNav"
             :key="item.to"
             class="relative"
             @mouseenter="openDropdown = index"
@@ -100,28 +103,44 @@ const onKeydown = (event: KeyboardEvent) => {
             @focusout="closeDropdownOnFocusOut"
           >
             <div
-              class="flex items-center rounded-pill pl-3.5 pr-1.5 transition-colors"
-              :class="[
-                transparent ? 'hover:bg-white/10' : 'hover:bg-brand/[0.06]',
-                isActive(item.to) ? (transparent ? 'bg-white/10' : 'bg-brand/[0.08]') : ''
-              ]"
+              class="flex items-center rounded-pill transition-colors"
+              :class="
+                item.highlight
+                  ? [transparent ? 'btn btn-light' : 'btn-primary', 'ml-2 gap-0 py-1 pl-4 pr-2']
+                  : [
+                      'pl-3.5 pr-1.5',
+                      transparent ? 'hover:bg-white/10' : 'hover:bg-brand/[0.06]',
+                      isActive(item.to) ? (transparent ? 'bg-white/10' : 'bg-brand/[0.08]') : ''
+                    ]
+              "
             >
               <NuxtLink
                 :to="item.to"
-                class="py-2 text-sm font-medium transition-colors"
-                :class="[
-                  transparent ? 'text-white/90 hover:text-white' : 'text-ink-soft hover:text-ink',
-                  isActive(item.to) && !transparent ? 'text-accent' : ''
-                ]"
+                class="inline-flex items-center gap-2 whitespace-nowrap py-2 text-sm font-medium transition-colors"
+                :class="
+                  item.highlight
+                    ? ''
+                    : [
+                        transparent ? 'text-white/90 hover:text-white' : 'text-ink-soft hover:text-ink',
+                        isActive(item.to) && !transparent ? 'text-accent' : ''
+                      ]
+                "
                 @focus="openDropdown = index"
               >
+                <Sparkles v-if="item.highlight" class="h-4 w-4" aria-hidden="true" />
                 {{ item.label }}
               </NuxtLink>
               <button
                 v-if="item.children?.length"
                 type="button"
                 class="inline-flex h-6 w-5 items-center justify-center rounded-sm transition-colors"
-                :class="transparent ? 'text-white/70 hover:text-white' : 'text-ink-muted hover:text-ink'"
+                :class="
+                  item.highlight
+                    ? 'opacity-80 hover:opacity-100'
+                    : transparent
+                      ? 'text-white/70 hover:text-white'
+                      : 'text-ink-muted hover:text-ink'
+                "
                 :aria-expanded="openDropdown === index"
                 :aria-controls="`nav-menu-${index}`"
                 :aria-label="`Show ${item.label} categories`"
@@ -163,7 +182,7 @@ const onKeydown = (event: KeyboardEvent) => {
                       class="flex items-center justify-between gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-brand/[0.06]"
                       @click="openDropdown = null"
                     >
-                      All {{ item.label.toLowerCase() }}
+                      {{ item.allLabel ?? `All ${item.label.toLowerCase()}` }}
                       <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
                     </NuxtLink>
                   </li>
@@ -176,7 +195,7 @@ const onKeydown = (event: KeyboardEvent) => {
         <div class="flex items-center gap-3">
           <NuxtLink
             to="/plan-my-trip"
-            class="hidden text-sm sm:inline-flex"
+            class="hidden text-sm sm:inline-flex lg:hidden"
             :class="transparent ? 'btn btn-light' : 'btn-primary'"
           >
             <Sparkles class="h-4 w-4" aria-hidden="true" />

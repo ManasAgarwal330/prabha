@@ -2,7 +2,7 @@
 import { ArrowRight, ArrowDown, ArrowUpRight, MapPin, Star, Sparkles } from 'lucide-vue-next'
 import { destinations } from '~/data/destinations'
 import { sectionList } from '~/data/sections'
-import { featuredListings, listingsBySection } from '~/data/listings'
+import { categoriesWithListings, featuredListings, listingsBySection } from '~/data/listings'
 import { testimonials } from '~/data/testimonials'
 import { sortedArticles } from '~/data/blog'
 import { brandStory, howItWorks, site, valueProps } from '~/data/site'
@@ -21,7 +21,7 @@ const brief = ref('')
 const briefSuggestions = [
   'A slow week in the Kumaon hills with my parents…',
   'Our first Himalayan trek, sometime in October…',
-  'Hornbill festival in December, with a village stay…',
+  'Dev Deepawali on the Varanasi ghats in November…',
   'A quiet cottage near Jim Corbett for a long weekend…'
 ]
 const suggestionIndex = ref(0)
@@ -41,13 +41,15 @@ const startPlanning = () => {
 
 const gridDestinations = destinations.slice(0, 6)
 const featuredStays = featuredListings('stays').slice(0, 3)
-const featuredJourneys = featuredListings('experiences').slice(0, 3)
+/** A mix of the big trips: expeditions first, topped up with experiences. */
+const featuredJourneys = [...featuredListings('expeditions'), ...featuredListings('experiences')].slice(0, 3)
 const stories = sortedArticles.slice(0, 3)
 
 /** The four offering tabs, shown as the first thing under the hero. */
 const pillars = sectionList.map((section) => ({
   section,
-  count: listingsBySection[section.key].length
+  count: listingsBySection[section.key].length,
+  categories: categoriesWithListings(section.key)
 }))
 
 definePageMeta({ hero: true })
@@ -127,7 +129,7 @@ usePageSeo({
           class="hero-fade mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg short:mt-4 short:max-w-2xl 3xl:mx-auto"
           style="animation-delay: 0.62s"
         >
-          Handpicked stays, Himalayan treks, festivals and retreats — thoughtfully crafted journeys across India, designed around the way you want to travel.
+          Handpicked stays, Himalayan expeditions, festivals and retreats — thoughtfully crafted journeys across India, designed around the way you want to travel.
         </p>
 
         <!-- On phones "About Pravaah" leads, then the trip brief, then the popular
@@ -176,8 +178,8 @@ usePageSeo({
           <div class="hero-fade order-3 flex flex-wrap items-center gap-3 sm:order-none" style="animation-delay: 0.8s">
             <span class="ml-1 inline-flex items-center gap-1.5 text-xs text-white/70"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
             <NuxtLink to="/destinations/uttarakhand" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Uttarakhand</NuxtLink>
-            <NuxtLink to="/experiences/hornbill-festival-nagaland" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Hornbill Festival</NuxtLink>
-            <NuxtLink to="/experiences/khaliya-top-trek" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Khaliya Top</NuxtLink>
+            <NuxtLink to="/events/dev-deepawali-varanasi" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Dev Deepawali</NuxtLink>
+            <NuxtLink to="/expeditions/khaliya-top-trek" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Khaliya Top</NuxtLink>
           </div>
         </div>
         </div>
@@ -209,11 +211,11 @@ usePageSeo({
       <div class="container-pravaah">
       <SectionHeading
         eyebrow="Explore Pravaah"
-        title="Stay, explore — or simply slow down."
-        intro="Three ways to travel with us. Every one of them is planned around the people and places we know best."
+        title="Stay, explore, go further — or simply slow down."
+        intro="Four ways to travel with us. Every one of them is planned around the people and places we know best."
       />
 
-      <div class="mt-12 grid gap-4 sm:grid-cols-3 lg:gap-5">
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
         <NuxtLink
           v-for="(pillar, index) in pillars"
           :key="pillar.section.key"
@@ -226,7 +228,7 @@ usePageSeo({
             :src="pillar.section.heroImage"
             :alt="pillar.section.name"
             :ratio="3 / 4"
-            sizes="(min-width: 640px) 33vw, 100vw"
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
             class="h-full w-full"
           />
           <div
@@ -241,7 +243,7 @@ usePageSeo({
               <span class="sweep">{{ pillar.section.name }}</span>
             </h3>
             <ul class="mt-3 space-y-1 text-xs text-white/80">
-              <li v-for="category in pillar.section.categories" :key="category.slug">{{ category.name }}</li>
+              <li v-for="category in pillar.categories" :key="category.slug">{{ category.name }}</li>
             </ul>
             <span class="mt-5 inline-flex items-center gap-1.5 border-t border-white/20 pt-4 text-xs font-medium">
               Explore {{ pillar.section.name.toLowerCase() }}
@@ -290,7 +292,7 @@ usePageSeo({
         <SectionHeading
           eyebrow="Where to go"
           title="From the Kumaon Himalaya to the Rajasthan desert."
-          intro="North, northeast and west India — a small number of places we know deeply rather than thinly across the whole country."
+          intro="The Himalaya, the desert, the backwaters and the islands — a small number of places we know deeply rather than thinly across the whole country."
         />
         <NuxtLink to="/destinations" class="btn-ghost link-underline reveal shrink-0">
           All destinations
@@ -343,25 +345,21 @@ usePageSeo({
           <div class="reveal mt-6 space-y-5 text-[1.0625rem] leading-relaxed text-ink-soft">
             <p v-for="paragraph in brandStory.body" :key="paragraph">{{ paragraph }}</p>
           </div>
-          <NuxtLink to="/about" class="btn-secondary reveal mt-9">
-            More about Pravaah
-            <ArrowRight class="h-4 w-4" aria-hidden="true" />
-          </NuxtLink>
         </div>
       </div>
     </section>
 
-    <!-- Treks & experiences -->
+    <!-- Expeditions & experiences -->
     <section class="section-dark py-20 lg:py-28">
       <div class="container-pravaah">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
-            eyebrow="Treks & experiences"
+            eyebrow="Expeditions & experiences"
             title="Base camps, border valleys and the source of the Ganga."
-            intro="Fully supported treks, 4x4 journeys and festivals — planned and led by people who know the ground."
+            intro="Fully supported treks, 4x4 journeys and river expeditions — planned and led by people who know the ground."
           />
-          <NuxtLink to="/experiences" class="btn-ghost link-underline reveal shrink-0">
-            All experiences
+          <NuxtLink to="/expeditions" class="btn-ghost link-underline reveal shrink-0">
+            All expeditions
             <ArrowRight class="h-4 w-4" aria-hidden="true" />
           </NuxtLink>
         </div>

@@ -19,7 +19,7 @@ const documentTop = (el: HTMLElement) => {
 }
 
 /**
- * Where to scroll for a category link like `/stays#camps-camping`.
+ * Where to scroll for a category link like `/stays#camps-glamping`.
  *
  * The focus block runs from the section's heading to the bottom of its first
  * card, and is centred in the space below the header. When it is taller than

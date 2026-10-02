@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Check, Loader2 } from 'lucide-vue-next'
 import { destinations } from '~/data/destinations'
-import { budgetRanges, site, travellerCounts } from '~/data/site'
+import { budgetRanges, site, travellerCounts, tripTypes } from '~/data/site'
 import type { EnquiryErrors, EnquiryPayload } from '~/composables/useEnquiry'
 
 const props = withDefaults(
@@ -10,10 +10,12 @@ const props = withDefaults(
     presetDestination?: string
     /** Pre-fills "Tell us about the trip", e.g. from the home page trip brief. */
     presetMessage?: string
+    /** Pre-selects the trip type, e.g. from the Plan Your Journey menu. */
+    presetTripType?: string
     source?: string
     compact?: boolean
   }>(),
-  { presetDestination: '', presetMessage: '', source: 'contact', compact: false }
+  { presetDestination: '', presetMessage: '', presetTripType: '', source: 'contact', compact: false }
 )
 
 const form = reactive<EnquiryPayload>({
@@ -23,6 +25,7 @@ const form = reactive<EnquiryPayload>({
   destination: props.presetDestination,
   travelDates: '',
   travellers: travellerCounts[1] as string,
+  tripType: props.presetTripType,
   budget: budgetRanges[1] as string,
   message: props.presetMessage,
   source: props.source
@@ -56,6 +59,7 @@ const reset = () => {
     destination: props.presetDestination,
     travelDates: '',
     travellers: travellerCounts[1] as string,
+    tripType: props.presetTripType,
     budget: budgetRanges[1] as string,
     message: props.presetMessage
   })
@@ -197,7 +201,18 @@ const fieldClass =
           </select>
         </div>
 
-        <div class="sm:col-span-2">
+        <div>
+          <label for="enq-trip-type" class="mb-2 block text-sm font-medium text-ink">
+            Type of trip
+            <span class="font-normal text-ink-muted">(optional)</span>
+          </label>
+          <select id="enq-trip-type" v-model="form.tripType" name="tripType" :class="[fieldClass, 'border-hairline']">
+            <option value="">Not sure yet</option>
+            <option v-for="type in tripTypes" :key="type.slug" :value="type.label">{{ type.label }}</option>
+          </select>
+        </div>
+
+        <div>
           <label for="enq-budget" class="mb-2 block text-sm font-medium text-ink">Budget range</label>
           <select id="enq-budget" v-model="form.budget" name="budget" :class="[fieldClass, 'border-hairline']">
             <option v-for="range in budgetRanges" :key="range" :value="range">{{ range }}</option>

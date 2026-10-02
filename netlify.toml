@@ -22,25 +22,126 @@
   to = "/experiences"
   status = 301
 
-# Expeditions were folded into Experiences; the listing slugs did not change.
+# Treks, 4x4 and multi-day journeys moved back to Expeditions; the slugs did not change.
 [[redirects]]
-  from = "/expeditions"
-  to = "/experiences"
+  from = "/experiences/bankatiya-base-camp-trek"
+  to = "/expeditions/bankatiya-base-camp-trek"
   status = 301
 
 [[redirects]]
-  from = "/expeditions/*"
-  to = "/experiences/:splat"
+  from = "/experiences/panchachuli-base-camp-trek"
+  to = "/expeditions/panchachuli-base-camp-trek"
   status = 301
 
 [[redirects]]
-  from = "/stays/scenic-solitude-hartola"
-  to = "/stays/nirvaana-mansion-hartola"
+  from = "/experiences/khaliya-top-trek"
+  to = "/expeditions/khaliya-top-trek"
+  status = 301
+
+[[redirects]]
+  from = "/experiences/johar-valley-expedition"
+  to = "/expeditions/johar-valley-expedition"
+  status = 301
+
+[[redirects]]
+  from = "/experiences/darma-valley-expedition"
+  to = "/expeditions/darma-valley-expedition"
+  status = 301
+
+[[redirects]]
+  from = "/experiences/niti-valley-expedition"
+  to = "/expeditions/niti-valley-expedition"
+  status = 301
+
+[[redirects]]
+  from = "/experiences/flow-with-the-ganga"
+  to = "/expeditions/flow-with-the-ganga"
+  status = 301
+
+# Festivals moved from Experiences to Events; the slugs did not change.
+[[redirects]]
+  from = "/experiences/nanda-ashtami-yatra-munsiyari"
+  to = "/events/nanda-ashtami-yatra-munsiyari"
+  status = 301
+
+# Hornbill and Cherry Blossom were retired; Holi moved from Pushkar to Vrindavan & Barsana.
+[[redirects]]
+  from = "/experiences/hornbill-festival-nagaland"
+  to = "/events"
+  status = 301
+
+[[redirects]]
+  from = "/events/hornbill-festival-nagaland"
+  to = "/events"
+  status = 301
+
+[[redirects]]
+  from = "/experiences/cherry-blossom-music-festival-shillong"
+  to = "/events"
+  status = 301
+
+[[redirects]]
+  from = "/events/cherry-blossom-music-festival-shillong"
+  to = "/events"
+  status = 301
+
+[[redirects]]
+  from = "/experiences/holi-pushkar"
+  to = "/events/holi-vrindavan-barsana"
+  status = 301
+
+[[redirects]]
+  from = "/events/holi-pushkar"
+  to = "/events/holi-vrindavan-barsana"
+  status = 301
+
+# The shorter Bankatiya experience was folded into the Bankatiya Base Camp Trek.
+[[redirects]]
+  from = "/experiences/bankatiya-base-camp"
+  to = "/expeditions/bankatiya-base-camp-trek"
+  status = 301
+
+# Offbeat Experiences are hidden for now; send visitors to the 4x4 expedition for the same valley.
+[[redirects]]
+  from = "/experiences/darma-valley"
+  to = "/expeditions/darma-valley-expedition"
+  status = 302
+
+[[redirects]]
+  from = "/experiences/johar-valley"
+  to = "/expeditions/johar-valley-expedition"
+  status = 302
+
+[[redirects]]
+  from = "/experiences/niti-valley"
+  to = "/expeditions/niti-valley-expedition"
+  status = 302
+
+# Stays no longer offered.
+[[redirects]]
+  from = "/stays/pi-palace-bhimtal"
+  to = "/stays"
   status = 301
 
 [[redirects]]
   from = "/stays/ethereal-hartola"
   to = "/stays"
+  status = 301
+
+# Destinations no longer covered.
+[[redirects]]
+  from = "/destinations/himachal-pradesh"
+  to = "/destinations"
+  status = 301
+
+[[redirects]]
+  from = "/destinations/northeast-india"
+  to = "/destinations"
+  status = 301
+
+[[redirects]]
+  from = "/stays/scenic-solitude-hartola"
+  to = "/stays/nirvaana-mansion-hartola"
   status = 301
 
 [[redirects]]
@@ -51,11 +152,6 @@
 [[redirects]]
   from = "/blog/*"
   to = "/journals/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/destinations/kerala"
-  to = "/destinations"
   status = 301
 
 # Hashed build assets never change — cache them hard.

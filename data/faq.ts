@@ -45,7 +45,7 @@ export const generalFaqs: FaqItem[] = [
   {
     question: 'Do you handle permits?',
     answer:
-      'Yes — Inner Line Permits for the Darma, Johar and Niti valleys and for Nagaland, trek and forest permits, and protected area permits for foreign nationals are all arranged as part of the booking.'
+      'Yes — Inner Line Permits for the Darma, Johar and Niti valleys and for the Adi Kailash yatra, trek and forest permits, and protected area permits for foreign nationals are all arranged as part of the booking.'
   },
   {
     question: 'Can you work to a specific budget?',

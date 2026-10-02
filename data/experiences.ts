@@ -1,185 +1,287 @@
 import type { Listing } from '~/types'
 
 /**
- * Experiences — journeys built around one thing worth doing: a base camp, a trek,
- * a 4x4 route, a festival, a pilgrimage or a remote valley.
+ * Experiences — journeys built around one thing worth doing: a river, a safari,
+ * a flight or a pilgrimage.
  * Day-by-day plans are indicative; the team confirms routes against season and conditions.
  */
 export const experiences: Listing[] = [
   {
-    slug: 'bankatiya-base-camp',
+    slug: 'rishikesh-white-water-rafting',
     section: 'experiences',
-    category: 'adventure',
-    title: 'Bankatiya Base Camp',
-    location: 'Johar valley, beyond Munsiyari',
+    category: 'river-rafting',
+    title: 'Rishikesh White Water Rafting',
+    location: 'Shivpuri to Rishikesh, Ganga',
     destinationSlug: 'uttarakhand',
-    tagline: 'Nights among the high peaks',
+    tagline: 'The Ganga, the fast way',
     description:
-      'Walk into a Himalayan base camp, sleep under the glaciers and wake up surrounded by snow peaks — fully guided and supported.',
+      'A guided white water run down the Ganga from Shivpuri to Rishikesh — named rapids, a cliff-jump stop and a riverside camp if you want to stay the night.',
     overview: [
-      'Bankatiya is a high camp in the Kumaon Himalaya, reached on foot through forest, meadow and moraine from the roadhead beyond Munsiyari. There are no buildings and no signal — just tents, a kitchen, and a ring of snow peaks that turn gold at sunset.',
-      'This is our base camp experience for people who want the feeling of being high in the mountains without committing to a full expedition. We keep the walking days manageable, handle the camp, the food and the logistics, and give you time at the top to actually take it in. If it gets under your skin, the full Bankatiya Base Camp Trek is waiting.'
+      'Above Rishikesh the Ganga is still a mountain river — cold, green and fast, squeezed between forested ridges. The stretch from Shivpuri down to Rishikesh is the classic run, around 16 km of grade II and III rapids with names like Roller Coaster, Golf Course and Club House, broken up by long calm pools where you can drift and swim.',
+      'We raft with certified river guides and operators we know personally, with proper safety kit, a briefing on the bank and a safety kayaker on the water. Make it a half-day on the river, or stay the night at a riverside camp on the white-sand beaches upstream and raft in the morning when the river is quiet.'
     ],
-    image: 'photo-1683700914015-92be0e442390',
+    image: 'photo-1530866495561-507c9faab2ed',
     gallery: [
-      'photo-1683700914859-27447d1b9b66',
-      'photo-1608942025318-1191eeade556',
-      'photo-1685776999606-59a94b948ef2',
-      'photo-1683700912945-1cc17effa0bb'
+      'photo-1572963912807-a3609ed653c3',
+      'photo-1720819029162-8500607ae232',
+      'photo-1487730116645-74489c95b41b',
+      'photo-1709623868300-e3b78cad10e1'
     ],
     facts: [
-      { label: 'Duration', value: '5 – 6 days ex Munsiyari' },
-      { label: 'Level', value: 'Moderate' },
-      { label: 'Starts from', value: 'Munsiyari' },
-      { label: 'Season', value: 'May – June, Sep – Oct' }
+      { label: 'Duration', value: 'Half day, or 2 days with a riverside camp' },
+      { label: 'Level', value: 'Easy to moderate — grade II–III rapids' },
+      { label: 'Starts from', value: 'Rishikesh' },
+      { label: 'Season', value: 'Oct – Jun' }
     ],
     highlights: [
-      'Nights at a high Himalayan camp with snow peaks all around',
-      'Forest, meadow and glacier landscapes in a single walk',
-      'Experienced local guides, cooks and support staff',
-      'Stargazing far from any light',
-      'Time to acclimatise built into the plan'
+      'The 16 km Shivpuri–Rishikesh run, the classic Ganga stretch',
+      'Named rapids — Roller Coaster, Golf Course and Club House',
+      'Body-surfing in the calm pools and a cliff-jump stop',
+      'Certified river guides and a safety kayaker on every run',
+      'An optional night at a riverside camp on a white-sand beach'
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Munsiyari — briefing and gear check',
-        description: 'Meet your guide, go over the route and kit, and take an easy acclimatisation walk around town.',
-        stay: 'Homestay, Munsiyari',
-        meals: 'Dinner'
+        title: 'Rishikesh to the riverside camp',
+        description:
+          'Drive upstream to camp on the Ganga beach. Afternoon at leisure by the river, a bonfire in the evening and dinner under the stars.',
+        stay: 'Riverside camp, Shivpuri',
+        meals: 'Lunch, dinner'
       },
       {
         day: 2,
-        title: 'Drive to the roadhead, walk to the first camp',
-        description: 'A short drive, then a gentle first day on foot through forest and village fields.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 3,
-        title: 'Up to Bankatiya',
-        description: 'The trail climbs into open meadows and the big peaks come into view. Arrive at camp by afternoon.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 4,
-        title: 'A day at base camp',
-        description: 'Explore around camp with your guide, walk towards the glacier if conditions allow, and rest.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 5,
-        title: 'Walk out',
-        description: 'Retrace the route down to the roadhead and drive back to Munsiyari for a hot shower.',
-        stay: 'Homestay, Munsiyari',
-        meals: 'Breakfast, lunch, dinner'
-      }
-    ],
-    inclusions: [
-      'Local trek leader and support staff',
-      'Tents, sleeping bags and mats',
-      'All meals on the trail',
-      'Homestay nights in Munsiyari before and after the trek',
-      'Permits and forest fees where applicable',
-      'Transfers between Munsiyari and the roadhead'
-    ],
-    goodToKnow: [
-      'You should be comfortable walking 5 – 7 hours a day on uneven ground.',
-      'We share a kit list on booking. Good boots matter more than anything else.',
-      'Weather in the high Himalaya can change plans — your guide has the final call on safety.',
-      'Exact camp altitudes and route details are confirmed in your pre-departure briefing.'
-    ],
-    bestTime: 'May to June and September to October',
-    featured: true,
-    seo: {
-      title: 'Bankatiya Base Camp Experience — Guided Himalayan Camp from Munsiyari',
-      description:
-        'A guided base camp experience at Bankatiya in the Kumaon Himalaya: forest and meadow trails, a night among the snow peaks, and full camp support.'
-    }
-  },
-
-  {
-    slug: 'nanda-ashtami-yatra-munsiyari',
-    section: 'experiences',
-    category: 'culture-heritage',
-    title: 'Nanda Ashtami Yatra',
-    location: 'Munsiyari, Pithoragarh district',
-    destinationSlug: 'uttarakhand',
-    tagline: 'The hills celebrate their goddess',
-    description:
-      'Join the Nanda Devi celebrations in Munsiyari — processions, folk songs and a village festival in the shadow of the peaks.',
-    overview: [
-      'Nanda Devi is the presiding goddess of Kumaon and Garhwal, and the mountain that carries her name watches over the whole region. Each year around Nanda Ashtami, in late summer, villages across the hills celebrate her with fairs, processions and music.',
-      'In Munsiyari the festival centres on the Nanda Devi temple on the ridge above town. We plan the days so you are there for the rituals and the gatherings, with a local host to explain what is happening and why — and time around it for the tribal heritage museum, the weavers of Darkot and the view of Panchachuli.'
-    ],
-    image: 'photo-1683700916507-93d49889bacc',
-    gallery: [
-      'photo-1683700915265-83e12dac8024',
-      'photo-1683700912111-7f5b392d54d4',
-      'photo-1683700912945-1cc17effa0bb',
-      'photo-1683700916029-5fb9b2197a2e'
-    ],
-    facts: [
-      { label: 'Duration', value: '4 – 5 days ex Munsiyari' },
-      { label: 'Level', value: 'Easy' },
-      { label: 'Starts from', value: 'Munsiyari' },
-      { label: 'When', value: 'Around Nanda Ashtami (Aug – Sep)' }
-    ],
-    highlights: [
-      'The Nanda Devi festival at the temple above Munsiyari',
-      'Kumaoni folk music and dance, with a local host to explain it',
-      'The Munsiyari tribal heritage museum and the story of the Johar valley',
-      'A village walk to Darkot for its hand-woven shawls',
-      'Sunrise over the Panchachuli peaks'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrive in Munsiyari',
-        description: 'Settle in, meet your host and take an evening walk for your first look at Panchachuli.',
-        stay: 'Homestay, Munsiyari',
-        meals: 'Dinner'
-      },
-      {
-        day: 2,
-        title: 'Heritage and villages',
-        description: 'Visit the tribal heritage museum, then walk to Darkot to meet the weavers.',
-        stay: 'Homestay, Munsiyari',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 3,
-        title: 'Nanda Ashtami',
-        description: 'Spend the day at the Nanda Devi temple for the festival, the rituals and the gathering.',
-        stay: 'Homestay, Munsiyari',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 4,
-        title: 'Festival day two and departure',
-        description: 'Catch the closing celebrations before heading down, or stay on for Khaliya Top.',
+        title: 'Shivpuri to Rishikesh on the river',
+        description:
+          'A safety briefing on the bank, then the run down to Rishikesh — rapids, swims and the cliff jump — finishing near Ram Jhula by early afternoon.',
         meals: 'Breakfast'
       }
     ],
     inclusions: [
-      'Homestay accommodation in Munsiyari',
-      'Breakfast and dinner daily',
-      'Local host and guide throughout',
-      'Museum and village visits'
+      'Rafting with certified river guides, Shivpuri to Rishikesh',
+      'Helmets, life jackets, paddles and a safety kayaker',
+      'Transfers between Rishikesh and the put-in point',
+      'Riverside camp stay with meals, if you choose the overnight plan'
     ],
     goodToKnow: [
-      'Festival dates follow the Hindu calendar and change every year — we confirm them when you enquire.',
-      'This is a religious occasion. Dress modestly and ask before photographing rituals.',
-      'Late summer is the tail of the monsoon. Keep a buffer day for the drive in and out.',
-      'Extend with Khaliya Top or the Johar valley if you have more days.'
+      'Rafters must be at least 14 years old and comfortable in water — you do not need to be able to swim, but it helps.',
+      'Rafting on the Ganga stops during the monsoon, usually from July to mid-September.',
+      'Wear quick-dry clothes and secure footwear. Leave phones and valuables in the vehicle.',
+      'Pair it with a stay at The Cozy BnB in Rishikesh, or the Flow with the Ganga expedition.'
     ],
-    bestTime: 'Around Nanda Ashtami, usually late August or September',
+    bestTime: 'October to June; March to May for the warmest water',
+    featured: true,
     seo: {
-      title: 'Nanda Ashtami Yatra in Munsiyari — Kumaon Festival Experience',
+      title: 'Rishikesh White Water Rafting — Shivpuri to Rishikesh on the Ganga',
       description:
-        'Experience the Nanda Devi festival at Nanda Ashtami in Munsiyari, Uttarakhand, with a local host, village visits and views of Panchachuli.'
+        'Raft the Ganga from Shivpuri to Rishikesh with Pravaah: grade II–III rapids, certified guides, safety kayakers and an optional riverside camp.'
+    }
+  },
+
+  {
+    slug: 'jim-corbett-safari',
+    section: 'experiences',
+    category: 'safari',
+    title: 'Jim Corbett Safari',
+    location: 'Jim Corbett National Park, Ramnagar',
+    destinationSlug: 'uttarakhand',
+    tagline: 'Tiger country at the foot of the Himalaya',
+    description:
+      'Jeep safaris into India’s oldest national park — sal forest, grassland and the Ramganga river, with tigers, elephants and more than 600 kinds of bird.',
+    overview: [
+      'Corbett is India’s oldest national park, set up in 1936 in the foothills where the plains meet the Kumaon hills. Sal forest, open grassland called chaurs and the wide bed of the Ramganga river make it one of the best places in the country to see wild elephants, and one of the strongholds of the Bengal tiger.',
+      'The park is split into zones — Bijrani, Jhirna, Dhela, Durgadevi, Garjia and Dhikala, the grassland heart of the park — and each runs its own morning and afternoon safaris. We book the permits as soon as they open, choose the zones for the season, and pair the safaris with a stay near Ramnagar so the early starts are easy.'
+    ],
+    image: 'photo-1561731216-c3a4d99437d5',
+    gallery: [
+      'photo-1549366021-9f761d450615',
+      'photo-1516426122078-c23e76319801',
+      'photo-1441974231531-c6227db76b6e',
+      'photo-1447752875215-b2761acb3c5d'
+    ],
+    facts: [
+      { label: 'Duration', value: '2 days, 1 night or longer' },
+      { label: 'Level', value: 'Easy' },
+      { label: 'Starts from', value: 'Ramnagar' },
+      { label: 'Season', value: 'Nov – Jun' }
+    ],
+    highlights: [
+      'Morning and afternoon jeep safaris with a naturalist',
+      'Zones chosen for the season — Bijrani, Jhirna, Dhela or Dhikala',
+      'Wild elephants, deer, crocodiles on the Ramganga and, with luck, a tiger',
+      'Over 600 bird species, from hornbills to fishing eagles',
+      'Safari permits booked the day they open'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrive in Ramnagar, afternoon safari',
+        description:
+          'Check in near the park, then an afternoon jeep safari into your first zone as the animals come out to the water.',
+        stay: 'Near Ramnagar',
+        meals: 'Dinner'
+      },
+      {
+        day: 2,
+        title: 'Morning safari',
+        description:
+          'Out at the gate before sunrise for the best light and the most activity. Back for a late breakfast before you head home, or stay on for more drives.',
+        meals: 'Breakfast'
+      }
+    ],
+    inclusions: [
+      'Safari permits for the chosen zones',
+      'Private jeep with driver and park-registered naturalist',
+      'A stay near Ramnagar, if you choose the overnight plan',
+      'Help choosing the zones for the season'
+    ],
+    goodToKnow: [
+      'Permits are limited and open in advance — the sooner you book, the better the choice of zones.',
+      'Dhikala is open roughly mid-November to mid-June; Jhirna and Dhela are open all year.',
+      'Tiger sightings are never guaranteed. The forest is worth it either way.',
+      'Wear muted colours, carry a warm layer for winter mornings and keep voices low in the park.',
+      'Combine it with a stay at Hriday Bhoomi or Ekaant, near the park.'
+    ],
+    bestTime: 'November to June; March to May for the best tiger sightings',
+    featured: true,
+    seo: {
+      title: 'Jim Corbett Safari — Jeep Safaris in Bijrani, Jhirna & Dhikala',
+      description:
+        'Plan a Jim Corbett safari with Pravaah: jeep safaris with a naturalist, permits for Bijrani, Jhirna, Dhela and Dhikala, and stays near Ramnagar.'
+    }
+  },
+
+  {
+    slug: 'jaisalmer-desert-safari-camping',
+    section: 'experiences',
+    category: 'safari',
+    title: 'Jaisalmer Desert Safari with Camping',
+    location: 'Thar desert, Jaisalmer',
+    destinationSlug: 'rajasthan',
+    tagline: 'Camels, dunes and a night under the desert sky',
+    description:
+      'A camel safari into the Thar from Jaisalmer, sunset on the dunes, folk music by the fire and a night at a desert camp.',
+    overview: [
+      'Jaisalmer rises out of the Thar desert like a sandcastle — a living fort of golden sandstone, with havelis carved as finely as lace. Beyond it, the desert opens out into scrub, villages and the rolling dunes around Sam and Khuri.',
+      'We pair a day in the golden city with a night in the desert: a camel ride out to the dunes for sunset, Rajasthani folk music and dinner around the fire, and a camp far enough from the crowds that the stars come out properly. You wake to the desert at dawn before heading back to Jaisalmer.'
+    ],
+    image: 'photo-1452022582947-b521d8779ab6',
+    gallery: [
+      'photo-1473580044384-7ba9967e16a0',
+      'photo-1542401886-65d6c61db217',
+      'photo-1517824806704-9040b037703b',
+      'photo-1599661046289-e31897846e41'
+    ],
+    facts: [
+      { label: 'Duration', value: '3 days, 2 nights ex Jaisalmer' },
+      { label: 'Level', value: 'Easy' },
+      { label: 'Starts from', value: 'Jaisalmer' },
+      { label: 'Season', value: 'Oct – Mar' }
+    ],
+    highlights: [
+      'Camel safari to the dunes for sunset',
+      'A night at a desert camp with folk music and a bonfire',
+      'Stargazing far from city lights',
+      'Jaisalmer Fort, Patwon ki Haveli and Gadisar lake',
+      'The abandoned village of Kuldhara on the way to the dunes'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Jaisalmer — the golden city',
+        description:
+          'Arrive and explore the living fort, the Jain temples and the carved havelis of Patwon ki Haveli, then sunset at Gadisar lake.',
+        stay: 'Jaisalmer',
+        meals: 'Dinner'
+      },
+      {
+        day: 2,
+        title: 'Into the desert',
+        description:
+          'Drive out past Kuldhara to the dunes, then a camel safari for sunset. Folk music, dinner by the fire and a night at the desert camp.',
+        stay: 'Desert camp',
+        meals: 'Breakfast, dinner'
+      },
+      {
+        day: 3,
+        title: 'Desert sunrise and back',
+        description: 'Sunrise over the dunes and breakfast at camp before the drive back to Jaisalmer.',
+        meals: 'Breakfast'
+      }
+    ],
+    inclusions: [
+      'A night in Jaisalmer and a night at the desert camp',
+      'Camel safari on the dunes',
+      'Folk music and bonfire evening at camp',
+      'Private vehicle for sightseeing and desert transfers',
+      'Breakfast and dinner daily'
+    ],
+    goodToKnow: [
+      'Desert nights are cold from November to February — bring a warm layer.',
+      'Days are hot well into October and from March on. Plan outdoor time for mornings and evenings.',
+      'Camps range from simple tents to luxury Swiss tents — we match the camp to your trip.',
+      'Jaisalmer is a long way from anywhere: fly in, or take the overnight train from Delhi or Jaipur.'
+    ],
+    bestTime: 'October to March',
+    seo: {
+      title: 'Jaisalmer Desert Safari with Camping — Camel Safari & Desert Camp',
+      description:
+        'Jaisalmer desert safari with Pravaah: a camel ride to the dunes at sunset, a night at a desert camp with folk music, and the golden fort of Jaisalmer.'
+    }
+  },
+
+  {
+    slug: 'paragliding-naukuchiatal',
+    section: 'experiences',
+    category: 'paragliding',
+    title: 'Paragliding at Naukuchiatal',
+    location: 'Naukuchiatal, Nainital district',
+    destinationSlug: 'uttarakhand',
+    tagline: 'Fly over the lake of nine corners',
+    description:
+      'A tandem paragliding flight above Naukuchiatal with a certified pilot — forest ridges, the lake below and the Kumaon hills all around.',
+    overview: [
+      'Naukuchiatal, the lake of nine corners, sits a few kilometres beyond Bhimtal in the Kumaon lake country. It is quieter and greener than Nainital, and the ridge above it is one of the best places in Uttarakhand for a first paragliding flight.',
+      'You fly tandem with a certified pilot, so there is nothing to learn beforehand — just a short briefing at the take-off point, a few running steps and then the lake, the forest and the hills opening out below you. Flights last roughly 10 to 20 minutes depending on the wind, and land close to the lake shore.'
+    ],
+    image: 'photo-1601024445121-e5b82f020549',
+    gallery: [
+      'photo-1610715936287-6c2ad208cdbf',
+      'photo-1506905925346-21bda4d32df4',
+      'photo-1464822759023-fed622ff2c3b',
+      'photo-1596394516093-501ba68a0ba6'
+    ],
+    facts: [
+      { label: 'Duration', value: 'Half day — 10 to 20 minutes in the air' },
+      { label: 'Level', value: 'Easy — no experience needed' },
+      { label: 'Starts from', value: 'Naukuchiatal' },
+      { label: 'Season', value: 'Oct – Jun' }
+    ],
+    highlights: [
+      'A tandem flight with a certified pilot',
+      'Views over Naukuchiatal, Bhimtal and the forested ridges',
+      'No experience needed — a short briefing is all it takes',
+      'Optional GoPro video of your flight',
+      'Easy to combine with a lake-country stay'
+    ],
+    inclusions: [
+      'Tandem paragliding flight with a certified pilot',
+      'Harness, helmet and safety equipment',
+      'Transfer from Naukuchiatal to the take-off point',
+      'Flight video, on request'
+    ],
+    goodToKnow: [
+      'Flights depend entirely on the wind and weather — your pilot decides when it is safe to fly.',
+      'Mornings usually have the steadiest conditions. We build in some flexibility on the day.',
+      'There is a weight limit for tandem flights, usually around 100 kg — we confirm it when you book.',
+      'Paragliding pauses during the monsoon, roughly July to September.',
+      'Stay at Har Shikhar in Bhimtal or by the lakes in Nainital to make a weekend of it.'
+    ],
+    bestTime: 'October to June',
+    seo: {
+      title: 'Paragliding at Naukuchiatal — Tandem Flights near Bhimtal & Nainital',
+      description:
+        'Go paragliding at Naukuchiatal with Pravaah: a tandem flight with a certified pilot over the lake of nine corners in the Kumaon hills.'
     }
   },
 
@@ -311,270 +413,130 @@ export const experiences: Listing[] = [
   },
 
   {
-    slug: 'hornbill-festival-nagaland',
+    slug: 'adi-kailash-yatra',
     section: 'experiences',
     category: 'culture-heritage',
-    title: 'Hornbill Festival, Nagaland',
-    location: 'Kisama, near Kohima',
-    destinationSlug: 'northeast-india',
-    tagline: 'The festival of festivals',
+    title: 'Adi Kailash Yatra',
+    location: 'Vyas valley, Pithoragarh district',
+    destinationSlug: 'uttarakhand',
+    tagline: 'Om Parvat and Adi Kailash, on the old Kailash route',
     description:
-      'Ten days in December when the Naga tribes gather at Kisama — dance, song, food and craft, with village visits around it.',
+      'A pilgrimage up the Kali valley to Gunji, Om Parvat and Jolingkong, at the foot of Adi Kailash — with the permits, stays and acclimatisation taken care of.',
     overview: [
-      'Every year from 1 to 10 December, the Naga Heritage Village at Kisama, just outside Kohima, hosts the Hornbill Festival. Each tribe has its own morung, and the days fill with traditional dances, songs, games, food and craft from across Nagaland.',
-      'We plan the festival days so you see the best of the programme without the crush, and add the places around it that make the trip: Khonoma, the green village that turned its hunting grounds into a sanctuary; Kohima\'s history and markets; and, for the energetic, the walk into the Dzükou valley.'
+      'Adi Kailash, also called Chhota Kailash, rises above the Vyas valley in the far east of Kumaon, close to the borders with Tibet and Nepal. Revered as an abode of Shiva, it sits on the old route pilgrims took to Mount Kailash, and Om Parvat nearby carries the shape of "Om" in snow on its face.',
+      'The new road now reaches Jolingkong, below Parvati Sarovar and the Adi Kailash peak, so the yatra no longer needs days of walking. We plan it carefully all the same: Inner Line Permits and medical checks in Dharchula, nights in Gunji to acclimatise, early starts for the clearest views of Om Parvat and Adi Kailash, and a stop at Kalapani and the Vyas villages on the way.'
     ],
-    image: 'photo-1700040186780-18adbcc909b0',
+    image: 'photo-1605649487212-47bdab064df7',
     gallery: [
-      'photo-1700040224625-e502a5fbe7d6',
-      'photo-1602702131391-9136a92f525e',
-      'photo-1635998973091-30df63f081a3',
-      'photo-1712055196088-9bc6da4ffbce'
+      'photo-1668005163654-0f8b38a75030',
+      'photo-1519681393784-d120267933ba',
+      'photo-1683700912945-1cc17effa0bb',
+      'photo-1668005151025-1f3f7eeb8131'
     ],
     facts: [
-      { label: 'Duration', value: '5 – 6 days ex Dimapur' },
-      { label: 'Level', value: 'Easy' },
-      { label: 'Starts from', value: 'Dimapur' },
-      { label: 'When', value: '1 – 10 December' }
+      { label: 'Duration', value: '8 days, 7 nights ex Haldwani' },
+      { label: 'Level', value: 'Moderate — high altitude' },
+      { label: 'Starts from', value: 'Haldwani or Kathgodam' },
+      { label: 'Season', value: 'May – Jun, Sep – Oct' }
     ],
     highlights: [
-      'Two days at the Hornbill Festival at the Naga Heritage Village, Kisama',
-      'A village visit to Khonoma',
-      'The Kohima War Cemetery and the town\'s old market',
-      'Naga food — smoked pork, bamboo shoot and the local chillies',
-      'Optional day walk into the Dzükou valley'
+      'Darshan of Adi Kailash and Parvati Sarovar from Jolingkong',
+      'Om Parvat from Nabhidhang, with the Kali river below',
+      'Kalapani temple, the source of the Kali',
+      'The Vyas valley villages of Gunji, Kuti and Nabi',
+      'Inner Line Permits and medical checks arranged in Dharchula'
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Dimapur to Kohima',
-        description: 'A drive up into the hills, with the evening free to settle in.',
-        stay: 'Kohima',
+        title: 'Haldwani to Dharchula',
+        description:
+          'A long, scenic drive through Almora and Pithoragarh to Dharchula on the Kali river, the border town where the yatra begins.',
+        stay: 'Dharchula',
         meals: 'Dinner'
       },
       {
         day: 2,
-        title: 'Hornbill Festival',
-        description: 'A full day at Kisama — the morungs, the dances and the food stalls.',
-        stay: 'Kohima',
+        title: 'Permits in Dharchula',
+        description:
+          'Medical check-up and Inner Line Permit formalities at the SDM office, then an easy afternoon walking the market and the bridge to Nepal.',
+        stay: 'Dharchula',
         meals: 'Breakfast, dinner'
       },
       {
         day: 3,
-        title: 'Khonoma village',
-        description: 'Walk through the terraced fields and stone lanes of Khonoma with a local guide.',
-        stay: 'Kohima or Khonoma homestay',
-        meals: 'Breakfast, dinner'
+        title: 'Dharchula to Gunji',
+        description:
+          'By 4×4 up the Kali valley past Tawaghat, Lakhanpur and Budhi to Gunji, the meeting point of the Kuti and Kali valleys.',
+        stay: 'Homestay, Gunji',
+        meals: 'Breakfast, lunch, dinner'
       },
       {
         day: 4,
-        title: 'Festival day two',
-        description: 'Back at Kisama for a second day, and the Kohima night market in the evening.',
-        stay: 'Kohima',
-        meals: 'Breakfast, dinner'
+        title: 'Om Parvat',
+        description:
+          'An early start to Kalapani and on to Nabhidhang for Om Parvat in the morning light, then back to Gunji to acclimatise.',
+        stay: 'Homestay, Gunji',
+        meals: 'Breakfast, lunch, dinner'
       },
       {
         day: 5,
-        title: 'Kohima to Dimapur',
-        description: 'The War Cemetery in the morning, then down to Dimapur for onward travel.',
+        title: 'Adi Kailash and Parvati Sarovar',
+        description:
+          'Through Kuti village to Jolingkong for darshan of Adi Kailash and Parvati Sarovar, with time at the Shiva temple before returning to Gunji.',
+        stay: 'Homestay, Gunji',
+        meals: 'Breakfast, lunch, dinner'
+      },
+      {
+        day: 6,
+        title: 'Gunji to Dharchula',
+        description: 'Back down the Kali valley to Dharchula for a hot shower and a well-earned rest.',
+        stay: 'Dharchula',
+        meals: 'Breakfast, dinner'
+      },
+      {
+        day: 7,
+        title: 'Dharchula to Pithoragarh or Almora',
+        description: 'Break the long drive home with a night in the hills on the way.',
+        stay: 'Pithoragarh or Almora',
+        meals: 'Breakfast, dinner'
+      },
+      {
+        day: 8,
+        title: 'Return to Haldwani',
+        description: 'The final drive down to Haldwani, where the yatra ends.',
         meals: 'Breakfast'
       }
     ],
     inclusions: [
-      'Stays in Kohima and a village homestay',
-      'Private vehicle and driver',
-      'Local guide at the festival and in Khonoma',
-      'Breakfast and dinner daily',
-      'Inner Line Permit assistance'
+      'Inner Line Permit and medical check assistance in Dharchula',
+      'Private vehicle from Haldwani and back, and 4×4 beyond Dharchula',
+      'Hotels in Dharchula and on the return, homestays in Gunji',
+      'All meals in the Vyas valley',
+      'A local coordinator throughout the yatra',
+      'First-aid kit and oxygen cylinder'
     ],
     goodToKnow: [
-      'Indian travellers need an Inner Line Permit for Nagaland. We arrange it — carry ID. Foreign nationals need a Protected Area Permit, which takes longer — tell us early.',
-      'Stays around Kohima book out months ahead for the festival. Plan early.',
-      'December evenings are cold in the hills. Pack warm layers.',
-      'Always ask before photographing people, especially outside the festival grounds.'
+      'The route reaches over 4,500 m at Jolingkong. Acclimatisation days in Gunji are built in, and are not optional.',
+      'Indian citizens need an Inner Line Permit and a medical certificate — share ID documents and health details early.',
+      'The yatra is not open to foreign nationals.',
+      'Landslides on the Kali valley road can cause delays — keep a buffer day if you can.',
+      'Stays in Gunji are simple homestays. Nights are cold even in summer.'
     ],
-    bestTime: '1 – 10 December',
+    bestTime: 'May to June and September to October',
     seo: {
-      title: 'Hornbill Festival Nagaland — Festival Trip with Khonoma & Kohima',
+      title: 'Adi Kailash Yatra — Om Parvat, Jolingkong & Parvati Sarovar',
       description:
-        'Experience the Hornbill Festival at Kisama, Nagaland, with Pravaah: two festival days, Khonoma village, Kohima and Inner Line Permit assistance.'
+        'Plan the Adi Kailash yatra with Pravaah: an 8-day journey from Haldwani via Dharchula and Gunji to Om Parvat, Adi Kailash and Parvati Sarovar, with permits arranged.'
     }
-  },
+  }
+]
 
-  {
-    slug: 'cherry-blossom-music-festival-shillong',
-    section: 'experiences',
-    category: 'culture-heritage',
-    title: 'Cherry Blossom Music Festival, Shillong',
-    location: 'Shillong, Meghalaya',
-    destinationSlug: 'northeast-india',
-    tagline: 'Pink hills and live music',
-    description:
-      'Autumn in Shillong, when the Himalayan cherry trees bloom pink and the city fills with music — with Sohra and the root bridges alongside.',
-    overview: [
-      'Every November, the Himalayan cherry trees around Shillong come into bloom and turn the hills pink. The city — long called the rock capital of India — celebrates with the Cherry Blossom Festival: concerts, food, local craft and a weekend when everyone seems to be outdoors.',
-      'We build the trip around the festival days and add the Meghalaya everyone should see once: the gorges and waterfalls of Sohra, a living root bridge, the clear water at Dawki, and a village stay in the Khasi hills.'
-    ],
-    image: 'photo-1763101233894-9d21f1be70b7',
-    gallery: [
-      'photo-1665248919075-246d0ac9a912',
-      'photo-1609276804051-8c5e906cc430',
-      'photo-1625654325562-762dcec9e6f2',
-      'photo-1552978534-9d01e1f91517'
-    ],
-    facts: [
-      { label: 'Duration', value: '5 days ex Guwahati' },
-      { label: 'Level', value: 'Easy' },
-      { label: 'Starts from', value: 'Guwahati' },
-      { label: 'When', value: 'November' }
-    ],
-    highlights: [
-      'The Cherry Blossom Festival concerts and food stalls in Shillong',
-      'Cherry trees in bloom across the city and the Khasi hills',
-      'Sohra\'s waterfalls and a walk to a living root bridge',
-      'The clear waters of the Umngot river at Dawki',
-      'Khasi food and a local guide who knows the music scene'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Guwahati to Shillong',
-        description: 'Up into the hills via Umiam lake. Evening at leisure in Police Bazaar.',
-        stay: 'Shillong',
-        meals: 'Dinner'
-      },
-      {
-        day: 2,
-        title: 'Festival day one',
-        description: 'The cherry blossoms around town and the festival programme through the evening.',
-        stay: 'Shillong',
-        meals: 'Breakfast'
-      },
-      {
-        day: 3,
-        title: 'Festival day two',
-        description: 'The second day of concerts, with time for the blossoms around Ward\'s Lake.',
-        stay: 'Shillong',
-        meals: 'Breakfast'
-      },
-      {
-        day: 4,
-        title: 'Sohra (Cherrapunji)',
-        description: 'Waterfalls, gorges and the walk down to a living root bridge.',
-        stay: 'Sohra',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 5,
-        title: 'Dawki, Mawlynnong and Guwahati',
-        description: 'The clear water of the Umngot river at Dawki and the village of Mawlynnong, then the drive down to Guwahati. A long day — an extra night in Shillong makes it easier.',
-        meals: 'Breakfast'
-      }
-    ],
-    inclusions: [
-      'Stays in Shillong and Sohra',
-      'Private vehicle and driver',
-      'Local guide for Sohra and Dawki',
-      'Daily breakfast, and dinner in Sohra'
-    ],
-    goodToKnow: [
-      'Festival tickets and line-ups are announced each year — we will confirm what is included in your quote.',
-      'Bloom timing depends on the weather. Mid-November is usually the most reliable window.',
-      'The root bridge walks involve many steps. Take your time on the way back up.',
-      'Evenings are cool. Bring a warm layer for the outdoor concerts.'
-    ],
-    bestTime: 'November',
-    seo: {
-      title: 'Shillong Cherry Blossom Festival — Music, Blossoms & Meghalaya',
-      description:
-        'Plan a trip to the Shillong Cherry Blossom Festival with Pravaah: festival days, cherry blossoms, Sohra, living root bridges and Dawki.'
-    }
-  },
-
-  {
-    slug: 'holi-pushkar',
-    section: 'experiences',
-    category: 'culture-heritage',
-    title: 'Holi in Pushkar',
-    location: 'Pushkar, Rajasthan',
-    destinationSlug: 'rajasthan',
-    tagline: 'The festival of colours in a holy lake town',
-    description:
-      'Celebrate Holi in the lanes and squares of Pushkar — colour, music and a sacred lake town at its most joyful.',
-    overview: [
-      'Pushkar is one of the oldest towns in India, built around a sacred lake ringed with ghats and temples. For most of the year it is calm and devotional. On Holi, it becomes one of the most colourful places in the country.',
-      'We plan Holi here with care: a stay close enough to the action, a local host who knows where to be and when, time to step out of the crowd when you want to, and the quieter side of Pushkar around it — sunrise at the Savitri temple, the Brahma temple and evenings at the ghats.'
-    ],
-    image: 'photo-1663154048558-2510385fee89',
-    gallery: [
-      'photo-1591661585188-04fce214708d',
-      'photo-1668236305915-09785d2e73de',
-      'photo-1654004924301-90c23a3b7279',
-      'photo-1583261429112-e0e7fe037a49'
-    ],
-    facts: [
-      { label: 'Duration', value: '3 – 4 days ex Jaipur' },
-      { label: 'Level', value: 'Easy' },
-      { label: 'Starts from', value: 'Jaipur or Ajmer' },
-      { label: 'When', value: 'Holi (February – March)' }
-    ],
-    highlights: [
-      'Holi celebrations in the heart of Pushkar with a local host',
-      'Holika Dahan, the bonfire on the evening before Holi',
-      'Sunrise walk to the Savitri temple above the lake',
-      'The Brahma temple and the evening aarti at the ghats',
-      'A stay chosen for easy access and a quiet retreat'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Jaipur to Pushkar',
-        description: 'A drive of around three hours. Evening at the ghats and Holika Dahan if the dates align.',
-        stay: 'Pushkar',
-        meals: 'Dinner'
-      },
-      {
-        day: 2,
-        title: 'Holi',
-        description: 'A morning of colour and music in town with your host, then a slow afternoon to recover.',
-        stay: 'Pushkar',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 3,
-        title: 'Temples and the desert edge',
-        description: 'Savitri temple at sunrise, the Brahma temple, and an evening on the dunes outside town.',
-        stay: 'Pushkar',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 4,
-        title: 'Back to Jaipur',
-        description: 'Return to Jaipur, or carry on to Jodhpur or Udaipur.',
-        meals: 'Breakfast'
-      }
-    ],
-    inclusions: [
-      'Stay in Pushkar',
-      'Private vehicle from Jaipur and back',
-      'Local host for Holi day',
-      'Organic colours for the celebrations',
-      'Breakfast and dinner daily'
-    ],
-    goodToKnow: [
-      'Holi dates follow the lunar calendar — we confirm them when you enquire.',
-      'Pushkar is a holy town: meat, eggs and alcohol are not served in town.',
-      'Wear old clothes, protect your eyes and phone, and oil your hair and skin beforehand.',
-      'Crowds can get boisterous. Your host will help you enjoy it and step away when you want.'
-    ],
-    bestTime: 'Holi, usually in March',
-    seo: {
-      title: 'Holi in Pushkar — Festival of Colours Experience in Rajasthan',
-      description:
-        'Celebrate Holi in Pushkar with Pravaah: a local host, a well-placed stay, Holika Dahan, Savitri temple at sunrise and the Pushkar ghats.'
-    }
-  },
-
+/**
+ * Offbeat Experiences — hidden for now. Nothing reads this list, so these pages
+ * are not built; move the entries back into `experiences` to show them again.
+ */
+export const hiddenOffbeatExperiences: Listing[] = [
   {
     slug: 'darma-valley',
     section: 'experiences',
@@ -781,584 +743,6 @@ export const experiences: Listing[] = [
       title: 'Niti Valley — Offbeat Journey beyond Joshimath, Uttarakhand',
       description:
         'Explore the Niti valley with Pravaah: Bhotia village homestays in Malari and Niti, the Dhauliganga, and the cave shrine of Timmersain Mahadev.'
-    }
-  },
-
-  {
-    slug: 'bankatiya-base-camp-trek',
-    section: 'experiences',
-    category: 'treks',
-    title: 'Bankatiya Base Camp Trek',
-    location: 'Johar valley, beyond Munsiyari',
-    destinationSlug: 'uttarakhand',
-    tagline: 'A full base camp trek in the Kumaon high country',
-    description:
-      'A complete, well-paced trek to Bankatiya base camp — forest, meadow and moraine, with time to acclimatise and explore the glaciers.',
-    overview: [
-      'The Bankatiya trek takes you from the last villages beyond Munsiyari up into the high country of the Kumaon Himalaya — through rhododendron and birch forest, across open meadows and finally onto the moraine below the snow peaks.',
-      'Unlike our shorter base camp experience, this is a longer, fuller trek: more days on the trail, proper acclimatisation, and time at the top to explore towards the glaciers with your guide. Camps, cooks, porters and permits are all taken care of; you bring the legs and the curiosity.'
-    ],
-    image: 'photo-1768383565166-0c17033a91df',
-    gallery: [
-      'photo-1683700914015-92be0e442390',
-      'photo-1653732109859-cb688124de55',
-      'photo-1608942025318-1191eeade556',
-      'photo-1683700912945-1cc17effa0bb'
-    ],
-    facts: [
-      { label: 'Duration', value: '8 – 9 days ex Munsiyari' },
-      { label: 'Difficulty', value: 'Moderate to challenging' },
-      { label: 'Start point', value: 'Munsiyari' },
-      { label: 'Season', value: 'May – June, Sep – Oct' }
-    ],
-    highlights: [
-      'A complete Himalayan base camp trek with acclimatisation built in',
-      'Rhododendron forest, alpine meadows and glacial moraine',
-      'An exploration day towards the glaciers from base camp',
-      'Experienced local trek leaders, cooks and porters',
-      'Small groups, or private departures on request'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Munsiyari',
-        description: 'Arrival, gear check and briefing with your trek leader.',
-        stay: 'Homestay, Munsiyari',
-        meals: 'Dinner'
-      },
-      {
-        day: 2,
-        title: 'Roadhead to first camp',
-        description: 'Drive to the start of the trail and walk into the forest.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 3,
-        title: 'Through the forest',
-        description: 'A steady climb through mixed forest to a clearing camp.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 4,
-        title: 'Into the meadows',
-        description: 'The trees thin out and the high peaks open up ahead.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 5,
-        title: 'Acclimatisation day',
-        description: 'A short hike higher and back down to camp to help your body adjust.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 6,
-        title: 'Bankatiya base camp',
-        description: 'Across the moraine to base camp, surrounded by snow and ice.',
-        stay: 'Base camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 7,
-        title: 'Glacier exploration',
-        description: 'Explore towards the glaciers with your leader, then begin the descent.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 8,
-        title: 'Walk out to Munsiyari',
-        description: 'Down to the roadhead and back to Munsiyari for a celebration dinner.',
-        stay: 'Homestay, Munsiyari',
-        meals: 'Breakfast, lunch, dinner'
-      }
-    ],
-    inclusions: [
-      'Certified trek leader and local support staff',
-      'All camping equipment — tents, sleeping bags, mats, kitchen and toilet tents',
-      'All meals on the trek',
-      'Homestay nights in Munsiyari before and after the trek',
-      'Permits and forest fees',
-      'First-aid kit and oxygen cylinder',
-      'Transfers between Munsiyari and the roadhead'
-    ],
-    goodToKnow: [
-      'You should be able to walk 6 – 8 hours a day with a light daypack.',
-      'Start training at least six weeks ahead — stairs, long walks and cardio.',
-      'Weather and trail conditions decide the final route. Your leader has the last word on safety.',
-      'Exact camp names and altitudes are confirmed in your pre-departure pack.'
-    ],
-    bestTime: 'May to June and September to October',
-    seo: {
-      title: 'Bankatiya Base Camp Trek — Guided Himalayan Trek from Munsiyari',
-      description:
-        'Trek to Bankatiya base camp in the Kumaon Himalaya with Pravaah: an 8 – 9 day fully supported expedition with acclimatisation and glacier exploration.'
-    }
-  },
-
-  {
-    slug: 'panchachuli-base-camp-trek',
-    section: 'experiences',
-    category: 'treks',
-    title: 'Panchachuli Base Camp Trek',
-    location: 'Darma valley, Pithoragarh district',
-    destinationSlug: 'uttarakhand',
-    tagline: 'To the foot of the five peaks',
-    description:
-      'Walk up through the villages of the Darma valley to the base of the Panchachuli peaks and their glaciers.',
-    overview: [
-      'The five summits of Panchachuli are the defining view of eastern Kumaon. Most people see them from Munsiyari, across the valley. This trek takes you round to the other side, up the Darma valley, to stand right at their feet.',
-      'The route begins in the Rung villages of Dugtu and Dantu, where we stay with local families, before heading up through birch forest and meadow to the Panchachuli glacier. It is one of the most rewarding treks in Uttarakhand for the effort involved — and it comes with the bonus of time in one of its most interesting valleys.'
-    ],
-    image: 'photo-1668005172181-9367f851109e',
-    gallery: [
-      'photo-1668005157353-c0790383ef7b',
-      'photo-1668005118547-fe338e94e731',
-      'photo-1668005146935-2ee772a652f7',
-      'photo-1608497582272-627e105265ab'
-    ],
-    facts: [
-      { label: 'Duration', value: '7 – 8 days ex Dharchula' },
-      { label: 'Difficulty', value: 'Moderate' },
-      { label: 'Start point', value: 'Dharchula' },
-      { label: 'Season', value: 'May – June, Sep – Oct' }
-    ],
-    highlights: [
-      'Close-up views of the five Panchachuli peaks',
-      'The Panchachuli glacier and its moraine',
-      'Village homestays in Dugtu and Dantu',
-      'Birch forest and high meadows of the Darma valley',
-      'Inner Line Permits and full support arranged'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Dharchula',
-        description: 'Arrive, complete permit formalities and meet the team.',
-        stay: 'Dharchula',
-        meals: 'Dinner'
-      },
-      {
-        day: 2,
-        title: 'Drive to Dugtu',
-        description: 'Up the Darma valley to the village of Dugtu.',
-        stay: 'Homestay, Dugtu',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 3,
-        title: 'Acclimatisation in the villages',
-        description: 'Walk between Dugtu and Dantu and let your body adjust.',
-        stay: 'Homestay',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 4,
-        title: 'Towards the glacier',
-        description: 'Through birch forest and meadow to camp below Panchachuli.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 5,
-        title: 'Panchachuli base camp',
-        description: 'A morning at the glacier and the base of the peaks, then back to camp.',
-        stay: 'Camp',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 6,
-        title: 'Back to Dugtu',
-        description: 'Descend to the village for a last night with your hosts.',
-        stay: 'Homestay, Dugtu',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 7,
-        title: 'Drive to Dharchula',
-        description: 'Down the valley to Dharchula.',
-        stay: 'Dharchula',
-        meals: 'Breakfast, dinner'
-      }
-    ],
-    inclusions: [
-      'Trek leader and local support staff',
-      'Village homestays, camps and a hotel in Dharchula',
-      'All meals during the trek',
-      'Inner Line Permit assistance',
-      'Camping equipment and first-aid kit',
-      'Local transfers in the valley'
-    ],
-    goodToKnow: [
-      'Darma is a border area: ITBP checkposts register every visitor, and we arrange any permit needed from the SDM office in Dharchula — share ID documents early.',
-      'Roads into the valley are prone to landslides — we keep a buffer day.',
-      'Homestays are simple and warm. Camps are fully supported.',
-      'Exact camp locations are confirmed in your pre-departure briefing.'
-    ],
-    bestTime: 'May to June and September to October',
-    featured: true,
-    seo: {
-      title: 'Panchachuli Base Camp Trek — Darma Valley, Uttarakhand',
-      description:
-        'Trek to Panchachuli base camp through the Darma valley with Pravaah: village homestays in Dugtu and Dantu, the Panchachuli glacier and full support.'
-    }
-  },
-
-  {
-    slug: 'khaliya-top-trek',
-    section: 'experiences',
-    category: 'treks',
-    title: 'Khaliya Top Trek',
-    location: 'Munsiyari, Pithoragarh district',
-    destinationSlug: 'uttarakhand',
-    tagline: 'The best view in Kumaon, in two days',
-    description:
-      'A short, rewarding trek from Munsiyari to the meadow of Khaliya Top, with a sweeping view of Panchachuli and the high Himalaya.',
-    overview: [
-      'Khaliya Top is a high alpine meadow above Munsiyari, at roughly 3,500 m, and one of the finest viewpoints in the Kumaon Himalaya. From the top, Panchachuli, Rajrambha, Nanda Devi and a long line of snow peaks spread out across the horizon.',
-      'The trail climbs through rhododendron and oak forest before breaking out onto open grassland. It is short enough for a first trek and beautiful enough that experienced walkers come back to it. We camp near the top so you are there for both sunset and sunrise.'
-    ],
-    image: 'photo-1786339881390-96fba8883ff6',
-    gallery: [
-      'photo-1788004263255-9fc137e0cc41',
-      'photo-1683700914859-27447d1b9b66',
-      'photo-1683700912111-7f5b392d54d4',
-      'photo-1683700912945-1cc17effa0bb'
-    ],
-    facts: [
-      { label: 'Duration', value: '2 days, 1 night ex Munsiyari' },
-      { label: 'Difficulty', value: 'Easy to moderate' },
-      { label: 'Start point', value: 'Munsiyari' },
-      { label: 'Season', value: 'Mar – Jun, Sep – Dec' }
-    ],
-    highlights: [
-      'Panoramic views of Panchachuli, Rajrambha and Nanda Devi',
-      'Rhododendron forest in bloom in spring',
-      'Sunset and sunrise from a high meadow camp',
-      'A perfect first Himalayan trek',
-      'Often snow on the meadow in early winter'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Munsiyari to Khaliya',
-        description: 'A short drive to the trailhead, then a steady climb through forest to camp near the top.',
-        stay: 'Camp',
-        meals: 'Lunch, dinner'
-      },
-      {
-        day: 2,
-        title: 'Sunrise and descent',
-        description: 'Up to the top for sunrise over the peaks, then back down to Munsiyari by afternoon.',
-        meals: 'Breakfast, lunch'
-      }
-    ],
-    inclusions: [
-      'Trek guide and support staff',
-      'Tents, sleeping bags and mats',
-      'Meals on the trek',
-      'Forest entry fees',
-      'Trailhead transfers from Munsiyari'
-    ],
-    goodToKnow: [
-      'Good for fit beginners and families with active teenagers.',
-      'It is cold at the top in every season — pack a down jacket.',
-      'In winter the upper trail is under snow. Microspikes are provided when needed.',
-      'Combine it with a stay at Panchachuli Earth in Munsiyari.'
-    ],
-    bestTime: 'March to June and September to December',
-    seo: {
-      title: 'Khaliya Top Trek — Short Himalayan Trek from Munsiyari',
-      description:
-        'Trek to Khaliya Top from Munsiyari with Pravaah: a 2-day trek to a high meadow with views of Panchachuli, Rajrambha and Nanda Devi.'
-    }
-  },
-
-  {
-    slug: 'johar-valley-expedition',
-    section: 'experiences',
-    category: 'off-road',
-    title: 'Johar Valley Expedition',
-    location: 'Munsiyari to Milam',
-    destinationSlug: 'uttarakhand',
-    tagline: 'By 4x4 up the old trade road',
-    description:
-      'A 4x4 expedition up the Gori Ganga into the Johar valley, as far as the new road reaches, with walks to the old villages beyond.',
-    overview: [
-      'The road into the Johar valley is one of the newest in the Himalaya, pushed up the Gori Ganga gorge towards Milam along a route traders once walked for weeks. Driving it is an adventure in itself — cliffs, waterfalls, river crossings and constantly changing surfaces.',
-      'We run this expedition in capable 4x4s with drivers who know the valley, stopping at the old Johari villages, walking where the road ends, and camping or staying in homestays along the way. It is for travellers who want to reach the high valley without trekking all the way in.'
-    ],
-    image: 'photo-1621269759351-0f3f95239966',
-    gallery: [
-      'photo-1683700916507-93d49889bacc',
-      'photo-1683700914859-27447d1b9b66',
-      'photo-1683700912945-1cc17effa0bb',
-      'photo-1608942025318-1191eeade556'
-    ],
-    facts: [
-      { label: 'Duration', value: '6 – 7 days ex Munsiyari' },
-      { label: 'Difficulty', value: 'Moderate — rough roads' },
-      { label: 'Start point', value: 'Munsiyari' },
-      { label: 'Season', value: 'June, Sep – Oct' }
-    ],
-    highlights: [
-      'A 4x4 drive up the Gori Ganga gorge',
-      'The old Johari villages of Martoli and Milam',
-      'Walks to the Milam glacier where the road ends',
-      'Experienced mountain drivers and local guides',
-      'Camps and homestays along the route'
-    ],
-    inclusions: [
-      '4x4 vehicles with experienced drivers',
-      'Local guide from the valley',
-      'Camps and homestays',
-      'All meals in the valley',
-      'Inner Line Permit assistance'
-    ],
-    goodToKnow: [
-      'Road conditions change every season. We confirm the plan against the latest reports.',
-      'Expect long, bumpy days — not suitable for travellers with back problems.',
-      'Johar is a border area with ITBP checkposts — carry government photo ID. We confirm the current permit rules before you travel.',
-      'A day-by-day plan is shared once we confirm your dates.'
-    ],
-    bestTime: 'June and September to October',
-    seo: {
-      title: 'Johar Valley 4x4 Expedition — Munsiyari to Milam',
-      description:
-        'A 4x4 expedition into the Johar valley with Pravaah: the Gori Ganga gorge, Martoli and Milam villages and walks to the Milam glacier.'
-    }
-  },
-
-  {
-    slug: 'darma-valley-expedition',
-    section: 'experiences',
-    category: 'off-road',
-    title: 'Darma Valley Expedition',
-    location: 'Dharchula to the upper Darma valley',
-    destinationSlug: 'uttarakhand',
-    tagline: 'Deep into the Dhauliganga by 4x4',
-    description:
-      'A 4x4 journey from Dharchula up the Darma valley to its highest villages, with Panchachuli views and village stays along the way.',
-    overview: [
-      'The Darma valley road climbs from the Kali river at Dharchula up the Dhauliganga, past Dugtu and Dantu with their views of Panchachuli, and on towards the highest villages near the Tibetan border.',
-      'Our expedition covers the whole valley in capable 4x4s, with stops for village walks, the Panchachuli viewpoints and the high meadows at the top. We stay in local homestays and camps and travel with a guide from the Rung community.'
-    ],
-    image: 'photo-1772082177577-54f617aee8f3',
-    gallery: [
-      'photo-1668005146935-2ee772a652f7',
-      'photo-1668005163654-0f8b38a75030',
-      'photo-1668005172181-9367f851109e',
-      'photo-1668005151025-1f3f7eeb8131'
-    ],
-    facts: [
-      { label: 'Duration', value: '5 – 6 days ex Dharchula' },
-      { label: 'Difficulty', value: 'Moderate — rough roads' },
-      { label: 'Start point', value: 'Dharchula' },
-      { label: 'Season', value: 'May – June, Sep – Oct' }
-    ],
-    highlights: [
-      'The full length of the Darma valley by 4x4',
-      'Panchachuli views from Dugtu and Dantu',
-      'The highest villages of the valley near the border',
-      'Homestays with Rung families',
-      'Inner Line Permits arranged'
-    ],
-    inclusions: [
-      '4x4 vehicles with experienced drivers',
-      'Local guide',
-      'Homestays and camps',
-      'All meals in the valley',
-      'Inner Line Permit assistance'
-    ],
-    goodToKnow: [
-      'Landslides can close the road for hours or days. We keep buffer time.',
-      'Accommodation in the valley is simple.',
-      'There is little or no mobile network beyond the lower valley.',
-      'A day-by-day plan is shared once we confirm your dates.'
-    ],
-    bestTime: 'May to June and September to October',
-    seo: {
-      title: 'Darma Valley 4x4 Expedition — Dharchula, Uttarakhand',
-      description:
-        'A 4x4 expedition through the Darma valley with Pravaah: Panchachuli views, Rung village homestays and the high villages near the border.'
-    }
-  },
-
-  {
-    slug: 'niti-valley-expedition',
-    section: 'experiences',
-    category: 'off-road',
-    title: 'Niti Valley Expedition',
-    location: 'Joshimath to Niti',
-    destinationSlug: 'uttarakhand',
-    tagline: 'A high desert road in Garhwal',
-    description:
-      'Drive from Joshimath up the Dhauliganga into the stark high valley of Niti, near the Tibetan border.',
-    overview: [
-      'The road from Joshimath to Niti is one of the most dramatic in Garhwal. It follows the Dhauliganga through narrow gorges, past Tapovan and Malari, and out into a high, dry valley that looks more like Ladakh than the green hills below.',
-      'Our 4x4 expedition takes the road slowly, with stops in the Bhotia villages, a walk to the cave shrine of Timmersain Mahadev, and nights in local homestays. It can be combined with Badrinath and Mana for a longer Garhwal journey.'
-    ],
-    image: 'photo-1714224287885-efff750e5919',
-    gallery: [
-      'photo-1607271258380-16d84d1f967f',
-      'photo-1579095220823-a2833d440ee1',
-      'photo-1713446016389-ebafd8870601',
-      'photo-1702127047573-36a11c318774'
-    ],
-    facts: [
-      { label: 'Duration', value: '4 – 5 days ex Joshimath' },
-      { label: 'Difficulty', value: 'Easy to moderate' },
-      { label: 'Start point', value: 'Joshimath' },
-      { label: 'Season', value: 'May – October' }
-    ],
-    highlights: [
-      'The Dhauliganga gorge and the road to the border',
-      'Malari, Gamshali and Niti villages',
-      'The Timmersain Mahadev cave shrine',
-      'Homestays with Bhotia families',
-      'Easy to combine with Badrinath and Mana'
-    ],
-    inclusions: [
-      '4x4 vehicle with an experienced driver',
-      'Local guide',
-      'Homestays and guesthouses',
-      'All meals in the valley',
-      'Inner Line Permit assistance'
-    ],
-    goodToKnow: [
-      'The upper valley is at significant altitude. Take the first day easy.',
-      'Permits and ID checks are part of the journey near the border.',
-      'The valley is largely closed in winter.',
-      'A day-by-day plan is shared once we confirm your dates.'
-    ],
-    bestTime: 'May to October',
-    seo: {
-      title: 'Niti Valley 4x4 Expedition — Joshimath to Niti, Uttarakhand',
-      description:
-        'A 4x4 expedition from Joshimath to the Niti valley with Pravaah: Malari, Niti village, Timmersain Mahadev and Bhotia homestays.'
-    }
-  },
-
-  {
-    slug: 'flow-with-the-ganga',
-    section: 'experiences',
-    category: 'culture-heritage',
-    title: 'Flow with the Ganga',
-    location: 'Gangotri to Haridwar',
-    destinationSlug: 'uttarakhand',
-    tagline: 'From the glacier to the plains',
-    description:
-      'A multi-day journey following the Ganga from its source near Gangotri, through the Himalayan confluences, down to Rishikesh and Haridwar.',
-    overview: [
-      'Pravaah means flow, and this is the journey that gave us our name. It follows the Ganga from the glaciers above Gangotri, where the Bhagirathi begins, all the way down to the plains at Haridwar.',
-      'Along the way you walk to Gaumukh, the snout of the Gangotri glacier; stay in the river towns of Harsil and Uttarkashi; stand at Devprayag, where the Bhagirathi and Alaknanda meet and the river finally becomes the Ganga; raft the rapids above Rishikesh; and end at the evening aarti in Haridwar. It is part pilgrimage, part adventure, and all river.'
-    ],
-    image: 'photo-1709623868300-e3b78cad10e1',
-    gallery: [
-      'photo-1572963912807-a3609ed653c3',
-      'photo-1720819029162-8500607ae232',
-      'photo-1718383537411-6f9e727ae0bb',
-      'photo-1724432799555-6414c4a669b9'
-    ],
-    facts: [
-      { label: 'Duration', value: '9 – 10 days ex Dehradun' },
-      { label: 'Difficulty', value: 'Moderate' },
-      { label: 'Start point', value: 'Dehradun' },
-      { label: 'Season', value: 'May – June, Sep – Oct' }
-    ],
-    highlights: [
-      'A walk to Gaumukh, the source of the Bhagirathi',
-      'Harsil and the apple orchards of the upper valley',
-      'Devprayag, where the Ganga is born from two rivers',
-      'White-water rafting above Rishikesh',
-      'The Ganga aarti at Har Ki Pauri, Haridwar'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Dehradun to Uttarkashi',
-        description: 'Into the Bhagirathi valley.',
-        stay: 'Uttarkashi',
-        meals: 'Dinner'
-      },
-      {
-        day: 2,
-        title: 'Uttarkashi to Harsil',
-        description: 'Up the valley to the orchards and deodar forest of Harsil.',
-        stay: 'Harsil',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 3,
-        title: 'Gangotri to Bhojbasa',
-        description: 'Temple darshan at Gangotri, then walk up the valley to camp at Bhojbasa.',
-        stay: 'Camp or guesthouse, Bhojbasa',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 4,
-        title: 'Gaumukh',
-        description: 'Early walk to the snout of the Gangotri glacier, then back down towards Gangotri.',
-        stay: 'Gangotri',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 5,
-        title: 'Gangotri to Uttarkashi',
-        description: 'A slow drive down the valley, with hot springs at Gangnani on the way.',
-        stay: 'Uttarkashi',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 6,
-        title: 'Uttarkashi to Devprayag',
-        description: 'Follow the Bhagirathi down to the confluence at Devprayag.',
-        stay: 'Devprayag',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 7,
-        title: 'Devprayag to Shivpuri',
-        description: 'A riverside camp on the Ganga, with the afternoon on the water.',
-        stay: 'River camp, Shivpuri',
-        meals: 'Breakfast, lunch, dinner'
-      },
-      {
-        day: 8,
-        title: 'Raft to Rishikesh',
-        description: 'Raft the rapids from Shivpuri down to Rishikesh, then the evening aarti.',
-        stay: 'Rishikesh',
-        meals: 'Breakfast, dinner'
-      },
-      {
-        day: 9,
-        title: 'Haridwar',
-        description: 'The last stretch to Haridwar and the Ganga aarti at Har Ki Pauri.',
-        meals: 'Breakfast'
-      }
-    ],
-    inclusions: [
-      'Private vehicle with an experienced hill driver',
-      'Hotels, a river camp and a mountain guesthouse or camp',
-      'Breakfast and dinner daily, all meals while trekking and camping',
-      'Gaumukh permit and guide',
-      'Rafting with a certified operator'
-    ],
-    goodToKnow: [
-      'Gaumukh needs a permit with a limited daily quota. Book early.',
-      'The Gaumukh walk is long and at altitude — around 18 km each way from Gangotri.',
-      'Rafting usually pauses during the monsoon, roughly July to mid-September.',
-      'Stays can be upgraded or kept simple — tell us how you like to travel.'
-    ],
-    bestTime: 'May to June and September to October',
-    featured: true,
-    seo: {
-      title: 'Flow with the Ganga — Gangotri to Haridwar River Journey',
-      description:
-        'Follow the Ganga from Gaumukh to Haridwar with Pravaah: Gangotri, Harsil, Devprayag, rafting above Rishikesh and the Haridwar aarti.'
     }
   }
 ]

@@ -6,59 +6,10 @@ import type { Listing } from '~/types'
  */
 export const stays: Listing[] = [
   {
-    slug: 'pi-palace-bhimtal',
-    section: 'stays',
-    category: 'hotels-resorts',
-    title: 'Pi Palace, Bhimtal',
-    location: 'Bhimtal, Nainital district',
-    destinationSlug: 'uttarakhand',
-    tagline: 'A lakeside base in the Kumaon lake country',
-    description:
-      'A comfortable hotel stay in Bhimtal — the quieter lake next door to Nainital, and an easy first stop in the Kumaon hills.',
-    overview: [
-      'Bhimtal is the lake town people pass through on the way to Nainital and wish they had stayed in instead. The lake is larger, the promenade is calmer, and the hills around it are a patchwork of forest, orchards and old stone houses.',
-      'Pi Palace gives you a comfortable, full-service base for exploring it. Spend the mornings on the water, drive out to Sattal, Naukuchiatal and Nainital for the day, and come back to a room you do not have to think about. It is the stay we suggest for families, for first visits to the mountains, and for anyone who wants the hills without the effort.'
-    ],
-    image: '/images/stays/pi-palace-bhimtal/cover',
-    gallery: [
-      '/images/stays/pi-palace-bhimtal/gallery-03',
-      '/images/stays/pi-palace-bhimtal/gallery-02',
-      '/images/stays/pi-palace-bhimtal/gallery-01',
-      '/images/stays/pi-palace-bhimtal/gallery-06',
-      '/images/stays/pi-palace-bhimtal/gallery-04',
-      '/images/stays/pi-palace-bhimtal/gallery-05'
-    ],
-    facts: [
-      { label: 'Setting', value: 'Lakeside hill town' },
-      { label: 'Best for', value: 'Families & couples' },
-      { label: 'Ideal stay', value: '2 – 3 nights' },
-      { label: 'Getting there', value: 'About 1 hr from Kathgodam' }
-    ],
-    highlights: [
-      'Walking distance of Bhimtal lake, with boating and the island aquarium',
-      'Day trips to Sattal, Naukuchiatal and Nainital without changing hotels',
-      'An easy first night in the hills after the train or the drive from Delhi',
-      'In-house dining and a team that can arrange drivers and local guides'
-    ],
-    goodToKnow: [
-      'Room categories, meal plans and rates vary by season — we confirm the details with your quote.',
-      'Weekends and school holidays fill quickly. Book early for May, June and October.',
-      'Evenings are cool even in summer. Pack a warm layer.',
-      'Pair it with a night or two in Hartola or Sonapani for the high-Himalaya views.'
-    ],
-    bestTime: 'March to June and September to December',
-    featured: true,
-    seo: {
-      title: 'Pi Palace, Bhimtal — Lakeside Hotel Stay in Kumaon',
-      description:
-        'Stay at Pi Palace in Bhimtal with Pravaah: a comfortable hotel base by the lake for exploring Sattal, Naukuchiatal and Nainital.'
-    }
-  },
-  {
     slug: 'dharohar-retreat-satkhol',
     section: 'stays',
     category: 'hotels-resorts',
-    title: 'Dharohar Retreat, Satkhol',
+    title: 'Dharohar Retreat, Mukteshwar',
     location: 'Satkhol, near Mukteshwar',
     destinationSlug: 'uttarakhand',
     tagline: 'Kumaoni character above an oak and pine valley',
@@ -99,9 +50,249 @@ export const stays: Listing[] = [
     bestTime: 'Year-round; October to February for the clearest views',
     featured: true,
     seo: {
-      title: 'Dharohar Retreat, Satkhol — Kumaoni Resort near Mukteshwar',
+      title: 'Dharohar Retreat, Mukteshwar — Kumaoni Resort in Satkhol',
       description:
         'Stay at Dharohar Retreat in Satkhol, near Mukteshwar: Kumaoni-style rooms and suites, valley and Himalayan views, nature walks and the Dhara Kumaoni Cafe.'
+    }
+  },
+
+  {
+    slug: 'moksha-retreat-kasar-devi',
+    section: 'stays',
+    category: 'hotels-resorts',
+    title: 'Moksha Retreat, Kasar Devi',
+    location: 'Kasar Devi, near Almora',
+    destinationSlug: 'uttarakhand',
+    tagline: 'A quiet ridge above Almora, made for slowing down',
+    description:
+      'A peaceful retreat on the Kasar Devi ridge above Almora — pine forest, Himalayan views and the calm the hill has drawn seekers to for a century.',
+    overview: [
+      'Kasar Devi is a pine-covered ridge a few kilometres above Almora, crowned by a small hilltop temple to the goddess. Swami Vivekananda meditated here, and through the twentieth century the ridge drew writers, artists and seekers looking for somewhere quiet to think. On clear days the snow range runs across the whole northern horizon.',
+      'Moksha Retreat is built for that same stillness. Mornings begin with the view and a walk up to the temple, days go on forest trails, Almora\'s old bazaar and the Bright End Corner sunset point, and evenings end early and unhurried. It is the stay we suggest for couples and anyone who wants a few days to properly switch off.'
+    ],
+    image: 'photo-1596394516093-501ba68a0ba6',
+    gallery: [
+      'photo-1582719478250-c89cae4dc85b',
+      'photo-1519681393784-d120267933ba',
+      'photo-1506905925346-21bda4d32df4',
+      'photo-1496417263034-38ec4f0b665a'
+    ],
+    facts: [
+      { label: 'Setting', value: 'Pine ridge above Almora' },
+      { label: 'Best for', value: 'Couples & slow travellers' },
+      { label: 'Ideal stay', value: '2 – 4 nights' },
+      { label: 'Getting there', value: 'About 3.5 hrs from Kathgodam' }
+    ],
+    highlights: [
+      'Himalayan views across the Almora hills on clear mornings',
+      'A short walk to the hilltop Kasar Devi temple',
+      'Pine forest trails and quiet village walks from the door',
+      'Easy outings to Almora bazaar, Katarmal Sun Temple and Binsar'
+    ],
+    goodToKnow: [
+      'The ridge is peaceful by design — expect early nights and very little traffic.',
+      'Winters are cold and clear, with the best mountain views from October to February.',
+      'Almora town is about 20 minutes away for ATMs, pharmacies and the market.',
+      'Room categories, meal plans and rates are confirmed with your quote.'
+    ],
+    bestTime: 'Year-round; October to February for the clearest views',
+    seo: {
+      title: 'Moksha Retreat, Kasar Devi — Peaceful Stay near Almora',
+      description:
+        'Stay at Moksha Retreat on the Kasar Devi ridge near Almora: Himalayan views, pine forest walks, the Kasar Devi temple and quiet, unhurried days.'
+    }
+  },
+
+  {
+    slug: 'hriday-bhoomi-jim-corbett',
+    section: 'stays',
+    category: 'hotels-resorts',
+    title: 'Hriday Bhoomi, Jim Corbett',
+    location: 'Dhela, Jim Corbett',
+    destinationSlug: 'uttarakhand',
+    tagline: 'Luxury cottages and a villa at the edge of the forest',
+    description:
+      'Private cottages and a five-bedroom villa in Dhela, minutes from the Corbett safari gates — with a pool, a farm and the jungle all around.',
+    overview: [
+      'Hriday Bhoomi — "land of the heart" — sits in the small village of Dhela, on the edge of Jim Corbett National Park, about 13 km from Ramnagar. The last stretch in is a five-kilometre drive through the forest, and the Dhela safari gate, for the Dhela and Jhirna zones, is only minutes away.',
+      'It blends the warmth of a homestay with the comforts of a resort: five independent cottages for couples and small families, and a five-bedroom private villa for larger families and groups. There is a swimming pool, an in-house restaurant and wide green lawns, and the property keeps a light footprint, with its own organic farm. Days go on jungle safaris and nature walks; evenings end with riverside dinners and a bonfire.'
+    ],
+    image: '/images/stays/hriday-bhoomi-jim-corbett/cover',
+    gallery: [
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-02',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-01',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-04',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-06',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-03',
+      '/images/stays/hriday-bhoomi-jim-corbett/gallery-05'
+    ],
+    facts: [
+      { label: 'Setting', value: 'Forest edge, Jim Corbett' },
+      { label: 'Best for', value: 'Families, groups & wildlife lovers' },
+      { label: 'Ideal stay', value: '2 – 3 nights' },
+      { label: 'Getting there', value: 'About 13 km from Ramnagar' }
+    ],
+    highlights: [
+      'Minutes from the Dhela gate for safaris in the Dhela and Jhirna zones',
+      'Five independent cottages, plus a five-bedroom private villa for groups',
+      'Swimming pool, in-house restaurant and landscaped lawns',
+      'Guided nature walks, riverside dining and bonfire evenings',
+      'Organic farm and a low-density, light-footprint layout'
+    ],
+    goodToKnow: [
+      'Safari permits are limited and sell out early — we book them alongside the stay.',
+      'Safari zones and timings are set by the park and change with the season. We confirm them for your dates.',
+      'Ramnagar has direct trains from Delhi, and Pantnagar is the nearest airport.',
+      'The villa suits large families and celebrations. Rates and availability are confirmed with your quote.'
+    ],
+    bestTime: 'October to June',
+    featured: true,
+    seo: {
+      title: 'Hriday Bhoomi, Jim Corbett — Luxury Cottages & Villa near Dhela',
+      description:
+        'Stay at Hriday Bhoomi in Dhela, Jim Corbett: luxury cottages and a five-bedroom villa with a pool, minutes from the Dhela and Jhirna safari zones.'
+    }
+  },
+
+  {
+    slug: 'har-shikhar-bhimtal',
+    section: 'stays',
+    category: 'hotels-resorts',
+    title: 'Har Shikhar, Bhimtal',
+    location: 'Bhimtal, Nainital district',
+    destinationSlug: 'uttarakhand',
+    tagline: 'A hillside base in the Kumaon lake country',
+    description:
+      'A comfortable hotel stay in Bhimtal — the calmer lake next door to Nainital, and an easy first stop in the Kumaon hills.',
+    overview: [
+      'Bhimtal is the lake town people pass through on the way to Nainital and wish they had stayed in instead. The lake is larger, the promenade is calmer, and the hills around it are a patchwork of forest, orchards and old stone houses.',
+      'Har Shikhar gives you a comfortable, full-service base for exploring it. Spend the mornings on the water, drive out to Sattal, Naukuchiatal and Nainital for the day, and come back to a room you do not have to think about. It is the stay we suggest for families, for first visits to the mountains, and for anyone who wants the hills without the effort.'
+    ],
+    image: 'photo-1445019980597-93fa8acb246c',
+    gallery: [
+      'photo-1578683010236-d716f9a3f461',
+      'photo-1464822759023-fed622ff2c3b',
+      'photo-1464207687429-7505649dae38',
+      'photo-1519681393784-d120267933ba'
+    ],
+    facts: [
+      { label: 'Setting', value: 'Lakeside hill town' },
+      { label: 'Best for', value: 'Families & couples' },
+      { label: 'Ideal stay', value: '2 – 3 nights' },
+      { label: 'Getting there', value: 'About 1 hr from Kathgodam' }
+    ],
+    highlights: [
+      'Close to Bhimtal lake, with boating and the island aquarium',
+      'Day trips to Sattal, Naukuchiatal and Nainital without changing hotels',
+      'An easy first night in the hills after the train or the drive from Delhi',
+      'In-house dining and a team that can arrange drivers and local guides'
+    ],
+    goodToKnow: [
+      'Room categories, meal plans and rates vary by season — we confirm the details with your quote.',
+      'Weekends and school holidays fill quickly. Book early for May, June and October.',
+      'Evenings are cool even in summer. Pack a warm layer.',
+      'Pair it with paragliding at Naukuchiatal, ten minutes down the road.'
+    ],
+    bestTime: 'March to June and September to December',
+    seo: {
+      title: 'Har Shikhar, Bhimtal — Hotel Stay in the Kumaon Lake Country',
+      description:
+        'Stay at Har Shikhar in Bhimtal with Pravaah: a comfortable hotel base for exploring Bhimtal lake, Sattal, Naukuchiatal and Nainital.'
+    }
+  },
+
+  {
+    slug: 'naini-retreat-nainital',
+    section: 'stays',
+    category: 'hotels-resorts',
+    title: 'Naini Retreat, Nainital',
+    location: 'Ayarpatta, Nainital',
+    destinationSlug: 'uttarakhand',
+    tagline: 'Colonial charm on the slopes above Naini lake',
+    description:
+      'A heritage hotel in a quiet, wooded corner of Nainital — close enough to walk to the lake, far enough to hear the forest.',
+    overview: [
+      'Nainital grew up as a British hill station around a green, eye-shaped lake, and the best of its old character survives on the wooded slopes above the town, away from the bustle of the Mall Road.',
+      'Naini Retreat sits on those slopes, in a heritage building with gardens, lawns and views down through the trees. Spend the days boating on the lake, riding the ropeway to Snow View, walking up to Tiffin Top or visiting the Naina Devi temple, then come back to a quiet, full-service hotel with the forest all around. It is a classic choice for families and couples alike.'
+    ],
+    image: 'photo-1510798831971-661eb04b3739',
+    gallery: [
+      'photo-1506905925346-21bda4d32df4',
+      'photo-1582719478250-c89cae4dc85b',
+      'photo-1578683010236-d716f9a3f461',
+      'photo-1455156218388-5e61b526818b'
+    ],
+    facts: [
+      { label: 'Setting', value: 'Wooded slopes above the lake' },
+      { label: 'Best for', value: 'Families & couples' },
+      { label: 'Ideal stay', value: '2 – 3 nights' },
+      { label: 'Getting there', value: 'About 1.5 hrs from Kathgodam' }
+    ],
+    highlights: [
+      'A heritage property in a quiet, forested part of Nainital',
+      'Gardens and lawns with views through the trees',
+      'Easy access to Naini lake, the Mall Road and the Naina Devi temple',
+      'Day trips to Snow View, Tiffin Top, Bhimtal and Sattal'
+    ],
+    goodToKnow: [
+      'Nainital is busy on weekends and in May and June — book well ahead for those dates.',
+      'Traffic into town is restricted at peak times. We plan transfers around it.',
+      'Winters are cold and can bring snow. Pack layers from October to March.',
+      'Room categories, meal plans and rates are confirmed with your quote.'
+    ],
+    bestTime: 'March to June and September to December',
+    featured: true,
+    seo: {
+      title: 'Naini Retreat, Nainital — Heritage Hotel above Naini Lake',
+      description:
+        'Stay at Naini Retreat in Nainital with Pravaah: a heritage hotel on the wooded slopes above the lake, close to the Mall Road, Snow View and Tiffin Top.'
+    }
+  },
+
+  {
+    slug: 'alka-the-lake-side-hotel-nainital',
+    section: 'stays',
+    category: 'hotels-resorts',
+    title: 'Alka The Lake Side Hotel, Nainital',
+    location: 'Mall Road, Nainital',
+    destinationSlug: 'uttarakhand',
+    tagline: 'Wake up to Naini lake outside the window',
+    description:
+      'A classic lakeside hotel on Nainital\'s Mall Road — step out of the door and you are on the promenade by the water.',
+    overview: [
+      'For most people, Nainital means the lake: boats drifting across the water, the hills rising steeply on every side and the Mall Road running along the shore, busy with cafés and shops from morning till late.',
+      'Alka The Lake Side Hotel puts you right in the middle of it. Rooms look out over Naini lake, the boat club and the Naina Devi temple are a short walk along the promenade, and everything Nainital is known for — the ropeway, the Flats, the old bakeries and the Tibetan market — is on your doorstep. It is the stay for people who want to be in the heart of town, not above it.'
+    ],
+    image: 'photo-1610715936287-6c2ad208cdbf',
+    gallery: [
+      'photo-1578683010236-d716f9a3f461',
+      'photo-1464207687429-7505649dae38',
+      'photo-1455156218388-5e61b526818b',
+      'photo-1519681393784-d120267933ba'
+    ],
+    facts: [
+      { label: 'Setting', value: 'Lakefront, Mall Road' },
+      { label: 'Best for', value: 'Families & first-time visitors' },
+      { label: 'Ideal stay', value: '2 – 3 nights' },
+      { label: 'Getting there', value: 'About 1.5 hrs from Kathgodam' }
+    ],
+    highlights: [
+      'A lakefront location on the Mall Road',
+      'Lake-view rooms looking across Naini lake',
+      'Walking distance of the boat club, Naina Devi temple and the ropeway',
+      'Cafés, bakeries and the Tibetan market right outside'
+    ],
+    goodToKnow: [
+      'The Mall Road is lively until late, especially on weekends and in summer.',
+      'Vehicle access to the Mall Road is restricted at peak hours. We plan arrivals around it.',
+      'Lake-view rooms are limited and book up first — tell us early if you want one.',
+      'Room categories, meal plans and rates are confirmed with your quote.'
+    ],
+    bestTime: 'March to June and September to December',
+    seo: {
+      title: 'Alka The Lake Side Hotel, Nainital — Lakefront Stay on the Mall Road',
+      description:
+        'Stay at Alka The Lake Side Hotel on Nainital\'s Mall Road with Pravaah: lake-view rooms, the promenade on your doorstep and easy walks to the boat club and Naina Devi temple.'
     }
   },
 
@@ -151,57 +342,6 @@ export const stays: Listing[] = [
       title: 'Nirvaana Mansion, Hartola — Orchard Stay near Mukteshwar',
       description:
         'Stay at Nirvaana Mansion in Hartola, near Mukteshwar, with Himalayan views, orchards and home-cooked Kumaoni food. Book with Pravaah.'
-    }
-  },
-
-  {
-    slug: 'hriday-bhoomi-jim-corbett',
-    section: 'stays',
-    category: 'villas-homestays',
-    title: 'Hriday Bhoomi, Jim Corbett',
-    location: 'Dhela, Jim Corbett',
-    destinationSlug: 'uttarakhand',
-    tagline: 'Luxury cottages and a villa at the edge of the forest',
-    description:
-      'Private cottages and a five-bedroom villa in Dhela, minutes from the Corbett safari gates — with a pool, a farm and the jungle all around.',
-    overview: [
-      'Hriday Bhoomi — "land of the heart" — sits in the small village of Dhela, on the edge of Jim Corbett National Park, about 13 km from Ramnagar. The last stretch in is a five-kilometre drive through the forest, and the Dhela safari gate, for the Dhela and Jhirna zones, is only minutes away.',
-      'It blends the warmth of a homestay with the comforts of a resort: five independent cottages for couples and small families, and a five-bedroom private villa for larger families and groups. There is a swimming pool, an in-house restaurant and wide green lawns, and the property keeps a light footprint, with its own organic farm. Days go on jungle safaris and nature walks; evenings end with riverside dinners and a bonfire.'
-    ],
-    image: '/images/stays/hriday-bhoomi-jim-corbett/cover',
-    gallery: [
-      '/images/stays/hriday-bhoomi-jim-corbett/gallery-02',
-      '/images/stays/hriday-bhoomi-jim-corbett/gallery-01',
-      '/images/stays/hriday-bhoomi-jim-corbett/gallery-04',
-      '/images/stays/hriday-bhoomi-jim-corbett/gallery-06',
-      '/images/stays/hriday-bhoomi-jim-corbett/gallery-03',
-      '/images/stays/hriday-bhoomi-jim-corbett/gallery-05'
-    ],
-    facts: [
-      { label: 'Setting', value: 'Forest edge, Jim Corbett' },
-      { label: 'Best for', value: 'Families, groups & wildlife lovers' },
-      { label: 'Ideal stay', value: '2 – 3 nights' },
-      { label: 'Getting there', value: 'About 13 km from Ramnagar' }
-    ],
-    highlights: [
-      'Minutes from the Dhela gate for safaris in the Dhela and Jhirna zones',
-      'Five independent cottages, plus a five-bedroom private villa for groups',
-      'Swimming pool, in-house restaurant and landscaped lawns',
-      'Guided nature walks, riverside dining and bonfire evenings',
-      'Organic farm and a low-density, light-footprint layout'
-    ],
-    goodToKnow: [
-      'Safari permits are limited and sell out early — we book them alongside the stay.',
-      'Safari zones and timings are set by the park and change with the season. We confirm them for your dates.',
-      'Ramnagar has direct trains from Delhi, and Pantnagar is the nearest airport.',
-      'The villa suits large families and celebrations. Rates and availability are confirmed with your quote.'
-    ],
-    bestTime: 'October to June',
-    featured: true,
-    seo: {
-      title: 'Hriday Bhoomi, Jim Corbett — Luxury Cottages & Villa near Dhela',
-      description:
-        'Stay at Hriday Bhoomi in Dhela, Jim Corbett: luxury cottages and a five-bedroom villa with a pool, minutes from the Dhela and Jhirna safari zones.'
     }
   },
 
@@ -305,7 +445,7 @@ export const stays: Listing[] = [
   {
     slug: 'glampinn-woods-sonapani',
     section: 'stays',
-    category: 'camps-camping',
+    category: 'camps-glamping',
     title: 'Glampinn Woods, Sonapani',
     location: 'Sonapani, near Mukteshwar',
     destinationSlug: 'uttarakhand',
@@ -438,7 +578,7 @@ export const stays: Listing[] = [
     goodToKnow: [
       'This is a working farm. Expect roosters at dawn and a few muddy paths.',
       'Meals are seasonal and mostly vegetarian. Tell us about any dietary needs in advance.',
-      'It pairs well with Pi Palace, Bhimtal, for a family trip that mixes comfort and countryside.',
+      'It pairs well with Har Shikhar, Bhimtal, for a family trip that mixes comfort and countryside.',
       'Activities and room details are confirmed with your quote.'
     ],
     bestTime: 'Year-round; October to April is most comfortable',

@@ -1,6 +1,19 @@
 import type { Article } from '~/types'
 
 /**
+ * The Journals categories, in the order they appear in the header and the
+ * filter. Each article's `category` is one of these names; a category with no
+ * articles yet is hidden.
+ */
+export const journalCategories = [
+  { slug: 'travel-stories', name: 'Travel Stories' },
+  { slug: 'destination-guides', name: 'Destination Guides' },
+  { slug: 'stories-from-the-road', name: 'Stories from the Road' },
+  { slug: 'local-stories', name: 'Local Stories' },
+  { slug: 'inspiration', name: 'Inspiration' }
+]
+
+/**
  * Travel stories. Stored as typed blocks so the renderer stays semantic and
  * dependency-free — a Markdown or CMS source can replace this file later.
  */
@@ -10,7 +23,7 @@ export const articles: Article[] = [
     title: "10 Places in Kashmir You Shouldn't Miss",
     excerpt:
       'Beyond the standard Srinagar–Gulmarg–Pahalgam loop: the meadows, workshops and roads that make a week in the valley feel like a month.',
-    category: 'Destination Guide',
+    category: 'Destination Guides',
     coverImage: 'photo-1476514525535-07fb3b4ae5f1',
     author: 'Pravaah Travel Studio',
     publishedAt: '2026-08-28',
@@ -91,7 +104,7 @@ export const articles: Article[] = [
     title: "A First-Timer's Guide to Rajasthan",
     excerpt:
       'How to sequence the cities, when to visit the forts, and the one decision that makes the biggest difference to a first Rajasthan trip.',
-    category: 'Travel Tips',
+    category: 'Destination Guides',
     coverImage: 'photo-1477587458883-47145ed94245',
     author: 'Pravaah Travel Studio',
     publishedAt: '2026-08-12',
@@ -157,7 +170,7 @@ export const articles: Article[] = [
     title: 'Best Time to Visit Himachal Pradesh',
     excerpt:
       'A month-by-month look at the passes, the rain and the snow — and why the right answer depends entirely on which Himachal you mean.',
-    category: 'Seasons',
+    category: 'Destination Guides',
     coverImage: 'photo-1418065460487-3e41a6c84dc5',
     author: 'Pravaah Travel Studio',
     publishedAt: '2026-07-19',
@@ -219,7 +232,7 @@ export const articles: Article[] = [
     title: 'Hidden Gems of Northeast India',
     excerpt:
       'Root bridges, a river island and the clearest water in the country — eight places in the northeast that still feel genuinely undiscovered.',
-    category: 'Destination Guide',
+    category: 'Destination Guides',
     coverImage: 'photo-1469474968028-56623f02e42e',
     author: 'Pravaah Travel Studio',
     publishedAt: '2026-06-30',
@@ -293,7 +306,7 @@ export const articles: Article[] = [
     title: 'What to Pack for the Himalaya',
     excerpt:
       'A layering system that works from Manali to Spiti, plus the four things most travellers forget and regret at 4,000 metres.',
-    category: 'Travel Tips',
+    category: 'Destination Guides',
     coverImage: 'photo-1533240332313-0db49b459ad6',
     author: 'Pravaah Travel Studio',
     publishedAt: '2026-05-15',
@@ -348,6 +361,10 @@ export const articles: Article[] = [
     }
   }
 ]
+
+export const journalCategoriesWithArticles = journalCategories.filter((category) =>
+  articles.some((article) => article.category === category.name)
+)
 
 export const getArticle = (slug: string) => articles.find((a) => a.slug === slug)
 

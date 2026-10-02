@@ -21,8 +21,8 @@ definePageMeta({ hero: true })
 const seasonal = [
   {
     window: 'Right now — September to November',
-    note: 'Clear skies after the monsoon, festival season in the northeast and the best light of the year in the Himalaya.',
-    slugs: ['uttarakhand', 'kashmir', 'northeast-india']
+    note: 'Clear skies after the monsoon, the Andaman seas settling and the best light of the year in the Himalaya.',
+    slugs: ['uttarakhand', 'kashmir', 'andaman-nicobar-islands']
   },
   {
     window: 'Winter — December to February',
@@ -31,17 +31,17 @@ const seasonal = [
   },
   {
     window: 'Spring & summer — March to June',
-    note: 'Holi in Pushkar, rhododendrons on the trails and the high passes reopening.',
-    slugs: ['uttarakhand', 'himachal-pradesh', 'rajasthan']
+    note: 'Rhododendrons on the trails, the high passes reopening and the clearest water of the year in the Andamans.',
+    slugs: ['uttarakhand', 'kashmir', 'andaman-nicobar-islands']
   }
 ]
 
 const bySlug = (slug: string) => destinations.find((d) => d.slug === slug)
 
 usePageSeo({
-  title: 'Destinations in India — North, Northeast & West India',
+  title: 'Destinations in India — North, West & South India and the Andamans',
   description:
-    'Explore where Pravaah travels across India: Uttarakhand, Himachal and Kashmir in the north, Meghalaya and Nagaland in the northeast, and Rajasthan and Goa in the west.',
+    'Explore where Pravaah travels across India: Uttarakhand and Kashmir in the north, Kerala in the south, the Andaman & Nicobar Islands, and Rajasthan and Goa in the west.',
   path: '/destinations',
   image: 'photo-1486911278844-a81c5267e227'
 })
@@ -75,7 +75,7 @@ useJsonLd(breadcrumbLd(crumbs))
     <section id="india" class="container-pravaah scroll-mt-24 py-16 lg:py-20">
       <SectionHeading :eyebrow="india.name" title="Where we travel." />
 
-      <ul class="mt-12 grid gap-4 md:grid-cols-3 lg:gap-5">
+      <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
         <li
           v-for="(group, index) in regionGroups"
           :key="group.region.slug"
