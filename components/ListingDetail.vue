@@ -45,6 +45,9 @@ const current = props.page.listing
 const section = useSection(current.section)
 const category = section.categories.find((c) => c.slug === current.category)
 const destination = props.page.destination
+
+/** The listing's photos. The cover is already shown above them, so it comes last rather than first. */
+const photos = [...current.gallery.filter((image) => image !== current.image), current.image]
 /** Same-category listings first, then the rest of the section — ordered by the API. */
 const related = props.page.related
 
@@ -111,29 +114,38 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
       </div>
     </section>
 
+    <!-- Overview, under the cover and as wide as the photos below it. -->
+    <section class="container-pravaah pt-14 sm:pt-20 lg:pt-24">
+      <div>
+        <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />01 · Overview</p>
+        <h2 class="reveal mt-5 text-display-sm">About this <span class="text-gradient">{{ section.singular }}</span></h2>
+        <div class="reveal mt-6 space-y-5">
+          <p
+            v-for="(paragraph, index) in current.overview"
+            :key="paragraph"
+            :class="
+              index === 0
+                ? 'border-l-2 border-accent pl-5 text-lg leading-relaxed text-ink sm:text-xl'
+                : 'text-[1.0625rem] leading-[1.8] text-ink-soft'
+            "
+          >
+            {{ paragraph }}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photographs: swipe through them; tap one, or "View all", to open the viewer. -->
+    <section v-if="photos.length" class="container-pravaah pt-10 sm:pt-14">
+      <h2 class="sr-only">Photographs from {{ current.title }}</h2>
+      <PhotoStrip :images="photos" :label="current.title" />
+    </section>
+
     <div class="container-pravaah py-14 sm:py-20 lg:py-24">
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <!-- Main column -->
         <div class="lg:col-span-7">
           <section>
-            <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />01 · Overview</p>
-            <h2 class="reveal mt-5 text-display-sm">About this <span class="text-gradient">{{ section.singular }}</span></h2>
-            <div class="reveal mt-6 space-y-5">
-              <p
-                v-for="(paragraph, index) in current.overview"
-                :key="paragraph"
-                :class="
-                  index === 0
-                    ? 'border-l-2 border-accent pl-5 text-lg leading-relaxed text-ink sm:text-xl'
-                    : 'text-[1.0625rem] leading-[1.8] text-ink-soft'
-                "
-              >
-                {{ paragraph }}
-              </p>
-            </div>
-          </section>
-
-          <section class="mt-14 sm:mt-20">
             <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />02 · Highlights</p>
             <h2 class="reveal mt-5 text-display-sm"><span class="text-gradient">Highlights</span></h2>
             <ul class="mt-8 grid gap-4 sm:grid-cols-2">
@@ -273,12 +285,6 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         </aside>
       </div>
     </div>
-
-    <!-- Gallery -->
-    <section class="container-pravaah pb-14 sm:pb-20 lg:pb-24">
-      <h2 class="reveal sr-only">Photographs from {{ current.title }}</h2>
-      <ImageGallery :images="current.gallery" :label="current.title" />
-    </section>
 
     <!-- Enquiry -->
     <section id="enquire" class="scroll-mt-24 border-y border-hairline bg-canvas-alt py-14 sm:py-20 lg:py-24">
