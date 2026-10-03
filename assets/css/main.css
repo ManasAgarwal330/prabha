@@ -378,6 +378,14 @@
     box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.25), 0 30px 60px -28px rgba(4, 120, 87, 0.55);
   }
 
+  /* Soft mint light behind the mobile menu. Gradients rather than blurred
+     shapes: a large blur filter leaves a hard seam on some phones. */
+  .menu-glow {
+    background:
+      radial-gradient(70% 38% at 100% 0%, rgba(52, 211, 153, 0.2), transparent 70%),
+      radial-gradient(60% 34% at 0% 42%, rgba(163, 230, 53, 0.1), transparent 70%);
+  }
+
   .grain {
     background-image: radial-gradient(rgba(11, 38, 29, 0.05) 1px, transparent 1px);
     background-size: 3px 3px;
@@ -487,6 +495,153 @@
   background-size: 100% 1px;
 }
 
+/* --- Bottom sheets (the travel-dates calendar) ---
+   The backdrop fades while the panel rides up from the bottom edge. Vue's
+   <Transition> is given explicit durations, since the moving part is a child. */
+.sheet-enter-active .sheet-backdrop,
+.sheet-leave-active .sheet-backdrop {
+  transition: opacity 0.3s ease;
+}
+
+.sheet-enter-from .sheet-backdrop,
+.sheet-leave-to .sheet-backdrop {
+  opacity: 0;
+}
+
+.sheet-enter-active .sheet-panel {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sheet-leave-active .sheet-panel {
+  transition: transform 0.26s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.sheet-enter-from .sheet-panel,
+.sheet-leave-to .sheet-panel {
+  transform: translate3d(0, 100%, 0);
+}
+
+/* --- Phones and tablets only (below the 1024px desktop layout) --- */
+@media (max-width: 1023.98px) {
+  /* The enquiry popup becomes a sheet that slides up; desktop keeps its fade. */
+  .sheet-m-enter-active .sheet-panel {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .sheet-m-leave-active .sheet-panel {
+    transition: transform 0.26s cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  .sheet-m-enter-from .sheet-panel,
+  .sheet-m-leave-to .sheet-panel {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  /* The menu drawer slides in from the right. */
+  .drawer-enter-active .drawer-panel {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .drawer-leave-active .drawer-panel {
+    transition: transform 0.28s cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  .drawer-enter-from .drawer-panel,
+  .drawer-leave-to .drawer-panel {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  /* Native selects pad their text differently from inputs on every phone
+     browser. Draw our own chevron so every field lines up. */
+  .field-select {
+    -webkit-appearance: none;
+    appearance: none;
+    padding-right: 2.25rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23546c60' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+  }
+}
+
+/* --- Card rails (see components/CardRail.vue) ---
+   Phones get one swipeable row with exactly one whole card in view; arrows and
+   dots show there is more. The gap matches the page gutter, so the next card
+   starts just off-screen instead of peeking in half cut. From `sm` up the
+   element's own grid classes take over again. */
+@media (max-width: 639.98px) {
+  .rail {
+    display: flex;
+    gap: var(--page-gutter);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--page-gutter);
+    margin-inline: calc(var(--page-gutter) * -1);
+    padding-inline: var(--page-gutter);
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+  }
+
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rail > * {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  /* Cards beside the first sit off-screen sideways, where the scroll reveal
+     would leave them invisible until swiped to — show them outright. */
+  .js .rail > .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Round, see-through glass arrow over the card edge, centred on the rail
+     (not the dots). Tinted dark so it reads on photos and on white alike. */
+  .rail-arrow {
+    position: absolute;
+    top: calc((100% - 2.25rem) / 2);
+    z-index: 10;
+    display: inline-flex;
+    height: 2.75rem;
+    width: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(6, 28, 20, 0.28);
+    color: #ffffff;
+    box-shadow: 0 8px 24px -12px rgba(6, 28, 20, 0.6);
+    transform: translateY(-50%);
+    backdrop-filter: blur(6px) saturate(140%);
+    -webkit-backdrop-filter: blur(6px) saturate(140%);
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+  }
+
+  .rail-arrow:active {
+    background: rgba(6, 28, 20, 0.45);
+  }
+
+  /* Until the visitor first swipes, the right arrow nudges to say "more this way". */
+  .rail-arrow.animate-nudge {
+    animation: railNudge 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+}
+
+@keyframes railNudge {
+  0%, 60%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  30% {
+    transform: translateY(-50%) translateX(5px);
+  }
+}
+
 /* --- Route transition --- */
 .page-enter-active,
 .page-leave-active {
@@ -532,6 +687,15 @@
 
   [data-tilt] {
     transform: none !important;
+  }
+
+  .sheet-panel,
+  .drawer-panel {
+    transform: none !important;
+  }
+
+  .rail-arrow.animate-nudge {
+    animation: none !important;
   }
 
   .scroll-progress {

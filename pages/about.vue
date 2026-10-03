@@ -72,7 +72,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section id="our-story" class="container-pravaah scroll-mt-24 py-20 lg:py-24">
+    <section id="our-story" class="container-pravaah scroll-mt-24 py-14 sm:py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-7">
           <div class="reveal prose-pravaah">
@@ -108,11 +108,11 @@ useJsonLd(
     </section>
 
     <!-- Our philosophy -->
-    <section id="our-philosophy" class="section-dark scroll-mt-24 py-20 lg:py-24">
+    <section id="our-philosophy" class="section-dark scroll-mt-24 py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah">
         <SectionHeading eyebrow="Our philosophy" title="Four things we will not trade away." />
 
-        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
+        <div class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
           <div
             v-for="(principle, index) in principles"
             :key="principle.title"
@@ -128,10 +128,10 @@ useJsonLd(
     </section>
 
     <!-- How we curate -->
-    <section id="how-we-curate" class="container-pravaah scroll-mt-24 py-20 lg:py-24">
+    <section id="how-we-curate" class="container-pravaah scroll-mt-24 py-14 sm:py-20 lg:py-24">
       <SectionHeading eyebrow="How we curate" title="From first message to the last mile home." />
 
-      <ol class="mt-12 grid gap-4 sm:grid-cols-3 lg:gap-5">
+      <ol class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-3 lg:gap-5">
         <li
           v-for="(step, index) in howItWorks"
           :key="step.number"
@@ -159,10 +159,10 @@ useJsonLd(
     </section>
 
     <!-- Testimonials -->
-    <section class="border-y border-hairline bg-canvas-alt py-20 lg:py-24">
+    <section class="border-y border-hairline bg-canvas-alt py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah">
         <SectionHeading eyebrow="In their words" title="What travellers tell us afterwards." />
-        <div class="mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
+        <div class="mt-8 sm:mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
           <div
             v-for="(testimonial, index) in testimonials"
             :key="testimonial.name"
@@ -176,7 +176,7 @@ useJsonLd(
     </section>
 
     <!-- Careers -->
-    <section id="careers" class="container-pravaah scroll-mt-24 py-20 lg:py-24">
+    <section id="careers" class="container-pravaah scroll-mt-24 py-14 sm:py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-5">
           <SectionHeading eyebrow="Careers" title="We are small, and we hire slowly." />
@@ -198,7 +198,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="section-forest py-20 lg:py-24">
+    <section class="section-forest py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
         <div class="reveal max-w-xl">
           <h2 class="text-display-md">Have a question before you plan anything?</h2>

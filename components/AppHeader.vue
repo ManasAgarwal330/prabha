@@ -222,122 +222,145 @@ const onKeydown = (event: KeyboardEvent) => {
     <!-- Teleported: the header's backdrop blur would otherwise clip a fixed overlay to the header box. -->
     <Teleport to="body">
       <Transition
-        enter-active-class="transition duration-300 ease-editorial"
-        enter-from-class="opacity-0"
-        leave-active-class="transition duration-200 ease-editorial"
-        leave-to-class="opacity-0"
+        enter-active-class="transition-opacity duration-300 ease-editorial drawer-enter-active"
+        enter-from-class="opacity-0 drawer-enter-from"
+        leave-active-class="transition-opacity duration-200 ease-editorial drawer-leave-active"
+        leave-to-class="opacity-0 drawer-leave-to"
+        :duration="{ enter: 450, leave: 280 }"
       >
-        <div
-          v-if="menuOpen"
-          id="mobile-menu"
-          class="section-dark fixed inset-0 z-[70] flex h-[100dvh] flex-col overflow-hidden lg:hidden"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menu"
-          @keydown="onKeydown"
-        >
-          <div class="pointer-events-none absolute inset-0 -z-10 opacity-30" aria-hidden="true">
-            <AppImage :src="MENU_IMAGE" alt="" :ratio="9 / 16" sizes="100vw" :zoom="false" class="h-full w-full" />
-          </div>
+        <!-- A full-screen light panel that slides in from the right. -->
+        <div v-if="menuOpen" class="fixed inset-0 z-[70] lg:hidden" @keydown="onKeydown">
+
           <div
-            class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-canvas/80 via-canvas/95 to-canvas"
-            aria-hidden="true"
-          />
-
-          <div class="container-pravaah flex h-16 shrink-0 items-center justify-between">
-            <NuxtLink to="/" class="rounded-sm" :aria-label="`${site.name} — home`" @click="menuOpen = false">
-              <PravaahLogo tone="light" size="sm" />
-            </NuxtLink>
-            <button
-              ref="closeButton"
-              type="button"
-              class="inline-flex h-10 w-10 items-center justify-center rounded-pill border border-white/20 text-white transition-colors hover:bg-white/10"
-              aria-label="Close menu"
-              @click="menuOpen = false"
+            id="mobile-menu"
+            class="drawer-panel absolute inset-0 isolate flex h-[100dvh] w-full flex-col overflow-hidden bg-canvas text-ink"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+          >
+            <!-- Soft mint light, and the mountains fading in faintly at the foot of the menu. -->
+            <div class="menu-glow pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+            <div
+              class="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[45%] opacity-[0.16] [mask-image:linear-gradient(to_bottom,transparent,black_70%)]"
+              aria-hidden="true"
             >
-              <X class="h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
+              <AppImage :src="MENU_IMAGE" alt="" :ratio="16 / 9" sizes="100vw" :zoom="false" class="h-full w-full" />
+            </div>
 
-          <nav class="container-pravaah flex-1 overflow-y-auto overscroll-contain pb-6 pt-4" aria-label="Mobile">
-            <ul>
-              <li
-                v-for="(item, index) in primaryNav"
-                :key="item.to"
-                class="hero-fade border-b border-hairline"
-                :style="{ animationDelay: `${0.05 + index * 0.05}s` }"
+            <div class="flex h-16 shrink-0 items-center justify-between border-b border-hairline/70 bg-canvas/70 px-6 backdrop-blur-md sm:px-10">
+              <NuxtLink to="/" class="rounded-sm" :aria-label="`${site.name} — home`" @click="menuOpen = false">
+                <PravaahLogo tone="brand" size="sm" />
+              </NuxtLink>
+              <button
+                ref="closeButton"
+                type="button"
+                class="inline-flex h-10 w-10 items-center justify-center rounded-pill border border-hairline bg-surface text-ink shadow-soft transition-colors hover:border-accent/40 hover:text-accent"
+                aria-label="Close menu"
+                @click="menuOpen = false"
               >
-                <div class="flex items-center justify-between gap-4">
-                  <NuxtLink
-                    :to="item.to"
-                    class="flex-1 py-4 font-display text-[1.75rem] leading-tight transition-colors hover:text-accent"
-                    :class="isActive(item.to) ? 'text-accent' : 'text-ink'"
-                    @click="menuOpen = false"
-                  >
-                    {{ item.label }}
-                  </NuxtLink>
-                  <button
-                    v-if="item.children?.length"
-                    type="button"
-                    class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-pill border border-hairline text-ink-soft transition-colors hover:text-ink"
-                    :aria-expanded="mobileExpanded === index"
-                    :aria-controls="`mobile-menu-${index}`"
-                    :aria-label="`Show ${item.label} categories`"
-                    @click="toggleMobile(index)"
-                  >
-                    <ChevronDown
-                      class="h-4 w-4 transition-transform duration-300 ease-editorial"
-                      :class="mobileExpanded === index ? 'rotate-180' : ''"
-                      aria-hidden="true"
-                    />
-                  </button>
-                </div>
+                <X class="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
 
-                <!-- Animating grid rows 0fr → 1fr expands to the content's natural height. -->
-                <div
-                  v-if="item.children?.length"
-                  :id="`mobile-menu-${index}`"
-                  class="grid transition-[grid-template-rows] duration-300 ease-editorial"
-                  :class="mobileExpanded === index ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'"
-                  :inert="mobileExpanded !== index"
+            <nav class="flex-1 overflow-y-auto overscroll-contain px-6 pb-6 pt-2 sm:px-10" aria-label="Mobile">
+              <ul>
+                <li
+                  v-for="(item, index) in primaryNav"
+                  :key="item.to"
+                  class="hero-fade border-b border-hairline"
+                  :style="{ animationDelay: `${0.08 + index * 0.04}s` }"
                 >
-                  <div class="overflow-hidden">
-                    <ul class="grid grid-cols-2 gap-x-4 pb-4">
-                      <li v-for="child in item.children" :key="child.to">
-                        <NuxtLink
-                          :to="child.to"
-                          class="block py-2 text-[0.95rem] text-ink-soft transition-colors hover:text-accent"
-                          @click="menuOpen = false"
-                        >
-                          {{ child.label }}
-                        </NuxtLink>
-                      </li>
-                    </ul>
+                  <div class="flex items-center justify-between gap-3">
+                    <NuxtLink
+                      :to="item.to"
+                      class="flex flex-1 items-center gap-2.5 py-3.5 font-display text-[1.3rem] leading-tight transition-colors hover:text-accent"
+                      :class="isActive(item.to) ? 'text-accent' : 'text-ink'"
+                      @click="menuOpen = false"
+                    >
+                      <Sparkles v-if="item.highlight" class="h-4 w-4 text-highlight" aria-hidden="true" />
+                      {{ item.label }}
+                    </NuxtLink>
+                    <button
+                      v-if="item.children?.length"
+                      type="button"
+                      class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-pill border transition-colors duration-300"
+                      :class="
+                        mobileExpanded === index
+                          ? 'border-accent/40 bg-accent/10 text-accent'
+                          : 'border-hairline bg-surface text-ink-soft hover:text-ink'
+                      "
+                      :aria-expanded="mobileExpanded === index"
+                      :aria-controls="`mobile-menu-${index}`"
+                      :aria-label="`Show ${item.label} categories`"
+                      @click="toggleMobile(index)"
+                    >
+                      <ChevronDown
+                        class="h-4 w-4 transition-transform duration-300 ease-editorial"
+                        :class="mobileExpanded === index ? 'rotate-180' : ''"
+                        aria-hidden="true"
+                      />
+                    </button>
                   </div>
-                </div>
-              </li>
-            </ul>
-          </nav>
 
-          <div class="container-pravaah shrink-0 border-t border-hairline pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-5">
-            <NuxtLink to="/plan-my-trip" class="btn-primary w-full" @click="menuOpen = false">Plan My Trip</NuxtLink>
-            <div class="mt-4 flex items-center justify-between gap-4 text-sm text-ink-muted">
-              <a
-                :href="`tel:${site.contact.phoneHref}`"
-                class="inline-flex items-center gap-2 transition-colors hover:text-accent"
-              >
-                <Phone class="h-4 w-4" aria-hidden="true" />
-                {{ site.contact.phoneDisplay }}
-              </a>
-              <a
-                :href="site.social.instagram"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 transition-colors hover:text-accent"
-              >
-                <Instagram class="h-4 w-4" aria-hidden="true" />
-                {{ site.social.instagramHandle }}
-              </a>
+                  <!-- Animating grid rows 0fr → 1fr expands to the content's natural height. -->
+                  <div
+                    v-if="item.children?.length"
+                    :id="`mobile-menu-${index}`"
+                    class="grid transition-[grid-template-rows,opacity] duration-300 ease-editorial"
+                    :class="mobileExpanded === index ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
+                    :inert="mobileExpanded !== index"
+                  >
+                    <div class="overflow-hidden">
+                      <ul class="flex flex-wrap gap-2 pb-4 pt-0.5">
+                        <li v-for="child in item.children" :key="child.to">
+                          <NuxtLink
+                            :to="child.to"
+                            class="inline-flex rounded-pill border border-hairline bg-surface px-3.5 py-2 text-[0.85rem] text-ink-soft shadow-soft transition-colors hover:border-accent/50 hover:text-accent"
+                            @click="menuOpen = false"
+                          >
+                            {{ child.label }}
+                          </NuxtLink>
+                        </li>
+                        <li>
+                          <NuxtLink
+                            :to="item.to"
+                            class="inline-flex items-center gap-1.5 rounded-pill px-2 py-2 text-[0.85rem] font-medium text-accent"
+                            @click="menuOpen = false"
+                          >
+                            {{ item.allLabel ?? `All ${item.label.toLowerCase()}` }}
+                            <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
+                          </NuxtLink>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="shrink-0 border-t border-hairline bg-canvas/80 px-6 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur-md sm:px-10">
+              <NuxtLink to="/plan-my-trip" class="btn-primary w-full" @click="menuOpen = false">
+                <Sparkles class="h-4 w-4" aria-hidden="true" />
+                Plan My Trip
+              </NuxtLink>
+              <div class="mt-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-[0.85rem] text-ink-muted">
+                <a
+                  :href="`tel:${site.contact.phoneHref}`"
+                  class="inline-flex items-center gap-2 transition-colors hover:text-accent"
+                >
+                  <Phone class="h-4 w-4" aria-hidden="true" />
+                  {{ site.contact.phoneDisplay }}
+                </a>
+                <a
+                  :href="site.social.instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 transition-colors hover:text-accent"
+                >
+                  <Instagram class="h-4 w-4" aria-hidden="true" />
+                  {{ site.social.instagramHandle }}
+                </a>
+              </div>
             </div>
           </div>
         </div>

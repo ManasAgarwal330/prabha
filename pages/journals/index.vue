@@ -115,7 +115,7 @@ useJsonLd(breadcrumbLd(crumbs))
         </button>
       </div>
 
-      <div class="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+      <div class="mt-8 sm:mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
         <div v-for="article in activeCategory === 'All' ? rest : filtered" :key="article.slug">
           <BlogCard :article="article" />
         </div>

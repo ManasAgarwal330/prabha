@@ -40,7 +40,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-pravaah pb-20 lg:pb-24">
+    <section class="container-pravaah pb-14 sm:pb-20 lg:pb-24">
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <!-- Details -->
         <div class="lg:col-span-4">
@@ -131,7 +131,7 @@ useJsonLd(
     </section>
 
     <!-- FAQ preview -->
-    <section class="section-dark py-20 lg:py-24">
+    <section class="section-dark py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="Before you ask" title="The questions we get most." />

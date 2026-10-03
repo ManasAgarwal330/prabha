@@ -29,15 +29,34 @@ const briefSuggestions = [
   'Dev Deepawali on the Varanasi ghats in November…',
   'A quiet cottage near Jim Corbett for a long weekend…'
 ]
+/** The same ideas, short enough to fit the narrower box on phones without being cut off. */
+const briefSuggestionsShort = [
+  'Kumaon hills with my parents…',
+  'First Himalayan trek in October…',
+  'Dev Deepawali in Varanasi…',
+  'Corbett cottage, long weekend…'
+]
 const suggestionIndex = ref(0)
+const narrow = ref(false)
+const briefPlaceholder = computed(() => (narrow.value ? briefSuggestionsShort : briefSuggestions)[suggestionIndex.value])
 let suggestionTimer: ReturnType<typeof setInterval> | undefined
+let narrowQuery: MediaQueryList | undefined
+const onNarrowChange = () => {
+  narrow.value = Boolean(narrowQuery?.matches)
+}
 
 onMounted(() => {
+  narrowQuery = window.matchMedia('(max-width: 639.98px)')
+  onNarrowChange()
+  narrowQuery.addEventListener('change', onNarrowChange)
   suggestionTimer = setInterval(() => {
     suggestionIndex.value = (suggestionIndex.value + 1) % briefSuggestions.length
   }, 3200)
 })
-onBeforeUnmount(() => clearInterval(suggestionTimer))
+onBeforeUnmount(() => {
+  clearInterval(suggestionTimer)
+  narrowQuery?.removeEventListener('change', onNarrowChange)
+})
 
 const startPlanning = () => {
   const text = brief.value.trim()
@@ -110,7 +129,7 @@ usePageSeo({
 
       <!-- Centred from laptop width up; left-aligned on phones, where a centred
            block of this much text is harder to read. -->
-      <div class="container-pravaah relative w-full pb-14 pt-32 sm:pb-16 lg:pb-20 short:pb-10 short:pt-28 lg:text-center">
+      <div class="container-pravaah relative w-full pb-24 pt-28 sm:pt-32 lg:pb-20 short:pb-10 short:pt-28 lg:text-center">
         <p class="hero-fade inline-flex items-center gap-2.5 rounded-pill border border-white/15 bg-white/[0.08] px-3.5 py-1.5 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-white/90 backdrop-blur-md" style="animation-delay: 0.1s">
           <span class="relative flex h-2 w-2" aria-hidden="true">
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-lime opacity-60" />
@@ -146,7 +165,7 @@ usePageSeo({
         <!-- On phones "About Pravaah" leads, then the trip brief, then the popular
              picks. From `sm` up the brief comes first and the link row sits under it;
              the row is `contents` below `sm` so its two halves can be ordered apart. -->
-        <div class="mt-9 flex flex-col gap-5 short:mt-6 short:gap-4 lg:items-center">
+        <div class="mt-8 flex flex-col gap-4 sm:mt-9 sm:gap-5 short:mt-6 short:gap-4 lg:items-center">
         <!-- Trip brief: type the trip you have in mind, and it pre-fills Plan My Trip. -->
         <form
           class="hero-fade glass-panel group order-2 flex max-w-2xl flex-col gap-2 rounded-[1.4rem] border border-white/15 p-2 shadow-glow-lg transition-colors focus-within:border-brand-light/60 sm:order-1 sm:flex-row sm:items-center lg:w-full lg:text-left"
@@ -163,8 +182,8 @@ usePageSeo({
               v-model="brief"
               type="text"
               autocomplete="off"
-              :placeholder="briefSuggestions[suggestionIndex]"
-              class="w-full bg-transparent py-3 text-[0.95rem] text-white placeholder:text-white/50 focus:outline-none"
+              :placeholder="briefPlaceholder"
+              class="w-full bg-transparent py-3 text-[1rem] text-white lg:text-[0.95rem] placeholder:text-white/50 focus:outline-none"
             />
           </span>
           <button type="submit" class="btn-primary w-full px-6 py-3.5 sm:w-auto">
@@ -186,17 +205,18 @@ usePageSeo({
             />
           </NuxtLink>
 
-          <div class="hero-fade order-3 flex flex-wrap items-center gap-3 sm:order-none" style="animation-delay: 0.8s">
-            <span class="ml-1 inline-flex items-center gap-1.5 text-xs text-white/70"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
-            <NuxtLink to="/destinations/uttarakhand" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Uttarakhand</NuxtLink>
-            <NuxtLink to="/events/dev-deepawali-varanasi" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Dev Deepawali</NuxtLink>
-            <NuxtLink to="/expeditions/khaliya-top-trek" class="rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Khaliya Top</NuxtLink>
+          <!-- Phones put the label on its own line so every pick fits whole. -->
+          <div class="hero-fade order-3 flex flex-wrap items-center gap-2 sm:order-none sm:gap-3" style="animation-delay: 0.8s">
+            <span class="ml-1 inline-flex shrink-0 basis-full items-center gap-1.5 whitespace-nowrap text-xs text-white/70 sm:basis-auto"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
+            <NuxtLink to="/destinations/uttarakhand" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Uttarakhand</NuxtLink>
+            <NuxtLink to="/events/dev-deepawali-varanasi" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Dev Deepawali</NuxtLink>
+            <NuxtLink to="/expeditions/khaliya-top-trek" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Khaliya Top</NuxtLink>
           </div>
         </div>
         </div>
 
         <dl
-          class="hero-fade mt-10 grid max-w-2xl grid-cols-3 gap-3 sm:gap-4 short:mt-6 lg:mx-auto"
+          class="hero-fade mt-8 grid max-w-2xl grid-cols-3 sm:mt-10 gap-3 sm:gap-4 short:mt-6 lg:mx-auto"
           style="animation-delay: 0.86s"
         >
           <div v-for="stat in brandStory.stats" :key="stat.label" class="glass-panel rounded-2xl border border-white/10 px-3 py-4 sm:px-5 short:py-3">
@@ -218,7 +238,7 @@ usePageSeo({
     </section>
 
     <!-- What we offer -->
-    <section id="explore" class="relative scroll-mt-20 py-20 lg:py-28">
+    <section id="explore" class="relative scroll-mt-20 py-14 sm:py-20 lg:py-28">
       <div class="container-pravaah">
       <SectionHeading
         eyebrow="Explore Pravaah"
@@ -226,13 +246,13 @@ usePageSeo({
         intro="Four ways to travel with us. Every one of them is planned around the people and places we know best."
       />
 
-      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+      <CardRail label="ways to travel" class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
         <NuxtLink
           v-for="(pillar, index) in pillars"
           :key="pillar.section.key"
           :to="pillar.section.path"
           v-tilt
-          class="reveal glow-card group relative block h-[26rem] overflow-hidden rounded-card shadow-soft"
+          class="reveal glow-card group relative block h-[24rem] sm:h-[26rem] overflow-hidden rounded-card shadow-soft"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
           <AppImage
@@ -265,12 +285,12 @@ usePageSeo({
             </span>
           </div>
         </NuxtLink>
-      </div>
+      </CardRail>
       </div>
     </section>
 
     <!-- Featured stays -->
-    <section class="section-dark py-20 lg:py-28">
+    <section class="section-dark py-14 sm:py-20 lg:py-28">
       <div class="container-pravaah">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
@@ -284,7 +304,7 @@ usePageSeo({
           </NuxtLink>
         </div>
 
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <CardRail label="stay" class="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           <div
             v-for="(listing, index) in featuredStays"
             :key="listing.slug"
@@ -293,12 +313,12 @@ usePageSeo({
           >
             <ListingCard :listing="listing" />
           </div>
-        </div>
+        </CardRail>
       </div>
     </section>
 
     <!-- Featured destinations -->
-    <section id="destinations" class="container-pravaah scroll-mt-20 py-20 lg:py-28">
+    <section id="destinations" class="container-pravaah scroll-mt-20 py-14 sm:py-20 lg:py-28">
       <div class="flex flex-wrap items-end justify-between gap-6">
         <SectionHeading
           eyebrow="Where to go"
@@ -311,8 +331,8 @@ usePageSeo({
         </NuxtLink>
       </div>
 
-      <div
-        class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[repeat(3,15rem)] lg:gap-5"
+      <CardRail label="destination"
+        class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[repeat(3,15rem)] lg:gap-5"
       >
         <div
           v-for="(destination, index) in gridDestinations"
@@ -327,11 +347,11 @@ usePageSeo({
             :sizes="index === 0 ? '(min-width: 1024px) 66vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'"
           />
         </div>
-      </div>
+      </CardRail>
     </section>
 
     <!-- Brand story — the "About Pravaah" buttons land here -->
-    <section id="about" class="scroll-mt-20 border-y border-hairline bg-canvas-alt py-20 lg:py-28">
+    <section id="about" class="scroll-mt-20 border-y border-hairline bg-canvas-alt py-14 sm:py-20 lg:py-28">
       <div class="container-pravaah grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
         <div class="relative order-2 lg:order-1">
           <div class="reveal-media overflow-hidden rounded-card shadow-lift">
@@ -361,7 +381,7 @@ usePageSeo({
     </section>
 
     <!-- Expeditions & experiences -->
-    <section class="section-dark py-20 lg:py-28">
+    <section class="section-dark py-14 sm:py-20 lg:py-28">
       <div class="container-pravaah">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
@@ -375,7 +395,7 @@ usePageSeo({
           </NuxtLink>
         </div>
 
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <CardRail label="journey" class="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           <div
             v-for="(listing, index) in featuredJourneys"
             :key="`${listing.section}-${listing.slug}`"
@@ -384,23 +404,23 @@ usePageSeo({
           >
             <ListingCard :listing="listing" />
           </div>
-        </div>
+        </CardRail>
       </div>
     </section>
 
     <!-- Why Pravaah -->
-    <section class="container-pravaah py-20 lg:py-28">
+    <section class="container-pravaah py-14 sm:py-20 lg:py-28">
       <SectionHeading
         eyebrow="Why Pravaah"
         title="A small studio, built around the parts of travel that matter."
         intro="No queues, no generic packages — just people who know these roads and plan like it matters."
       />
 
-      <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+      <CardRail label="reason" class="mt-8 sm:mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
         <div
           v-for="(value, index) in valueProps"
           :key="value.title"
-          class="reveal surface-card card-lift glow-card group p-7 shadow-soft"
+          class="reveal surface-card card-lift glow-card group p-6 shadow-soft sm:p-7"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
           <span class="icon-tile">
@@ -409,18 +429,18 @@ usePageSeo({
           <h3 class="mt-6 font-display text-xl">{{ value.title }}</h3>
           <p class="mt-3 text-[0.95rem] leading-relaxed text-ink-muted">{{ value.description }}</p>
         </div>
-      </div>
+      </CardRail>
     </section>
 
     <!-- How it works -->
-    <section class="section-forest py-20 lg:py-28">
+    <section class="section-forest py-14 sm:py-20 lg:py-28">
       <div class="container-pravaah">
         <div class="reveal max-w-3xl">
           <p class="chip mb-5"><span class="chip-dot" aria-hidden="true" />How it works</p>
           <h2 class="text-display-md">Three steps, and then you are travelling.</h2>
         </div>
 
-        <ol class="mt-14 grid gap-10 sm:grid-cols-3 sm:gap-8">
+        <ol class="mt-8 sm:mt-14 grid gap-8 sm:grid-cols-3 sm:gap-8">
           <li
             v-for="(step, index) in howItWorks"
             :key="step.number"
@@ -441,7 +461,7 @@ usePageSeo({
     </section>
 
     <!-- Journals -->
-    <section class="container-pravaah py-20 lg:py-28">
+    <section class="container-pravaah py-14 sm:py-20 lg:py-28">
       <div class="flex flex-wrap items-end justify-between gap-6">
         <SectionHeading
           eyebrow="Journals"
@@ -454,7 +474,7 @@ usePageSeo({
         </NuxtLink>
       </div>
 
-      <div class="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+      <CardRail label="story" class="mt-8 sm:mt-12 grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
         <div
           v-for="(article, index) in stories"
           :key="article.slug"
@@ -463,15 +483,15 @@ usePageSeo({
         >
           <BlogCard :article="article" />
         </div>
-      </div>
+      </CardRail>
     </section>
 
     <!-- Testimonials -->
-    <section class="section-dark py-20 lg:py-28">
+    <section class="section-dark py-14 sm:py-20 lg:py-28">
       <div class="container-pravaah">
         <SectionHeading eyebrow="In their words" title="What travellers tell us afterwards." />
 
-        <div class="mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
+        <CardRail label="review" class="mt-8 sm:mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
           <div
             v-for="(testimonial, index) in testimonials"
             :key="testimonial.name"
@@ -480,7 +500,7 @@ usePageSeo({
           >
             <TestimonialCard :testimonial="testimonial" />
           </div>
-        </div>
+        </CardRail>
       </div>
     </section>
   </div>

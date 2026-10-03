@@ -93,10 +93,10 @@ useJsonLd(breadcrumbLd(crumbs))
       </div>
     </div>
 
-    <section id="india" class="container-pravaah scroll-mt-24 py-16 lg:py-20">
+    <section id="india" class="container-pravaah scroll-mt-24 py-12 sm:py-16 lg:py-20">
       <SectionHeading :eyebrow="india.name" title="Where we travel." />
 
-      <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+      <ul class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
         <li
           v-for="(group, index) in regionGroups"
           :key="group.region.slug"
@@ -129,13 +129,13 @@ useJsonLd(breadcrumbLd(crumbs))
       v-for="(group, groupIndex) in regionGroups"
       :id="group.region.slug"
       :key="group.region.slug"
-      class="scroll-mt-24 py-16 lg:py-20"
+      class="scroll-mt-24 py-12 sm:py-16 lg:py-20"
       :class="groupIndex % 2 === 0 ? 'section-dark' : ''"
     >
       <div class="container-pravaah">
         <SectionHeading eyebrow="Destinations" :title="group.region.name" :intro="group.region.description" />
 
-        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+        <div class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           <div
             v-for="(destination, index) in group.destinations"
             :key="destination.slug"
@@ -149,7 +149,7 @@ useJsonLd(breadcrumbLd(crumbs))
     </section>
 
     <!-- Seasonal recommendations -->
-    <section class="py-20 lg:py-28">
+    <section class="py-14 sm:py-20 lg:py-28">
       <div class="container-pravaah">
         <SectionHeading
           eyebrow="When to go"
@@ -157,7 +157,7 @@ useJsonLd(breadcrumbLd(crumbs))
           intro="India runs on several seasons at once. Here is where we would send you in each window."
         />
 
-        <div class="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+        <div class="mt-8 sm:mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
           <div
             v-for="(season, index) in seasonal"
             :key="season.window"

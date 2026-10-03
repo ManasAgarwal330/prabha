@@ -42,7 +42,7 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="container-pravaah pb-20 lg:pb-24">
+    <section class="container-pravaah pb-14 sm:pb-20 lg:pb-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <nav class="lg:sticky lg:top-28" aria-label="FAQ sections">

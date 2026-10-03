@@ -75,7 +75,7 @@ useJsonLd(
       :intro="section.intro"
       :crumbs="crumbs"
     >
-      <nav v-if="groups.length > 1" class="mt-9 flex flex-wrap gap-2" :aria-label="`${section.name} categories`">
+      <nav v-if="groups.length > 1" class="mt-7 flex flex-wrap gap-2 sm:mt-9" :aria-label="`${section.name} categories`">
         <NuxtLink
           v-for="group in groups"
           :key="group.category.slug"
@@ -112,13 +112,13 @@ useJsonLd(
       v-for="(group, groupIndex) in groups"
       :id="group.category.slug"
       :key="group.category.slug"
-      class="scroll-mt-24 py-16 lg:py-20"
+      class="scroll-mt-24 py-12 sm:py-16 lg:py-20"
       :class="groupIndex % 2 === 1 ? 'section-dark' : ''"
     >
       <div class="container-pravaah">
         <SectionHeading :eyebrow="section.name" :title="group.category.name" :intro="group.category.description" />
 
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <CardRail label="listing" class="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           <div
             v-for="(listing, index) in group.listings"
             :key="listing.slug"
@@ -127,12 +127,12 @@ useJsonLd(
           >
             <ListingCard :listing="listing" />
           </div>
-        </div>
+        </CardRail>
       </div>
     </section>
 
     <section class="container-pravaah pt-8">
-      <div class="reveal flex flex-col items-start justify-between gap-6 rounded-card border border-dashed border-hairline p-8 sm:flex-row sm:items-center">
+      <div class="reveal flex flex-col items-start justify-between gap-6 rounded-card border border-dashed border-hairline p-6 sm:flex-row sm:p-8 sm:items-center">
         <div>
           <h2 class="font-display text-2xl leading-snug">Looking for something that is not listed?</h2>
           <p class="mt-2 max-w-xl text-sm leading-relaxed text-ink-muted">

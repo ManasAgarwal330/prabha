@@ -104,7 +104,10 @@ watch(
 /** Waits for the error state to render, then focuses the first bad field in this form. */
 const focusFirstError = async () => {
   await nextTick()
-  formEl.value?.querySelector<HTMLElement>('[data-invalid="true"]')?.focus()
+  // Skip fields hidden at this screen size: phones and desktop show different date fields.
+  ;[...(formEl.value?.querySelectorAll<HTMLElement>('[data-invalid="true"]') ?? [])]
+    .find((el) => el.offsetParent !== null)
+    ?.focus()
 }
 
 /**
@@ -159,11 +162,22 @@ const reset = () => {
   status.value = 'idle'
 }
 
+/** 16px text below desktop, so iOS does not zoom the page when a field is focused. */
 const fieldClass =
-  'w-full rounded-lg border bg-surface px-4 py-3 text-[0.95rem] text-ink placeholder:text-ink-muted/60 transition-colors focus:border-link focus:outline-none focus:ring-1 focus:ring-link'
+  'w-full rounded-xl border bg-surface px-4 py-3 text-[1rem] text-ink lg:rounded-lg lg:text-[0.95rem] placeholder:text-ink-muted/60 transition-colors focus:border-link focus:outline-none focus:ring-1 focus:ring-link'
 
 /** Date inputs keep the same height as the text fields and show a pointer, since a click opens the calendar. */
 const dateClass = 'min-h-[3.125rem] cursor-pointer'
+
+/** Selects draw their own chevron below desktop, so their text lines up with the inputs. */
+const selectClass = 'field-select'
+
+/** Travel dates are mandatory: the label carries a marker, and the form will not send without them. */
+const dateError = computed(() =>
+  !form.travelFrom && !form.travelTo && errors.value.travelFrom && errors.value.travelTo
+    ? 'Choose your travel dates — a start and an end date.'
+    : errors.value.travelFrom || errors.value.travelTo
+)
 </script>
 
 <template>
@@ -199,8 +213,12 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
         <label :for="`${uid}-website`">Website</label>
         <input :id="`${uid}-website`" v-model="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" />
       </div>
-      <div class="grid gap-5 sm:grid-cols-2" :class="columns === 3 ? 'lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4' : ''">
-        <div>
+      <!-- Phones pair the short fields two across; everything else takes the full row. -->
+      <div
+        class="grid grid-cols-2 gap-x-3 gap-y-4 sm:gap-5"
+        :class="columns === 3 ? 'lg:grid-cols-3 lg:gap-x-4 lg:gap-y-4' : ''"
+      >
+        <div class="col-span-2 sm:col-span-1">
           <label :for="`${uid}-name`" class="mb-2 block text-sm font-medium text-ink">Name</label>
           <input
             :id="`${uid}-name`"
@@ -217,7 +235,7 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
           <p v-if="errors.name" :id="`${uid}-name-error`" class="mt-1.5 text-xs text-accent">{{ errors.name }}</p>
         </div>
 
-        <div>
+        <div class="col-span-2 sm:col-span-1">
           <label :for="`${uid}-email`" class="mb-2 block text-sm font-medium text-ink">Email</label>
           <input
             :id="`${uid}-email`"
@@ -240,7 +258,7 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
           <p v-if="errors.email" :id="`${uid}-email-error`" class="mt-1.5 text-xs text-accent">{{ errors.email }}</p>
         </div>
 
-        <div>
+        <div class="col-span-2 sm:col-span-1">
           <label :for="`${uid}-phone`" class="mb-2 block text-sm font-medium text-ink">Phone</label>
           <input
             :id="`${uid}-phone`"
@@ -264,13 +282,13 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
           </p>
         </div>
 
-        <div>
+        <div class="col-span-2 sm:col-span-1">
           <label :for="`${uid}-destination`" class="mb-2 block text-sm font-medium text-ink">Destination</label>
           <select
             :id="`${uid}-destination`"
             v-model="form.destination"
             name="destination"
-            :class="[fieldClass, errors.destination ? 'border-accent' : 'border-hairline']"
+            :class="[fieldClass, selectClass, errors.destination ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.destination)"
             :data-invalid="Boolean(errors.destination)"
             :aria-describedby="errors.destination ? `${uid}-destination-error` : undefined"
@@ -287,13 +305,34 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
           </p>
         </div>
 
-        <div>
-          <label :for="`${uid}-travel-from`" class="mb-2 block text-sm font-medium text-ink">Travel from</label>
+        <!-- Phones and tablets: one field that opens the calendar sheet. -->
+        <div class="col-span-2 lg:hidden">
+          <label :for="`${uid}-travel-dates`" class="mb-2 block text-sm font-medium text-ink">
+            Travel dates <span class="text-accent" aria-hidden="true">*</span>
+          </label>
+          <DateRangeSheet
+            :id="`${uid}-travel-dates`"
+            v-model:from="form.travelFrom"
+            v-model:to="form.travelTo"
+            :min="today"
+            :invalid="Boolean(dateError)"
+            :describedby="dateError ? `${uid}-travel-dates-error` : undefined"
+            @change="checkDates"
+          />
+          <p v-if="dateError" :id="`${uid}-travel-dates-error`" class="mt-1.5 text-xs text-accent">{{ dateError }}</p>
+        </div>
+
+        <!-- Desktop: the browser's own date inputs. -->
+        <div class="hidden lg:block">
+          <label :for="`${uid}-travel-from`" class="mb-2 block text-sm font-medium text-ink">
+            Travel from <span class="text-accent" aria-hidden="true">*</span>
+          </label>
           <input
             :id="`${uid}-travel-from`"
             v-model="form.travelFrom"
             type="date"
             name="travelFrom"
+            required
             :min="today || undefined"
             :class="[fieldClass, dateClass, errors.travelFrom ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.travelFrom)"
@@ -307,13 +346,16 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
           </p>
         </div>
 
-        <div>
-          <label :for="`${uid}-travel-to`" class="mb-2 block text-sm font-medium text-ink">Travel to</label>
+        <div class="hidden lg:block">
+          <label :for="`${uid}-travel-to`" class="mb-2 block text-sm font-medium text-ink">
+            Travel to <span class="text-accent" aria-hidden="true">*</span>
+          </label>
           <input
             :id="`${uid}-travel-to`"
             v-model="form.travelTo"
             type="date"
             name="travelTo"
+            required
             :min="form.travelFrom || today || undefined"
             :class="[fieldClass, dateClass, errors.travelTo ? 'border-accent' : 'border-hairline']"
             :aria-invalid="Boolean(errors.travelTo)"
@@ -333,7 +375,7 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
             :id="`${uid}-travellers`"
             v-model="form.travellers"
             name="travellers"
-            :class="[fieldClass, 'border-hairline']"
+            :class="[fieldClass, selectClass, 'border-hairline']"
           >
             <option v-for="count in travellerCounts" :key="count" :value="count">{{ count }}</option>
           </select>
@@ -344,16 +386,16 @@ const dateClass = 'min-h-[3.125rem] cursor-pointer'
             Type of trip
             <span class="font-normal text-ink-muted">(optional)</span>
           </label>
-          <select :id="`${uid}-trip-type`" v-model="form.tripType" name="tripType" :class="[fieldClass, 'border-hairline']">
+          <select :id="`${uid}-trip-type`" v-model="form.tripType" name="tripType" :class="[fieldClass, selectClass, 'border-hairline']">
             <option value="">Not sure yet</option>
             <option v-for="type in tripTypes" :key="type.slug" :value="type.label">{{ type.label }}</option>
           </select>
         </div>
 
-        <!-- Nine fields: in two columns the last one takes the full row. -->
-        <div :class="columns === 3 ? 'sm:col-span-2 lg:col-span-1' : 'sm:col-span-2'">
+        <!-- In two columns the last field takes the full row. -->
+        <div class="col-span-2" :class="columns === 3 ? 'lg:col-span-1' : ''">
           <label :for="`${uid}-budget`" class="mb-2 block text-sm font-medium text-ink">Budget range</label>
-          <select :id="`${uid}-budget`" v-model="form.budget" name="budget" :class="[fieldClass, 'border-hairline']">
+          <select :id="`${uid}-budget`" v-model="form.budget" name="budget" :class="[fieldClass, selectClass, 'border-hairline']">
             <option v-for="range in budgetRanges" :key="range" :value="range">{{ range }}</option>
           </select>
         </div>

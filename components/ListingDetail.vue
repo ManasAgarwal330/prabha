@@ -86,19 +86,19 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         aria-hidden="true"
       />
 
-      <div class="container-pravaah relative w-full pb-14 pt-32 lg:pb-20">
+      <div class="container-pravaah relative w-full pb-12 pt-28 sm:pb-14 sm:pt-32 lg:pb-20">
         <Breadcrumbs :items="crumbs" light />
         <p class="eyebrow mt-7 text-white/80">
           {{ category?.name }} · {{ current.location }}
         </p>
         <h1 class="mt-4 max-w-3xl text-display-lg text-white text-shadow-hero">{{ current.title }}</h1>
-        <p class="mt-5 max-w-xl text-lg leading-relaxed text-white/85">{{ current.tagline }}</p>
+        <p class="mt-4 max-w-xl text-[1rem] leading-relaxed text-white/85 sm:mt-5 sm:text-[1.125rem]">{{ current.tagline }}</p>
 
-        <dl class="mt-9 grid max-w-3xl gap-3 text-white sm:grid-cols-3">
+        <dl class="mt-7 grid max-w-3xl gap-2.5 text-white sm:mt-9 sm:grid-cols-3 sm:gap-3">
           <div
             v-for="fact in current.facts.slice(0, 3)"
             :key="fact.label"
-            class="glass-panel flex items-start gap-3 rounded-2xl border border-white/10 px-4 py-3.5"
+            class="glass-panel flex items-start gap-3 rounded-2xl border border-white/10 px-4 py-3 sm:py-3.5"
           >
             <component :is="factIcon(fact.label)" class="mt-0.5 h-4 w-4 shrink-0 text-brand-lime" aria-hidden="true" />
             <div>
@@ -110,7 +110,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
       </div>
     </section>
 
-    <div class="container-pravaah py-20 lg:py-24">
+    <div class="container-pravaah py-14 sm:py-20 lg:py-24">
       <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
         <!-- Main column -->
         <div class="lg:col-span-7">
@@ -132,7 +132,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
             </div>
           </section>
 
-          <section class="mt-20">
+          <section class="mt-14 sm:mt-20">
             <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />02 · Highlights</p>
             <h2 class="reveal mt-5 text-display-sm"><span class="text-gradient">Highlights</span></h2>
             <ul class="mt-8 grid gap-4 sm:grid-cols-2">
@@ -149,7 +149,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
             </ul>
           </section>
 
-          <section v-if="current.itinerary?.length" class="mt-20">
+          <section v-if="current.itinerary?.length" class="mt-14 sm:mt-20">
             <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />03 · Itinerary</p>
             <h2 class="reveal mt-5 text-display-sm">Day by <span class="text-gradient">day</span></h2>
             <div class="reveal mt-8">
@@ -157,7 +157,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
             </div>
           </section>
 
-          <section v-if="current.inclusions?.length" class="mt-20">
+          <section v-if="current.inclusions?.length" class="mt-14 sm:mt-20">
             <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Included</p>
             <h2 class="reveal mt-5 text-display-sm">What is <span class="text-gradient">included</span></h2>
             <ul class="reveal mt-7 flex flex-wrap gap-2.5">
@@ -174,7 +174,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
             </ul>
           </section>
 
-          <section class="mt-20">
+          <section class="mt-14 sm:mt-20">
             <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Before you go</p>
             <h2 class="reveal mt-5 text-display-sm">Good to <span class="text-gradient">know</span></h2>
             <div
@@ -201,7 +201,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
         <!-- Sticky enquiry card -->
         <aside class="lg:col-span-4 lg:col-start-9">
           <div class="lg:sticky lg:top-28">
-            <div class="surface-card glow-card bg-surface p-7 shadow-lift">
+            <div class="surface-card glow-card bg-surface p-6 shadow-lift sm:p-7">
               <p class="chip"><span class="chip-dot" aria-hidden="true" />{{ category?.name }}</p>
               <p class="mt-4 font-display text-2xl leading-tight">{{ current.title }}</p>
 
@@ -253,13 +253,13 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
     </div>
 
     <!-- Gallery -->
-    <section class="container-pravaah pb-20 lg:pb-24">
+    <section class="container-pravaah pb-14 sm:pb-20 lg:pb-24">
       <h2 class="reveal sr-only">Photographs from {{ current.title }}</h2>
       <ImageGallery :images="current.gallery" :label="current.title" />
     </section>
 
     <!-- Enquiry -->
-    <section id="enquire" class="scroll-mt-24 border-y border-hairline bg-canvas-alt py-20 lg:py-24">
+    <section id="enquire" class="scroll-mt-24 border-y border-hairline bg-canvas-alt py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="Enquire" :title="`Ask us about ${current.title}.`" />
@@ -279,7 +279,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
     </section>
 
     <!-- Related -->
-    <section v-if="related.length" class="section-dark py-20 lg:py-24">
+    <section v-if="related.length" class="section-dark py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah">
         <div class="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading :eyebrow="`More ${section.name.toLowerCase()}`" title="You might also like." />
@@ -288,7 +288,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
             <ArrowRight class="h-4 w-4" aria-hidden="true" />
           </NuxtLink>
         </div>
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <CardRail label="listing" class="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           <div
             v-for="(item, index) in related"
             :key="item.slug"
@@ -297,7 +297,7 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
           >
             <ListingCard :listing="item" />
           </div>
-        </div>
+        </CardRail>
       </div>
     </section>
 

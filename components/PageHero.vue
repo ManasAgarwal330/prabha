@@ -34,7 +34,7 @@ defineProps<{
       aria-hidden="true"
     />
 
-    <div class="container-pravaah relative w-full pb-14 pt-32 lg:pb-20">
+    <div class="container-pravaah relative w-full pb-16 pt-28 sm:pb-14 sm:pt-32 lg:pb-20">
       <Breadcrumbs :items="crumbs" light />
       <p class="mt-7">
         <span class="chip border-white/15 bg-white/[0.08] text-white/90">
@@ -43,7 +43,7 @@ defineProps<{
         </span>
       </p>
       <h1 class="text-gradient-light mt-5 max-w-3xl pb-1 text-display-lg">{{ title }}</h1>
-      <p v-if="intro" class="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">{{ intro }}</p>
+      <p v-if="intro" class="mt-5 max-w-2xl text-[1rem] leading-relaxed text-white/85 sm:mt-6 sm:text-[1.125rem]">{{ intro }}</p>
       <slot />
     </div>
   </section>

@@ -79,6 +79,22 @@ onBeforeUnmount(() => {
   document.body.style.removeProperty('overflow')
 })
 
+/** Phones: drag the sheet's header down to dismiss it, like a native sheet. */
+let dragStart: number | null = null
+const dragOffset = ref(0)
+const onDragStart = (event: TouchEvent) => {
+  dragStart = event.touches[0]?.clientY ?? null
+}
+const onDragMove = (event: TouchEvent) => {
+  if (dragStart === null) return
+  dragOffset.value = Math.max(0, (event.touches[0]?.clientY ?? dragStart) - dragStart)
+}
+const onDragEnd = () => {
+  if (dragOffset.value > 120) close()
+  dragStart = null
+  dragOffset.value = 0
+}
+
 /** Escape closes; Tab and Shift+Tab stay inside the dialog. */
 const onKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape') {
@@ -106,20 +122,22 @@ const onKeydown = (event: KeyboardEvent) => {
 <template>
   <Teleport to="body">
     <Transition
-      enter-active-class="transition-opacity duration-300 ease-editorial"
-      enter-from-class="opacity-0"
-      leave-active-class="transition-opacity duration-200 ease-editorial"
-      leave-to-class="opacity-0"
+      enter-active-class="transition-opacity duration-300 ease-editorial sheet-m-enter-active"
+      enter-from-class="opacity-0 sheet-m-enter-from"
+      leave-active-class="transition-opacity duration-200 ease-editorial sheet-m-leave-active"
+      leave-to-class="opacity-0 sheet-m-leave-to"
+      :duration="{ enter: 450, leave: 260 }"
     >
       <div
         v-if="open"
-        class="fixed inset-0 z-[70] flex items-end justify-center sm:items-center sm:p-6 lg:items-start lg:overflow-y-auto"
+        class="fixed inset-0 z-[70] flex items-end justify-center lg:items-start lg:overflow-y-auto lg:p-6"
         @keydown="onKeydown"
       >
         <!--
-          Phones get a bottom sheet that scrolls inside itself. From lg up the form is laid out
-          three across so the whole dialog fits on screen with no inner scrollbar; on an unusually
-          short window the backdrop scrolls instead.
+          Phones and tablets get a bottom sheet that slides up: the title and close button stay
+          pinned while the form scrolls beneath them, and dragging the header down dismisses it.
+          From lg up the form is laid out three across so the whole dialog fits on screen with no
+          inner scrollbar; on an unusually short window the backdrop scrolls instead.
         -->
         <div class="absolute inset-0 bg-pine-deep/60 backdrop-blur-sm" aria-hidden="true" @click="close" />
 
@@ -129,35 +147,53 @@ const onKeydown = (event: KeyboardEvent) => {
           aria-modal="true"
           aria-labelledby="enquiry-popup-title"
           aria-describedby="enquiry-popup-intro"
-          class="relative max-h-[92svh] w-full max-w-2xl overflow-y-auto overscroll-contain rounded-t-card bg-surface p-6 shadow-lift sm:rounded-card sm:p-9 lg:my-auto lg:max-h-none lg:max-w-5xl lg:overflow-visible lg:px-10 lg:py-8"
+          class="sheet-panel relative flex max-h-[92svh] w-full max-w-2xl flex-col overflow-hidden rounded-t-[1.75rem] bg-surface shadow-lift lg:my-auto lg:block lg:max-h-none lg:max-w-5xl lg:overflow-visible lg:rounded-card lg:px-10 lg:py-8"
+          :style="dragOffset ? { transform: `translateY(${dragOffset}px)`, transition: 'none' } : undefined"
         >
           <button
             ref="closeButton"
             type="button"
-            class="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-pill text-ink-muted transition-colors hover:bg-canvas-alt hover:text-ink"
+            class="absolute right-4 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-pill bg-canvas-alt text-ink-muted transition-colors hover:bg-canvas-alt hover:text-ink lg:top-4 lg:h-10 lg:w-10 lg:bg-transparent lg:hover:bg-canvas-alt"
             aria-label="Close"
             @click="close"
           >
             <X class="h-5 w-5" aria-hidden="true" />
           </button>
 
-          <p class="font-mono text-[0.65rem] font-medium uppercase tracking-[0.14em] text-accent">Plan your journey</p>
-          <h2 id="enquiry-popup-title" class="mt-2 pr-10 font-display text-2xl leading-snug sm:text-3xl lg:text-[1.75rem]">
-            Tell us about the trip you have in mind.
-          </h2>
-          <p id="enquiry-popup-intro" class="mt-2 max-w-xl text-sm leading-relaxed text-ink-muted">
-            Share a few details and one of our trip designers will write back within one working day with a suggested
-            route.
-          </p>
+          <div
+            class="shrink-0 touch-none border-b border-hairline px-5 pb-4 sm:px-8 lg:touch-auto lg:border-0 lg:p-0"
+            @touchstart.passive="onDragStart"
+            @touchmove.passive="onDragMove"
+            @touchend="onDragEnd"
+          >
+            <div class="flex justify-center pb-2 pt-3 lg:hidden" aria-hidden="true">
+              <span class="h-1.5 w-10 rounded-full bg-ink/15" />
+            </div>
+            <p class="font-mono text-[0.65rem] font-medium uppercase tracking-[0.14em] text-accent">Plan your journey</p>
+            <h2
+              id="enquiry-popup-title"
+              class="mt-1.5 pr-12 font-display text-[1.375rem] leading-snug sm:text-3xl lg:mt-2 lg:pr-10 lg:text-[1.75rem]"
+            >
+              Tell us about the trip you have in mind.
+            </h2>
+            <p id="enquiry-popup-intro" class="mt-1.5 max-w-xl text-[0.8125rem] leading-relaxed text-ink-muted lg:mt-2 lg:text-[0.875rem]">
+              Share a few details and one of our trip designers will write back within one working day with a suggested
+              route.
+            </p>
+          </div>
 
-          <ContactForm
-            class="mt-6"
-            compact
-            :columns="3"
-            :preset-destination="presetDestination"
-            :source="`popup:${route.path}`"
-            @submitted="due = false"
-          />
+          <div
+            class="flex-1 overflow-y-auto overscroll-contain px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-5 sm:px-8 lg:overflow-visible lg:p-0"
+          >
+            <ContactForm
+              class="lg:mt-6"
+              compact
+              :columns="3"
+              :preset-destination="presetDestination"
+              :source="`popup:${route.path}`"
+              @submitted="due = false"
+            />
+          </div>
         </div>
       </div>
     </Transition>

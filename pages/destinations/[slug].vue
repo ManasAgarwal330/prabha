@@ -108,7 +108,7 @@ useJsonLd(
     </section>
 
     <!-- Overview -->
-    <section class="container-pravaah py-20 lg:py-24">
+    <section class="container-pravaah py-14 sm:py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-7">
           <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Overview</p>
@@ -149,15 +149,15 @@ useJsonLd(
     </section>
 
     <!-- Why visit -->
-    <section class="section-dark py-20 lg:py-24">
+    <section class="section-dark py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah">
         <SectionHeading eyebrow="Why visit" :title="`What makes ${current.name} worth the journey.`" />
 
-        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
+        <div class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
           <div
             v-for="(item, index) in current.whyVisit"
             :key="item.title"
-            class="reveal surface-card glow-card p-7"
+            class="reveal surface-card glow-card p-6 sm:p-7"
             :style="{ transitionDelay: `${index * 70}ms` }"
           >
             <span class="icon-tile h-10 w-10 rounded-xl font-mono text-[0.72rem] font-medium">{{ String(index + 1).padStart(2, '0') }}</span>
@@ -169,14 +169,14 @@ useJsonLd(
     </section>
 
     <!-- Best time to visit -->
-    <section class="container-pravaah py-20 lg:py-24">
+    <section class="container-pravaah py-14 sm:py-20 lg:py-24">
       <SectionHeading
         eyebrow="Best time to visit"
         :title="`${current.name}, season by season.`"
         :intro="`In short: ${current.bestTimeToVisit}.`"
       />
 
-      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <CardRail label="season" class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div
           v-for="(season, index) in current.seasons"
           :key="season.window"
@@ -188,24 +188,24 @@ useJsonLd(
           <h3 class="mt-3 font-display text-lg">{{ season.label }}</h3>
           <p class="mt-2.5 text-sm leading-relaxed text-ink-muted">{{ season.description }}</p>
         </div>
-      </div>
+      </CardRail>
     </section>
 
     <!-- Gallery -->
-    <section class="container-pravaah pb-20 lg:pb-24">
+    <section class="container-pravaah pb-14 sm:pb-20 lg:pb-24">
       <h2 class="reveal sr-only">Photographs of {{ current.name }}</h2>
       <ImageGallery :images="current.gallery" :label="current.name" />
     </section>
 
     <!-- Stays, experiences and expeditions here -->
-    <section class="section-dark py-20 lg:py-24">
+    <section class="section-dark py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah">
         <SectionHeading
           :eyebrow="`In ${current.name}`"
           :title="relatedListings.length ? `Where to stay and what to do in ${current.name}.` : `Travel ${current.name} your way.`"
         />
 
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <CardRail label="listing" class="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           <div
             v-for="(listing, index) in featuredHere"
             :key="`${listing.section}-${listing.slug}`"
@@ -219,7 +219,7 @@ useJsonLd(
                and offers the custom route instead of an empty column. -->
           <div
             v-if="featuredHere.length % 3 !== 0 || featuredHere.length === 0"
-            class="reveal flex flex-col justify-center rounded-card border border-dashed border-hairline p-8"
+            class="reveal flex flex-col justify-center rounded-card border border-dashed border-hairline p-6 sm:p-8"
           >
             <h3 class="font-display text-2xl leading-snug">Something else in {{ current.name }}?</h3>
             <p class="mt-3 text-sm leading-relaxed text-ink-muted">
@@ -231,12 +231,12 @@ useJsonLd(
               <ArrowRight class="h-4 w-4" aria-hidden="true" />
             </NuxtLink>
           </div>
-        </div>
+        </CardRail>
       </div>
     </section>
 
     <!-- Travel tips -->
-    <section class="container-pravaah py-20 lg:py-24">
+    <section class="container-pravaah py-14 sm:py-20 lg:py-24">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-5">
           <SectionHeading eyebrow="Travel tips" :title="`Practical notes for ${current.name}.`" />
@@ -255,7 +255,7 @@ useJsonLd(
     </section>
 
     <!-- FAQ -->
-    <section class="section-dark py-20 lg:py-24">
+    <section class="section-dark py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div class="lg:col-span-4">
           <SectionHeading eyebrow="FAQ" :title="`${current.name} questions we get asked.`" />
@@ -271,13 +271,13 @@ useJsonLd(
     </section>
 
     <!-- Other destinations -->
-    <section class="container-pravaah py-20 lg:py-24">
+    <section class="container-pravaah py-14 sm:py-20 lg:py-24">
       <SectionHeading eyebrow="Keep exploring" title="Other regions worth a look." />
-      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+      <CardRail label="destination" class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         <div v-for="other in otherDestinations" :key="other.slug" class="reveal h-72 min-w-0">
           <DestinationCard :destination="other" />
         </div>
-      </div>
+      </CardRail>
     </section>
 
     <CTASection

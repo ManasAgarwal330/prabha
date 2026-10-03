@@ -48,7 +48,7 @@ useJsonLd(
 
 <template>
   <div>
-    <section class="container-pravaah pb-14 pt-16 lg:pt-20">
+    <section class="container-pravaah pb-10 pt-10 sm:pb-14 sm:pt-16 lg:pt-20">
       <Breadcrumbs
         :items="[
           { name: 'Home', path: '/' },
@@ -56,20 +56,20 @@ useJsonLd(
         ]"
       />
 
-      <div class="mt-8 max-w-3xl">
+      <div class="mt-6 max-w-3xl sm:mt-8">
         <p class="eyebrow mb-4">Plan my trip</p>
         <h1 class="text-display-lg">Tell us where you want to go.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">
+        <p class="mt-5 max-w-2xl text-[1rem] leading-relaxed text-ink-muted sm:mt-6 sm:text-[1.125rem]">
           We will help you figure out the rest — the route, the season, the pace and what it actually costs. It
           takes two minutes to send, and there is nothing to pay for a plan.
         </p>
       </div>
     </section>
 
-    <section id="enquiry" class="container-pravaah scroll-mt-24 pb-20 lg:pb-24">
-      <div class="grid gap-14 lg:grid-cols-12 lg:gap-16">
+    <section id="enquiry" class="container-pravaah scroll-mt-24 pb-14 sm:pb-20 lg:pb-24">
+      <div class="grid gap-12 sm:gap-14 lg:grid-cols-12 lg:gap-16">
         <div class="reveal lg:col-span-7">
-          <div class="surface-card bg-surface p-7 sm:p-10">
+          <div class="surface-card bg-surface p-5 max-sm:shadow-soft sm:p-10">
             <ContactForm
               :key="presetTripType"
               :preset-destination="presetDestination"
@@ -110,10 +110,10 @@ useJsonLd(
       </div>
     </section>
 
-    <section class="section-dark py-20 lg:py-24">
+    <section class="section-dark py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah">
         <SectionHeading eyebrow="How it works" title="Three steps, and then you are travelling." />
-        <ol class="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
+        <ol class="mt-8 sm:mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
           <li
             v-for="(step, index) in howItWorks"
             :key="step.number"

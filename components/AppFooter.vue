@@ -27,8 +27,8 @@ const popular = [
 <template>
   <footer class="section-dark">
     <div class="h-px bg-gradient-to-r from-transparent via-brand-light/60 to-transparent" aria-hidden="true" />
-    <div class="container-pravaah py-16 lg:py-20">
-      <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
+    <div class="container-pravaah py-12 sm:py-16 lg:py-20">
+      <div class="grid gap-10 sm:gap-12 lg:grid-cols-12 lg:gap-8">
         <div class="lg:col-span-4">
           <NuxtLink to="/" class="inline-block" :aria-label="`${site.name} — home`">
             <PravaahLogo tone="light" size="lg" />
@@ -55,7 +55,10 @@ const popular = [
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-6 lg:col-start-6">
+        <!-- Phones: Explore (the longest list) runs down the left, Company and Support stack on the right. -->
+        <div
+          class="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-hairline pt-10 sm:grid-cols-3 sm:gap-8 sm:border-0 sm:pt-0 lg:col-span-6 lg:col-start-6"
+        >
           <div>
             <h2 class="eyebrow mb-5">Company</h2>
             <ul class="space-y-3 text-sm">
@@ -66,7 +69,7 @@ const popular = [
               </li>
             </ul>
           </div>
-          <div>
+          <div class="order-first row-span-2 sm:order-none sm:row-span-1">
             <h2 class="eyebrow mb-5">Explore</h2>
             <ul class="space-y-3 text-sm">
               <li v-for="item in footerNav.explore" :key="item.to">
@@ -107,11 +110,17 @@ const popular = [
         </div>
       </div>
 
-      <nav class="mt-14 border-t border-hairline pt-8" aria-label="Popular with travellers">
+      <nav class="mt-10 border-t border-hairline pt-8 sm:mt-14" aria-label="Popular with travellers">
         <h2 class="eyebrow mb-4">Popular with travellers</h2>
-        <ul class="flex flex-wrap gap-x-5 gap-y-2.5 text-sm">
+        <!-- Phones show these as chips so the long list wraps into tidy rows. -->
+        <ul class="flex flex-wrap gap-2 text-[0.8125rem] sm:gap-x-5 sm:gap-y-2.5 sm:text-sm">
           <li v-for="item in popular" :key="item.to">
-            <NuxtLink :to="item.to" class="text-ink-soft transition-colors hover:text-accent">{{ item.label }}</NuxtLink>
+            <NuxtLink
+              :to="item.to"
+              class="inline-flex rounded-pill border border-hairline bg-surface/50 px-3 py-1.5 text-ink-soft transition-colors hover:text-accent sm:inline sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0"
+            >
+              {{ item.label }}
+            </NuxtLink>
           </li>
         </ul>
         <p class="mt-6 max-w-4xl text-xs leading-relaxed text-ink-muted">
@@ -122,10 +131,10 @@ const popular = [
       </nav>
 
       <div
-        class="mt-8 flex flex-col gap-4 border-t border-hairline pt-8 text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between"
+        class="mt-8 flex flex-col items-center gap-3 border-t border-hairline pb-14 pt-8 text-center text-xs text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pb-0 sm:text-left"
       >
         <p>© {{ year }} {{ site.legalName }}. All rights reserved.</p>
-        <p class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <p class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:justify-start">
           <NuxtLink to="/privacy-policy" class="transition-colors hover:text-accent">Privacy Policy</NuxtLink>
           <NuxtLink to="/terms" class="transition-colors hover:text-accent">Terms</NuxtLink>
           <span>{{ site.contact.location.region }}, {{ site.contact.location.country }}</span>

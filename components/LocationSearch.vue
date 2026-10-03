@@ -135,7 +135,7 @@ const onFocusOut = (event: FocusEvent) => {
         role="combobox"
         autocomplete="off"
         :placeholder="selected.length ? 'Add another place…' : 'Type a state or place, e.g. Uttarakhand or Nainital'"
-        class="min-w-[12rem] flex-1 bg-transparent py-1.5 text-[0.95rem] text-ink placeholder:text-ink-muted/70 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+        class="min-w-[10rem] flex-1 bg-transparent py-1.5 text-[1rem] sm:min-w-[12rem] lg:text-[0.95rem] text-ink placeholder:text-ink-muted/70 focus:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
         aria-autocomplete="list"
         :aria-expanded="open"
         :aria-controls="`${uid}-listbox`"

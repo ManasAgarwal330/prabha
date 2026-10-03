@@ -11,7 +11,7 @@ usePageSeo({
 </script>
 
 <template>
-  <div class="container-pravaah py-16 lg:py-20">
+  <div class="container-pravaah py-12 sm:py-16 lg:py-20">
     <Breadcrumbs
       :items="[
         { name: 'Home', path: '/' },

@@ -21,7 +21,7 @@ const titleParts = computed(() => {
 
 <template>
   <div class="reveal" :class="align === 'center' ? 'mx-auto max-w-2xl text-center' : 'max-w-3xl'">
-    <p v-if="eyebrow" class="mb-5" :class="align === 'center' ? 'flex justify-center' : ''">
+    <p v-if="eyebrow" class="mb-4 sm:mb-5" :class="align === 'center' ? 'flex justify-center' : ''">
       <span class="chip">
         <span class="chip-dot" aria-hidden="true" />
         {{ eyebrow }}
@@ -31,7 +31,7 @@ const titleParts = computed(() => {
       <template v-if="titleParts.head">{{ `${titleParts.head} ` }}</template>
       <span class="text-gradient">{{ titleParts.tail }}</span>
     </component>
-    <p v-if="intro" class="mt-5 text-lg leading-relaxed text-ink-muted">
+    <p v-if="intro" class="mt-4 text-[1rem] leading-relaxed text-ink-muted sm:mt-5 sm:text-[1.125rem]">
       {{ intro }}
     </p>
   </div>

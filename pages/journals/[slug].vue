@@ -75,7 +75,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
       </div>
     </div>
 
-    <div class="container-pravaah py-16 lg:py-20">
+    <div class="container-pravaah py-12 sm:py-16 lg:py-20">
       <div class="mx-auto max-w-prose">
         <template v-for="(block, index) in current.body" :key="index">
           <h2 v-if="block.type === 'heading'" class="mt-14 flex items-start gap-3 text-display-sm first:mt-0">
@@ -127,10 +127,10 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
       </div>
     </div>
 
-    <section class="section-dark py-20 lg:py-24">
+    <section class="section-dark py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah">
         <SectionHeading eyebrow="Keep reading" title="More notes from the road." />
-        <div class="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+        <CardRail label="story" class="mt-8 sm:mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           <div
             v-for="(item, index) in related"
             :key="item.slug"
@@ -139,7 +139,7 @@ useJsonLd(articleLd(current), breadcrumbLd(crumbs))
           >
             <BlogCard :article="item" />
           </div>
-        </div>
+        </CardRail>
       </div>
     </section>
 
