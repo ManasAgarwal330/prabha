@@ -1,4 +1,4 @@
-import type { Testimonial } from '~/types'
+import type { TestimonialSection } from '~/types'
 
-/** GET /api/testimonials */
-export default defineEventHandler(async (): Promise<Testimonial[]> => (await loadContent()).testimonials)
+/** GET /api/testimonials — the reviews section's heading and its reviews. */
+export default defineEventHandler(async (): Promise<TestimonialSection> => (await loadContent()).testimonials)

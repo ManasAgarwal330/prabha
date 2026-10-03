@@ -72,14 +72,14 @@ Nothing below requires touching a component.
 | Destinations, seasons, FAQs, travel tips | `data/destinations.ts` |
 | Tours, prices, itineraries, inclusions | `data/tours.ts` |
 | Experience categories | `data/experiences.ts` |
-| Testimonials | `data/testimonials.ts` |
+| Reviews (heading and quotes) | Cosmos DB → `siteContent` → `testimonials` document (see `docs/backend.md`) |
 | Blog articles | `data/blog.ts` |
 | Site-wide FAQs | `data/faq.ts` |
 | Colours, fonts, radii, shadows | `tailwind.config.ts` |
 | Which sections are dark | `section-dark` / `section-forest` classes in `pages/` |
 | Logo, symbol, favicon | `public/brand/*.svg` |
 
-**Placeholders to replace before launch:** the phone number, WhatsApp number (`919000000000`), email, street address and the three social URLs — all in `data/site.ts`. Prices in `data/tours.ts` are indicative. Testimonials in `data/testimonials.ts` are written examples, not real customer feedback.
+**Placeholders to replace before launch:** the phone number, WhatsApp number (`919000000000`), email, street address and the three social URLs — all in `data/site.ts`. Prices in `data/tours.ts` are indicative. The reviews in the Cosmos `testimonials` document are written examples, not real customer feedback.
 
 ### Light and dark bands
 

@@ -159,6 +159,13 @@ export interface Testimonial {
   rating?: number
 }
 
+/** The reviews section: its heading and the reviews, all from the `testimonials` document in Cosmos. */
+export interface TestimonialSection {
+  eyebrow: string
+  title: string
+  items: Testimonial[]
+}
+
 export type ArticleBlock =
   | { type: 'paragraph'; text: string }
   | { type: 'heading'; text: string }
@@ -321,5 +328,5 @@ export interface ContentSnapshot {
   destinations: Destination[]
   articles: Article[]
   faqs: FaqItem[]
-  testimonials: Testimonial[]
+  testimonials: TestimonialSection
 }

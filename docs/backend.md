@@ -32,7 +32,7 @@ the backend is TypeScript.
 | GET | `/api/articles` | Journal stories (without the body), newest first |
 | GET | `/api/articles/:slug` | One story and three others |
 | GET | `/api/faqs` | General FAQs and each destination's FAQs |
-| GET | `/api/testimonials` | Testimonials |
+| GET | `/api/testimonials` | The reviews section: `{ eyebrow, title, items }` |
 | POST | `/api/enquiries` | Saves an enquiry → `201 { ok: true }`, or `422` with field errors |
 
 Content is read from Cosmos in one pass and kept in memory for
@@ -57,6 +57,8 @@ containers**. The containers have no throughput of their own. The definitions ar
 - `settings`: brand, contact details, home page copy, and the form options (budgets, traveller counts, trip types)
 - `section-stays`, `section-experiences`, `section-expeditions`, `section-events`: each tab's title, intro, cover image and categories
 - `regions`, `journal-categories`, `faqs`, `testimonials`: each holds an ordered `items` list
+- `testimonials` also carries the reviews section's heading, `eyebrow` and `title`, shown on the
+  home and About pages. The section is hidden while `items` is empty.
 
 ### Editing content
 

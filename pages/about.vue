@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ArrowRight, Mail } from 'lucide-vue-next'
-import type { Testimonial } from '~/types'
+import type { TestimonialSection } from '~/types'
 
 const site = useSettings()
 const { brandStory, howItWorks, valueProps } = site
-const { data: testimonialData } = await useFetch<Testimonial[]>('/api/testimonials', { key: 'testimonials', getCachedData: cachedForVisit })
-const testimonials = computed(() => testimonialData.value ?? [])
+const { data: testimonialData } = await useFetch<TestimonialSection>('/api/testimonials', { key: 'testimonials', getCachedData: cachedForVisit })
+/** Heading and reviews both come from the database; the section hides when there are none. */
+const testimonials = computed(() => testimonialData.value?.items ?? [])
 
 const HERO_IMAGE = 'photo-1469474968028-56623f02e42e'
 
@@ -159,9 +160,13 @@ useJsonLd(
     </section>
 
     <!-- Testimonials -->
-    <section class="border-y border-hairline bg-canvas-alt py-14 sm:py-20 lg:py-24">
+    <section v-if="testimonials.length" class="border-y border-hairline bg-canvas-alt py-14 sm:py-20 lg:py-24">
       <div class="container-pravaah">
-        <SectionHeading eyebrow="In their words" title="What travellers tell us afterwards." />
+        <SectionHeading
+          v-if="testimonialData?.title"
+          :eyebrow="testimonialData.eyebrow"
+          :title="testimonialData.title"
+        />
         <div class="mt-8 sm:mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
           <div
             v-for="(testimonial, index) in testimonials"

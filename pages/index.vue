@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, ArrowDown, ArrowUpRight, MapPin, Star, Sparkles } from 'lucide-vue-next'
-import type { ArticleSummary, ListingSummary, Testimonial } from '~/types'
+import type { ArticleSummary, ListingSummary, TestimonialSection } from '~/types'
 
 const HERO_IMAGE = 'photo-1506905925346-21bda4d32df4'
 const STORY_IMAGE = 'photo-1501555088652-021faa106b9b'
@@ -12,7 +12,7 @@ const { sections, destinations } = useSiteBundle()
 const [{ data: featured }, { data: articles }, { data: testimonialData }] = await Promise.all([
   useFetch<ListingSummary[]>('/api/listings', { key: 'listings:featured', query: { featured: 'true' }, getCachedData: cachedForVisit }),
   useFetch<ArticleSummary[]>('/api/articles', { key: 'articles', getCachedData: cachedForVisit }),
-  useFetch<Testimonial[]>('/api/testimonials', { key: 'testimonials', getCachedData: cachedForVisit })
+  useFetch<TestimonialSection>('/api/testimonials', { key: 'testimonials', getCachedData: cachedForVisit })
 ])
 
 /** Split so each word can ride up from behind its own mask. */
@@ -70,7 +70,8 @@ const featuredStays = computed(() => featuredIn('stays').slice(0, 3))
 /** A mix of the big trips: expeditions first, topped up with experiences. */
 const featuredJourneys = computed(() => [...featuredIn('expeditions'), ...featuredIn('experiences')].slice(0, 3))
 const stories = computed(() => (articles.value ?? []).slice(0, 3))
-const testimonials = computed(() => testimonialData.value ?? [])
+/** Heading and reviews both come from the database; the section hides when there are none. */
+const testimonials = computed(() => testimonialData.value?.items ?? [])
 
 /** The four offering tabs, shown as the first thing under the hero. */
 const pillars = sections.map((section) => ({
@@ -487,9 +488,13 @@ usePageSeo({
     </section>
 
     <!-- Testimonials -->
-    <section class="section-dark py-14 sm:py-20 lg:py-28">
+    <section v-if="testimonials.length" class="section-dark py-14 sm:py-20 lg:py-28">
       <div class="container-pravaah">
-        <SectionHeading eyebrow="In their words" title="What travellers tell us afterwards." />
+        <SectionHeading
+          v-if="testimonialData?.title"
+          :eyebrow="testimonialData.eyebrow"
+          :title="testimonialData.title"
+        />
 
         <CardRail label="review" class="mt-8 sm:mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
           <div

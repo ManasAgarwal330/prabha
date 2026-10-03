@@ -8,7 +8,8 @@ import type {
   Region,
   Section,
   SiteSettings,
-  Testimonial
+  Testimonial,
+  TestimonialSection
 } from '~/types'
 
 /*
@@ -60,6 +61,10 @@ export const fromDocuments = (docs: {
     destinations: docs.destinations.map((doc) => ({ ...stripSystem<Destination>(doc), slug: String(doc.id) })).sort(byOrder),
     articles: docs.articles.map((doc) => ({ ...stripSystem<Article>(doc), slug: String(doc.id) })),
     faqs: items<FaqItem>(SITE_DOC.faqs),
-    testimonials: items<Testimonial>(SITE_DOC.testimonials)
+    testimonials: {
+      eyebrow: String(site(SITE_DOC.testimonials)?.eyebrow ?? ''),
+      title: String(site(SITE_DOC.testimonials)?.title ?? ''),
+      items: items<Testimonial>(SITE_DOC.testimonials)
+    }
   }
 }
