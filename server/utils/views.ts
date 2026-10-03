@@ -43,6 +43,7 @@ export const toListingSummary = (snapshot: ContentSnapshot, listing: Listing): L
   description: listing.description,
   image: listing.image,
   facts: listing.facts,
+  map: listing.map,
   featured: listing.featured,
   places: listingPlaces(listing, destinationName(snapshot, listing.destinationSlug))
 })

@@ -117,6 +117,17 @@ export interface KeyFact {
 }
 
 /** A single stay, experience, expedition or event with its own detail page. */
+/**
+ * Where a listing sits on the map. `query` is searched on Google Maps, so a place's
+ * own name and town find the business itself; `lat`/`lng`, when set, pin an exact
+ * point instead.
+ */
+export interface MapLocation {
+  query: string
+  lat?: number
+  lng?: number
+}
+
 export interface Listing {
   slug: string
   section: SectionKey
@@ -143,6 +154,8 @@ export interface Listing {
   inclusions?: string[]
   goodToKnow: string[]
   bestTime: string
+  /** Optional: shows the map on the page and a map button on the listing's card. */
+  map?: MapLocation
   featured?: boolean
   /** Kept in the database but left off the site, e.g. the Offbeat Experiences for now. */
   hidden?: boolean
@@ -245,7 +258,7 @@ export interface SiteSettings {
 /** The fields a listing card needs, plus the places the location search matches on. */
 export type ListingSummary = Pick<
   Listing,
-  'slug' | 'section' | 'category' | 'title' | 'location' | 'destinationSlug' | 'tagline' | 'description' | 'image' | 'facts' | 'featured'
+  'slug' | 'section' | 'category' | 'title' | 'location' | 'destinationSlug' | 'tagline' | 'description' | 'image' | 'facts' | 'map' | 'featured'
 > & { places: string[] }
 
 export interface CategoryWithCount extends ListingCategory {

@@ -9,6 +9,7 @@ import {
   Info,
   LayoutGrid,
   Lightbulb,
+  MapPin,
   MapPinned,
   Moon,
   Navigation,
@@ -196,6 +197,17 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
               </ol>
             </div>
           </section>
+
+          <!-- Only for listings with a map in the database (the stays, for now). -->
+          <section v-if="current.map" id="location" class="mt-14 scroll-mt-28 sm:mt-20">
+            <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Location</p>
+            <h2 class="reveal mt-5 text-display-sm">Where you will <span class="text-gradient">be</span></h2>
+            <p class="reveal mt-4 flex items-center gap-2 text-[0.95rem] text-ink-soft">
+              <MapPin class="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+              {{ current.location }}
+            </p>
+            <ListingMap class="reveal mt-6" :map="current.map" :label="current.title" />
+          </section>
         </div>
 
         <!-- Sticky enquiry card -->
@@ -218,6 +230,16 @@ useJsonLd(listingLd(current), breadcrumbLd(crumbs))
                   <div>
                     <dt class="text-ink-muted">Best time</dt>
                     <dd class="text-ink">{{ current.bestTime }}</dd>
+                  </div>
+                </div>
+                <div v-if="current.map" class="flex items-start gap-3">
+                  <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+                  <div>
+                    <dt class="text-ink-muted">Location</dt>
+                    <dd class="text-ink">
+                      {{ current.location }}
+                      <a href="#location" class="ml-1 font-medium text-link underline underline-offset-4 hover:text-accent">View on map</a>
+                    </dd>
                   </div>
                 </div>
               </dl>

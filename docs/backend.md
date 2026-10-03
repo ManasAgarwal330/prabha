@@ -68,6 +68,11 @@ Edit documents in **Azure portal → Cosmos account → Data Explorer**.
   Experiences are stored this way for now.
 - A listing's `category` must be one of the category slugs in its `section-…` document.
 - `places` (optional, on listings) overrides the place names the location search uses.
+- `map` (optional, on listings) puts the listing on a map: a "Location" section with an embedded
+  Google map on its page, and a map button on its card. `{ "query": "Dharohar Retreat, Satkhol,
+  Mukteshwar, Uttarakhand" }` is searched on Google Maps, so the place's own name and town find
+  the business itself. Add `"lat"` and `"lng"` to pin an exact point instead. Uses Google's free,
+  key-free embed and link formats. All the stays have one; leave it out to show no map.
 - Image fields take an image reference, explained under "Images" below.
 
 ### Enquiries

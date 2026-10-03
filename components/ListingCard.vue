@@ -17,6 +17,9 @@ const category = computed(() =>
 /** Stays lead with the setting; everything else leads with its duration. */
 const leadFact = computed(() => props.listing.facts[0])
 const leadIcon = computed(() => (props.listing.section === 'stays' ? BedDouble : Clock))
+
+/** Listings with a map in the database get a map button that opens it in a popup. */
+const mapOpen = ref(false)
 </script>
 
 <template>
@@ -31,8 +34,30 @@ const leadIcon = computed(() => (props.listing.section === 'stays' ? BedDouble :
       </span>
     </NuxtLink>
 
+    <!-- Sits above the card's full-card link, so it opens the map instead of the listing. -->
+    <button
+      v-if="listing.map"
+      type="button"
+      class="absolute right-4 top-4 z-10 inline-flex h-9 w-9 items-center justify-center rounded-pill border border-white/25 bg-pine-deep/45 text-white backdrop-blur-md transition-colors hover:bg-pine-deep/70"
+      :aria-label="`Show ${listing.title} on the map`"
+      title="View on map"
+      @click="mapOpen = true"
+    >
+      <MapPin class="h-4 w-4" aria-hidden="true" />
+    </button>
+
     <div class="flex flex-1 flex-col p-6">
-      <p class="flex items-center gap-1.5 font-mono text-[0.66rem] font-medium uppercase tracking-[0.12em] text-accent">
+      <button
+        v-if="listing.map"
+        type="button"
+        class="relative z-10 flex items-center gap-1.5 self-start text-left font-mono text-[0.66rem] font-medium uppercase tracking-[0.12em] text-accent underline-offset-4 hover:underline"
+        :aria-label="`${listing.location} — show on the map`"
+        @click="mapOpen = true"
+      >
+        <MapPin class="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+        {{ listing.location }}
+      </button>
+      <p v-else class="flex items-center gap-1.5 font-mono text-[0.66rem] font-medium uppercase tracking-[0.12em] text-accent">
         <MapPin class="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
         {{ listing.location }}
       </p>
@@ -62,5 +87,7 @@ const leadIcon = computed(() => (props.listing.section === 'stays' ? BedDouble :
         </span>
       </div>
     </div>
+
+    <MapDialog v-if="listing.map" v-model:open="mapOpen" :map="listing.map" :title="listing.title" :location="listing.location" />
   </article>
 </template>
