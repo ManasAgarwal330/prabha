@@ -113,19 +113,7 @@ useJsonLd(
         <div class="lg:col-span-7">
           <p class="chip reveal"><span class="chip-dot" aria-hidden="true" />Overview</p>
           <h2 class="reveal mt-5 text-display-sm">{{ current.tagline }}</h2>
-          <div class="reveal mt-6 space-y-5">
-            <p
-              v-for="(paragraph, index) in current.overview"
-              :key="paragraph"
-              :class="
-                index === 0
-                  ? 'border-l-2 border-accent pl-5 text-lg leading-relaxed text-ink sm:text-xl'
-                  : 'text-[1.0625rem] leading-[1.8] text-ink-soft'
-              "
-            >
-              {{ paragraph }}
-            </p>
-          </div>
+          <ReadMore :paragraphs="current.overview" class="reveal mt-6" />
         </div>
 
         <aside class="reveal lg:col-span-4 lg:col-start-9">
