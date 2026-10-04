@@ -99,7 +99,7 @@ useJsonLd(
 
         <aside class="reveal lg:col-span-4 lg:col-start-9">
           <dl class="space-y-3">
-            <div v-for="stat in brandStory.stats" :key="stat.label" class="surface-card glow-card flex flex-col-reverse p-6 shadow-soft">
+            <div v-for="stat in brandStory.stats" :key="stat.label" v-spotlight class="surface-card glow-card flex flex-col-reverse p-6 shadow-soft">
               <dt class="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-ink-muted">{{ stat.label }}</dt>
               <dd class="text-gradient font-display text-5xl font-semibold">{{ stat.value }}</dd>
             </div>
@@ -113,10 +113,11 @@ useJsonLd(
       <div class="container-pravaah">
         <SectionHeading eyebrow="Our philosophy" title="Four things we will not trade away." />
 
-        <div class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
+        <div v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: 10 }" class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:gap-5">
           <div
             v-for="(principle, index) in principles"
             :key="principle.title"
+            v-spotlight
             class="reveal surface-card glow-card p-7"
             :style="{ transitionDelay: `${index * 70}ms` }"
           >
@@ -132,10 +133,11 @@ useJsonLd(
     <section id="how-we-curate" class="container-pravaah scroll-mt-24 py-14 sm:py-20 lg:py-24">
       <SectionHeading eyebrow="How we curate" title="From first message to the last mile home." />
 
-      <ol class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-3 lg:gap-5">
+      <ol v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: 10 }" class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-3 lg:gap-5">
         <li
           v-for="(step, index) in howItWorks"
           :key="step.number"
+          v-spotlight
           class="reveal surface-card glow-card p-7 shadow-soft"
           :style="{ transitionDelay: `${index * 80}ms` }"
         >
@@ -145,7 +147,10 @@ useJsonLd(
         </li>
       </ol>
 
-      <div class="mt-16 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div
+        v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: 18 }"
+        class="mt-16 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4"
+      >
         <div
           v-for="(value, index) in valueProps"
           :key="value.title"
@@ -167,7 +172,7 @@ useJsonLd(
           :eyebrow="testimonialData.eyebrow"
           :title="testimonialData.title"
         />
-        <div class="mt-8 sm:mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
+        <div v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: 10 }" class="mt-8 sm:mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
           <div
             v-for="(testimonial, index) in testimonials"
             :key="testimonial.name"

@@ -6,10 +6,13 @@ import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
  * at a time, with arrows over it and dots under it so it is obvious there is
  * more to the right. From `sm` up the wrapper disappears (`display: contents`)
  * and the classes passed in (usually a grid) lay the cards out as before.
+ * On hover a soft halo glides from card to card (v-animated-background).
  */
 defineOptions({ inheritAttrs: false })
 
 const props = withDefaults(defineProps<{ label?: string }>(), { label: 'cards' })
+
+const halo = { hover: true, items: 'children', class: 'glide-halo', spread: 10 } as const
 
 const rail = ref<HTMLElement | null>(null)
 const count = ref(0)
@@ -18,15 +21,18 @@ const index = ref(0)
 const touched = ref(false)
 let frame = 0
 
+/** The rail's cards, leaving out the hover halo that shares their parent. */
+const cards = () => [...(rail.value?.children ?? [])].filter((el) => !el.hasAttribute('data-animated-background')) as HTMLElement[]
+
 /** The card nearest the left edge decides which dot is lit. */
 const update = () => {
   const el = rail.value
   if (!el) return
-  const cards = [...el.children] as HTMLElement[]
-  count.value = cards.length
-  if (cards.length < 2) return
-  const step = cards[1]!.offsetLeft - cards[0]!.offsetLeft
-  index.value = step > 0 ? Math.min(cards.length - 1, Math.round(el.scrollLeft / step)) : 0
+  const all = cards()
+  count.value = all.length
+  if (all.length < 2) return
+  const step = all[1]!.offsetLeft - all[0]!.offsetLeft
+  index.value = step > 0 ? Math.min(all.length - 1, Math.round(el.scrollLeft / step)) : 0
 }
 
 const onScroll = () => {
@@ -36,8 +42,8 @@ const onScroll = () => {
 
 const scrollToCard = (target: number) => {
   const el = rail.value
-  const first = el?.children[0] as HTMLElement | undefined
-  const card = el?.children[target] as HTMLElement | undefined
+  const [first] = cards()
+  const card = cards()[target]
   if (!el || !first || !card) return
   touched.value = true
   el.scrollTo({ left: card.offsetLeft - first.offsetLeft, behavior: 'smooth' })
@@ -56,7 +62,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="relative sm:contents">
-    <div ref="rail" v-bind="$attrs" class="rail" @scroll.passive="onScroll" @pointerdown="touched = true">
+    <div ref="rail" v-animated-background="halo" v-bind="$attrs" class="rail" @scroll.passive="onScroll" @pointerdown="touched = true">
       <slot />
     </div>
 

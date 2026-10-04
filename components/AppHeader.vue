@@ -26,6 +26,16 @@ const transparent = computed(() => overlay.value && !scrolled.value && !menuOpen
 /** Active when on the tab's page or any page beneath it. */
 const isActive = (to: string) => route.path === to || route.path.startsWith(`${to}/`)
 
+/** A pill glides under the desktop tabs as they are hovered, and rests on the current one. */
+const navHighlight = computed(() => ({
+  value: desktopNav.find((item) => !item.highlight && isActive(item.to))?.to ?? null,
+  hover: true,
+  class: transparent.value
+    ? 'rounded-pill bg-white/15 ring-1 ring-inset ring-white/25 backdrop-blur-md'
+    : 'rounded-pill bg-brand/[0.08] ring-1 ring-inset ring-brand/15'
+}))
+const dropdownHighlight = { hover: true, class: 'rounded-xl bg-brand/[0.07]' }
+
 const closeDropdownOnFocusOut = (event: FocusEvent) => {
   const next = event.relatedTarget as Node | null
   if (!next || !(event.currentTarget as HTMLElement).contains(next)) openDropdown.value = null
@@ -94,25 +104,23 @@ const onKeydown = (event: KeyboardEvent) => {
           <PravaahLogo :tone="transparent ? 'light' : 'brand'" :size="scrolled ? 'sm' : 'md'" />
         </NuxtLink>
 
-        <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav v-animated-background="navHighlight" class="hidden items-center gap-1 lg:flex" aria-label="Primary">
           <div
             v-for="(item, index) in desktopNav"
             :key="item.to"
             class="relative"
+            :data-animated-ignore="item.highlight ? '' : undefined"
             @mouseenter="openDropdown = index"
             @mouseleave="openDropdown = null"
             @focusout="closeDropdownOnFocusOut"
           >
             <div
               class="flex items-center rounded-pill transition-colors"
+              :data-id="item.highlight ? undefined : item.to"
               :class="
                 item.highlight
                   ? [transparent ? 'btn btn-light' : 'btn-primary', 'ml-2 gap-0 py-1 pl-4 pr-2']
-                  : [
-                      'pl-3.5 pr-1.5',
-                      transparent ? 'hover:bg-white/10' : 'hover:bg-brand/[0.06]',
-                      isActive(item.to) ? (transparent ? 'bg-white/10' : 'bg-brand/[0.08]') : ''
-                    ]
+                  : 'pl-3.5 pr-1.5'
               "
             >
               <NuxtLink
@@ -123,6 +131,7 @@ const onKeydown = (event: KeyboardEvent) => {
                     ? ''
                     : [
                         transparent ? 'text-white/90 hover:text-white' : 'text-ink-soft hover:text-ink',
+                        transparent ? '' : '[[data-highlighted]_&]:text-ink',
                         isActive(item.to) && !transparent ? 'text-accent' : ''
                       ]
                 "
@@ -167,11 +176,15 @@ const onKeydown = (event: KeyboardEvent) => {
                 :id="`nav-menu-${index}`"
                 class="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3"
               >
-                <ul class="min-w-[15rem] rounded-2xl border border-hairline bg-white/90 p-2 shadow-lift backdrop-blur-xl">
+                <ul
+                  v-animated-background="dropdownHighlight"
+                  class="min-w-[15rem] rounded-2xl border border-hairline bg-white/90 p-2 shadow-lift backdrop-blur-xl"
+                >
                   <li v-for="child in item.children" :key="child.to">
                     <NuxtLink
                       :to="child.to"
-                      class="block rounded-xl px-4 py-2.5 text-sm text-ink-soft transition-colors hover:bg-brand/[0.06] hover:text-accent"
+                      :data-id="child.to"
+                      class="block rounded-xl px-4 py-2.5 text-sm text-ink-soft transition-colors hover:text-accent"
                       @click="openDropdown = null"
                     >
                       {{ child.label }}
@@ -180,11 +193,15 @@ const onKeydown = (event: KeyboardEvent) => {
                   <li class="mt-1 border-t border-hairline pt-1">
                     <NuxtLink
                       :to="item.to"
-                      class="flex items-center justify-between gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-brand/[0.06]"
+                      data-id="all"
+                      class="group/all flex items-center justify-between gap-3 rounded-xl px-4 py-2.5 text-sm font-medium text-accent transition-colors"
                       @click="openDropdown = null"
                     >
                       {{ item.allLabel ?? `All ${item.label.toLowerCase()}` }}
-                      <ArrowRight class="h-3.5 w-3.5" aria-hidden="true" />
+                      <ArrowRight
+                        class="h-3.5 w-3.5 transition-transform duration-300 ease-editorial group-hover/all:translate-x-1"
+                        aria-hidden="true"
+                      />
                     </NuxtLink>
                   </li>
                 </ul>

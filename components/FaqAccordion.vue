@@ -10,10 +10,11 @@ defineProps<{ items: FaqItem[] }>()
 </script>
 
 <template>
-  <div class="space-y-3">
+  <div v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: 10 }" class="space-y-3">
     <details
       v-for="item in items"
       :key="item.question"
+      v-spotlight
       class="surface-card group px-6 shadow-soft transition-all duration-300 ease-editorial open:border-accent/40 open:shadow-lift"
     >
       <summary

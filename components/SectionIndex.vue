@@ -75,12 +75,12 @@ useJsonLd(
       :intro="section.intro"
       :crumbs="crumbs"
     >
-      <nav v-if="groups.length > 1" class="mt-7 flex flex-wrap gap-2 sm:mt-9" :aria-label="`${section.name} categories`">
+      <nav v-if="groups.length > 1" v-animated-background="{ hover: true, items: 'children', class: 'rounded-pill bg-white/25 ring-1 ring-inset ring-white/60 shadow-glow' }" class="mt-7 flex flex-wrap gap-2 sm:mt-9" :aria-label="`${section.name} categories`">
         <NuxtLink
           v-for="group in groups"
           :key="group.category.slug"
           :to="{ hash: `#${group.category.slug}` }"
-          class="rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-colors hover:border-white/60 hover:bg-white/20"
+          class="rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-colors hover:border-white/60"
         >
           {{ group.category.name }}
           <span class="ml-1 text-white/60">{{ group.listings.length }}</span>

@@ -6,7 +6,7 @@ defineProps<{ testimonial: Testimonial }>()
 </script>
 
 <template>
-  <figure class="surface-card glow-card flex h-full flex-col p-7">
+  <figure v-spotlight class="surface-card glow-card flex h-full flex-col p-7">
     <div v-if="testimonial.rating" class="mb-4 flex gap-0.5" :aria-label="`${testimonial.rating} out of 5`">
       <Star
         v-for="index in testimonial.rating"

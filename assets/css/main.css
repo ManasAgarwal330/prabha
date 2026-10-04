@@ -378,6 +378,21 @@
     box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.25), 0 30px 60px -28px rgba(4, 120, 87, 0.55);
   }
 
+  /* The halo that glides between cards (v-animated-background, see
+     plugins/animated-background.ts). Built on the surface tokens, so it reads
+     on white, pine and valley bands alike. The radius is the card's plus the
+     10px spread the directive adds around each card. */
+  .glide-halo {
+    border-radius: calc(1.5rem + 10px);
+    background:
+      radial-gradient(120% 80% at 0% 0%, rgb(var(--c-accent) / 0.2), transparent 60%),
+      radial-gradient(90% 70% at 100% 100%, rgba(163, 230, 53, 0.16), transparent 65%),
+      rgb(var(--c-accent) / 0.05);
+    box-shadow:
+      0 0 0 1px rgb(var(--c-accent) / 0.22),
+      0 30px 70px -30px rgb(var(--c-accent) / 0.6);
+  }
+
   /* Soft mint light behind the mobile menu. Gradients rather than blurred
      shapes: a large blur filter leaves a hard seam on some phones. */
   .menu-glow {
@@ -478,6 +493,35 @@
   to {
     transform: scaleX(1);
   }
+}
+
+/* --- Pointer spotlight --- */
+/* Light that follows the pointer across a card (v-spotlight, plugins/spotlight.ts).
+   Outside the Tailwind layers: the class is only added at runtime, so the
+   content scan would never find it and the rules would be purged.
+   Built on the accent token, so it adapts to the pine and valley bands. */
+.spotlight {
+  position: relative;
+}
+
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    22rem circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgb(var(--c-accent) / 0.13),
+    transparent 65%
+  );
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.spotlight:hover::before {
+  opacity: 1;
 }
 
 /* --- Underline that draws in on card hover --- */
@@ -585,6 +629,11 @@
 
   .rail::-webkit-scrollbar {
     display: none;
+  }
+
+  /* The gliding highlight is not a card, so it must not become a snap point. */
+  .rail > [data-animated-background] {
+    scroll-snap-align: none;
   }
 
   .rail > * {

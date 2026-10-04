@@ -38,6 +38,7 @@ withDefaults(
         aria-hidden="true"
       />
       <div class="absolute inset-0 grain opacity-40" aria-hidden="true" />
+      <FlowingPaths class="text-white opacity-70" />
 
       <div class="relative px-6 py-20 text-center sm:px-10 sm:py-24 lg:py-28">
         <p class="mb-6 flex justify-center">

@@ -47,15 +47,19 @@ useJsonLd(
         <div class="lg:col-span-4">
           <nav class="lg:sticky lg:top-28" aria-label="FAQ sections">
             <p class="eyebrow mb-5">On this page</p>
-            <ul class="space-y-3 text-sm">
+            <ul
+              v-animated-background="{ hover: true, class: 'rounded-lg bg-accent/[0.07] ring-1 ring-inset ring-accent/15', spread: [10, 4] }"
+              class="space-y-3 text-sm"
+            >
               <li>
-                <a href="#general" class="link-underline text-ink-soft transition-colors hover:text-accent">
+                <a href="#general" data-id="general" class="link-underline text-ink-soft transition-colors hover:text-accent">
                   Planning &amp; booking
                 </a>
               </li>
               <li v-for="destination in destinations" :key="destination.slug">
                 <a
                   :href="`#${destination.slug}`"
+                  :data-id="destination.slug"
                   class="link-underline text-ink-soft transition-colors hover:text-accent"
                 >
                   {{ destination.name }}

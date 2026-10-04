@@ -14,6 +14,14 @@ const socials = [
  * each page is about; built from the content, so they never point at an empty page.
  */
 const { destinations, sections } = useSiteBundle()
+
+/** A soft pill glides behind whichever footer link is under the pointer. */
+const footerHighlight = {
+  hover: true,
+  class: 'rounded-lg bg-white/[0.07] ring-1 ring-inset ring-accent/25',
+  spread: [10, 4] as [number, number]
+}
+const popularHighlight = { ...footerHighlight, items: 'children' as const }
 const popular = [
   ...destinations.map((d) => ({ label: `${d.name} tours & stays`, to: `/destinations/${d.slug}` })),
   ...sections.flatMap((section) =>
@@ -61,9 +69,9 @@ const popular = [
         >
           <div>
             <h2 class="eyebrow mb-5">Company</h2>
-            <ul class="space-y-3 text-sm">
+            <ul v-animated-background="footerHighlight" class="space-y-3 text-sm">
               <li v-for="item in footerNav.company" :key="item.to">
-                <NuxtLink :to="item.to" class="text-ink-soft transition-colors hover:text-accent">
+                <NuxtLink :to="item.to" :data-id="item.to" class="text-ink-soft transition-colors hover:text-accent">
                   {{ item.label }}
                 </NuxtLink>
               </li>
@@ -71,9 +79,9 @@ const popular = [
           </div>
           <div class="order-first row-span-2 sm:order-none sm:row-span-1">
             <h2 class="eyebrow mb-5">Explore</h2>
-            <ul class="space-y-3 text-sm">
+            <ul v-animated-background="footerHighlight" class="space-y-3 text-sm">
               <li v-for="item in footerNav.explore" :key="item.to">
-                <NuxtLink :to="item.to" class="text-ink-soft transition-colors hover:text-accent">
+                <NuxtLink :to="item.to" :data-id="item.to" class="text-ink-soft transition-colors hover:text-accent">
                   {{ item.label }}
                 </NuxtLink>
               </li>
@@ -81,9 +89,9 @@ const popular = [
           </div>
           <div>
             <h2 class="eyebrow mb-5">Support</h2>
-            <ul class="space-y-3 text-sm">
+            <ul v-animated-background="footerHighlight" class="space-y-3 text-sm">
               <li v-for="item in footerNav.support" :key="item.to">
-                <NuxtLink :to="item.to" class="text-ink-soft transition-colors hover:text-accent">
+                <NuxtLink :to="item.to" :data-id="item.to" class="text-ink-soft transition-colors hover:text-accent">
                   {{ item.label }}
                 </NuxtLink>
               </li>
@@ -113,7 +121,7 @@ const popular = [
       <nav class="mt-10 border-t border-hairline pt-8 sm:mt-14" aria-label="Popular with travellers">
         <h2 class="eyebrow mb-4">Popular with travellers</h2>
         <!-- Phones show these as chips so the long list wraps into tidy rows. -->
-        <ul class="flex flex-wrap gap-2 text-[0.8125rem] sm:gap-x-5 sm:gap-y-2.5 sm:text-sm">
+        <ul v-animated-background="popularHighlight" class="flex flex-wrap gap-2 text-[0.8125rem] sm:gap-x-5 sm:gap-y-2.5 sm:text-sm">
           <li v-for="item in popular" :key="item.to">
             <NuxtLink
               :to="item.to"

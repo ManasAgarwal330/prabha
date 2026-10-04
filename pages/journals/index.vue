@@ -97,15 +97,21 @@ useJsonLd(breadcrumbLd(crumbs))
     <!-- All stories -->
     <section id="stories" class="container-pravaah scroll-mt-24 pb-14 pt-16 lg:pb-16">
       <h2 class="sr-only">All stories</h2>
-      <div class="flex flex-wrap gap-2 border-y border-hairline py-5" role="group" aria-label="Filter stories by category">
+      <div
+        v-animated-background="{ value: activeCategory, class: 'rounded-pill bg-gradient-to-r from-brand via-brand-deep to-brand-teal shadow-glow' }"
+        class="flex flex-wrap gap-2 border-y border-hairline py-5"
+        role="group"
+        aria-label="Filter stories by category"
+      >
         <button
           v-for="category in categories"
           :key="category"
           type="button"
-          class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors"
+          :data-id="category"
+          class="rounded-pill border px-4 py-2 text-xs font-medium transition-colors duration-300"
           :class="
             activeCategory === category
-              ? 'border-brand bg-brand text-white'
+              ? 'border-transparent bg-brand text-white [[data-animated]_&]:bg-transparent'
               : 'border-hairline text-ink-soft hover:border-ink/40'
           "
           :aria-pressed="activeCategory === category"
@@ -115,7 +121,7 @@ useJsonLd(breadcrumbLd(crumbs))
         </button>
       </div>
 
-      <div class="mt-8 sm:mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+      <div v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: 10 }" class="mt-8 sm:mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
         <div v-for="article in activeCategory === 'All' ? rest : filtered" :key="article.slug">
           <BlogCard :article="article" />
         </div>

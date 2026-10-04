@@ -207,11 +207,15 @@ usePageSeo({
           </NuxtLink>
 
           <!-- Phones put the label on its own line so every pick fits whole. -->
-          <div class="hero-fade order-3 flex flex-wrap items-center gap-2 sm:order-none sm:gap-3" style="animation-delay: 0.8s">
+          <div
+            v-animated-background="{ hover: true, class: 'rounded-pill bg-white/20 ring-1 ring-inset ring-brand-light/70 shadow-glow' }"
+            class="hero-fade order-3 flex flex-wrap items-center gap-2 sm:order-none sm:gap-3"
+            style="animation-delay: 0.8s"
+          >
             <span class="ml-1 inline-flex shrink-0 basis-full items-center gap-1.5 whitespace-nowrap text-xs text-white/70 sm:basis-auto"><MapPin class="h-3.5 w-3.5" aria-hidden="true" /> Popular:</span>
-            <NuxtLink to="/destinations/uttarakhand" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Uttarakhand</NuxtLink>
-            <NuxtLink to="/events/dev-deepawali-varanasi" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Dev Deepawali</NuxtLink>
-            <NuxtLink to="/expeditions/khaliya-top-trek" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-brand-light/70 hover:text-white">Khaliya Top</NuxtLink>
+            <NuxtLink to="/destinations/uttarakhand" data-id="/destinations/uttarakhand" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-transparent hover:text-white">Uttarakhand</NuxtLink>
+            <NuxtLink to="/events/dev-deepawali-varanasi" data-id="/events/dev-deepawali-varanasi" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-transparent hover:text-white">Dev Deepawali</NuxtLink>
+            <NuxtLink to="/expeditions/khaliya-top-trek" data-id="/expeditions/khaliya-top-trek" class="shrink-0 whitespace-nowrap rounded-pill border border-white/15 bg-white/[0.06] px-3 py-1.5 text-xs text-white/80 backdrop-blur-sm transition-colors hover:border-transparent hover:text-white">Khaliya Top</NuxtLink>
           </div>
         </div>
         </div>
@@ -374,9 +378,10 @@ usePageSeo({
 
         <div class="order-1 lg:order-2">
           <SectionHeading :eyebrow="brandStory.eyebrow" :title="brandStory.title" />
-          <div class="reveal mt-6 space-y-5 text-[1.0625rem] leading-relaxed text-ink-soft">
-            <p v-for="paragraph in brandStory.body" :key="paragraph">{{ paragraph }}</p>
-          </div>
+          <ScrollWordReveal
+            :paragraphs="brandStory.body"
+            class="mt-6 space-y-5 text-[1.0625rem] leading-relaxed text-ink sm:text-lg"
+          />
         </div>
       </div>
     </section>
@@ -421,6 +426,7 @@ usePageSeo({
         <div
           v-for="(value, index) in valueProps"
           :key="value.title"
+          v-spotlight
           class="reveal surface-card card-lift glow-card group p-6 shadow-soft sm:p-7"
           :style="{ transitionDelay: `${index * 70}ms` }"
         >
@@ -435,17 +441,21 @@ usePageSeo({
 
     <!-- How it works -->
     <section class="section-forest py-14 sm:py-20 lg:py-28">
+      <FlowingPaths class="-z-[1] text-white opacity-40" />
       <div class="container-pravaah">
         <div class="reveal max-w-3xl">
           <p class="chip mb-5"><span class="chip-dot" aria-hidden="true" />How it works</p>
           <h2 class="text-display-md">Three steps, and then you are travelling.</h2>
         </div>
 
-        <ol class="mt-8 sm:mt-14 grid gap-8 sm:grid-cols-3 sm:gap-8">
+        <ol
+          v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: [20, 0] }"
+          class="mt-8 sm:mt-14 grid gap-8 sm:grid-cols-3 sm:gap-8"
+        >
           <li
             v-for="(step, index) in howItWorks"
             :key="step.number"
-            class="reveal border-t border-hairline pt-6"
+            class="reveal border-t border-hairline pb-6 pt-6"
             :style="{ transitionDelay: `${index * 90}ms` }"
           >
             <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/25 bg-white/10 font-mono text-sm text-white backdrop-blur-md">{{ step.number }}</span>

@@ -74,12 +74,12 @@ useJsonLd(breadcrumbLd(crumbs))
       :intro="`${india.description} We go deep in a handful of places rather than thin across the whole country.`"
       :crumbs="crumbs"
     >
-      <nav class="mt-9 flex flex-wrap gap-2" aria-label="Regions">
+      <nav v-animated-background="{ hover: true, items: 'children', class: 'rounded-pill bg-white/25 ring-1 ring-inset ring-white/60 shadow-glow' }" class="mt-9 flex flex-wrap gap-2" aria-label="Regions">
         <NuxtLink
           v-for="group in regionGroups"
           :key="group.region.slug"
           :to="{ hash: `#${group.region.slug}` }"
-          class="rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-colors hover:border-white/60 hover:bg-white/20"
+          class="rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-colors hover:border-white/60"
         >
           {{ group.region.name }}
           <span class="ml-1 text-white/60">{{ group.destinations.length }}</span>
@@ -96,7 +96,7 @@ useJsonLd(breadcrumbLd(crumbs))
     <section id="india" class="container-pravaah scroll-mt-24 py-12 sm:py-16 lg:py-20">
       <SectionHeading :eyebrow="india.name" title="Where we travel." />
 
-      <ul class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+      <ul v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: 10 }" class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
         <li
           v-for="(group, index) in regionGroups"
           :key="group.region.slug"
@@ -104,6 +104,7 @@ useJsonLd(breadcrumbLd(crumbs))
           :style="{ transitionDelay: `${index * 80}ms` }"
         >
           <NuxtLink
+            v-spotlight
             :to="{ hash: `#${group.region.slug}` }"
             class="surface-card card-lift group flex h-full flex-col p-7 shadow-soft hover:shadow-lift"
           >
@@ -135,7 +136,7 @@ useJsonLd(breadcrumbLd(crumbs))
       <div class="container-pravaah">
         <SectionHeading eyebrow="Destinations" :title="group.region.name" :intro="group.region.description" />
 
-        <div class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+        <div v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: 10 }" class="mt-8 sm:mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           <div
             v-for="(destination, index) in group.destinations"
             :key="destination.slug"
@@ -157,11 +158,14 @@ useJsonLd(breadcrumbLd(crumbs))
           intro="India runs on several seasons at once. Here is where we would send you in each window."
         />
 
-        <div class="mt-8 sm:mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+        <div
+          v-animated-background="{ hover: true, items: 'children', class: 'glide-halo', spread: [20, 0] }"
+          class="mt-8 sm:mt-12 grid gap-10 md:grid-cols-3 md:gap-8"
+        >
           <div
             v-for="(season, index) in seasonal"
             :key="season.window"
-            class="reveal border-t border-hairline pt-6"
+            class="reveal border-t border-hairline pb-6 pt-6"
             :style="{ transitionDelay: `${index * 80}ms` }"
           >
             <h3 class="font-display text-xl leading-snug">{{ season.window }}</h3>
